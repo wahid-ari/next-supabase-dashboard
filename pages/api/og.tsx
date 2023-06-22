@@ -88,7 +88,7 @@ export default async function handler(req: NextApiRequest) {
               color: '#fff',
             }}
           >
-            With MyBook, its easy to find the right music for every moment.
+            Find books you&apos;ll love, and keep track of the books you want to read.
           </p>
         </div>
       ),

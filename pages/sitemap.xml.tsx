@@ -31,16 +31,16 @@ function generateSiteMap(books: any, authors: any, genres: any) {
         <priority>0.80</priority>
       </url>
 
-  ${books
-    .map((book: any) => {
-      return `
-      <url>
-        <loc>${`${BASE_URL}/books/detail/${book.id}`}</loc>
-        <lastmod>${today.toISOString()}</lastmod>
-      </url>
-    `;
-    })
-    .join('')}
+    ${books
+      .map((book: any) => {
+        return `
+        <url>
+          <loc>${`${BASE_URL}/books/detail/${book.id}`}</loc>
+          <lastmod>${today.toISOString()}</lastmod>
+        </url>
+      `;
+      })
+      .join('')}
   
     ${authors
       .map((author: any) => {

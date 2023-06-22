@@ -25,7 +25,7 @@ export default function Footer({ className, ...props }: { className?: string; [p
                   'group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500'
                 )}
               >
-                <Image alt='Logo' src='/icon.png' width={30} height={30} className='mr-2 rounded-lg' />
+                <Image alt='Logo' src='/icon.png' width={30} height={30} className='mr-2 rounded-lg' unoptimized />
                 <span className='text-xl font-semibold text-neutral-800 dark:text-neutral-200'>MyBook</span>
               </div>
             </Link>
