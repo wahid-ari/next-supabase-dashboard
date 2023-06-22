@@ -98,7 +98,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     leaveTo='opacity-0 scale-95'
                   >
                     <Popover.Panel className='absolute top-8 z-[11] flex w-40 flex-col space-y-2.5 rounded bg-white px-4 py-4 shadow dark:bg-[#1a1a1a]'>
-                      <CustomActiveLink href='/studios'>Studios</CustomActiveLink>
+                      <CustomActiveLink href='/#'>Studios</CustomActiveLink>
                     </Popover.Panel>
                   </Transition>
                 </Popover>
@@ -261,11 +261,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                       </Menu.Button>
                       <Menu.Items className='space-y-1 px-3'>
                         <Menu.Item>
-                          <ActiveLink
-                            activeClassName='!text-sky-500 dark:text-sky-500'
-                            href='/studios'
-                            className={activeCn}
-                          >
+                          <ActiveLink activeClassName='!text-sky-500 dark:text-sky-500' href='/#' className={activeCn}>
                             Studios
                           </ActiveLink>
                         </Menu.Item>

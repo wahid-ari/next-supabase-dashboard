@@ -775,6 +775,7 @@ export default function Example() {
 
       <Wrapper id='code' name='Code' noChildren props={['name', 'code', 'lang']}>
         <Code
+          data-testid='code'
           code={`import useToast from '@utils/useToast()'
 
 const { updateToast, pushToast, dismissToast } = useToast();

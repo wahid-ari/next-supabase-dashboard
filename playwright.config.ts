@@ -41,6 +41,9 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
+    // A permission or an array of permissions to grant.
+    permissions: ["clipboard-read"],
   },
 
   /* Configure projects for major browsers */

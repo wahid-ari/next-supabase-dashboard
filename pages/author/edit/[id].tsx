@@ -144,9 +144,9 @@ export default function Author({ id }) {
             placeholder='Author Bio'
           />
 
-          <Button.success onClick={handleEdit} className='w-full'>
+          <Button onClick={handleEdit} className='w-full'>
             Update
-          </Button.success>
+          </Button>
         </div>
       ) : (
         <Shimer className='!h-60' />

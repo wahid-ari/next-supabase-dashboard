@@ -24,7 +24,7 @@ export default function Code({ name = 'Code', code, className, lang = 'javascrip
       setCopy(true);
       setTimeout(() => {
         setCopy(false);
-      }, 2500);
+      }, 3000);
     } catch (err) {
       console.log(err);
     }

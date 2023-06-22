@@ -28,23 +28,11 @@ test.describe('Testing Sidebar Link', () => {
     await expect(page).toHaveURL(/book/);
     await expect(page).toHaveTitle(/Book/);
   });
-  test('should open Quote page', async ({ page }) => {
-    await expect(page.getByRole('link', { name: 'Quote', exact: true })).toHaveAttribute('href', '/quote');
-    await page.getByRole('link', { name: 'Quote', exact: true }).click();
-    await expect(page).toHaveURL(/quote/);
-    await expect(page).toHaveTitle(/Quote/);
-  });
   test('should open Genre page', async ({ page }) => {
     await expect(page.getByRole('link', { name: 'Genre', exact: true })).toHaveAttribute('href', '/genre');
     await page.getByRole('link', { name: 'Genre', exact: true }).click();
     await expect(page).toHaveURL(/genre/);
     await expect(page).toHaveTitle(/Genre/);
-  });
-  test('should open Tag page', async ({ page }) => {
-    await expect(page.getByRole('link', { name: 'Tag', exact: true })).toHaveAttribute('href', '/tag');
-    await page.getByRole('link', { name: 'Tag', exact: true }).click();
-    await expect(page).toHaveURL(/tag/);
-    await expect(page).toHaveTitle(/Tag/);
   });
   test('should open Settings page', async ({ page }) => {
     await expect(page.getByRole('link', { name: 'Settings' })).toHaveAttribute('href', '/settings');

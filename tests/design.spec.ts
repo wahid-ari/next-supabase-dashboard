@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('http://localhost:3000/design/component');
+  await page.goto('http://localhost:3000/design');
 });
 
 test.describe('Testing Design Page', () => {
@@ -861,6 +861,24 @@ test.describe('Testing Dialog Component', () => {
     );
     await page.getByTestId('dialog-danger').getByRole('button', { name: 'Delete' }).click();
     await expect(dialog).not.toBeVisible();
+  });
+});
+
+test.describe('Testing Code Component', () => {
+  // Code ----------------------------------------------------
+  test('renders a Code component', async ({ page }) => {
+    const code = page.getByTestId('code');
+    await expect(code).toBeVisible();
+    await expect(code).toHaveClass(/Code relative rounded-md text-sm/);
+    await expect(code).toContainText('import useToast from');
+  });
+  test('renders a Code component and click copy', async ({ page }) => {
+    const code = page.getByTestId('code');
+    await expect(code).toBeVisible();
+    await expect(code.getByRole('button', { name: 'Copy Code' })).toBeVisible();
+    await code.getByRole('button', { name: 'Copy Code' }).click();
+    let clipboardText = await page.evaluate("navigator.clipboard.readText()");
+    expect(clipboardText).toContain("import useToast from");
   });
 });
 
