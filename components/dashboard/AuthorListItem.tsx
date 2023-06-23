@@ -56,7 +56,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
             href={web}
             className={clsx(
               'mt-1 flex w-16 items-center rounded text-sm font-medium transition-all duration-200',
-              'text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+              'text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             )}
             target='_blank'
             rel='noreferrer'

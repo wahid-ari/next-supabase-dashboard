@@ -30,7 +30,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
     >
       <div className='flex gap-x-3'>
         <button
-          className='-ml-0.5 rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+          className='-ml-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
           id='menu'
           aria-label='Menu'
         >
@@ -43,7 +43,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
           href='/'
           className={clsx(
             'rounded text-center text-base font-semibold tracking-wide text-neutral-800 no-underline',
-            'focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 dark:text-neutral-100 lg:text-2xl'
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-100 lg:text-2xl'
           )}
         >
           MyBook

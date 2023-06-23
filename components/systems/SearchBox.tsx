@@ -62,7 +62,7 @@ export default function SearchBox({
                   className={({ active }) =>
                     clsx(
                       'relative cursor-default select-none py-2 pl-10 pr-4',
-                      active ? 'bg-sky-600 text-white' : 'text-gray-900 dark:text-white'
+                      active ? 'bg-sky-500 text-white' : 'text-gray-900 dark:text-white'
                     )
                   }
                   value={item}

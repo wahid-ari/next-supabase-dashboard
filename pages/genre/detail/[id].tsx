@@ -54,7 +54,7 @@ export default function Genre({ id }) {
               <HoverCard.Trigger asChild>
                 <Link
                   href={`/book/detail/${values.id}`}
-                  className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                  className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
                   {text}
                 </Link>
@@ -84,7 +84,7 @@ export default function Genre({ id }) {
           return (
             <Link
               href={`/author/detail/${original.book_authors?.id}`}
-              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             >
               {original.book_authors?.name}
             </Link>

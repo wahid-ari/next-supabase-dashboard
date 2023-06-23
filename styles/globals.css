@@ -74,7 +74,7 @@ html {
 }
 
 .react-select__control--is-focused {
-  @apply !outline-none !ring-2 !ring-sky-600;
+  @apply !outline-none !ring-2 !ring-sky-500;
 }
 
 .react-select__multi-value {

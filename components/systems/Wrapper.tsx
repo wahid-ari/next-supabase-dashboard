@@ -32,7 +32,12 @@ export default function Wrapper({
         <span className='text-neutral-500 transition-all duration-500 group-hover:text-black dark:group-hover:text-white'>
           #
         </span>{' '}
-        <Link href={`#${id}`}>{name}</Link>
+        <Link
+          href={`#${id}`}
+          className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+        >
+          {name}
+        </Link>
       </Heading>
       {noWrap ? (
         <div className='mb-2'>{children}</div>

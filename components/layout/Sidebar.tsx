@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { GlobalContext } from 'context/GlobalContext';
 import {
   XIcon,
@@ -8,15 +7,12 @@ import {
   ViewGridIcon,
   CogIcon,
   TemplateIcon,
-  CollectionIcon,
   UserGroupIcon,
   ColorSwatchIcon,
-  BookmarkIcon,
   SearchIcon,
   LoginIcon,
   ExternalLinkIcon,
   BookOpenIcon,
-  AnnotationIcon,
   DocumentReportIcon,
   ViewBoardsIcon,
   ViewGridAddIcon,
@@ -143,20 +139,13 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             Settings
           </NavLink>
 
-          <a
+          <NavLink.external
             href='https://my-book-docs.vercel.app'
-            className={clsx(
-              'my-1 flex w-full items-center justify-start gap-2 px-3 py-2 transition-all',
-              'rounded text-sm font-medium text-gray-600 hover:text-sky-600 dark:text-neutral-300',
-              'hover:bg-gray-100 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
-              'focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
-            )}
-            target='_blank'
-            rel='noopener noreferrer'
+            icon={<ExternalLinkIcon className='h-4 w-4' />}
+            className='mt-1'
           >
-            <ExternalLinkIcon className='h-4 w-4' />
             Docs
-          </a>
+          </NavLink.external>
         </div>
 
         <hr className='mt-2 dark:border-neutral-800' />
@@ -171,24 +160,16 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             className={clsx(
               'flex w-full items-center justify-start gap-2 px-4 py-2 text-sm font-semibold transition-all',
               'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
-              'focus-visible:outline-none focus-visible:ring focus-visible:ring-red-500'
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
             )}
           >
             <LogoutIcon className='h-4 w-4' />
             Logout
           </button>
           {/* ) : (
-              <Link
-                href='/login'
-                className={clsx(
-                  'flex w-full items-center justify-start gap-2 px-4 py-2 text-sm font-semibold transition-all',
-                  'rounded text-sky-600 hover:bg-sky-100 dark:hover:bg-neutral-800',
-                  'focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
-                )}
-              >
-                <LoginIcon className='h-4 w-4' />
+              <NavLink.login href='/login' icon={<LoginIcon className='h-4 w-4' />} className='mt-1'>
                 Login
-              </Link>
+              </NavLink.login>
             )
           ) : null} */}
         </div>

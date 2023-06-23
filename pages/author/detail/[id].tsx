@@ -79,7 +79,7 @@ export default function Author({ id }) {
                       {data?.web ? (
                         <a
                           href={data?.web}
-                          className='flex w-16 items-center rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                          className='flex w-16 items-center rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                           target='_blank'
                           rel='noreferrer'
                         >
@@ -97,7 +97,7 @@ export default function Author({ id }) {
                       {data?.link ? (
                         <a
                           href={data?.link}
-                          className='flex w-16 items-center rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                          className='flex w-16 items-center rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                           target='_blank'
                           rel='noreferrer'
                         >

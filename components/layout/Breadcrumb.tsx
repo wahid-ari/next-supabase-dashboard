@@ -38,7 +38,7 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
             passHref
             className={clsx(
               'inline-flex items-center rounded text-gray-700 transition-all hover:text-gray-900',
-              'focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               'dark:text-neutral-300 dark:hover:text-neutral-100'
             )}
           >
@@ -66,7 +66,7 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
                     href={(index !== 0 ? '/' : '') + paths.slice(0, index).join('/') + '/' + path}
                     className={clsx(
                       'ml-1 rounded text-gray-600 transition-all hover:text-gray-800',
-                      'focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500',
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       'dark:text-neutral-300 dark:hover:text-neutral-200'
                     )}
                   >

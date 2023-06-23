@@ -92,14 +92,16 @@ export default function Book({ id }) {
                       <p className='font-medium text-neutral-700 dark:text-neutral-200'>
                         {data?.genre_array.map((item: any, index: number) => {
                           return (
-                            <Link
-                              key={index + 1}
-                              href={`/genre/detail/${item.id}`}
-                              className='rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
-                            >
-                              {item.name}
+                            <>
+                              <Link
+                                key={index + 1}
+                                href={`/genre/detail/${item.id}`}
+                                className='rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                              >
+                                {item.name}
+                              </Link>
                               {index < data.genre_array.length - 1 ? ', ' : ''}
-                            </Link>
+                            </>
                           );
                         })}
                         {data.genre_array?.length < 1 && '-'}
@@ -112,7 +114,7 @@ export default function Book({ id }) {
                       {data?.link ? (
                         <a
                           href={data?.link}
-                          className='flex w-16 items-center rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                          className='flex w-16 items-center rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                           target='_blank'
                           rel='noreferrer'
                         >
@@ -134,7 +136,7 @@ export default function Book({ id }) {
                 {data?.book_authors?.image ? (
                   <Link
                     href={`/author/detail/${data?.book_authors?.id}`}
-                    className='rounded text-base font-medium text-neutral-900 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500 dark:text-neutral-100'
+                    className='rounded text-base font-medium text-neutral-900 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-100'
                   >
                     <Image
                       alt={data?.book_authors?.name}
@@ -156,14 +158,14 @@ export default function Book({ id }) {
                 <div>
                   <Link
                     href={`/author/detail/${data?.book_authors?.id}`}
-                    className='rounded text-base font-medium text-neutral-900 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500 dark:text-neutral-100 dark:hover:text-sky-500'
+                    className='rounded text-base font-medium text-neutral-900 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-100 dark:hover:text-sky-500'
                   >
                     {data?.book_authors?.name}
                   </Link>
                   {data?.book_authors?.web ? (
                     <a
                       href={data?.book_authors?.web}
-                      className='mt-1 flex w-16 items-center rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                      className='mt-1 flex w-16 items-center rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                       target='_blank'
                       rel='noreferrer'
                     >

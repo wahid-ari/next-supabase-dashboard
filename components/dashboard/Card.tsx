@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
+import clsx from 'clsx';
 
 export default function Card({
   title,
@@ -18,7 +19,10 @@ export default function Card({
     <Link
       href={link}
       {...props}
-      className='group flex items-center justify-between gap-2 rounded-md border p-4 shadow dark:border-neutral-800'
+      className={clsx(
+        'group flex items-center justify-between gap-2 rounded-md border p-4 shadow',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
+      )}
     >
       <div>
         <p className='mb-1 text-xl font-extrabold text-neutral-800 dark:text-neutral-100'>{count}</p>
