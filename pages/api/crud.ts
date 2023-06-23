@@ -1,19 +1,27 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'PUT') {
-    res.status(201).json({});
-  }
+  const { method, body, query } = req;
 
-  if (req.method === 'GET') {
-    res.status(200).json({});
-  }
+  switch (method) {
+    case 'GET':
+      res.status(200).json({});
+      break;
 
-  if (req.method === 'POST') {
-    res.status(200).json({});
-  }
+    case 'POST':
+      res.status(200).json({ message: 'Success add' });
+      break;
 
-  if (req.method === 'DELETE') {
-    res.status(204).json({});
+    case 'PUT':
+      res.status(201).json({ message: 'Success update' });
+      break;
+
+    case 'DELETE':
+      res.status(200).json({ message: 'Success delete' });
+      break;
+
+    default:
+      res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
+      res.status(405).end(`Method ${method} Not Allowed`);
   }
 }

@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       break;
 
     default:
-      res.status(200).json('Method required');
-      break;
+      res.setHeader('Allow', ['POST']);
+      res.status(405).end(`Method ${method} Not Allowed`);
   }
 }
