@@ -15,7 +15,7 @@ export default function Badge({ className, isLarge, children, ...props }: Props)
       className={clsx(
         className,
         isLarge ? 'text-sm' : 'text-xs',
-        'whitespace-nowrap bg-blue-100 font-semibold text-sky-600 dark:bg-sky-600 dark:bg-opacity-10',
+        'whitespace-nowrap bg-sky-100 font-semibold text-sky-500 dark:bg-sky-500 dark:bg-opacity-10',
         'mr-2 rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]'
       )}
     >
