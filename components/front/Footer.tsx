@@ -54,7 +54,7 @@ export default function Footer({ className, ...props }: { className?: string; [p
               </h2>
               <ul className='text-neutral-700 dark:text-neutral-300'>
                 <li className='mb-2'>
-                  <Link href='/studios' className={linkClassName}>
+                  <Link href='/#' className={linkClassName}>
                     Studios
                   </Link>
                 </li>
