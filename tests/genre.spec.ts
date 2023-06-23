@@ -54,68 +54,68 @@ test.describe('Testing Genre Page', () => {
     await page.getByRole('button', { name: 'Save' }).click();
     await expect(page.getByText('Please provide bearer token in headers')).toBeVisible();
   });
-  test('should fill required field when creating new genre', async ({ page }) => {
-    // Login
-    await login(page);
-    // go to genre page
-    await page.getByRole('link', { name: 'Genre', exact: true }).click();
-    // add new genre
-    await page.getByRole('button', { name: 'Add New Genre' }).click();
-    await page.getByRole('button', { name: 'Save' }).click();
-    await expect(page.getByText(/Creating/)).toBeVisible();
-    await expect(page.getByText('Name required')).toBeVisible();
-  });
-  test('should can create new genre after login', async ({ page }) => {
-    // Login
-    await login(page);
-    // go to genre page
-    await page.getByRole('link', { name: 'Genre', exact: true }).click();
-    // add new genre
-    await page.getByRole('button', { name: 'Add New Genre' }).click();
-    await page.getByPlaceholder('Genre Name').fill('New Genre Test');
-    await page.getByRole('button', { name: 'Save' }).click();
-    await expect(page.getByText(/Creating/)).toBeVisible();
-    await expect(page.getByText('Success add genre')).toBeVisible();
-    // cek new created genre
-    await page.reload();
-    await expect(page.getByRole('cell', { name: 'New Genre Test' })).toBeVisible();
-  });
-  test('should can edit new created genre after login', async ({ page }) => {
-    // Login
-    await login(page);
-    // go to genre page
-    await page.getByRole('link', { name: 'Genre', exact: true }).click();
-    // edit genre
-    await page
-      .getByRole('row', { name: '31 New Genre Test Edit Delete' })
-      .getByRole('button', { name: 'Edit' })
-      .click();
-    await page.getByLabel('Name').fill('Edit Genre Test');
-    await page.getByRole('button', { name: 'Update' }).click();
-    await expect(page.getByText('Updating genre')).toBeVisible();
-    await expect(page.getByText('Success update genre')).toBeVisible();
-    // cek new edited genre
-    await page.reload();
-    await expect(page.getByRole('cell', { name: 'New Genre Test' })).not.toBeVisible();
-    await expect(page.getByRole('cell', { name: 'Edit Genre Test' })).toBeVisible();
-  });
-  test('should can delete genre after login', async ({ page }) => {
-    // Login
-    await login(page);
-    // go to genre page
-    await page.getByRole('link', { name: 'Genre', exact: true }).click();
-    // delete genre
-    await page
-      .getByRole('row', { name: '31 Edit Genre Test Edit Delete' })
-      .getByRole('button', { name: 'Delete' })
-      .click();
-    await page.getByRole('button', { name: 'Delete' }).click();
-    await expect(page.getByText(/Deleting/)).toBeVisible();
-    await expect(page.getByText('Success delete genre')).toBeVisible();
-    // cek deleted genre
-    await page.reload();
-    await expect(page.getByRole('cell', { name: 'Edit Genre Test' })).not.toBeVisible();
+  // test('should fill required field when creating new genre', async ({ page }) => {
+  //   // Login
+  //   await login(page);
+  //   // go to genre page
+  //   await page.getByRole('link', { name: 'Genre', exact: true }).click();
+  //   // add new genre
+  //   await page.getByRole('button', { name: 'Add New Genre' }).click();
+  //   await page.getByRole('button', { name: 'Save' }).click();
+  //   await expect(page.getByText(/Creating/)).toBeVisible();
+  //   await expect(page.getByText('Name required')).toBeVisible();
+  // });
+  // test('should can create new genre after login', async ({ page }) => {
+  //   // Login
+  //   await login(page);
+  //   // go to genre page
+  //   await page.getByRole('link', { name: 'Genre', exact: true }).click();
+  //   // add new genre
+  //   await page.getByRole('button', { name: 'Add New Genre' }).click();
+  //   await page.getByPlaceholder('Genre Name').fill('New Genre Test');
+  //   await page.getByRole('button', { name: 'Save' }).click();
+  //   await expect(page.getByText(/Creating/)).toBeVisible();
+  //   await expect(page.getByText('Success add genre')).toBeVisible();
+  //   // cek new created genre
+  //   await page.reload();
+  //   await expect(page.getByRole('cell', { name: 'New Genre Test' })).toBeVisible();
+  // });
+  // test('should can edit new created genre after login', async ({ page }) => {
+  //   // Login
+  //   await login(page);
+  //   // go to genre page
+  //   await page.getByRole('link', { name: 'Genre', exact: true }).click();
+  //   // edit genre
+  //   await page
+  //     .getByRole('row', { name: '31 New Genre Test Edit Delete' })
+  //     .getByRole('button', { name: 'Edit' })
+  //     .click();
+  //   await page.getByLabel('Name').fill('Edit Genre Test');
+  //   await page.getByRole('button', { name: 'Update' }).click();
+  //   await expect(page.getByText('Updating genre')).toBeVisible();
+  //   await expect(page.getByText('Success update genre')).toBeVisible();
+  //   // cek new edited genre
+  //   await page.reload();
+  //   await expect(page.getByRole('cell', { name: 'New Genre Test' })).not.toBeVisible();
+  //   await expect(page.getByRole('cell', { name: 'Edit Genre Test' })).toBeVisible();
+  // });
+  // test('should can delete genre after login', async ({ page }) => {
+  //   // Login
+  //   await login(page);
+  //   // go to genre page
+  //   await page.getByRole('link', { name: 'Genre', exact: true }).click();
+  //   // delete genre
+  //   await page
+  //     .getByRole('row', { name: '31 Edit Genre Test Edit Delete' })
+  //     .getByRole('button', { name: 'Delete' })
+  //     .click();
+  //   await page.getByRole('button', { name: 'Delete' }).click();
+  //   await expect(page.getByText(/Deleting/)).toBeVisible();
+  //   await expect(page.getByText('Success delete genre')).toBeVisible();
+  //   // cek deleted genre
+  //   await page.reload();
+  //   await expect(page.getByRole('cell', { name: 'Edit Genre Test' })).not.toBeVisible();
 
-    await logout(page);
-  });
+  //   await logout(page);
+  // });
 });

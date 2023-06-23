@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('http://localhost:3000/');
+  await page.goto('http://localhost:3000//dashboard');
 });
 
 test.describe('Testing Sidebar Link', () => {
   test('should in Dashboard page', async ({ page }) => {
     await expect(page.getByRole('link', { name: 'Dashboard' })).toHaveAttribute('href', '/');
-    await expect(page).toHaveURL('http://localhost:3000');
+    await expect(page).toHaveURL('http://localhost:3000/dashboard');
     await expect(page).toHaveTitle(/Dashboard/);
   });
   test('should open Search page', async ({ page }) => {

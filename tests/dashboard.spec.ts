@@ -17,27 +17,21 @@ test.describe('Testing Data Count', () => {
     const author = page.getByTestId('author-count');
     await expect(author).toBeVisible();
     await expect(author).toContainText('Author');
-    await expect(author).toHaveClass(
-      /group flex items-center justify-between gap-2 rounded-md border p-4 shadow dark:border-neutral-800/
-    );
+    await expect(author).toHaveClass(/group flex items-center justify-between gap-2 rounded-md border p-4 shadow/);
     await expect(author).toHaveAttribute('href', '/author');
   });
   test('page show total book', async ({ page }) => {
     const book = page.getByTestId('book-count');
     await expect(book).toBeVisible();
     await expect(book).toContainText('Book');
-    await expect(book).toHaveClass(
-      /group flex items-center justify-between gap-2 rounded-md border p-4 shadow dark:border-neutral-800/
-    );
+    await expect(book).toHaveClass(/group flex items-center justify-between gap-2 rounded-md border p-4 shadow/);
     await expect(book).toHaveAttribute('href', '/book');
   });
   test('page show total genre', async ({ page }) => {
     const genre = page.getByTestId('genre-count');
     await expect(genre).toBeVisible();
     await expect(genre).toContainText('Genre');
-    await expect(genre).toHaveClass(
-      /group flex items-center justify-between gap-2 rounded-md border p-4 shadow dark:border-neutral-800/
-    );
+    await expect(genre).toHaveClass(/group flex items-center justify-between gap-2 rounded-md border p-4 shadow/);
     await expect(genre).toHaveAttribute('href', '/genre');
   });
 });

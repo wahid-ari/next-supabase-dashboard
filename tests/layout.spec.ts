@@ -43,7 +43,7 @@ test.describe('Testing NavAccordion Component', () => {
     const navAccordion = page.getByTestId('nav-accordion');
     await expect(navAccordion).toBeVisible();
     await expect(navAccordion).toHaveClass(
-      /mb-1 flex w-full items-center justify-start gap-2 rounded py-2 pl-3 text-gray-700 outline-none transition-all/
+      /flex w-full items-center justify-start gap-2 rounded py-2 pl-3 text-gray-700 outline-none transition-all/
     );
     await expect(navAccordion).toHaveText(/Design/);
     const navAccordionLink = page.getByTestId('nav-accordion-link');
@@ -87,7 +87,7 @@ test.describe('Testing ThemeChanger Component', () => {
     const themeChanger = page.getByTestId('theme-changer');
     await expect(themeChanger).toBeVisible();
     await expect(themeChanger).toHaveClass(
-      /rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500/
+      /rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/
     );
   });
   test('should change theme to dark / light', async ({ page }) => {

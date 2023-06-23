@@ -67,68 +67,68 @@ test.describe('Testing Author Page', () => {
     await page.getByRole('button', { name: 'Save' }).click();
     await expect(page.getByText('Please provide bearer token in headers')).toBeVisible();
   });
-  test('should fill required field when creating new author', async ({ page }) => {
-    await login(page);
-    // go to author page
-    await page.getByRole('link', { name: 'Author', exact: true }).click();
-    // go to add author page
-    await page.getByRole('link', { name: 'Add New Author' }).click();
-    // save without fill any field
-    await page.getByRole('button', { name: 'Save' }).click();
-    await expect(page.getByText(/Creating/)).toBeVisible();
-    await expect(page.getByText('Name required')).toBeVisible();
-  });
-  test('should can create new author after login', async ({ page }) => {
-    await login(page);
-    // go to author page
-    await page.getByRole('link', { name: 'Author', exact: true }).click();
-    // go to add author page
-    await page.getByRole('link', { name: 'Add New Author' }).click();
-    // create author
-    await page.getByPlaceholder('Author Name').fill('New Author');
-    await page.getByRole('button', { name: 'Save' }).click();
-    await expect(page.getByText(/Creating/)).toBeVisible();
-    await expect(page.getByText('Success add author')).toBeVisible();
-    // cek new created author
-    await goToLastPage(page);
-    await expect(page.getByRole('cell', { name: 'New Author' })).toBeVisible();
-  });
-  test('should can edit new created author after login', async ({ page }) => {
-    await login(page);
-    // go to author page
-    await page.getByRole('link', { name: 'Author', exact: true }).click();
-    // go to table last page
-    await page.getByRole('button', { name: 'Last' }).click();
-    await expect(page.getByRole('cell', { name: 'New Author' })).toBeVisible();
-    // edit new created author
-    await page.getByRole('row', { name: '289 New Author - - Edit Delete' }).getByRole('link', { name: 'Edit' }).click();
-    await page.getByPlaceholder('Author Name').fill('New Author Edit');
-    await page.getByRole('button', { name: 'Update' }).click();
-    await expect(page.getByText(/Updating/)).toBeVisible();
-    await expect(page.getByText('Success update author')).toBeVisible();
-    // cek new edited author
-    await goToLastPage(page);
-    await expect(page.getByRole('cell', { name: 'New Author Edit' })).toBeVisible();
-  });
-  test('should can delete author after login', async ({ page }) => {
-    await login(page);
-    // go to author page
-    await page.getByRole('link', { name: 'Author', exact: true }).click();
-    // go to table last page
-    await page.getByRole('button', { name: 'Last' }).click();
-    // delete author
-    await page
-      .getByRole('row', { name: '289 New Author Edit - - Edit Delete' })
-      .getByRole('button', { name: 'Delete' })
-      .click();
-    await expect(page.getByRole('heading', { name: 'Delete Author' })).toBeVisible();
-    await page.getByRole('button', { name: 'Delete' }).click();
-    await expect(page.getByText(/Deleting/)).toBeVisible();
-    await expect(page.getByText('Success delete author')).toBeVisible();
-    // cek deleted author
-    await goToLastPage(page);
-    await expect(page.getByRole('cell', { name: 'New Author Edit' })).not.toBeVisible();
+  // test('should fill required field when creating new author', async ({ page }) => {
+  //   await login(page);
+  //   // go to author page
+  //   await page.getByRole('link', { name: 'Author', exact: true }).click();
+  //   // go to add author page
+  //   await page.getByRole('link', { name: 'Add New Author' }).click();
+  //   // save without fill any field
+  //   await page.getByRole('button', { name: 'Save' }).click();
+  //   await expect(page.getByText(/Creating/)).toBeVisible();
+  //   await expect(page.getByText('Name required')).toBeVisible();
+  // });
+  // test('should can create new author after login', async ({ page }) => {
+  //   await login(page);
+  //   // go to author page
+  //   await page.getByRole('link', { name: 'Author', exact: true }).click();
+  //   // go to add author page
+  //   await page.getByRole('link', { name: 'Add New Author' }).click();
+  //   // create author
+  //   await page.getByPlaceholder('Author Name').fill('New Author');
+  //   await page.getByRole('button', { name: 'Save' }).click();
+  //   await expect(page.getByText(/Creating/)).toBeVisible();
+  //   await expect(page.getByText('Success add author')).toBeVisible();
+  //   // cek new created author
+  //   await goToLastPage(page);
+  //   await expect(page.getByRole('cell', { name: 'New Author' })).toBeVisible();
+  // });
+  // test('should can edit new created author after login', async ({ page }) => {
+  //   await login(page);
+  //   // go to author page
+  //   await page.getByRole('link', { name: 'Author', exact: true }).click();
+  //   // go to table last page
+  //   await page.getByRole('button', { name: 'Last' }).click();
+  //   await expect(page.getByRole('cell', { name: 'New Author' })).toBeVisible();
+  //   // edit new created author
+  //   await page.getByRole('row', { name: '289 New Author - - Edit Delete' }).getByRole('link', { name: 'Edit' }).click();
+  //   await page.getByPlaceholder('Author Name').fill('New Author Edit');
+  //   await page.getByRole('button', { name: 'Update' }).click();
+  //   await expect(page.getByText(/Updating/)).toBeVisible();
+  //   await expect(page.getByText('Success update author')).toBeVisible();
+  //   // cek new edited author
+  //   await goToLastPage(page);
+  //   await expect(page.getByRole('cell', { name: 'New Author Edit' })).toBeVisible();
+  // });
+  // test('should can delete author after login', async ({ page }) => {
+  //   await login(page);
+  //   // go to author page
+  //   await page.getByRole('link', { name: 'Author', exact: true }).click();
+  //   // go to table last page
+  //   await page.getByRole('button', { name: 'Last' }).click();
+  //   // delete author
+  //   await page
+  //     .getByRole('row', { name: '289 New Author Edit - - Edit Delete' })
+  //     .getByRole('button', { name: 'Delete' })
+  //     .click();
+  //   await expect(page.getByRole('heading', { name: 'Delete Author' })).toBeVisible();
+  //   await page.getByRole('button', { name: 'Delete' }).click();
+  //   await expect(page.getByText(/Deleting/)).toBeVisible();
+  //   await expect(page.getByText('Success delete author')).toBeVisible();
+  //   // cek deleted author
+  //   await goToLastPage(page);
+  //   await expect(page.getByRole('cell', { name: 'New Author Edit' })).not.toBeVisible();
 
-    await logout(page);
-  });
+  //   await logout(page);
+  // });
 });

@@ -8,7 +8,7 @@ test.describe('Testing Design Page', () => {
   test('page has title', async ({ page }) => {
     // Expect a title "to contain" a substring.
     await expect(page).toHaveTitle(/Design/);
-    await expect(page).toHaveURL(/component/);
+    await expect(page).toHaveURL(/design/);
   });
   test('page has Heading', async ({ page }) => {
     // Expect a title "to contain" a substring.
@@ -27,14 +27,14 @@ test.describe('Testing Button Component', () => {
   test('renders a Button component', async ({ page }) => {
     const button = page.getByTestId('button-primary');
     await expect(button).toBeVisible();
-    await expect(button).toHaveClass(/rounded bg-sky-600 px-3 py-1.5 text-sm font-medium/);
+    await expect(button).toHaveClass(/rounded bg-sky-500 px-3 py-1.5 text-sm font-medium/);
     await expect(button).toBeEnabled();
     await expect(button).toHaveText('Primary');
   });
   test('renders a Button Success component', async ({ page }) => {
     const button = page.getByTestId('button-success');
     await expect(button).toBeVisible();
-    await expect(button).toHaveClass(/rounded bg-sky-600 px-3 py-1.5 text-sm font-medium/);
+    await expect(button).toHaveClass(/rounded bg-emerald-600 px-3 py-1.5 text-sm font-medium/);
     await expect(button).toBeEnabled();
     await expect(button).toHaveText('Success');
   });
@@ -75,7 +75,7 @@ test.describe('Testing LinkButton Component', () => {
     const linkbutton = page.getByTestId('link-button');
     await expect(linkbutton).toBeVisible();
     await expect(linkbutton).toHaveClass(
-      /flex items-center gap-2 rounded bg-sky-600 px-3 py-1.5 text-sm font-medium text-white/
+      /flex items-center gap-2 rounded bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white/
     );
     await expect(linkbutton).toHaveText('Link Button');
     await expect(linkbutton).toHaveAttribute('href', '/design#linkbutton');
@@ -148,7 +148,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-xs whitespace-nowrap bg-blue-100 font-semibold text-sky-600 dark:bg-sky-600 dark:bg-opacity-10/
+      /text-xs whitespace-nowrap bg-sky-100 font-semibold text-sky-500 dark:bg-sky-500 dark:bg-opacity-10/
     );
     await expect(badge).toHaveText('badge');
   });
@@ -214,7 +214,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-large');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-sm whitespace-nowrap bg-blue-100 font-semibold text-sky-600 dark:bg-sky-600 dark:bg-opacity-10/
+      /text-sm whitespace-nowrap bg-sky-100 font-semibold text-sky-500 dark:bg-sky-500 dark:bg-opacity-10/
     );
     await expect(badge).toHaveText('badge');
   });
@@ -306,7 +306,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeDisabled();
     await expect(checkbox).toHaveAttribute('disabled', '');
     await expect(checkbox).toHaveClass(
-      /h-4 w-4 rounded border-neutral-300 text-sky-600 group-hover:cursor-not-allowed dark:border-neutral-700/
+      /h-4 w-4 rounded border-neutral-300 text-sky-500 group-hover:cursor-not-allowed dark:border-neutral-700/
     );
     await expect(checkboxLabel).toContainText('Checkbox Disabled');
   });
@@ -318,7 +318,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeDisabled();
     await expect(checkbox).toHaveAttribute('disabled', '');
     await expect(checkbox).toHaveClass(
-      /h-4 w-4 rounded border-neutral-300 text-sky-600 group-hover:cursor-not-allowed dark:border-neutral-700/
+      /h-4 w-4 rounded border-neutral-300 text-sky-500 group-hover:cursor-not-allowed dark:border-neutral-700/
     );
     await expect(checkboxLabel).toContainText('Checkbox Checked Disabled');
   });
@@ -354,7 +354,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeDisabled();
     await expect(radio).toHaveAttribute('disabled', '');
     await expect(radio).toHaveClass(
-      /h-4 w-4 border-neutral-300 text-sky-600 group-hover:cursor-not-allowed dark:border-neutral-700/
+      /h-4 w-4 border-neutral-300 text-sky-500 group-hover:cursor-not-allowed dark:border-neutral-700/
     );
     await expect(radioLabel).toContainText('Radio Disabled');
   });
@@ -366,7 +366,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeDisabled();
     await expect(radio).toHaveAttribute('disabled', '');
     await expect(radio).toHaveClass(
-      /h-4 w-4 border-neutral-300 text-sky-600 group-hover:cursor-not-allowed dark:border-neutral-700/
+      /h-4 w-4 border-neutral-300 text-sky-500 group-hover:cursor-not-allowed dark:border-neutral-700/
     );
     await expect(radioLabel).toContainText('Radio Checked Disabled');
   });
@@ -507,7 +507,7 @@ test.describe('Testing Progress Component', () => {
   test('renders a Progress component', async ({ page }) => {
     const progress = page.getByTestId('progress');
     await expect(progress).toBeVisible();
-    await expect(progress).toHaveClass(/h-1.5 rounded-full bg-sky-600/);
+    await expect(progress).toHaveClass(/h-1.5 rounded-full bg-sky-500/);
     // await expect(progress).toHaveCSS('width', '45%');
     await expect(progress).toHaveCSS('width', '423.891px');
   });
@@ -877,8 +877,10 @@ test.describe('Testing Code Component', () => {
     await expect(code).toBeVisible();
     await expect(code.getByRole('button', { name: 'Copy Code' })).toBeVisible();
     await code.getByRole('button', { name: 'Copy Code' }).click();
-    let clipboardText = await page.evaluate("navigator.clipboard.readText()");
-    expect(clipboardText).toContain("import useToast from");
+    // await page.evaluate("navigator.clipboard.writeText('123')");
+    let clipboardText = await page.evaluate('navigator.clipboard.readText()');
+    // expect(clipboardText).toContain('123');
+    expect(clipboardText).toContain('import useToast from');
   });
 });
 

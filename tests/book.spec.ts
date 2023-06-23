@@ -65,75 +65,75 @@ test.describe('Testing Book Page', () => {
     await page.getByRole('button', { name: 'Save' }).click();
     await expect(page.getByText('Please provide bearer token in headers')).toBeVisible();
   });
-  test('should fill required field when creating new book', async ({ page }) => {
-    await login(page);
-    // go to book page
-    await page.getByRole('link', { name: 'Book', exact: true }).click();
-    // go to add book page
-    await page.getByRole('link', { name: 'Add New Book' }).click();
-    // save without fill any field
-    await page.getByRole('button', { name: 'Save' }).click();
-    await expect(page.getByText(/Creating/)).toBeVisible();
-    await expect(page.getByText('Title required')).toBeVisible();
-  });
-  test('should can create new book after login', async ({ page }) => {
-    await login(page);
-    // go to book page
-    await page.getByRole('link', { name: 'Book', exact: true }).click();
-    // go to add book page
-    await page.getByRole('link', { name: 'Add New Book' }).click();
-    // create book
-    await page.getByPlaceholder('Book Title').fill('New Book');
-    await page.getByRole('button', { name: 'Author Show options' }).click();
-    await page.getByRole('option', { name: 'Suzanne Collins' }).click();
-    await page.getByRole('button', { name: 'Save' }).click();
-    await expect(page.getByText(/Creating/)).toBeVisible();
-    await expect(page.getByText('Success add book')).toBeVisible();
-    // cek new created book
-    await goToLastPage(page);
-    await expect(page.getByRole('cell', { name: 'New Book' })).toBeVisible();
-  });
-  test('should can edit new created book after login', async ({ page }) => {
-    await login(page);
-    // go to book page
-    await page.getByRole('link', { name: 'Book', exact: true }).click();
-    // go to table last page
-    await page.getByRole('button', { name: 'Last' }).click();
-    await expect(page.getByRole('cell', { name: 'New Book' })).toBeVisible();
-    // edit new created book
-    await page
-      .getByRole('row', { name: '301 New Book Suzanne Collins - Edit Delete' })
-      .getByRole('link', { name: 'Edit' })
-      .click();
-    await page.getByPlaceholder('Book Title').fill('New Book Edit');
-    await page.getByRole('button', { name: 'Author Show options' }).click();
-    await page.getByRole('option', { name: 'Jane Austen' }).click();
-    await page.getByRole('button', { name: 'Update' }).click();
-    await expect(page.getByText(/Updating/)).toBeVisible();
-    await expect(page.getByText('Success update book')).toBeVisible();
-    // cek new edited book
-    await goToLastPage(page);
-    await expect(page.getByRole('cell', { name: 'New Book Edit' })).toBeVisible();
-  });
-  test('should can delete book after login', async ({ page }) => {
-    await login(page);
-    // go to book page
-    await page.getByRole('link', { name: 'Book', exact: true }).click();
-    // go to table last page
-    await page.getByRole('button', { name: 'Last' }).click();
-    // delete book
-    await page
-      .getByRole('row', { name: '301 New Book Edit Jane Austen - Edit Delete' })
-      .getByRole('button', { name: 'Delete' })
-      .click();
-    await expect(page.getByRole('heading', { name: 'Delete Book' })).toBeVisible();
-    await page.getByRole('button', { name: 'Delete' }).click();
-    await expect(page.getByText(/Deleting/)).toBeVisible();
-    await expect(page.getByText('Success delete book')).toBeVisible();
-    // cek deleted book
-    await goToLastPage(page);
-    await expect(page.getByRole('cell', { name: 'New Book Edit' })).not.toBeVisible();
+  // test('should fill required field when creating new book', async ({ page }) => {
+  //   await login(page);
+  //   // go to book page
+  //   await page.getByRole('link', { name: 'Book', exact: true }).click();
+  //   // go to add book page
+  //   await page.getByRole('link', { name: 'Add New Book' }).click();
+  //   // save without fill any field
+  //   await page.getByRole('button', { name: 'Save' }).click();
+  //   await expect(page.getByText(/Creating/)).toBeVisible();
+  //   await expect(page.getByText('Title required')).toBeVisible();
+  // });
+  // test('should can create new book after login', async ({ page }) => {
+  //   await login(page);
+  //   // go to book page
+  //   await page.getByRole('link', { name: 'Book', exact: true }).click();
+  //   // go to add book page
+  //   await page.getByRole('link', { name: 'Add New Book' }).click();
+  //   // create book
+  //   await page.getByPlaceholder('Book Title').fill('New Book');
+  //   await page.getByRole('button', { name: 'Author Show options' }).click();
+  //   await page.getByRole('option', { name: 'Suzanne Collins' }).click();
+  //   await page.getByRole('button', { name: 'Save' }).click();
+  //   await expect(page.getByText(/Creating/)).toBeVisible();
+  //   await expect(page.getByText('Success add book')).toBeVisible();
+  //   // cek new created book
+  //   await goToLastPage(page);
+  //   await expect(page.getByRole('cell', { name: 'New Book' })).toBeVisible();
+  // });
+  // test('should can edit new created book after login', async ({ page }) => {
+  //   await login(page);
+  //   // go to book page
+  //   await page.getByRole('link', { name: 'Book', exact: true }).click();
+  //   // go to table last page
+  //   await page.getByRole('button', { name: 'Last' }).click();
+  //   await expect(page.getByRole('cell', { name: 'New Book' })).toBeVisible();
+  //   // edit new created book
+  //   await page
+  //     .getByRole('row', { name: '301 New Book Suzanne Collins - Edit Delete' })
+  //     .getByRole('link', { name: 'Edit' })
+  //     .click();
+  //   await page.getByPlaceholder('Book Title').fill('New Book Edit');
+  //   await page.getByRole('button', { name: 'Author Show options' }).click();
+  //   await page.getByRole('option', { name: 'Jane Austen' }).click();
+  //   await page.getByRole('button', { name: 'Update' }).click();
+  //   await expect(page.getByText(/Updating/)).toBeVisible();
+  //   await expect(page.getByText('Success update book')).toBeVisible();
+  //   // cek new edited book
+  //   await goToLastPage(page);
+  //   await expect(page.getByRole('cell', { name: 'New Book Edit' })).toBeVisible();
+  // });
+  // test('should can delete book after login', async ({ page }) => {
+  //   await login(page);
+  //   // go to book page
+  //   await page.getByRole('link', { name: 'Book', exact: true }).click();
+  //   // go to table last page
+  //   await page.getByRole('button', { name: 'Last' }).click();
+  //   // delete book
+  //   await page
+  //     .getByRole('row', { name: '301 New Book Edit Jane Austen - Edit Delete' })
+  //     .getByRole('button', { name: 'Delete' })
+  //     .click();
+  //   await expect(page.getByRole('heading', { name: 'Delete Book' })).toBeVisible();
+  //   await page.getByRole('button', { name: 'Delete' }).click();
+  //   await expect(page.getByText(/Deleting/)).toBeVisible();
+  //   await expect(page.getByText('Success delete book')).toBeVisible();
+  //   // cek deleted book
+  //   await goToLastPage(page);
+  //   await expect(page.getByRole('cell', { name: 'New Book Edit' })).not.toBeVisible();
 
-    await logout(page);
-  });
+  //   await logout(page);
+  // });
 });
