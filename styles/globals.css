@@ -5,6 +5,10 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 2rem;
+  /* setting for all */
+  /* scroll-padding-top: 4rem; */
+  /* setting for specific target */
+  /* <section id='section-books' className='scroll-mt-20 scroll-pt-20'> */
 }
 
 body {
