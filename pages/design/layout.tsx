@@ -154,7 +154,7 @@ export default function Example() {
 
       <Wrapper id='sidebar' name='Sidebar' noChildren>
         <div className='overflow-hidden'>
-          <Sidebar data-testid='sidebar' className='!z-0 !flex w-auto' />
+          <Sidebar data-testid='sidebar' className='!z-0 !flex !w-auto' />
         </div>
       </Wrapper>
     </Layout>
