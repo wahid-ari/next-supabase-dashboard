@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
   scroll-padding-top: 2rem;
   /* setting for all */
   /* scroll-padding-top: 4rem; */
