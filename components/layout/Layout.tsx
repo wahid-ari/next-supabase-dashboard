@@ -13,10 +13,11 @@ type Props = {
   title: string;
   description?: string;
   prefetch?: string[];
+  demo?: boolean;
   [props: string]: any;
 };
 
-export default function Layout({ children, title, description, prefetch, ...props }: Props) {
+export default function Layout({ children, title, description, prefetch, demo, ...props }: Props) {
   const admin = nookies.get(null, 'name');
   const mounted = useMounted();
 
@@ -29,10 +30,10 @@ export default function Layout({ children, title, description, prefetch, ...prop
         className='font-inter min-h-screen w-full bg-white text-sm dark:bg-neutral-900 lg:grid'
         style={{ gridTemplateColumns: 'auto 1fr' }}
       >
-        <Sidebar />
+        <Sidebar className={`${demo ? '!z-0' : ''}`} />
 
         <div className='relative'>
-          <Navbar />
+          <Navbar className={`${demo ? '!z-0' : ''}`} />
 
           {/* Show on Mobile */}
           <div
@@ -49,7 +50,8 @@ export default function Layout({ children, title, description, prefetch, ...prop
           <div
             className={clsx(
               'hidden items-center justify-between gap-x-4 border-b px-4 py-3 dark:border-neutral-800 lg:flex',
-              'sticky top-0 z-40 bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30'
+              'sticky top-0 z-40 bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30',
+              demo && '!z-0'
             )}
           >
             <Breadcrumb />

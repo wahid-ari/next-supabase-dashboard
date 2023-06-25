@@ -138,7 +138,7 @@ export default function Example() {
       </Wrapper>
 
       <Wrapper id='navbar' name='Navbar' noChildren>
-        <Navbar data-testid='navbar' className='lg:!flex' />
+        <Navbar data-testid='navbar' className='!z-0 lg:!flex' />
         <Text className='mt-4 !text-red-600'>Navbar should visible only in small to medium screen</Text>
         <Text className='!text-red-600'>
           we pass classname={"'"}flex{"'"} to Navbar here only for test purpose
@@ -146,14 +146,15 @@ export default function Example() {
       </Wrapper>
 
       <Wrapper id='layout' name='Layout' noClassName props={['title', 'description', 'prefetch']}>
-        <Layout data-testid='layout' title='Design System - MyBook'>
+        <Layout data-testid='layout' title='Design System - MyBook' demo={true}>
           <Title>Content</Title>
         </Layout>
+        <Text className='mt-4 !text-red-600'>we pass prop demo=true to Layout here only for test purpose</Text>
       </Wrapper>
 
       <Wrapper id='sidebar' name='Sidebar' noChildren>
         <div className='overflow-hidden'>
-          <Sidebar data-testid='sidebar' className='!z-0 !flex w-64' />
+          <Sidebar data-testid='sidebar' className='!z-0 !flex w-auto' />
         </div>
       </Wrapper>
     </Layout>
