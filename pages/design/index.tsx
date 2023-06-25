@@ -1286,7 +1286,7 @@ function dissmissAllToast() {
             </>
           }
         >
-          {[0, 1, 2, 3, 4].map((e, index) => {
+          {[...Array(5).keys()].map((e, index) => {
             return (
               <Table.tr key={index}>
                 <Table.td shrink>{index + 1}</Table.td>
@@ -1354,7 +1354,7 @@ function dissmissAllToast() {
             </>
           }
         >
-          {[0, 1, 2, 3, 4].map((e, index) => {
+          {[...Array(5).keys()].map((e, index) => {
             return (
               <TableSimple.tr key={index}>
                 <TableSimple.td shrink>{index + 1}</TableSimple.td>

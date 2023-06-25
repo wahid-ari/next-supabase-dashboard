@@ -15,6 +15,7 @@
       "@validations/*": ["validations/*"]
     },
     "target": "es5",
+    "downlevelIteration": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
