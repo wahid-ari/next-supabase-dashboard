@@ -16,7 +16,7 @@ test.describe('Testing Design Page', () => {
   });
   test('page has Table of Contents', async ({ page }) => {
     await expect(page.getByRole('link', { name: 'Table of Content' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Validation', exact: true })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Validation (YUP)', exact: true })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Dialog', exact: true })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Modal', exact: true })).toBeVisible();
   });
@@ -509,7 +509,7 @@ test.describe('Testing Progress Component', () => {
     await expect(progress).toBeVisible();
     await expect(progress).toHaveClass(/h-1.5 rounded-full bg-sky-500/);
     // await expect(progress).toHaveCSS('width', '45%');
-    await expect(progress).toHaveCSS('width', '423.891px');
+    await expect(progress).toHaveCSS('width', '421.844px');
   });
   test('renders a ProgressPercentage Zero component', async ({ page }) => {
     const progress = page.getByTestId('progress-zero');
@@ -525,7 +525,7 @@ test.describe('Testing Progress Component', () => {
     await expect(progress).toHaveText('75 %');
     await expect(progress).toHaveClass(/rounded-full p-0.5 text-center text-xs font-medium leading-none/);
     // await expect(progress).toHaveCSS('width', '75%');
-    await expect(progress).toHaveCSS('width', '706.5px');
+    await expect(progress).toHaveCSS('width', '703.078px');
   });
 });
 
@@ -950,7 +950,7 @@ test.describe('Testing YUP Validation Component', () => {
 test.describe('Testing ZOD Validation Component', () => {
   // ZOD Validation ----------------------------------------------------
   test('All fields empty', async ({ page }) => {
-    await page.getByRole('button', { name: 'Submit Zod' }).click();
+    await page.getByRole('button', { name: 'Submit Zod', exact: true }).click();
     await expect(page.getByText('Username is required')).toBeVisible();
     await expect(page.getByText('Username must be alphabet without space')).toBeVisible();
     await expect(page.getByText('Email is required')).toBeVisible();
@@ -962,7 +962,7 @@ test.describe('Testing ZOD Validation Component', () => {
   });
   test('Username fill', async ({ page }) => {
     await page.getByTestId('username-zod').fill('username');
-    await page.getByRole('button', { name: 'Submit Zod' }).click();
+    await page.getByRole('button', { name: 'Submit Zod', exact: true }).click();
     await expect(page.getByText('Username is required')).not.toBeVisible();
     await expect(page.getByText('Username must be alphabet without space')).not.toBeVisible();
     await expect(page.getByText('Email is required')).toBeVisible();
@@ -975,7 +975,7 @@ test.describe('Testing ZOD Validation Component', () => {
   test('Email fill', async ({ page }) => {
     await page.getByTestId('username-zod').fill('username');
     await page.getByTestId('email-zod').fill('username@gmail.com');
-    await page.getByRole('button', { name: 'Submit Zod' }).click();
+    await page.getByRole('button', { name: 'Submit Zod', exact: true }).click();
     await expect(page.getByText('Username is required')).not.toBeVisible();
     await expect(page.getByText('Username must be alphabet without space')).not.toBeVisible();
     await expect(page.getByText('Email is required')).not.toBeVisible();
@@ -989,7 +989,7 @@ test.describe('Testing ZOD Validation Component', () => {
     await page.getByTestId('username-zod').fill('username');
     await page.getByTestId('email-zod').fill('username@gmail.com');
     await page.getByTestId('age-zod').fill('18');
-    await page.getByRole('button', { name: 'Submit Zod' }).click();
+    await page.getByRole('button', { name: 'Submit Zod', exact: true }).click();
     await expect(page.getByText('Username is required')).not.toBeVisible();
     await expect(page.getByText('Username must be alphabet without space')).not.toBeVisible();
     await expect(page.getByText('Email is required')).not.toBeVisible();
@@ -1004,7 +1004,7 @@ test.describe('Testing ZOD Validation Component', () => {
     await page.getByTestId('email-zod').fill('username@gmail.com');
     await page.getByTestId('age-zod').fill('18');
     await page.getByTestId('password-zod').fill('password');
-    await page.getByRole('button', { name: 'Submit Zod' }).click();
+    await page.getByRole('button', { name: 'Submit Zod', exact: true }).click();
     await expect(page.getByText('Username is required')).not.toBeVisible();
     await expect(page.getByText('Username must be alphabet without space')).not.toBeVisible();
     await expect(page.getByText('Email is required')).not.toBeVisible();
@@ -1021,7 +1021,7 @@ test.describe('Testing ZOD Validation Component', () => {
     await page.getByTestId('age-zod').fill('18');
     await page.getByTestId('password-zod').fill('password');
     await page.getByTestId('confirmPassword-zod').fill('password');
-    await page.getByRole('button', { name: 'Submit Zod' }).click();
+    await page.getByRole('button', { name: 'Submit Zod', exact: true }).click();
     await expect(page.getByText('Username is required')).not.toBeVisible();
     await expect(page.getByText('Username must be alphabet without space')).not.toBeVisible();
     await expect(page.getByText('Email is required')).not.toBeVisible();
@@ -1033,5 +1033,102 @@ test.describe('Testing ZOD Validation Component', () => {
     await expect(page.getByText('Oops! Password doesnt match')).not.toBeVisible();
     await expect(page.getByText('Posting ZOD Data')).toBeVisible();
     await expect(page.getByText('Success Posting ZOD Data')).toBeVisible();
+  });
+});
+
+test.describe('Testing ZOD Object Validation Component', () => {
+  // ZOD Validation ----------------------------------------------------
+  test('All fields empty', async ({ page }) => {
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Username is required')).toBeVisible();
+    await expect(page.getByText('Email is required')).toBeVisible();
+    await expect(page.getByText('Age is required')).toBeVisible();
+    await expect(page.getByText('Password is required', { exact: true })).toBeVisible();
+    await expect(page.getByText('Confirm Password is required')).toBeVisible();
+  });
+  test('Username fill but invalid', async ({ page }) => {
+    await page.getByTestId('username-object').fill('username123');
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Username is required')).not.toBeVisible();
+    await expect(page.getByText('Username must be alphabet without space')).toBeVisible();
+  });
+  test('Username fill valid', async ({ page }) => {
+    await page.getByTestId('username-object').fill('username');
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Username is required')).not.toBeVisible();
+    await expect(page.getByText('Username must be alphabet without space')).not.toBeVisible();
+  });
+  test('Email fill but invalid', async ({ page }) => {
+    await page.getByTestId('email-object').fill('email@a.c');
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Invalid email address')).toBeVisible();
+    await expect(page.getByText('Email is required')).not.toBeVisible();
+  });
+  test('Email fill valid', async ({ page }) => {
+    await page.getByTestId('email-object').fill('email@gmail.com');
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Invalid email address')).not.toBeVisible();
+    await expect(page.getByText('Email is required')).not.toBeVisible();
+  });
+  test('Age fill but invalid', async ({ page }) => {
+    await page.getByTestId('age-object').fill('0');
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Age must be a greater than 17')).toBeVisible();
+    await expect(page.getByText('Age is required')).not.toBeVisible();
+  });
+  test('Age fill valid', async ({ page }) => {
+    await page.getByTestId('age-object').fill('18');
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Age must be a greater than 17')).not.toBeVisible();
+    await expect(page.getByText('Age is required')).not.toBeVisible();
+  });
+  test('Password fill but invalid', async ({ page }) => {
+    await page.getByTestId('password-object').fill('pass');
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Password length minimal is 8')).toBeVisible();
+    await expect(page.getByText('Password is required', { exact: true })).not.toBeVisible();
+  });
+  test('Password fill valid', async ({ page }) => {
+    await page.getByTestId('password-object').fill('password');
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Password must be a greater than 17')).not.toBeVisible();
+    await expect(page.getByText('Password is required', { exact: true })).not.toBeVisible();
+  });
+  test('Confirm Password fill but invalid', async ({ page }) => {
+    await page.getByTestId('username-object').fill('username');
+    await page.getByTestId('email-object').fill('email@gmail.com');
+    await page.getByTestId('age-object').fill('18');
+    await page.getByTestId('password-object').fill('password');
+    await page.getByTestId('confirmPassword-object').fill('');
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Oops! Password doesnt match', { exact: true })).toBeVisible();
+  });
+  test('Confirm Password fill valid', async ({ page }) => {
+    await page.getByTestId('username-object').fill('username');
+    await page.getByTestId('email-object').fill('email@gmail.com');
+    await page.getByTestId('age-object').fill('18');
+    await page.getByTestId('password-object').fill('password');
+    await page.getByTestId('confirmPassword-object').fill('password');
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Oops! Password doesnt match', { exact: true })).not.toBeVisible();
+  });
+  test('All fields valid', async ({ page }) => {
+    await page.getByTestId('username-object').fill('username');
+    await page.getByTestId('email-object').fill('email@gmail.com');
+    await page.getByTestId('age-object').fill('18');
+    await page.getByTestId('password-object').fill('password');
+    await page.getByTestId('confirmPassword-object').fill('password');
+    await page.getByRole('button', { name: 'Submit Zod Object' }).click();
+    await expect(page.getByText('Oops! Password doesnt match', { exact: true })).not.toBeVisible();
+    await expect(page.getByText('Password must be a greater than 17')).not.toBeVisible();
+    await expect(page.getByText('Password is required', { exact: true })).not.toBeVisible();
+    await expect(page.getByText('Age must be a greater than 17')).not.toBeVisible();
+    await expect(page.getByText('Age is required')).not.toBeVisible();
+    await expect(page.getByText('Invalid email address')).not.toBeVisible();
+    await expect(page.getByText('Email is required')).not.toBeVisible();
+    await expect(page.getByText('Username is required')).not.toBeVisible();
+    await expect(page.getByText('Username must be alphabet without space')).not.toBeVisible();
+    await expect(page.getByText('Posting ZOD Object Data')).toBeVisible();
+    await expect(page.getByText('Success Posting ZOD Object Data')).toBeVisible();
   });
 });
