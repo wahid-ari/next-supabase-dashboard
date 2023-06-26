@@ -26,6 +26,7 @@ import clsx from 'clsx';
 import ThemeChanger from './ThemeChanger';
 import nookies from 'nookies';
 import { useMounted } from '@hooks/useMounted';
+import Badge from '@components/systems/Badge';
 
 export default function Sidebar({ className, ...props }: { className?: string; [props: string]: any }) {
   const router = useRouter();
@@ -125,6 +126,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
           <NavAccordion title='Design' routeName='design' icon={<TemplateIcon className='h-4 w-4' />}>
             <NavLink href='/design' icon={<ViewGridAddIcon className='h-4 w-4' />}>
               Component
+              <Badge>New</Badge>
             </NavLink>
             <NavLink href='/design/layout' className='relative mt-1.5' icon={<ViewBoardsIcon className='h-4 w-4' />}>
               Layout

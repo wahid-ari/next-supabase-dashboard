@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Prism from 'prismjs';
 import { ClipboardIcon, DocumentDuplicateIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
+import { useMounted } from '@hooks/useMounted';
 
 type Props = {
   name?: string;
@@ -12,9 +13,10 @@ type Props = {
 };
 
 export default function Code({ name = 'Code', code, className, lang = 'javascript', ...props }: Props) {
+  const mounted = useMounted();
   useEffect(() => {
     Prism.highlightAll();
-  }, []);
+  }, [mounted]);
 
   const [copy, setCopy] = useState(false);
 
@@ -29,6 +31,9 @@ export default function Code({ name = 'Code', code, className, lang = 'javascrip
       console.log(err);
     }
   }
+
+  if (!mounted) return null;
+
   return (
     <>
       <p className='text-sm font-semibold dark:text-white'>Example {name}:</p>

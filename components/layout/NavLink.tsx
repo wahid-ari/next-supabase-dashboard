@@ -72,7 +72,7 @@ export default function NavLink({ className, href, icon, isHome, children, ...pr
       )}
     >
       {icon}
-      <span>{children}</span>
+      <div className='flex w-full justify-between'>{children}</div>
     </Link>
   );
 }
