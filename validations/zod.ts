@@ -10,10 +10,10 @@ export const formSchema = z
       .min(1, { message: 'Username is required' }),
     email_object: z
       .string({
-        invalid_type_error: 'Username is required',
+        invalid_type_error: 'Email must be string',
       })
-      .min(1, { message: 'Email is required' })
-      .email({ message: 'Invalid email address' }),
+      .email({ message: 'Invalid email address' })
+      .min(1, { message: 'Email is required' }),
     age_object: z
       .number({
         required_error: 'Age is required',
@@ -22,12 +22,9 @@ export const formSchema = z
       .positive({ message: 'Age must be a positive number' })
       .gt(17, { message: 'Age must be a greater than 17' })
       .int({ message: 'Age must be an integer' }),
-    password_object: z
-      .string()
-      .nonempty({
-        message: 'Password is required',
-      })
-      .min(8, { message: 'Password length minimal is 8' }),
+    password_object: z.string().min(8, { message: 'Password length minimal is 8' }).nonempty({
+      message: 'Password is required',
+    }),
     confirmPassword_object: z.string().nonempty({
       message: 'Confirm Password is required',
     }),

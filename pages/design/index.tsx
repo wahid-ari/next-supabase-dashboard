@@ -242,11 +242,11 @@ export default function Example() {
     const { valid, errors } = await validateFormObject(userZod);
     if (valid) {
       const toastId = pushToast({
-        message: 'Posting ZOD Data',
+        message: 'Posting ZOD Object Data',
         isLoading: true,
       });
       setTimeout(() => {
-        updateToast({ toastId, message: 'Success Posting ZOD Data', isError: false });
+        updateToast({ toastId, message: 'Success Posting ZOD Object Data', isError: false });
       }, 2000);
       setErrorsZod(null);
     } else {
@@ -748,6 +748,8 @@ export default function Example() {
             value={userZod.age_object}
             placeholder='Number'
             onChange={handleUserRHFChange}
+            min={0}
+            onKeyPress={(e: any) => !/[0-9]/.test(e.key) && e.preventDefault()}
           />
           {errorsZod?.age_object && <span className='-mt-2 mb-4 block text-red-500'>{errorsZod?.age_object}</span>}
 
