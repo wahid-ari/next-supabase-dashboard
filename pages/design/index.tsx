@@ -1481,9 +1481,10 @@ function dissmissAllToast() {
         </Table>
       </Wrapper>
 
-      <Wrapper id='table-simple' name='TableSimple' props={['head', 'bordered']} noWrap>
+      <Wrapper id='table-simple' name='TableSimple' props={['head', 'bordered', 'caption']} noWrap>
         <TableSimple
           data-testid='table-simple'
+          caption='Table 3.1: Badge'
           head={
             <>
               <TableSimple.td shrink>No</TableSimple.td>

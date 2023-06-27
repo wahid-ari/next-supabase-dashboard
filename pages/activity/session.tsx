@@ -116,6 +116,7 @@ export default function Sessions() {
               <TableSimple.td shrink>Time</TableSimple.td>
             </>
           }
+          caption={filteredData.length > 0 ? '' : 'No Data'}
         >
           {filteredData.map((item: any, index: number) => {
             return (
