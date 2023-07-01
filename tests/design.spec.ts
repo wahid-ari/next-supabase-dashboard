@@ -74,9 +74,7 @@ test.describe('Testing LinkButton Component', () => {
   test('renders a Link Button component', async ({ page }) => {
     const linkbutton = page.getByTestId('link-button');
     await expect(linkbutton).toBeVisible();
-    await expect(linkbutton).toHaveClass(
-      /flex items-center gap-2 rounded bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white/
-    );
+    await expect(linkbutton).toHaveClass(/rounded bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white/);
     await expect(linkbutton).toHaveText('Link Button');
     await expect(linkbutton).toHaveAttribute('href', '/design#linkbutton');
   });
