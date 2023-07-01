@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLinkIcon, PhotographIcon } from '@heroicons/react/outline';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   href: string;
@@ -27,7 +27,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
               alt={name}
               src={image}
               fill
-              className={clsx(
+              className={twMerge(
                 'rounded-full object-cover brightness-90 hover:brightness-100',
                 isLoading ? 'blur-2xl' : 'blur-0'
               )}
@@ -44,7 +44,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
       <div>
         <Link
           href={href}
-          className={clsx(
+          className={twMerge(
             'rounded text-[15px] font-medium text-neutral-700 transition-all duration-200 dark:text-neutral-100',
             'hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500'
           )}
@@ -54,7 +54,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
         {web ? (
           <a
             href={web}
-            className={clsx(
+            className={twMerge(
               'mt-1 flex w-16 items-center rounded text-sm font-medium transition-all duration-200',
               'text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             )}

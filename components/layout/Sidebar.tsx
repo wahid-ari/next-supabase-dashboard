@@ -19,13 +19,15 @@ import {
   TableIcon,
   ClipboardListIcon,
 } from '@heroicons/react/outline';
+import nookies from 'nookies';
+import { twMerge } from 'tailwind-merge';
+
+import { useMounted } from '@hooks/useMounted';
+
 import NavLink from '@components/layout/NavLink';
 import NavAccordion from '@components/layout/NavAccordion';
 import Modal from '@components/systems/Modal';
-import clsx from 'clsx';
-import ThemeChanger from './ThemeChanger';
-import nookies from 'nookies';
-import { useMounted } from '@hooks/useMounted';
+import ThemeChanger from '@components/layout/ThemeChanger';
 import Badge from '@components/systems/Badge';
 
 export default function Sidebar({ className, ...props }: { className?: string; [props: string]: any }) {
@@ -59,7 +61,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
     <>
       <div
         {...props}
-        className={clsx(
+        className={twMerge(
           'z-50 flex h-screen max-h-screen w-screen flex-col flex-nowrap border-r bg-white dark:border-neutral-800 dark:bg-neutral-900 lg:w-60',
           showNav ? 'fixed lg:relative' : 'top-0 hidden lg:sticky lg:flex',
           className
@@ -83,7 +85,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
         </div>
 
         <div
-          className={clsx(
+          className={twMerge(
             'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-4 dark:border-neutral-800 sm:flex-grow',
             'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
           )}
@@ -159,7 +161,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
           <button
             data-testid='button-logout'
             onClick={() => setOpenModal(true)}
-            className={clsx(
+            className={twMerge(
               'flex w-full items-center justify-start gap-2 px-4 py-2 text-sm font-semibold transition-all',
               'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'

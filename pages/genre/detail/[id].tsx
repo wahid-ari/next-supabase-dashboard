@@ -1,14 +1,16 @@
 import { useRef, useMemo } from 'react';
 import Link from 'next/link';
+import * as HoverCard from '@radix-ui/react-hover-card';
+import { twMerge } from 'tailwind-merge';
+import nookies from 'nookies';
+
 import { useGenreData } from '@libs/swr';
+
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import ReactTable from '@components/systems/ReactTable';
 import LabeledInput from '@components/systems/LabeledInput';
-import * as HoverCard from '@radix-ui/react-hover-card';
-import clsx from 'clsx';
-import nookies from 'nookies';
 
 export async function getServerSideProps(context: any) {
   const { id } = context.params;
@@ -62,7 +64,7 @@ export default function Genre({ id }) {
               <HoverCard.Portal>
                 <HoverCard.Content
                   side='top'
-                  className={clsx(
+                  className={twMerge(
                     'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
                     'bg-white p-2.5 !text-[15px] font-medium leading-5 text-neutral-700',
                     'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-700'

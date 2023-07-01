@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
@@ -21,11 +21,11 @@ export default function Button({ className, type, value, onClick, disabled, chil
       onClick={onClick}
       disabled={disabled}
       value={value}
-      className={clsx(
-        className,
+      className={twMerge(
         disabled ? 'cursor-not-allowed' : 'hover:bg-sky-600 dark:hover:bg-sky-600',
         'rounded bg-sky-500 px-3 py-1.5 text-sm font-medium text-white outline-none transition-all',
-        'focus:ring-2 focus:ring-sky-400 dark:bg-sky-500'
+        'focus:ring-2 focus:ring-sky-400 dark:bg-sky-500',
+        className
       )}
     >
       {children}
@@ -41,12 +41,12 @@ Button.secondary = ({ className, type, value, onClick, disabled, children, ...pr
       value={value}
       onClick={onClick}
       disabled={disabled}
-      className={clsx(
-        className,
+      className={twMerge(
         disabled ? 'cursor-not-allowed' : 'hover:bg-gray-100 dark:hover:bg-neutral-900',
         'rounded bg-gray-50 px-3 py-1.5 text-sm font-medium text-neutral-800 outline-none transition-all',
         'border border-neutral-300 dark:border-neutral-800',
-        'focus:ring-2 focus:ring-sky-500 dark:bg-neutral-800 dark:text-neutral-300'
+        'focus:ring-2 focus:ring-sky-500 dark:bg-neutral-800 dark:text-neutral-300',
+        className
       )}
     >
       {children}
@@ -62,11 +62,11 @@ Button.tertary = ({ className, type, value, onClick, disabled, children, ...prop
       value={value}
       onClick={onClick}
       disabled={disabled}
-      className={clsx(
-        className,
+      className={twMerge(
         disabled ? 'cursor-not-allowed' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200',
         'rounded px-3 py-1.5 text-sm font-medium text-neutral-600 outline-none transition-all dark:text-neutral-300',
-        'focus:ring-2 focus:ring-sky-500'
+        'focus:ring-2 focus:ring-sky-500',
+        className
       )}
     >
       {children}
@@ -82,11 +82,11 @@ Button.success = ({ className, type, value, onClick, disabled, children, ...prop
       onClick={onClick}
       disabled={disabled}
       value={value}
-      className={clsx(
-        className,
+      className={twMerge(
         disabled ? 'cursor-not-allowed' : 'hover:bg-emerald-700 dark:hover:bg-emerald-700',
         'rounded bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white outline-none transition-all dark:bg-emerald-600',
-        'focus:ring-2 focus:ring-emerald-400 '
+        'focus:ring-2 focus:ring-emerald-400',
+        className
       )}
     >
       {children}
@@ -102,11 +102,11 @@ Button.danger = ({ className, type, value, onClick, disabled, children, ...props
       onClick={onClick}
       disabled={disabled}
       value={value}
-      className={clsx(
-        className,
+      className={twMerge(
         disabled ? 'cursor-not-allowed' : 'hover:bg-red-700 dark:hover:bg-red-700',
         'rounded bg-red-600 px-3 py-1.5 text-sm font-medium text-white outline-none transition-all dark:bg-red-600',
-        'focus:ring-2 focus:ring-red-400'
+        'focus:ring-2 focus:ring-red-400',
+        className
       )}
     >
       {children}

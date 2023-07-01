@@ -1,15 +1,17 @@
 import { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { GlobalProvider } from '@context/GlobalContext';
-import { AxiosProvider } from '@context/AxiosContext';
-import '@styles/globals.css';
-import '@styles/prism.css';
 import { useRouter } from 'next/router';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+
+import { GlobalProvider } from '@context/GlobalContext';
+import { AxiosProvider } from '@context/AxiosContext';
+
+import '@styles/globals.css';
+import '@styles/prism.css';
 
 // Show progress on All Pages
 // import Router from 'next/router';

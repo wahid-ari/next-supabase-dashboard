@@ -1,6 +1,5 @@
 // import Link from 'next/link';
 // import { useBooksData } from '@libs/swr';
-// import clsx from 'clsx';
 import FrontLayout from '@components/front/FrontLayout';
 // import Shimer from '@components/systems/Shimer';
 

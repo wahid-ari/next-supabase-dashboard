@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import Badge from './Badge';
-import Heading from './Heading';
+
+import Badge from '@components/systems/Badge';
+import Heading from '@components/systems/Heading';
 
 type Props = {
   id?: string;
@@ -45,7 +46,7 @@ export default function Wrapper({
         <div className='relative mb-2 rounded-md border p-8 dark:border-neutral-800'>{children}</div>
       )}
       {variant && variant.length > 0 ? (
-        <div className='mb-2 flex flex-wrap items-center gap-y-2'>
+        <div className='mb-2 flex flex-wrap items-center gap-2'>
           {variant.map((v, i) => {
             return <Badge.yellow key={i}>.{v}</Badge.yellow>;
           })}
@@ -53,7 +54,7 @@ export default function Wrapper({
       ) : (
         ''
       )}
-      <div className='flex flex-wrap items-center gap-y-2'>
+      <div className='flex flex-wrap items-center gap-2'>
         {!noClassName && <Badge.green>className</Badge.green>}
         {props &&
           props.length > 0 &&

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
@@ -13,25 +13,25 @@ type Props = {
 export default function Heading({ className, h1, h2, h3, children, ...props }: Props) {
   if (h1) {
     return (
-      <h1 {...props} className={clsx(className, 'mb-4 text-3xl font-medium text-neutral-800 dark:text-neutral-100')}>
+      <h1 {...props} className={twMerge('mb-4 text-3xl font-medium text-neutral-800 dark:text-neutral-100', className)}>
         {children}
       </h1>
     );
   } else if (h2) {
     return (
-      <h2 {...props} className={clsx(className, 'mb-4 text-2xl font-medium text-neutral-800 dark:text-neutral-100')}>
+      <h2 {...props} className={twMerge('mb-4 text-2xl font-medium text-neutral-800 dark:text-neutral-100', className)}>
         {children}
       </h2>
     );
   } else if (h3) {
     return (
-      <h3 {...props} className={clsx(className, 'mb-4 text-xl font-medium text-neutral-800 dark:text-neutral-100')}>
+      <h3 {...props} className={twMerge('mb-4 text-xl font-medium text-neutral-800 dark:text-neutral-100', className)}>
         {children}
       </h3>
     );
   }
   return (
-    <h4 {...props} className={clsx(className, 'mb-4 text-lg font-medium text-neutral-800 dark:text-neutral-100')}>
+    <h4 {...props} className={twMerge('mb-4 text-lg font-medium text-neutral-800 dark:text-neutral-100', className)}>
       {children}
     </h4>
   );

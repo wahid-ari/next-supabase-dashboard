@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
-import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
@@ -14,11 +14,11 @@ export default function ShowMore({ className, children, count = 200, ...props }:
   const text = showMore ? children : children?.slice(0, count) + '...';
 
   return (
-    <div {...props} className={clsx(className, 'relative')}>
+    <div {...props} className={twMerge('relative', className)}>
       <p>{text}</p>
       <div className='relative py-3'>
         <div
-          className={clsx(
+          className={twMerge(
             'absolute bottom-3 z-0 h-8 w-full bg-gradient-to-b from-white/70 to-white dark:from-neutral-900/70 dark:to-neutral-900',
             showMore && 'hidden'
           )}
@@ -27,7 +27,7 @@ export default function ShowMore({ className, children, count = 200, ...props }:
         <button
           aria-label='Show More'
           onClick={() => setShowMore(!showMore)}
-          className={clsx(
+          className={twMerge(
             'group absolute left-1/2 top-1/2 z-[2] flex -translate-x-1/2 -translate-y-1/2 transform',
             'items-center gap-x-1 whitespace-nowrap rounded-full border bg-white px-2.5 py-0.5',
             'shadow transition-all dark:border-neutral-700 dark:bg-neutral-900',
@@ -37,7 +37,7 @@ export default function ShowMore({ className, children, count = 200, ...props }:
         >
           {showMore ? 'Show Less' : 'Show More'}
           <ChevronDownIcon
-            className={clsx(
+            className={twMerge(
               'h-4 w-4 text-gray-600 group-hover:text-gray-700 dark:text-gray-300 dark:group-hover:text-gray-200',
               showMore ? 'rotate-180 transition-all duration-500' : 'rotate-0 transition-all duration-300'
             )}

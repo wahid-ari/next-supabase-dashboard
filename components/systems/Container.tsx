@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
@@ -12,10 +12,10 @@ export default function Container({ className, small, children, ...props }: Prop
   return (
     <div
       {...props}
-      className={clsx(
-        className,
+      className={twMerge(
         small ? 'p-2' : 'p-8',
-        'relative mb-2 rounded-md border bg-white dark:border-neutral-800 dark:bg-[#1F1F1F]'
+        'relative mb-2 rounded-md border bg-white dark:border-neutral-800 dark:bg-[#1F1F1F]',
+        className
       )}
     >
       {children}

@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
@@ -21,11 +21,11 @@ export default function Input({ className, type, name, placeholder, value, onCha
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className={clsx(
-          className,
+        className={twMerge(
           'mt-2 w-full rounded-md border bg-white px-4 py-[0.6rem] text-sm font-medium outline-none dark:bg-neutral-900',
           'border-gray-300 transition-all dark:border-neutral-700 dark:text-neutral-100',
-          'focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:focus:border-sky-500 dark:focus:ring-sky-500'
+          'focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:focus:border-sky-500 dark:focus:ring-sky-500',
+          className
         )}
       />
     </div>
@@ -51,10 +51,10 @@ Input.disabled = ({ className, type, name, placeholder, defaultValue, ...props }
         name={name}
         placeholder={placeholder}
         defaultValue={defaultValue}
-        className={clsx(
-          className,
+        className={twMerge(
           'mt-2 w-full cursor-not-allowed rounded-md border border-gray-300 bg-gray-100 px-4 py-[0.6rem] text-sm font-medium',
-          'outline-none transition-all dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-500'
+          'outline-none transition-all dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-500',
+          className
         )}
         disabled
       />

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/outline';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   label?: string;
@@ -60,7 +60,7 @@ export default function SearchBox({
                 <Combobox.Option
                   key={item.id}
                   className={({ active }) =>
-                    clsx(
+                    twMerge(
                       'relative cursor-default select-none py-2 pl-10 pr-4',
                       active ? 'bg-sky-500 text-white' : 'text-gray-900 dark:text-white'
                     )
@@ -69,12 +69,12 @@ export default function SearchBox({
                 >
                   {({ selected, active }) => (
                     <>
-                      <span className={clsx('block truncate', selected ? 'font-medium' : 'font-normal')}>
+                      <span className={twMerge('block truncate', selected ? 'font-medium' : 'font-normal')}>
                         {item.name}
                       </span>
                       {selected ? (
                         <span
-                          className={clsx(
+                          className={twMerge(
                             'absolute inset-y-0 left-0 flex items-center pl-3',
                             active ? 'text-white' : 'text-teal-600'
                           )}

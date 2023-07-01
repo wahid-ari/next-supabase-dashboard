@@ -2,7 +2,19 @@ import Link from 'next/link';
 import { useState, useRef, useMemo, useEffect } from 'react';
 import * as yup from 'yup';
 import { z } from 'zod';
+import { ArrowSmRightIcon } from '@heroicons/react/outline';
+import { faker } from '@faker-js/faker';
+import ReactSelect from 'react-select';
+import * as HoverCard from '@radix-ui/react-hover-card';
+import { twMerge } from 'tailwind-merge';
+
+import { tabledata } from '@utils/tableData';
+
+import { validateFormObject } from '@validations/zod';
+
+import { useMounted } from '@hooks/useMounted';
 import useToast from '@hooks/useToast';
+
 import Layout from '@components/layout/Layout';
 import Badge from '@components/systems/Badge';
 import Button from '@components/systems/Button';
@@ -23,7 +35,6 @@ import Table from '@components/systems/Table';
 import Text from '@components/systems/Text';
 import Title from '@components/systems/Title';
 import Section from '@components/systems/Section';
-import { ArrowSmRightIcon } from '@heroicons/react/outline';
 import Tabs from '@components/systems/Tabs';
 import Dialog from '@components/systems/Dialog';
 import Modal from '@components/systems/Modal';
@@ -31,17 +42,10 @@ import SearchBox from '@components/systems/SearchBox';
 import ReactTable from '@components/systems/ReactTable';
 import TextArea from '@components/systems/TextArea';
 import ShowMore from '@components/systems/ShowMore';
-import { tabledata } from '@utils/tableData';
-import ReactSelect from 'react-select';
-import Select from '@components/systems/Select';
-import * as HoverCard from '@radix-ui/react-hover-card';
-import clsx from 'clsx';
-import FileInput from '@components/systems/FileInput';
-import { faker } from '@faker-js/faker';
-import TableSimple from '@components/systems/TableSimple';
-import { useMounted } from '@hooks/useMounted';
 import Code from '@components/systems/Code';
-import { validateFormObject } from '@validations/zod';
+import FileInput from '@components/systems/FileInput';
+import Select from '@components/systems/Select';
+import TableSimple from '@components/systems/TableSimple';
 
 const searchBoxData = [
   {
@@ -1073,7 +1077,7 @@ function dissmissAllToast() {
             <HoverCard.Content
               side='top'
               data-testid='hovercard-content'
-              className={clsx(
+              className={twMerge(
                 'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
                 'bg-white p-2.5 !text-[15px] leading-5 text-neutral-700',
                 'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-700'
@@ -1094,7 +1098,7 @@ function dissmissAllToast() {
         variant={['dark', 'red', 'green', 'yellow', 'indigo', 'pink']}
         props={['isLarge']}
       >
-        <div className='flex flex-wrap items-center gap-y-2'>
+        <div className='flex flex-wrap items-center gap-2'>
           <Badge data-testid='badge'>badge</Badge>
           <Badge.dark data-testid='badge-dark'>dark</Badge.dark>
           <Badge.red data-testid='badge-red'>red</Badge.red>
@@ -1106,7 +1110,7 @@ function dissmissAllToast() {
         </div>
         <br />
         <br />
-        <div className='flex flex-wrap items-center gap-y-2'>
+        <div className='flex flex-wrap items-center gap-2'>
           <Badge isLarge data-testid='badge-large'>
             badge
           </Badge>
@@ -1175,7 +1179,6 @@ function dissmissAllToast() {
         name='Checkbox'
         variant={['disabled']}
         props={['name', 'label', 'value', 'onChange', 'defaultChecked']}
-        noClassName
         noChildren
       >
         <Checkbox name='checkbox-default' label='Checkbox' data-testid='checkbox' />
@@ -1358,7 +1361,6 @@ function dissmissAllToast() {
         name='Radio'
         variant={['disabled']}
         props={['name', 'label', 'value', 'onChange', 'checked', 'defaultChecked']}
-        noClassName
         noChildren
       >
         <Radio name='radio' value='radio-blue' label='Blue' data-testid='radio' />

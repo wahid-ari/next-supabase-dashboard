@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import { useAuthorData } from '@libs/swr';
+import Link from 'next/link';
 import { ExternalLinkIcon, PhotographIcon } from '@heroicons/react/outline';
+import nookies from 'nookies';
+
+import { useAuthorData } from '@libs/swr';
+
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
-import nookies from 'nookies';
 import Heading from '@components/systems/Heading';
-import Link from 'next/link';
 
 export async function getServerSideProps(context: any) {
   const { id } = context.params;

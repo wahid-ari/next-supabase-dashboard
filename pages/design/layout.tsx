@@ -1,18 +1,20 @@
 import Link from 'next/link';
-import Layout from '@components/layout/Layout';
-import Menu from '@components/layout/Menu';
-import Wrapper from '@components/systems/Wrapper';
-import Title from '@components/systems/Title';
+import { useTheme } from 'next-themes';
 import { LogoutIcon, TemplateIcon, ViewBoardsIcon, ViewGridAddIcon } from '@heroicons/react/outline';
+
+import { useMounted } from '@hooks/useMounted';
+
 import Breadcrumb from '@components/layout/Breadcrumb';
 import NavAccordion from '@components/layout/NavAccordion';
 import NavLink from '@components/layout/NavLink';
 import ThemeChanger from '@components/layout/ThemeChanger';
-import { useTheme } from 'next-themes';
+import Layout from '@components/layout/Layout';
+import Menu from '@components/layout/Menu';
+import Wrapper from '@components/systems/Wrapper';
+import Title from '@components/systems/Title';
 import Text from '@components/systems/Text';
 import Navbar from '@components/layout/Navbar';
 import Sidebar from '@components/layout/Sidebar';
-import { useMounted } from '@hooks/useMounted';
 
 export default function Example() {
   const { theme } = useTheme();

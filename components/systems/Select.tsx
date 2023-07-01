@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   label?: string;
@@ -25,11 +25,11 @@ export default function Select({ label, name, className, defaultValue, onChange,
         name={name}
         defaultValue={defaultValue}
         onChange={onChange}
-        className={clsx(
-          className,
+        className={twMerge(
           'mt-2 block w-full cursor-pointer rounded-md border border-gray-300 bg-white px-3 py-2',
           'text-sm font-medium outline-none transition-all focus:border-sky-500 focus:outline-none',
-          'focus:ring-2 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
+          'focus:ring-2 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
+          className
         )}
       >
         {children}

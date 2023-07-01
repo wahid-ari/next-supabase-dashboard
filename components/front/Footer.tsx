@@ -1,26 +1,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
-const linkClassName = clsx(
+const linkClassName = twMerge(
   'hover-underline-animation rounded text-[15px] hover:text-neutral-900 px-0.5',
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
 );
-const linkIconClassName = clsx(
+const linkIconClassName = twMerge(
   'rounded text-neutral-700 transition-all duration-200 hover:text-neutral-900',
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-300 dark:hover:text-white'
 );
 
 export default function Footer({ className, ...props }: { className?: string; [props: string]: any }) {
   return (
-    <footer {...props} className={clsx('border-t dark:border-neutral-800', className)}>
+    <footer {...props} className={twMerge('border-t dark:border-neutral-800', className)}>
       <div className='mx-auto max-w-7xl px-4 pb-6 pt-10 '>
         <div className='gap-16 pb-2 md:flex md:justify-between'>
           <div className='mb-6 md:mb-0 md:w-2/5'>
             {/* web logo  */}
             <Link href='/' passHref className='group inline-flex rounded focus-visible:outline-none'>
               <div
-                className={clsx(
+                className={twMerge(
                   'flex items-center rounded font-medium text-neutral-900',
                   'group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500'
                 )}
@@ -85,7 +85,7 @@ export default function Footer({ className, ...props }: { className?: string; [p
             © 2023{' '}
             <Link
               href='/'
-              className={clsx(
+              className={twMerge(
                 'hover-underline-animation rounded transition-all duration-200',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
               )}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   name?: string;
@@ -52,13 +52,13 @@ export default function InputDebounce({
         placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className={clsx(
-          className,
+        className={twMerge(
           'mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] text-sm',
           'font-medium outline-none ring-gray-300 transition-all',
           'focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-neutral-700',
           'dark:bg-neutral-900 dark:text-neutral-100 dark:ring-neutral-600 dark:focus:border-sky-500',
-          'dark:focus:ring-sky-500'
+          'dark:focus:ring-sky-500',
+          className
         )}
       />
     </div>

@@ -1,12 +1,14 @@
 import { useContext } from 'react';
 import Link from 'next/link';
 import { MenuIcon } from '@heroicons/react/solid';
-import { GlobalContext } from 'context/GlobalContext';
-import Menu from './Menu';
-import clsx from 'clsx';
-import ThemeChanger from './ThemeChanger';
+import { twMerge } from 'tailwind-merge';
 import nookies from 'nookies';
+
+import { GlobalContext } from '@context/GlobalContext';
 import { useMounted } from '@hooks/useMounted';
+
+import Menu from '@components/layout/Menu';
+import ThemeChanger from '@components/layout/ThemeChanger';
 
 export default function Navbar({ className, ...props }: { className?: string; [props: string]: any }) {
   const { setShowNav } = useContext(GlobalContext);
@@ -20,7 +22,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
   return (
     <div
       {...props}
-      className={clsx(
+      className={twMerge(
         'sticky top-0 z-40 h-11 dark:text-neutral-50 lg:hidden',
         'flex w-full items-center justify-between gap-4 border-b p-3 px-5 dark:border-neutral-800',
         'bg-white/50 dark:bg-neutral-900/30',
@@ -41,7 +43,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
         </button>
         <Link
           href='/'
-          className={clsx(
+          className={twMerge(
             'rounded text-center text-base font-semibold tracking-wide text-neutral-800 no-underline',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-100 lg:text-2xl'
           )}

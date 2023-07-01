@@ -2,15 +2,18 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
+import { BookOpenIcon, ColorSwatchIcon, UserGroupIcon } from '@heroicons/react/outline';
+
+import { useSearchHistoryStore } from '@store/useStore';
+
+import { useMounted } from '@hooks/useMounted';
+
 import FrontLayout from '@components/front/FrontLayout';
 import LabeledInput from '@components/systems/LabeledInput';
 import Title from '@components/systems/Title';
 import Text from '@components/systems/Text';
 import Button from '@components/systems/Button';
 import Heading from '@components/systems/Heading';
-import { BookOpenIcon, ColorSwatchIcon, UserGroupIcon } from '@heroicons/react/outline';
-import { useSearchHistoryStore } from '@store/useStore';
-import { useMounted } from '@hooks/useMounted';
 
 const fetcher = (url: string) => fetch(url).then((result) => result.json());
 

@@ -2,8 +2,9 @@ import { Dispatch, Fragment, ReactNode, SetStateAction } from 'react';
 import { Transition } from '@headlessui/react';
 import * as DialogRadix from '@radix-ui/react-dialog';
 import { ExclamationIcon, InformationCircleIcon, XIcon } from '@heroicons/react/outline';
-import clsx from 'clsx';
-import Button from './Button';
+import { twMerge } from 'tailwind-merge';
+
+import Button from '@components/systems/Button';
 
 type Props = {
   open?: boolean;
@@ -61,7 +62,7 @@ export default function Dialog({
           <DialogRadix.Content
             {...props}
             forceMount
-            className={clsx(
+            className={twMerge(
               'fixed z-50 w-[90%] max-w-lg rounded-lg',
               'left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]',
               'bg-white dark:bg-neutral-900'
@@ -75,7 +76,7 @@ export default function Dialog({
               <XIcon className='h-4 w-4 text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-400' />
             </DialogRadix.Close>
 
-            <div className={clsx('p-5', showIcon && 'sm:flex sm:gap-4')}>
+            <div className={twMerge('p-5', showIcon && 'sm:flex sm:gap-4')}>
               {showIcon ? (
                 isDanger ? (
                   <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0'>

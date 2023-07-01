@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { mutate } from 'swr';
-import { useGenresData } from '@libs/swr';
 import axios from 'axios';
-import useToast from '@hooks/useToast';
 import { PlusSmIcon } from '@heroicons/react/outline';
+import nookies from 'nookies';
+
+import { useGenresData } from '@libs/swr';
+
+import useToast from '@hooks/useToast';
+
 import Layout from '@components/layout/Layout';
 import TableSimple from '@components/systems/TableSimple';
 import Title from '@components/systems/Title';
@@ -13,7 +17,6 @@ import Dialog from '@components/systems/Dialog';
 import Button from '@components/systems/Button';
 import LabeledInput from '@components/systems/LabeledInput';
 import InputDebounce from '@components/systems/InputDebounce';
-import nookies from 'nookies';
 
 // export async function getServerSideProps(context: any) {
 //   const cookies = nookies.get(context);

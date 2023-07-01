@@ -1,12 +1,14 @@
 import { ReactNode } from 'react';
-import Sidebar from './Sidebar';
-import Breadcrumb from '@components/layout/Breadcrumb';
-import Navbar from './Navbar';
-import Menu from './Menu';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import nookies from 'nookies';
-import HeadSeo from './HeadSeo';
+
 import { useMounted } from '@hooks/useMounted';
+
+import Breadcrumb from '@components/layout/Breadcrumb';
+import HeadSeo from '@components/layout/HeadSeo';
+import Menu from '@components/layout/Menu';
+import Navbar from '@components/layout/Navbar';
+import Sidebar from '@components/layout/Sidebar';
 
 type Props = {
   children: ReactNode;
@@ -37,7 +39,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
 
           {/* Show on Mobile */}
           <div
-            className={clsx(
+            className={twMerge(
               'flex items-center justify-between gap-x-4 border-b px-4 py-3 lg:hidden',
               'overflow-x-auto bg-white/95 dark:border-neutral-800 dark:bg-neutral-900/90',
               'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
@@ -48,7 +50,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
 
           {/* Show on Desktop */}
           <div
-            className={clsx(
+            className={twMerge(
               'hidden items-center justify-between gap-x-4 border-b px-4 py-3 dark:border-neutral-800 lg:flex',
               'sticky top-0 z-40 bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30',
               demo && '!z-0'

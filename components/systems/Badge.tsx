@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
@@ -12,11 +12,11 @@ export default function Badge({ className, isLarge, children, ...props }: Props)
   return (
     <span
       {...props}
-      className={clsx(
-        className,
+      className={twMerge(
         isLarge ? 'text-sm' : 'text-xs',
         'whitespace-nowrap bg-sky-100 font-semibold text-sky-500 dark:bg-sky-500 dark:bg-opacity-10',
-        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]'
+        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]',
+        className
       )}
     >
       {children}
@@ -28,11 +28,11 @@ Badge.dark = ({ className, isLarge, children, ...props }: Props) => {
   return (
     <span
       {...props}
-      className={clsx(
-        className,
+      className={twMerge(
         isLarge ? 'text-sm' : 'text-xs',
         'whitespace-nowrap bg-gray-100 font-semibold text-gray-600 dark:bg-gray-600 dark:bg-opacity-10 dark:text-gray-400',
-        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]'
+        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]',
+        className
       )}
     >
       {children}
@@ -44,11 +44,11 @@ Badge.red = ({ className, isLarge, children, ...props }: Props) => {
   return (
     <span
       {...props}
-      className={clsx(
-        className,
+      className={twMerge(
         isLarge ? 'text-sm' : 'text-xs',
         'whitespace-nowrap bg-red-100 font-semibold text-red-600 dark:bg-red-600 dark:bg-opacity-10',
-        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]'
+        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]',
+        className
       )}
     >
       {children}
@@ -60,11 +60,11 @@ Badge.green = ({ className, isLarge, children, ...props }: Props) => {
   return (
     <span
       {...props}
-      className={clsx(
-        className,
+      className={twMerge(
         isLarge ? 'text-sm' : 'text-xs',
         'whitespace-nowrap bg-green-100 font-semibold text-green-600 dark:bg-green-600 dark:bg-opacity-10',
-        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]'
+        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]',
+        className
       )}
     >
       {children}
@@ -76,11 +76,11 @@ Badge.yellow = ({ className, isLarge, children, ...props }: Props) => {
   return (
     <span
       {...props}
-      className={clsx(
-        className,
+      className={twMerge(
         isLarge ? 'text-sm' : 'text-xs',
         'whitespace-nowrap bg-yellow-100 font-semibold text-yellow-600 dark:bg-yellow-600 dark:bg-opacity-10',
-        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]'
+        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]',
+        className
       )}
     >
       {children}
@@ -92,11 +92,11 @@ Badge.indigo = ({ className, isLarge, children, ...props }: Props) => {
   return (
     <span
       {...props}
-      className={clsx(
-        className,
+      className={twMerge(
         isLarge ? 'text-sm' : 'text-xs',
         'whitespace-nowrap bg-indigo-100 font-semibold text-indigo-600 dark:bg-indigo-600 dark:bg-opacity-10',
-        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]'
+        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]',
+        className
       )}
     >
       {children}
@@ -108,11 +108,11 @@ Badge.purple = ({ className, isLarge, children, ...props }: Props) => {
   return (
     <span
       {...props}
-      className={clsx(
-        className,
+      className={twMerge(
         isLarge ? 'text-sm' : 'text-xs',
         'whitespace-nowrap bg-purple-100 font-semibold text-purple-600 dark:bg-purple-600 dark:bg-opacity-10',
-        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]'
+        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]',
+        className
       )}
     >
       {children}
@@ -124,11 +124,11 @@ Badge.pink = ({ className, isLarge, children, ...props }: Props) => {
   return (
     <span
       {...props}
-      className={clsx(
-        className,
+      className={twMerge(
         isLarge ? 'text-sm' : 'text-xs',
         'whitespace-nowrap bg-pink-100 font-semibold text-pink-600 dark:bg-pink-600 dark:bg-opacity-10',
-        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]'
+        'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]',
+        className
       )}
     >
       {children}

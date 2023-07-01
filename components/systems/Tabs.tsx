@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Tab } from '@headlessui/react';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   items: string[];
@@ -14,7 +14,7 @@ export default function Tabs({ items, children, className, ...props }: Props) {
     <Tab.Group>
       <Tab.List
         {...props}
-        className={clsx(
+        className={twMerge(
           'flex whitespace-nowrap border-b border-neutral-200 font-medium dark:border-neutral-800',
           className
         )}
@@ -24,7 +24,7 @@ export default function Tabs({ items, children, className, ...props }: Props) {
             <Tab
               key={index + 1}
               className={({ selected }) =>
-                clsx(
+                twMerge(
                   'w-full border-b-2 border-transparent py-2 text-sm font-semibold tracking-wide transition-all',
                   'text-gray-500 hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200',
                   'outline-none ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent',
@@ -51,7 +51,7 @@ type PanelProps = {
 Tabs.panel = ({ children, className, ...props }: PanelProps) => {
   return (
     <>
-      <Tab.Panel {...props} className={clsx('rounded-xl py-2 text-neutral-700 dark:text-neutral-200', className)}>
+      <Tab.Panel {...props} className={twMerge('rounded-xl py-2 text-neutral-700 dark:text-neutral-200', className)}>
         {children}
       </Tab.Panel>
     </>

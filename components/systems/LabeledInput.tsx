@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   wrapperClassName?: string;
@@ -24,7 +24,7 @@ export default function LabeledInput({
   ...props
 }: Props) {
   return (
-    <div className={clsx('mb-4', wrapperClassName)}>
+    <div className={twMerge('mb-4', wrapperClassName)}>
       <label className='block text-sm text-gray-800 dark:text-neutral-300' htmlFor={name}>
         {label}
       </label>
@@ -36,11 +36,11 @@ export default function LabeledInput({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className={clsx(
-          className,
+        className={twMerge(
           'mt-2 w-full rounded-md px-4 py-[0.6rem] text-sm font-medium text-neutral-800 transition-all dark:text-neutral-100',
           'border-gray-300 bg-white outline-none dark:border-neutral-700 dark:bg-neutral-900',
-          'border focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:focus:border-sky-500 dark:focus:ring-sky-500'
+          'border focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:focus:border-sky-500 dark:focus:ring-sky-500',
+          className
         )}
       />
     </div>
@@ -69,7 +69,7 @@ LabeledInput.disabled = ({
   ...props
 }: DisabledProps) => {
   return (
-    <div className={clsx('mb-4', wrapperClassName)}>
+    <div className={twMerge('mb-4', wrapperClassName)}>
       <label className='block text-sm text-gray-500 dark:text-neutral-300' htmlFor={name}>
         {label}
       </label>
@@ -80,10 +80,10 @@ LabeledInput.disabled = ({
         name={name}
         placeholder={placeholder}
         defaultValue={defaultValue}
-        className={clsx(
-          className,
+        className={twMerge(
           'mt-2 w-full cursor-not-allowed rounded-md border border-gray-300 bg-gray-100 px-4 py-[0.6rem] text-sm',
-          'font-medium outline-none transition-all dark:border-neutral-800 dark:bg-neutral-800 dark:text-neutral-500'
+          'font-medium outline-none transition-all dark:border-neutral-800 dark:bg-neutral-800 dark:text-neutral-500',
+          className
         )}
         disabled
       />

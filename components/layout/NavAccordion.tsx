@@ -2,7 +2,7 @@ import { useEffect, useState, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import { Disclosure, Transition } from '@headlessui/react';
 import { ChevronRightIcon } from '@heroicons/react/solid';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   title?: string;
@@ -34,7 +34,7 @@ export default function NavAccordion({ title, routeName, className, icon, childr
           <>
             <Disclosure.Button
               {...props}
-              className={clsx(
+              className={twMerge(
                 'flex w-full items-center justify-start gap-2 rounded py-2 pl-3 text-gray-700 outline-none transition-all',
                 'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 'dark:text-neutral-300 dark:hover:text-sky-500',

@@ -1,6 +1,7 @@
 import { useTheme } from 'next-themes';
 import { MoonIcon, SunIcon } from '@heroicons/react/outline';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
 import { useMounted } from '@hooks/useMounted';
 
 export default function FrontThemeChanger({ variant = 'icon', ...props }: { variant?: string; [props: string]: any }) {
@@ -10,14 +11,12 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
   if (!mounted) {
     return (
       <button
-        className={clsx(
+        className={twMerge(
           'rounded-full border-2 hover:border-neutral-400 dark:border-neutral-700 dark:hover:border-neutral-500',
           'focus:border-sky-500 focus:outline-none dark:focus:border-sky-500',
           'inline-flex h-8 items-center justify-center overflow-hidden transition-all duration-200',
-          {
-            'w-8': variant === 'icon',
-            'px-4': variant === 'labelled',
-          }
+          variant === 'icon' && 'w-8',
+          variant === 'labelled' && 'px-4'
         )}
       />
     );
@@ -27,14 +26,12 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
     <button
       {...props}
       onClick={() => setTheme(theme == 'dark' ? 'light' : 'dark')}
-      className={clsx(
+      className={twMerge(
         'rounded-full border-2 hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
         'focus:border-sky-500 focus:outline-none dark:focus:border-sky-500',
         'inline-flex h-8 items-center justify-center overflow-hidden transition-all duration-200',
-        {
-          'w-8': variant === 'icon',
-          'px-4': variant === 'labelled',
-        }
+        variant === 'icon' && 'w-8',
+        variant === 'labelled' && 'px-4'
       )}
     >
       {/* note that the duration is longer then the one on body, controlling the bg-color */}
@@ -52,11 +49,7 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
           <SunIcon />
         </span>
       </div>
-      <span
-        className={clsx('ml-3 text-black dark:text-white', {
-          'sr-only': variant === 'icon',
-        })}
-      >
+      <span className={twMerge('ml-3 text-black dark:text-white', variant === 'icon' && 'sr-only')}>
         {theme == 'dark' ? 'switch to light mode' : 'switch to dark mode'}
       </span>
     </button>

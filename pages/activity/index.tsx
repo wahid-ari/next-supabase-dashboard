@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import nookies from 'nookies';
+
 import { useLogsData } from '@libs/swr';
+
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import InputDebounce from '@components/systems/InputDebounce';
 import ReactTable from '@components/systems/ReactTable';
 import Badge from '@components/systems/Badge';
-import nookies from 'nookies';
 
 export async function getServerSideProps(context: any) {
   // const cookies = nookies.get(context);

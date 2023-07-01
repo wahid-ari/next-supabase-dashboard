@@ -3,10 +3,12 @@ import { useRouter } from 'next/router';
 import { Menu, Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { ChevronDownIcon } from '@heroicons/react/outline';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import nookies from 'nookies';
-import Modal from '@components/systems/Modal';
+
 import { useMounted } from '@hooks/useMounted';
+
+import Modal from '@components/systems/Modal';
 
 type Props = {
   className?: string;
@@ -26,12 +28,12 @@ export default function Akun({ className, ...props }: Props) {
 
   return (
     <>
-      <Menu as='div' className={clsx('relative', className)}>
+      <Menu as='div' className={twMerge('relative', className)}>
         {({ open }) => (
           <>
             <Menu.Button
               {...props}
-              className={clsx(
+              className={twMerge(
                 'inline-flex w-full items-center justify-center rounded text-gray-700 hover:text-gray-900',
                 'focus:outline-none dark:text-neutral-300 dark:hover:text-neutral-100',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
@@ -40,7 +42,7 @@ export default function Akun({ className, ...props }: Props) {
               {(mounted && admin?.name) || 'Menu'}
 
               <ChevronDownIcon
-                className={clsx('ml-1 h-5 w-4 pb-0.5 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
+                className={twMerge('ml-1 h-5 w-4 pb-0.5 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
                 aria-hidden='true'
               />
             </Menu.Button>
@@ -69,7 +71,7 @@ export default function Akun({ className, ...props }: Props) {
                     {({ active }) => (
                       <Link
                         href='/settings'
-                        className={clsx(
+                        className={twMerge(
                           'flex w-full rounded px-2 py-1.5 text-sm',
                           active
                             ? 'bg-gray-100 text-sky-600 transition-all dark:bg-neutral-900 dark:text-sky-500'
@@ -84,7 +86,7 @@ export default function Akun({ className, ...props }: Props) {
                     {({ active }) => (
                       <button
                         onClick={() => setOpenModal(true)}
-                        className={clsx(
+                        className={twMerge(
                           'flex w-full rounded px-2 py-1.5 text-sm',
                           active
                             ? 'bg-gray-100 text-red-600 transition-all dark:bg-neutral-900 dark:text-red-500'

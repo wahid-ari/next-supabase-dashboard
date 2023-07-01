@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
@@ -9,7 +9,7 @@ type Props = {
 
 export default function Label({ className, children, ...props }: Props) {
   return (
-    <label {...props} className={clsx(className, 'block text-gray-800 dark:text-neutral-300')}>
+    <label {...props} className={twMerge('block text-gray-800 dark:text-neutral-300', className)}>
       {children}
     </label>
   );

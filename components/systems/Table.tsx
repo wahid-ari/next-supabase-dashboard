@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
-import { clsx } from 'clsx';
-import Button from './Button';
+import { twMerge } from 'tailwind-merge';
+
+import Button from '@components/systems/Button';
 
 type Props = {
   className?: string;
@@ -32,7 +33,7 @@ export default function Table({
 }: Props) {
   return (
     <div
-      className={clsx(
+      className={twMerge(
         'w-full rounded border shadow-sm dark:border-neutral-800 lg:max-w-[calc(100vw_-_17rem)]',
         className
       )}
@@ -110,7 +111,7 @@ Table.tr = ({ className, children, ...props }: TrProps) => {
   return (
     <tr
       {...props}
-      className={clsx(
+      className={twMerge(
         'border-b bg-white text-sm text-neutral-600 hover:bg-gray-50 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200',
         className
       )}
@@ -129,7 +130,7 @@ type TdProps = {
 
 Table.td = ({ className, shrink, children, ...props }: TdProps) => {
   return (
-    <td {...props} className={clsx('p-4', className, shrink && 'w-1')}>
+    <td {...props} className={twMerge('p-4', shrink && 'w-1', className)}>
       {children}
     </td>
   );

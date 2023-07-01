@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
@@ -8,7 +8,7 @@ type Props = {
 
 export default function Progress({ className, percent, ...props }: Props) {
   return (
-    <div className={clsx(className, 'h-1.5 w-full rounded-full bg-gray-200 dark:bg-neutral-800')}>
+    <div className={twMerge('h-1.5 w-full rounded-full bg-gray-200 dark:bg-neutral-800', className)}>
       <div {...props} className='h-1.5 rounded-full bg-sky-500' style={{ width: `${percent}%` }}></div>
     </div>
   );
@@ -19,7 +19,7 @@ Progress.percentage = ({ className, percent, ...props }: Props) => {
     <div className='w-full rounded-full bg-gray-200 dark:bg-neutral-800'>
       <div
         {...props}
-        className={clsx(
+        className={twMerge(
           'rounded-full p-0.5 text-center text-xs font-medium leading-none',
           percent > 0 ? 'bg-sky-500 text-sky-100' : 'text-gray-800 dark:text-neutral-200',
           className

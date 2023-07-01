@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { mutate } from 'swr';
-import { useAuthorsData, useGenresData } from '@libs/swr';
 import axios from 'axios';
+import Select from 'react-select';
+import nookies from 'nookies';
+
+import { useAuthorsData, useGenresData } from '@libs/swr';
+
 import useToast from '@hooks/useToast';
+
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import LabeledInput from '@components/systems/LabeledInput';
@@ -12,8 +17,6 @@ import TextArea from '@components/systems/TextArea';
 import SearchBox from '@components/systems/SearchBox';
 import Shimer from '@components/systems/Shimer';
 import Label from '@components/systems/Label';
-import Select from 'react-select';
-import nookies from 'nookies';
 
 export async function getServerSideProps(context: any) {
   // const cookies = nookies.get(context);

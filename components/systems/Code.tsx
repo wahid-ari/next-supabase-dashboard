@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import Prism from 'prismjs';
 import { ClipboardIcon, DocumentDuplicateIcon } from '@heroicons/react/outline';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
 import { useMounted } from '@hooks/useMounted';
 
 type Props = {
@@ -37,7 +38,7 @@ export default function Code({ name = 'Code', code, className, lang = 'javascrip
   return (
     <>
       <p className='text-sm font-semibold dark:text-white'>Example {name}:</p>
-      <div {...props} className={clsx('Code relative rounded-md text-sm', className)}>
+      <div {...props} className={twMerge('Code relative rounded-md text-sm', className)}>
         <button
           title='Copy Code'
           onClick={copyText}

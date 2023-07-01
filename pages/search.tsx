@@ -1,7 +1,10 @@
 import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
+
 import { useSearchData } from '@libs/swr';
+
 import { useSearchHistoryStore } from '@store/useStore';
+
 import Layout from '@components/layout/Layout';
 import LabeledInput from '@components/systems/LabeledInput';
 import Title from '@components/systems/Title';

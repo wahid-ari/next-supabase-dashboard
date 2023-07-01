@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
@@ -13,7 +13,7 @@ type Props = {
 export default function TableSimple({ className, head, bordered, caption, children, ...props }: Props) {
   return (
     <div
-      className={clsx(
+      className={twMerge(
         'w-full rounded',
         bordered ? 'border-t dark:border-t-neutral-800' : 'border dark:border-neutral-800',
         className
@@ -44,7 +44,7 @@ TableSimple.tr = ({ className, children, ...props }: TrProps) => {
   return (
     <tr
       {...props}
-      className={clsx(
+      className={twMerge(
         'border-b bg-white text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200',
         className
       )}
@@ -66,7 +66,7 @@ TableSimple.td = ({ className, shrink, bordered, children, ...props }: TdProps) 
   return (
     <td
       {...props}
-      className={clsx('p-3', shrink && 'w-1', bordered && 'border-x dark:border-x-neutral-800', className)}
+      className={twMerge('p-3', shrink && 'w-1', bordered && 'border-x dark:border-x-neutral-800', className)}
     >
       {children}
     </td>

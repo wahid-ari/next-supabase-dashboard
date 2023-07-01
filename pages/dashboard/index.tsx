@@ -1,18 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import {
-  useBookByAuthorData,
-  useBookByGenreData,
-  useCountsData,
-  useTotalAuthorsData,
-  useTotalBooksData,
-  useTotalGenresData,
-} from '@libs/swr';
-import Layout from '@components/layout/Layout';
-import Titles from '@components/systems/Title';
-import Shimer from '@components/systems/Shimer';
-import Text from '@components/systems/Text';
-import Card from '@components/dashboard/Card';
 import { BookOpenIcon, ColorSwatchIcon, UserGroupIcon } from '@heroicons/react/outline';
 import {
   Chart as ChartJS,
@@ -28,7 +15,23 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar, Doughnut, Pie } from 'react-chartjs-2';
+
 import { populateData, options, optionsBarChart, optionsHorizontalBarChart } from '@utils/chartSetup';
+
+import {
+  useBookByAuthorData,
+  useBookByGenreData,
+  useCountsData,
+  useTotalAuthorsData,
+  useTotalBooksData,
+  useTotalGenresData,
+} from '@libs/swr';
+
+import Layout from '@components/layout/Layout';
+import Titles from '@components/systems/Title';
+import Shimer from '@components/systems/Shimer';
+import Text from '@components/systems/Text';
+import Card from '@components/dashboard/Card';
 
 ChartJS.register(
   CategoryScale,

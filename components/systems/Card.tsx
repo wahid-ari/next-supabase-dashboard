@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
@@ -9,7 +9,7 @@ type Props = {
 
 export default function Card({ className, children, ...props }: Props) {
   return (
-    <div {...props} className={clsx(className, 'rounded-lg border p-3 dark:border-neutral-800 lg:p-6')}>
+    <div {...props} className={twMerge('rounded-lg border p-3 dark:border-neutral-800 lg:p-6', className)}>
       {children}
     </div>
   );
