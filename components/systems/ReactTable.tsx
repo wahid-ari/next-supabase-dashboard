@@ -194,13 +194,15 @@ export const ReactTable = forwardRef(
         </div>
 
         {showInfo ? (
-          <div className='pl-3 pt-3'>
-            {dataLength > 0 ? (
-              <p className='text-center text-sm text-neutral-600 dark:text-neutral-300 sm:text-left'>{showText}</p>
-            ) : (
-              <p className='text-center text-sm text-neutral-600 dark:text-neutral-300'>No Data</p>
-            )}
-          </div>
+          dataLength > 0 ? (
+            <p className='pl-3 pt-3 text-center text-sm text-neutral-600 dark:text-neutral-300 sm:text-left'>
+              {showText}
+            </p>
+          ) : (
+            <p className='border-b pb-3 pt-3 text-center text-sm text-neutral-600 dark:border-b-neutral-800 dark:text-neutral-300'>
+              No Data
+            </p>
+          )
         ) : null}
 
         <div className='grid grid-cols-1 gap-4 pb-5 pt-3 sm:grid-cols-2 sm:p-3'>

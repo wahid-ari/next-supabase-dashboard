@@ -40,6 +40,6 @@ export function useSearchHistory() {
     removeAuthorsHistory,
     resetBooksHistory,
     resetAuthorsHistory,
-    resetAllSearchHistory
+    resetAllSearchHistory,
   };
 }
