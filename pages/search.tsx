@@ -1,9 +1,12 @@
 import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useAtom } from 'jotai';
+import { twMerge } from 'tailwind-merge';
 
 import { useSearchData } from '@libs/swr';
 
-import { useSearchHistoryStore } from '@store/useStore';
+import { searchHistoryAtom, useSearchHistory } from '@store/useAtom';
+// import { useSearchHistoryStore } from '@store/useStore';
 
 import Layout from '@components/layout/Layout';
 import LabeledInput from '@components/systems/LabeledInput';
@@ -20,15 +23,26 @@ export default function Search() {
   const query = useRef(search);
   const { data, error } = useSearchData(search);
 
-  const booksHistory = useSearchHistoryStore((state: any) => state.booksHistory);
-  const setBooksHistory = useSearchHistoryStore((state: any) => state.setBooksHistory);
-  const resetBooksHistory = useSearchHistoryStore((state: any) => state.resetBooksHistory);
+  const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
+  const {
+    addBooksHistory,
+    addAuthorsHistory,
+    removeBooksHistory,
+    removeAuthorsHistory,
+    resetBooksHistory,
+    resetAuthorsHistory,
+    resetAllSearchHistory,
+  } = useSearchHistory();
 
-  const authorsHistory = useSearchHistoryStore((state: any) => state.authorsHistory);
-  const setAuthorsHistory = useSearchHistoryStore((state: any) => state.setAuthorsHistory);
-  const resetAuthorsHistory = useSearchHistoryStore((state: any) => state.resetAuthorsHistory);
+  // const booksHistory = useSearchHistoryStore((state: any) => state.booksHistory);
+  // const setBooksHistory = useSearchHistoryStore((state: any) => state.setBooksHistory);
+  // const resetBooksHistory = useSearchHistoryStore((state: any) => state.resetBooksHistory);
 
-  const resetAllSearchHistory = useSearchHistoryStore((state: any) => state.resetAllSearchHistory);
+  // const authorsHistory = useSearchHistoryStore((state: any) => state.authorsHistory);
+  // const setAuthorsHistory = useSearchHistoryStore((state: any) => state.setAuthorsHistory);
+  // const resetAuthorsHistory = useSearchHistoryStore((state: any) => state.resetAuthorsHistory);
+
+  // const resetAllSearchHistory = useSearchHistoryStore((state: any) => state.resetAllSearchHistory);
 
   function compareSearchResult(history: any, newResults: any) {
     let newHistory = history;
@@ -46,30 +60,49 @@ export default function Search() {
   useEffect(() => {
     if (data?.books?.length > 0) {
       // if already searching
-      if (booksHistory.length > 0) {
+      if (searchHistory.books.length > 0) {
         // compare history with new search result
-        let newBooks = compareSearchResult(booksHistory, data?.books);
-        if (newBooks != booksHistory) {
-          setBooksHistory(newBooks);
+        let newBooks = compareSearchResult(searchHistory.books, data?.books);
+        if (newBooks != searchHistory.books) {
+          addBooksHistory(newBooks);
         }
       } else {
         // first time searching, set search result to search history directly
-        setBooksHistory(data?.books);
+        addBooksHistory(data?.books);
       }
+      // if (booksHistory.length > 0) {
+      //   // compare history with new search result
+      //   let newBooks = compareSearchResult(booksHistory, data?.books);
+      //   if (newBooks != booksHistory) {
+      //     setBooksHistory(newBooks);
+      //   }
+      // } else {
+      //   // first time searching, set search result to search history directly
+      //   setBooksHistory(data?.books);
+      // }
     }
     // Authors
     if (data?.authors?.length > 0) {
-      if (authorsHistory.length > 0) {
-        let newAuthors = compareSearchResult(authorsHistory, data?.authors);
-        if (newAuthors != authorsHistory) {
-          setAuthorsHistory(newAuthors);
+      if (searchHistory.authors.length > 0) {
+        let newAuthors = compareSearchResult(searchHistory.authors, data?.authors);
+        if (newAuthors != searchHistory.authors) {
+          addAuthorsHistory(newAuthors);
         }
       } else {
-        setAuthorsHistory(data?.authors);
+        addAuthorsHistory(data?.authors);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+    // if (data?.authors?.length > 0) {
+    //   if (authorsHistory.length > 0) {
+    //     let newAuthors = compareSearchResult(authorsHistory, data?.authors);
+    //     if (newAuthors != authorsHistory) {
+    //       setAuthorsHistory(newAuthors);
+    //     }
+    //   } else {
+    //     setAuthorsHistory(data?.authors);
+    //   }
+    // }
+  }, [addAuthorsHistory, addBooksHistory, data, searchHistory.authors, searchHistory.books]);
 
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -123,7 +156,7 @@ export default function Search() {
               <Heading h3 className='mt-6'>
                 Books
               </Heading>
-              <div className='mt-2 space-y-4'>
+              <div className='mt-2 space-y-6'>
                 {data?.books?.map((item: any, index: number) => (
                   <BookListItem
                     key={index}
@@ -142,7 +175,7 @@ export default function Search() {
               <Heading h3 className='mt-6'>
                 Authors
               </Heading>
-              <div className='mt-2 grid grid-cols-1 gap-4 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
                 {data?.authors?.map((item: any, index: number) => (
                   <AuthorListItem
                     key={index}
@@ -156,7 +189,8 @@ export default function Search() {
             </>
           ) : null}
         </>
-      ) : booksHistory?.length > 0 || authorsHistory?.length > 0 ? (
+      ) : searchHistory.books.length > 0 || searchHistory.authors.length > 0 ? (
+        // ) : booksHistory?.length > 0 || authorsHistory?.length > 0 ? (
         <>
           <div className='mt-6 flex items-center justify-between'>
             <Heading h2 className='!mb-0 text-[22px]'>
@@ -170,9 +204,10 @@ export default function Search() {
             </button>
           </div>
 
-          {booksHistory?.length > 0 ? (
+          {searchHistory.books.length > 0 ? (
+            // {booksHistory?.length > 0 ? (
             <>
-              <div className='mb-4 mt-6 flex items-center justify-between'>
+              <div className='mb-6 mt-6 flex items-center justify-between'>
                 <Heading h3 className='!mb-0'>
                   Books
                 </Heading>
@@ -183,21 +218,34 @@ export default function Search() {
                   Clear Books
                 </button>
               </div>
-              <div className='mt-2 space-y-4'>
-                {booksHistory?.map((item: any, index: number) => (
-                  <BookListItem
-                    key={index}
-                    href={`/book/detail/${item.id}`}
-                    image={item.image_small?.replace('SX50', 'SX150').replace('SY75', 'SX150')}
-                    title={item.title}
-                    published={item.published}
-                  />
+              <div className='ml-1 mt-2 space-y-6'>
+                {searchHistory.books?.map((item: any, index: number) => (
+                  // {booksHistory?.map((item: any, index: number) => (
+                  <div key={index} className='relative'>
+                    <BookListItem
+                      href={`/book/detail/${item.id}`}
+                      image={item.image_small?.replace('SX50', 'SX150').replace('SY75', 'SX150')}
+                      title={item.title}
+                      published={item.published}
+                    />
+                    <button
+                      title='Delete'
+                      onClick={() => removeBooksHistory(item.id)}
+                      className={twMerge(
+                        'absolute -left-1 -top-1 rounded px-1.5 py-0.5 text-xs font-medium',
+                        'bg-red-500 text-white transition-all hover:bg-red-600'
+                      )}
+                    >
+                      X
+                    </button>
+                  </div>
                 ))}
               </div>
             </>
           ) : null}
 
-          {authorsHistory?.length > 0 ? (
+          {searchHistory.authors?.length > 0 ? (
+            // {authorsHistory?.length > 0 ? (
             <>
               <div className='mb-4 mt-8 flex items-center justify-between'>
                 <Heading h3 className='!mb-0'>
@@ -210,15 +258,27 @@ export default function Search() {
                   Clear Authors
                 </button>
               </div>
-              <div className='mt-2 grid grid-cols-1 gap-4 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
-                {authorsHistory?.map((item: any, index: number) => (
-                  <AuthorListItem
-                    key={index}
-                    href={`/author/detail/${item.id}`}
-                    image={item.image}
-                    name={item.name}
-                    web={item.web}
-                  />
+              <div className='ml-1 mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
+                {searchHistory.authors?.map((item: any, index: number) => (
+                  // {authorsHistory?.map((item: any, index: number) => (
+                  <div key={index} className='relative'>
+                    <AuthorListItem
+                      href={`/author/detail/${item.id}`}
+                      image={item.image}
+                      name={item.name}
+                      web={item.web}
+                    />
+                    <button
+                      title='Delete'
+                      onClick={() => removeAuthorsHistory(item.id)}
+                      className={twMerge(
+                        'absolute -left-1 -top-1 rounded-full px-1.5 py-0.5 text-xs font-medium',
+                        'bg-red-500 text-white transition-all hover:bg-red-600'
+                      )}
+                    >
+                      X
+                    </button>
+                  </div>
                 ))}
               </div>
             </>

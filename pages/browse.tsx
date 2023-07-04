@@ -3,8 +3,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { BookOpenIcon, ColorSwatchIcon, UserGroupIcon } from '@heroicons/react/outline';
+import { useAtom } from 'jotai';
+import { twMerge } from 'tailwind-merge';
 
-import { useSearchHistoryStore } from '@store/useStore';
+import { searchHistoryAtom, useSearchHistory } from '@store/useAtom';
+// import { useSearchHistoryStore } from '@store/useStore';
 
 import { useMounted } from '@hooks/useMounted';
 
@@ -14,6 +17,8 @@ import Title from '@components/systems/Title';
 import Text from '@components/systems/Text';
 import Button from '@components/systems/Button';
 import Heading from '@components/systems/Heading';
+import BookListItem from '@components/dashboard/BookListItem';
+import AuthorListItem from '@components/dashboard/AuthorListItem';
 
 const fetcher = (url: string) => fetch(url).then((result) => result.json());
 
@@ -28,17 +33,27 @@ export default function Browse() {
     setQuery(search);
   }, [search]);
 
-  const moviesHistory = useSearchHistoryStore((state) => state.movies);
-  const setMoviesHistory = useSearchHistoryStore((state) => state.setMovies);
-  const resetMoviesHistory = useSearchHistoryStore((state) => state.resetMovies);
+  const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
+  const {
+    addBooksHistory,
+    addAuthorsHistory,
+    removeBooksHistory,
+    removeAuthorsHistory,
+    resetBooksHistory,
+    resetAuthorsHistory,
+    resetAllSearchHistory,
+  } = useSearchHistory();
+  // const moviesHistory = useSearchHistoryStore((state) => state.movies);
+  // const setMoviesHistory = useSearchHistoryStore((state) => state.setMovies);
+  // const resetMoviesHistory = useSearchHistoryStore((state) => state.resetMovies);
 
-  const actorsHistory = useSearchHistoryStore((state) => state.actors);
-  const setActorsHistory = useSearchHistoryStore((state) => state.setActors);
-  const resetActorsHistory = useSearchHistoryStore((state) => state.resetActors);
+  // const actorsHistory = useSearchHistoryStore((state) => state.actors);
+  // const setActorsHistory = useSearchHistoryStore((state) => state.setActors);
+  // const resetActorsHistory = useSearchHistoryStore((state) => state.resetActors);
 
-  const resetAllSearchHistory = useSearchHistoryStore((state) => state.resetAllSearchHistory);
+  // const resetAllSearchHistory = useSearchHistoryStore((state) => state.resetAllSearchHistory);
 
-  function compareSearchResult(history, newResults) {
+  function compareSearchResult(history: any, newResults: any) {
     let newHistory = history;
     // iterate each search result
     for (const newResult of newResults) {
@@ -52,31 +67,51 @@ export default function Browse() {
   }
 
   useEffect(() => {
-    if (data?.movies?.length > 0) {
+    if (data?.books?.length > 0) {
       // if already searching
-      if (moviesHistory.length > 0) {
+      if (searchHistory.books.length > 0) {
         // compare history with new search result
-        let newMovies = compareSearchResult(moviesHistory, data?.movies);
-        if (newMovies != moviesHistory) {
-          setMoviesHistory(newMovies);
+        let newBooks = compareSearchResult(searchHistory.books, data?.books);
+        if (newBooks != searchHistory.books) {
+          addBooksHistory(newBooks);
         }
       } else {
         // first time searching, set search result to search history directly
-        setMoviesHistory(data?.movies);
+        addBooksHistory(data?.books);
       }
+      // if (moviesHistory.length > 0) {
+      //   // compare history with new search result
+      //   let newMovies = compareSearchResult(moviesHistory, data?.movies);
+      //   if (newMovies != moviesHistory) {
+      //     setMoviesHistory(newMovies);
+      //   }
+      // } else {
+      //   // first time searching, set search result to search history directly
+      //   setMoviesHistory(data?.movies);
+      // }
     }
-    // Actors
-    if (data?.actors?.length > 0) {
-      if (actorsHistory.length > 0) {
-        let newActors = compareSearchResult(actorsHistory, data?.actors);
-        if (newActors != actorsHistory) {
-          setActorsHistory(newActors);
+    // Authors
+    if (data?.authors?.length > 0) {
+      if (searchHistory.authors.length > 0) {
+        let newAuthors = compareSearchResult(searchHistory.authors, data?.authors);
+        if (newAuthors != searchHistory.authors) {
+          addAuthorsHistory(newAuthors);
         }
       } else {
-        setActorsHistory(data?.actors);
+        addAuthorsHistory(data?.authors);
       }
     }
-  }, [data]);
+    // if (data?.actors?.length > 0) {
+    //   if (actorsHistory.length > 0) {
+    //     let newActors = compareSearchResult(actorsHistory, data?.actors);
+    //     if (newActors != actorsHistory) {
+    //       setActorsHistory(newActors);
+    //     }
+    //   } else {
+    //     setActorsHistory(data?.actors);
+    //   }
+    // }
+  }, [addAuthorsHistory, addBooksHistory, data, searchHistory.authors, searchHistory.books]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -129,42 +164,47 @@ export default function Browse() {
             </div>
           ) : null}
 
-          {data?.movies?.length > 0 ? (
+          {data?.books.length > 0 ? (
             <>
-              <Heading h2 className='mt-6 !text-[19px]'>
+              <Heading h2 className='my-6 !text-[19px]'>
                 Movies
               </Heading>
-              <div className='mt-2 flex flex-col gap-4 pb-4'>
-                {/* {data?.movies?.map((item, index) => (
-                  <MovieListItem
+              <div className='mt-2 space-y-6'>
+                {data?.books?.map((item: any, index: number) => (
+                  <BookListItem
                     key={index}
-                    href={`/movies/${item.id}`}
-                    imageSrc={item.image_url}
-                    name={item.name}
-                    description={item.description}
-                    date={item.release_date}
+                    href={`/book/detail/${item.id}`}
+                    image={item.image_small?.replace('SX50', 'SX150').replace('SY75', 'SX150')}
+                    title={item.title}
+                    published={item.published}
                   />
-                ))} */}
+                ))}
               </div>
             </>
           ) : null}
 
-          {data?.actors?.length > 0 ? (
+          {data?.authors?.length > 0 ? (
             <>
-              <Heading h2 className='mt-6 !text-[19px]'>
+              <Heading h2 className='my-6 !text-[19px]'>
                 Actors
               </Heading>
-              <div className='mt-2 grid grid-cols-2 gap-4 gap-y-8 pb-4 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 min-[830px]:grid-cols-6 xl:grid-cols-8'>
-                {/* {data?.actors?.map((item, index) => (
-                  <ActorGridItem key={index} href={`/actors/${item.id}`} imageSrc={item.image_url} name={item.name} />
-                ))} */}
+              <div className='mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
+                {data?.authors?.map((item: any, index: number) => (
+                  <AuthorListItem
+                    key={index}
+                    href={`/author/detail/${item.id}`}
+                    image={item.image}
+                    name={item.name}
+                    web={item.web}
+                  />
+                ))}
               </div>
             </>
           ) : null}
         </>
       ) : (
         <>
-          {moviesHistory?.length > 0 || actorsHistory?.length > 0 ? (
+          {searchHistory.books.length > 0 || searchHistory.authors.length > 0 ? (
             <>
               <div className='mt-6 flex items-center justify-between'>
                 <Heading h2 className='!mb-0 !text-[20px]'>
@@ -178,56 +218,80 @@ export default function Browse() {
                 </button>
               </div>
 
-              {moviesHistory?.length > 0 ? (
+              {searchHistory.books.length > 0 ? (
+                // {booksHistory?.length > 0 ? (
                 <>
-                  <div className='mt-6 flex items-center justify-between'>
-                    <Heading h2 className='!text-[18px]'>
-                      Movies
+                  <div className='my-8 flex items-center justify-between'>
+                    <Heading h3 className='!mb-0'>
+                      Books
                     </Heading>
                     <button
-                      onClick={resetMoviesHistory}
-                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
+                      onClick={resetBooksHistory}
+                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
                     >
-                      Clear
+                      Clear Books
                     </button>
                   </div>
-                  <div className='mt-2 flex flex-col gap-4 pb-4'>
-                    {/* {moviesHistory?.map((item, index) => (
-                      <MovieListItem
-                        key={index}
-                        href={`/movies/${item.id}`}
-                        imageSrc={item.image_url}
-                        name={item.name}
-                        description={item.description}
-                        date={item.release_date}
-                      />
-                    ))} */}
+                  <div className='ml-1 mt-2 space-y-6'>
+                    {searchHistory.books?.map((item: any, index: number) => (
+                      // {booksHistory?.map((item: any, index: number) => (
+                      <div key={index} className='relative'>
+                        <BookListItem
+                          href={`/book/detail/${item.id}`}
+                          image={item.image_small?.replace('SX50', 'SX150').replace('SY75', 'SX150')}
+                          title={item.title}
+                          published={item.published}
+                        />
+                        <button
+                          onClick={() => removeBooksHistory(item.id)}
+                          className={twMerge(
+                            'absolute -left-1 -top-1 rounded px-1.5 py-0.5 text-xs font-medium',
+                            'bg-red-500 text-white transition-all hover:bg-red-600'
+                          )}
+                        >
+                          X
+                        </button>
+                      </div>
+                    ))}
                   </div>
                 </>
               ) : null}
 
-              {actorsHistory?.length > 0 ? (
+              {searchHistory.authors?.length > 0 ? (
+                // {authorsHistory?.length > 0 ? (
                 <>
-                  <div className='mt-6 flex items-center justify-between'>
-                    <Heading h2 className='!text-[18px]'>
-                      Actors
+                  <div className='my-8 flex items-center justify-between'>
+                    <Heading h3 className='!mb-0'>
+                      Authors
                     </Heading>
                     <button
-                      onClick={resetActorsHistory}
-                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
+                      onClick={resetAuthorsHistory}
+                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
                     >
-                      Clear
+                      Clear Authors
                     </button>
                   </div>
-                  <div className='mt-2 grid grid-cols-2 gap-4 gap-y-8 pb-4 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 min-[830px]:grid-cols-6 xl:grid-cols-8'>
-                    {/* {actorsHistory?.map((item, index) => (
-                      <ActorGridItem
-                        key={index}
-                        href={`/actors/${item.id}`}
-                        imageSrc={item.image_url}
-                        name={item.name}
-                      />
-                    ))} */}
+                  <div className='ml-1 mt-2 grid grid-cols-1 gap-6 pb-4 min-[500px]:grid-cols-2 md:grid-cols-3'>
+                    {searchHistory.authors?.map((item: any, index: number) => (
+                      // {authorsHistory?.map((item: any, index: number) => (
+                      <div key={index} className='relative'>
+                        <AuthorListItem
+                          href={`/author/detail/${item.id}`}
+                          image={item.image}
+                          name={item.name}
+                          web={item.web}
+                        />
+                        <button
+                          onClick={() => removeAuthorsHistory(item.id)}
+                          className={twMerge(
+                            'absolute -left-1 -top-1 rounded-full px-1.5 py-0.5 text-xs font-medium',
+                            'bg-red-500 text-white transition-all hover:bg-red-600'
+                          )}
+                        >
+                          X
+                        </button>
+                      </div>
+                    ))}
                   </div>
                 </>
               ) : null}
@@ -236,7 +300,7 @@ export default function Browse() {
         </>
       )}
 
-      <Heading h3 className='mt-6 !text-[19px]'>
+      <Heading h3 className='mt-8 !text-[19px]'>
         Browse
       </Heading>
       <div className='mt-2 grid grid-cols-1 gap-6 min-[400px]:grid-cols-2 sm:grid-cols-3'>
