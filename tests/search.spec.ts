@@ -76,7 +76,7 @@ test.describe('Testing Search Page', () => {
     await expect(page.getByRole('heading', { name: 'Authors' })).not.toBeVisible();
     await expect(page.getByText('Jane Austen')).not.toBeVisible();
   });
-  test('should remove books search history', async ({ page }) => {
+  test('should remove all books search history', async ({ page }) => {
     // first visit to search page, and search "jane"
     const searchInput = page.getByPlaceholder('Search Title, Author, ISBN');
     await searchInput.fill('jane');
@@ -103,7 +103,7 @@ test.describe('Testing Search Page', () => {
     await expect(page.getByRole('heading', { name: 'Authors' })).toBeVisible();
     await expect(page.getByText('Jane Austen')).toBeVisible();
   });
-  test('should remove authors search history', async ({ page }) => {
+  test('should remove all authors search history', async ({ page }) => {
     // first visit to search page, and search "jane"
     const searchInput = page.getByPlaceholder('Search Title, Author, ISBN');
     await searchInput.fill('jane');
@@ -129,5 +129,51 @@ test.describe('Testing Search Page', () => {
     await expect(page.getByText('Jane Eyre')).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Authors' })).not.toBeVisible();
     await expect(page.getByText('Jane Austen')).not.toBeVisible();
+  });
+  test('should remove single author search history', async ({ page }) => {
+    // first visit to search page, and search "jane"
+    const searchInput = page.getByPlaceholder('Search Title, Author, ISBN');
+    await searchInput.fill('jane');
+    await searchInput.press('Enter');
+    await expect(page.getByText(/Searching “jane”.../)).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Authors' })).toBeVisible();
+    await expect(page.getByText('Jane Austen')).toBeVisible();
+    // go to setting page and back to search page
+    await page.getByRole('link', { name: 'Settings' }).click();
+    await page.getByRole('link', { name: 'Search' }).click();
+    // show search history
+    await expect(page.getByText('Recent Search')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Authors' })).toBeVisible();
+    await expect(page.getByText('Jane Austen')).toBeVisible();
+    // clear single authors search history
+    await page
+      .locator('div')
+      .filter({ hasText: /^Jane AustenWebX$/ })
+      .getByRole('button', { name: 'X' })
+      .click();
+    await expect(page.getByText('Jane Austen')).not.toBeVisible();
+  });
+  test('should remove single book search history', async ({ page }) => {
+    // first visit to search page, and search "jane"
+    const searchInput = page.getByPlaceholder('Search Title, Author, ISBN');
+    await searchInput.fill('hunger');
+    await searchInput.press('Enter');
+    await expect(page.getByText(/Searching “hunger”.../)).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Books' })).toBeVisible();
+    await expect(page.getByText('Mockingjay (The Hunger Games #3)')).toBeVisible();
+    // go to setting page and back to search page
+    await page.getByRole('link', { name: 'Settings' }).click();
+    await page.getByRole('link', { name: 'Search' }).click();
+    // show search history
+    await expect(page.getByText('Recent Search')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Books' })).toBeVisible();
+    await expect(page.getByText('Mockingjay (The Hunger Games #3)')).toBeVisible();
+    // clear single authors search history
+    await page
+      .locator('div')
+      .filter({ hasText: /^Mockingjay \(The Hunger Games #3\)2010X$/ })
+      .getByRole('button', { name: 'X' })
+      .click();
+    await expect(page.getByText('Mockingjay (The Hunger Games #3)')).not.toBeVisible();
   });
 });
