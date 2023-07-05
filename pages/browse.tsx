@@ -147,6 +147,7 @@ export default function Browse() {
             type='text'
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            required
           />
           <Button type='submit' value='Submit' className='mb-4 !px-8 !py-2.5'>
             Search

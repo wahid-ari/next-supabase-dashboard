@@ -134,6 +134,7 @@ export default function Search() {
             placeholder='Search Title, Author, ISBN'
             type='text'
             onChange={(e) => (query.current = e.target.value)}
+            required
           />
           <Button type='submit' value='Submit' className='mb-4 !py-2.5 px-5'>
             Search
