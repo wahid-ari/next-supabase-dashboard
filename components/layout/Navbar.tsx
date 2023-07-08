@@ -2,7 +2,8 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import { MenuIcon } from '@heroicons/react/solid';
 import { twMerge } from 'tailwind-merge';
-import nookies from 'nookies';
+// import nookies from 'nookies';
+import { useSession } from 'next-auth/react';
 
 import { GlobalContext } from '@context/GlobalContext';
 import { useMounted } from '@hooks/useMounted';
@@ -12,7 +13,8 @@ import ThemeChanger from '@components/layout/ThemeChanger';
 
 export default function Navbar({ className, ...props }: { className?: string; [props: string]: any }) {
   const { setShowNav } = useContext(GlobalContext);
-  const admin = nookies.get(null, 'name');
+  // const admin = nookies.get(null, 'name');
+  const { data: session, status }: { data: any; status: any } = useSession();
   const mounted = useMounted();
 
   const showMenu = () => {
@@ -57,7 +59,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
           <ThemeChanger />
         </div>
 
-        {mounted && admin.name ? <Menu className='lg:hidden' /> : null}
+        {mounted && session.name ? <Menu className='lg:hidden' /> : null}
       </div>
     </div>
   );

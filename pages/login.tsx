@@ -3,8 +3,12 @@ import Image from 'next/image';
 import Router from 'next/router';
 import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
-import nookies from 'nookies';
+// import nookies from 'nookies';
 import Link from 'next/link';
+import { signIn } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
 
 import useToast from '@hooks/useToast';
 
@@ -13,24 +17,42 @@ import Heading from '@components/systems/Heading';
 import HeadSeo from '@components/layout/HeadSeo';
 
 export async function getServerSideProps(context: any) {
-  const cookies = nookies.get(context);
-  if (cookies.token) {
+  // NextAuth
+  const session = await getServerSession(context.req, context.res, authOptions);
+  if (session) {
     return {
       redirect: {
         destination: '/dashboard',
+        permanent: false,
       },
     };
   }
   return {
     props: {},
   };
+  // const cookies = nookies.get(context);
+  // if (cookies.token) {
+  //   return {
+  //     redirect: {
+  //       destination: '/dashboard',
+  //     },
+  //   };
+  // }
+  // return {
+  //   props: {},
+  // };
 }
 
 export default function Login() {
-  const [form, setForm] = useState({ username: '', password: '' });
+  const [form, setForm] = useState({ username: 'develop', password: 'password' });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { updateToast, pushToast, dismissToast } = useToast();
+  const { status } = useSession();
+
+  if (status === 'authenticated') {
+    Router.push('/dashboard');
+  }
 
   const handleChange = (e: any) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -60,26 +82,30 @@ export default function Login() {
         isLoading: true,
       });
       try {
-        // FIX this
-        // const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/login`, form);
-        // if (res.status == 200) {
-        //   nookies.set(null, 'id', res.data.id, { path: '/' });
-        //   nookies.set(null, 'username', res.data.username, { path: '/' });
-        //   nookies.set(null, 'name', res.data.name, { path: '/' });
-        //   nookies.set(null, 'type', res.data.type, { path: '/' });
-        //   nookies.set(null, 'token', res.data.token, { path: '/' });
-        //   updateToast({
-        //     toastId,
-        //     message: 'Success Login',
-        //     isError: false,
-        //   });
-        // }
-        updateToast({
-          toastId,
-          message: 'Success Login',
-          isError: false,
-        });
-        Router.replace('/dashboard');
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/login`, form);
+        if (res.status == 200) {
+          // nookies.set(null, 'id', res.data.id, { path: '/' });
+          // nookies.set(null, 'username', res.data.username, { path: '/' });
+          // nookies.set(null, 'name', res.data.name, { path: '/' });
+          // nookies.set(null, 'type', res.data.type, { path: '/' });
+          // nookies.set(null, 'token', res.data.token, { path: '/' });
+          // NextAuth
+          const { id, username, name, type, token } = res.data;
+          signIn('credentials', {
+            id,
+            username,
+            name,
+            type,
+            token,
+            callbackUrl: '/dashboard',
+          });
+          updateToast({
+            toastId,
+            message: 'Success Login',
+            isError: false,
+          });
+          // Router.replace('/dashboard');
+        }
       } catch (error) {
         updateToast({ toastId, message: error?.response?.data?.error, isError: true });
         console.error(error);
@@ -193,10 +219,10 @@ export default function Login() {
             <p className='mt-2 text-center font-normal dark:text-neutral-800'>
               Continue to{' '}
               <Link
-                href='/dashboard'
+                href='/'
                 className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
               >
-                Dashboard
+                Home
               </Link>
             </p>
           </div>

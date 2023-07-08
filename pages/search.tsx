@@ -17,6 +17,8 @@ import Heading from '@components/systems/Heading';
 import BookListItem from '@components/dashboard/BookListItem';
 import AuthorListItem from '@components/dashboard/AuthorListItem';
 
+Search.auth = true;
+
 export default function Search() {
   const router = useRouter();
   const search = router.query.q;

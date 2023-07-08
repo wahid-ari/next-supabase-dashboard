@@ -4,7 +4,8 @@ import { Menu, Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import { twMerge } from 'tailwind-merge';
-import nookies from 'nookies';
+// import nookies from 'nookies';
+import { useSession } from 'next-auth/react';
 
 import { useMounted } from '@hooks/useMounted';
 
@@ -16,7 +17,8 @@ type Props = {
 };
 
 export default function Akun({ className, ...props }: Props) {
-  const admin = nookies.get(null, 'name');
+  // const admin = nookies.get(null, 'name');
+  const { data: session, status }: { data: any; status: any } = useSession();
   const router = useRouter();
   const [openModal, setOpenModal] = useState(false);
   const mounted = useMounted();
@@ -39,7 +41,7 @@ export default function Akun({ className, ...props }: Props) {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
               )}
             >
-              {(mounted && admin?.name) || 'Menu'}
+              {(mounted && session?.name) || 'Menu'}
 
               <ChevronDownIcon
                 className={twMerge('ml-1 h-5 w-4 pb-0.5 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}

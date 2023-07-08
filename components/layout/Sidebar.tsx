@@ -19,10 +19,10 @@ import {
   TableIcon,
   ClipboardListIcon,
 } from '@heroicons/react/outline';
-import nookies from 'nookies';
+// import nookies from 'nookies';
 import { twMerge } from 'tailwind-merge';
 
-import { useMounted } from '@hooks/useMounted';
+// import { useMounted } from '@hooks/useMounted';
 
 import NavLink from '@components/layout/NavLink';
 import NavAccordion from '@components/layout/NavAccordion';
@@ -34,8 +34,8 @@ export default function Sidebar({ className, ...props }: { className?: string; [
   const router = useRouter();
   const [openModal, setOpenModal] = useState(false);
   const { showNav, setShowNav } = useContext(GlobalContext);
-  const admin = nookies.get(null, 'type');
-  const mounted = useMounted();
+  // const admin = nookies.get(null, 'type');
+  // const mounted = useMounted();
 
   const hideMenu = () => {
     setShowNav(false);

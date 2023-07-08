@@ -46,6 +46,8 @@ ChartJS.register(
   Legend
 );
 
+Dashboard.auth = true;
+
 export default function Dashboard() {
   // const { data, error } = useCountsData();
   const { data: totalAuthors, error: errorTotalAuthors } = useTotalAuthorsData();

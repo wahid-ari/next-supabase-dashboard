@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon, ChevronRightIcon, MenuIcon, XIcon, SearchIcon } from '@heroicons/react/outline';
 import { twMerge } from 'tailwind-merge';
-import nookies from 'nookies';
+// import nookies from 'nookies';
+import { useSession } from 'next-auth/react';
 
 import ActiveLink from '@components/front/ActiveLink';
 import FrontThemeChanger from '@components/front/FrontThemeChanger';
@@ -33,7 +34,8 @@ const activeCn = twMerge(
 );
 
 export default function FrontNavbar({ className, ...props }: { className?: string; [props: string]: any }) {
-  const admin = nookies.get(null, 'name');
+  // const admin = nookies.get(null, 'name');
+  const { data: session, status }: { data: any; status: any } = useSession();
   const [mounted, setMounted] = useState(false);
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
@@ -141,20 +143,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
 
             <div className='hidden items-center gap-3 md:flex'>
               <FrontThemeChanger />
-              {/* FIX this  */}
-              <Link
-                href='/dashboard'
-                className={twMerge(
-                  'px-1 text-[15px] font-medium text-gray-700 transition-all duration-200',
-                  'rounded hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                )}
-                passHref
-              >
-                Dashboard
-              </Link>
               {mounted ? (
-                admin.name ? (
+                session.name ? (
                   <Link
                     href='/dashboard'
                     className={twMerge(
@@ -273,27 +263,16 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 <ActiveLink href='/browse' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
                   Browse
                 </ActiveLink>
-                {/* FIX this  */}
-                <Link
-                  href='/dashboard'
-                  className={twMerge(
-                    'block rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100',
-                    'hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                    'dark:text-neutral-200 dark:hover:bg-neutral-800'
-                  )}
-                >
-                  Dashboard
-                </Link>
                 {mounted && (
                   <Link
-                    href={`${admin.name ? '/dashboard' : '/login'}`}
+                    href={`${session.name ? '/dashboard' : '/login'}`}
                     className={twMerge(
                       'block rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100',
                       'hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       'dark:text-neutral-200 dark:hover:bg-neutral-800'
                     )}
                   >
-                    {admin.name ? 'Dashboard' : 'Login'}
+                    {session.name ? 'Dashboard' : 'Login'}
                   </Link>
                 )}
               </div>
