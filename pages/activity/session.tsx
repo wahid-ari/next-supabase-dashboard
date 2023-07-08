@@ -115,6 +115,7 @@ export default function Sessions() {
               <TableSimple.td shrink>No</TableSimple.td>
               <TableSimple.td shrink>ID</TableSimple.td>
               <TableSimple.td>Name</TableSimple.td>
+              <TableSimple.td>Token</TableSimple.td>
               <TableSimple.td shrink>Date</TableSimple.td>
               <TableSimple.td shrink>Time</TableSimple.td>
             </>
@@ -127,6 +128,7 @@ export default function Sessions() {
                 <TableSimple.td shrink>{index + 1}</TableSimple.td>
                 <TableSimple.td>{item.user_id}</TableSimple.td>
                 <TableSimple.td>{item.book_users.name}</TableSimple.td>
+                <TableSimple.td>{item.token.split('.')[2]}</TableSimple.td>
                 <TableSimple.td>{item.created_at.split('T')[0]}</TableSimple.td>
                 <TableSimple.td>{getTime(item.created_at)}</TableSimple.td>
               </TableSimple.tr>
