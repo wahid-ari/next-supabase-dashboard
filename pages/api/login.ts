@@ -57,7 +57,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           process.env.JWT_SECRET
         );
         const { error: errorSession } = await supabase.from('book_sessions').insert({ user_id: data.id, token: token });
-        console.error(errorSession)
+        console.error(errorSession);
         // const decode = jwt.verify(token, process.env.JWT_SECRET);
         // console.log(decode)
         res.status(200).json({ ...data, token });

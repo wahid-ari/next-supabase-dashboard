@@ -11,7 +11,15 @@ type Props = {
   [props: string]: any;
 };
 
-export default function TableSimple({ className, wrapperClassName, head, bordered, caption, children, ...props }: Props) {
+export default function TableSimple({
+  className,
+  wrapperClassName,
+  head,
+  bordered,
+  caption,
+  children,
+  ...props
+}: Props) {
   return (
     <div
       className={twMerge(
@@ -21,7 +29,10 @@ export default function TableSimple({ className, wrapperClassName, head, bordere
       )}
     >
       <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-700'>
-        <table {...props} className={twMerge('w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300', className)}>
+        <table
+          {...props}
+          className={twMerge('w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300', className)}
+        >
           {caption && <caption className='my-3 caption-bottom text-[13px] dark:text-neutral-300'>{caption}</caption>}
           <thead>
             <tr className='border-b bg-gray-50 text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'>
