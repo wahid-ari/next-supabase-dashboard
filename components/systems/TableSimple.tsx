@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
+  wrapperClassName?: string;
   head?: ReactNode;
   bordered?: boolean;
   caption?: string;
@@ -10,17 +11,17 @@ type Props = {
   [props: string]: any;
 };
 
-export default function TableSimple({ className, head, bordered, caption, children, ...props }: Props) {
+export default function TableSimple({ className, wrapperClassName, head, bordered, caption, children, ...props }: Props) {
   return (
     <div
       className={twMerge(
         'w-full rounded',
         bordered ? 'border-t dark:border-t-neutral-800' : 'border dark:border-neutral-800',
-        className
+        wrapperClassName
       )}
     >
       <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-700'>
-        <table {...props} className='w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300'>
+        <table {...props} className={twMerge('w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300', className)}>
           {caption && <caption className='my-3 caption-bottom text-[13px] dark:text-neutral-300'>{caption}</caption>}
           <thead>
             <tr className='border-b bg-gray-50 text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'>
