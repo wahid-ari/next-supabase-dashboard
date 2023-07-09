@@ -144,7 +144,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
             <div className='hidden items-center gap-3 md:flex'>
               <FrontThemeChanger />
               {mounted ? (
-                session.name ? (
+                session?.name ? (
                   <Link
                     href='/dashboard'
                     className={twMerge(
@@ -265,14 +265,14 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 </ActiveLink>
                 {mounted && (
                   <Link
-                    href={`${session.name ? '/dashboard' : '/login'}`}
+                    href={`${session?.name ? '/dashboard' : '/login'}`}
                     className={twMerge(
                       'block rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100',
                       'hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       'dark:text-neutral-200 dark:hover:bg-neutral-800'
                     )}
                   >
-                    {session.name ? 'Dashboard' : 'Login'}
+                    {session?.name ? 'Dashboard' : 'Login'}
                   </Link>
                 )}
               </div>
