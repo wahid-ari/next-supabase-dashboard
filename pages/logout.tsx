@@ -27,6 +27,7 @@ export default function Logout() {
     } catch (error) {
       console.error(error);
     } finally {
+      setStatus(true);
       router.push('/');
     }
   }
