@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       } else if (!body.token) {
         res.status(422).json({ error: 'Token required' });
       } else {
-        const { error } = await supabase.from('book_sessions').delete().eq('user_id', body.user_id);
+        const { error } = await supabase.from('book_sessions').delete().eq('token', body.token);
         if (error) {
           res.status(422).json({ error: error.message });
         }
