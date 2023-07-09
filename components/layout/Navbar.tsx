@@ -59,7 +59,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
           <ThemeChanger />
         </div>
 
-        {mounted && session.name ? <Menu className='lg:hidden' /> : null}
+        {mounted && session?.name ? <Menu className='lg:hidden' /> : null}
       </div>
     </div>
   );

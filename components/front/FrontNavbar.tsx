@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment, ReactNode } from 'react';
+import { useState, Fragment, ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, Popover, Transition } from '@headlessui/react';
@@ -10,6 +10,7 @@ import { useSession } from 'next-auth/react';
 import ActiveLink from '@components/front/ActiveLink';
 import FrontThemeChanger from '@components/front/FrontThemeChanger';
 import NavbarSearch from '@components/front/NavbarSearch';
+import { useMounted } from '@hooks/useMounted';
 
 function CustomActiveLink({ href, children }: { href: string; children: ReactNode }) {
   return (
@@ -36,12 +37,9 @@ const activeCn = twMerge(
 export default function FrontNavbar({ className, ...props }: { className?: string; [props: string]: any }) {
   // const admin = nookies.get(null, 'name');
   const { data: session, status }: { data: any; status: any } = useSession();
-  const [mounted, setMounted] = useState(false);
-  // useEffect only runs on the client, so now we can safely show the UI
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
   const [isShowMore, setIsShowMore] = useState(false);
+
   return (
     <Popover
       {...props}

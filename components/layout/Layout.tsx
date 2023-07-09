@@ -60,7 +60,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
           >
             <Breadcrumb />
 
-            {mounted && session.name ? <Menu /> : null}
+            {mounted && session?.name ? <Menu /> : null}
           </div>
 
           <div className='px-5 py-5'>{children}</div>
