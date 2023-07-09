@@ -7,10 +7,11 @@ import { twMerge } from 'tailwind-merge';
 // import nookies from 'nookies';
 import { useSession } from 'next-auth/react';
 
+import { useMounted } from '@hooks/useMounted';
+
 import ActiveLink from '@components/front/ActiveLink';
 import FrontThemeChanger from '@components/front/FrontThemeChanger';
 import NavbarSearch from '@components/front/NavbarSearch';
-import { useMounted } from '@hooks/useMounted';
 
 function CustomActiveLink({ href, children }: { href: string; children: ReactNode }) {
   return (
@@ -141,7 +142,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
 
             <div className='hidden items-center gap-3 md:flex'>
               <FrontThemeChanger />
-              {mounted ? (
+              {mounted && status != 'loading' ? (
                 session?.name ? (
                   <Link
                     href='/dashboard'
@@ -167,7 +168,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   </Link>
                 )
               ) : (
-                <span className='text-[15px] font-medium text-neutral-700 dark:text-neutral-200'>Dashboard</span>
+                <span className='text-[15px] font-medium text-neutral-700 dark:text-neutral-200'>Loading..</span>
+                // <Shimer className='!h-5 !w-16' />
               )}
             </div>
 
