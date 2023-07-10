@@ -46,6 +46,7 @@ import Code from '@components/systems/Code';
 import FileInput from '@components/systems/FileInput';
 import Select from '@components/systems/Select';
 import TableSimple from '@components/systems/TableSimple';
+import LoadingDots from '@components/systems/LoadingDots';
 
 const searchBoxData = [
   {
@@ -626,6 +627,11 @@ export default function Example() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#show-more'>
               ShowMore
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#loading-dots'>
+              LoadingDots
             </Link>
           </span>
         </div>
@@ -1587,6 +1593,14 @@ function dissmissAllToast() {
           id consectetur aliqua. Quis culpa do est non irure aliquip proident exercitation aliqua mollit anim dolor
           labore.
         </ShowMore>
+      </Wrapper>
+
+      <Wrapper id='loading-dots' name='LoadingDots' props={['medium', 'large']} noChildren>
+        <LoadingDots data-testid='loadingdots' />
+        <br />
+        <LoadingDots medium data-testid='loadingdots-medium' />
+        <br />
+        <LoadingDots large data-testid='loadingdots-large' />
       </Wrapper>
     </Layout>
   );

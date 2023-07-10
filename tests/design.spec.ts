@@ -882,6 +882,25 @@ test.describe('Testing Code Component', () => {
   });
 });
 
+test.describe('Testing LoadingDots Component', () => {
+  // LoadingDots ----------------------------------------------------
+  test('renders a LoadingDots component', async ({ page }) => {
+    const loadingdots = page.getByTestId('loadingdots');
+    await expect(loadingdots).toBeVisible();
+    await expect(loadingdots).toHaveClass(/inline-flex items-center gap-1 text-center leading-7/);
+  });
+  test('renders a LoadingDots Medium component', async ({ page }) => {
+    const loadingdots = page.getByTestId('loadingdots-medium');
+    await expect(loadingdots).toBeVisible();
+    await expect(loadingdots).toHaveClass(/inline-flex items-center gap-1 text-center leading-7/);
+  });
+  test('renders a LoadingDots Large component', async ({ page }) => {
+    const loadingdots = page.getByTestId('loadingdots-large');
+    await expect(loadingdots).toBeVisible();
+    await expect(loadingdots).toHaveClass(/inline-flex items-center gap-1 text-center leading-7/);
+  });
+});
+
 test.describe('Testing YUP Validation Component', () => {
   // YUP Validation ----------------------------------------------------
   test('All fields empty', async ({ page }) => {
