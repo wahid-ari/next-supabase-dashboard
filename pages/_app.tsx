@@ -43,7 +43,7 @@ type CustomAppProps = AppProps & {
   Component: NextComponentType & { auth?: boolean }; // add auth type
 };
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: CustomAppProps) {
+function MyApp({ Component, pageProps }: CustomAppProps) {
   const router = useRouter();
   // Show progress on All Pages
   // import Router from 'next/router';
@@ -77,7 +77,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: CustomAppPro
   return (
     <ThemeProvider attribute='class' storageKey='theme' enableSystem={false} defaultTheme='light'>
       <GlobalProvider>
-        <SessionProvider session={session}>
+        <SessionProvider session={pageProps.session}>
           <AxiosProvider>
             <main className={inter.className}>
               <Toaster
