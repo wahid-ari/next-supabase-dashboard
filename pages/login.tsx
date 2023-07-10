@@ -84,7 +84,7 @@ export default function Login() {
 
   if (status === 'loading') {
     return (
-      <div className='flex min-h-screen flex-col items-center justify-center'>
+      <div className='flex min-h-screen flex-col items-center justify-center dark:bg-white'>
         <LoadingDots medium />
       </div>
     );

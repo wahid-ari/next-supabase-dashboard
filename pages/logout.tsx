@@ -4,6 +4,8 @@ import nookies from 'nookies';
 import axios from 'axios';
 import { getSession, signOut } from 'next-auth/react';
 
+import LoadingDots from '@components/systems/LoadingDots';
+
 export default function Logout() {
   const router = useRouter();
 
@@ -23,13 +25,18 @@ export default function Logout() {
         }
       } catch (error) {
         console.error(error);
+        router.push('/');
       }
     }
 
     postLogout();
   }, [router]);
 
-  return '';
+  return (
+    <div className='flex min-h-screen flex-col items-center justify-center'>
+      <LoadingDots medium />
+    </div>
+  );
 }
 
 // export default function Logout() {
