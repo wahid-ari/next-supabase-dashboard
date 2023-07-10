@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import nookies from 'nookies';
 import axios from 'axios';
@@ -6,42 +6,28 @@ import { getSession, signOut } from 'next-auth/react';
 
 export default function Logout() {
   const router = useRouter();
-  const [status, setStatus] = useState(false);
 
-  async function postLogout() {
-    try {
-      const session: any = await getSession();
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/logout`, {
-        user_id: session?.id,
-        token: session?.token,
-      });
-      if (res.status == 200) {
-        signOut({ callbackUrl: '/' });
-        nookies.destroy(null, '__Secure-next-auth.session-token');
-        nookies.destroy(null, 'next-auth.session-token');
-      } else {
-        signOut({ callbackUrl: '/' });
-        nookies.destroy(null, '__Secure-next-auth.session-token');
-        nookies.destroy(null, 'next-auth.session-token');
+  useEffect(() => {
+    async function postLogout() {
+      try {
+        const session: any = await getSession();
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/logout`, {
+          user_id: session?.id,
+          token: session?.token,
+        });
+        if (res.status == 200) {
+          const data = await signOut({ redirect: false, callbackUrl: '/' });
+          router.push(data.url);
+          nookies.destroy(null, '__Secure-next-auth.session-token');
+          nookies.destroy(null, 'next-auth.session-token');
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setStatus(true);
-      router.push('/');
     }
-  }
 
-  useEffect(() => {
     postLogout();
-  });
-
-  useEffect(() => {
-    if (status) {
-      document.cookie = '__Secure-next-auth.session-token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
-      document.cookie = 'next-auth.session-token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
-    }
-  }, [status]);
+  }, [router]);
 
   return '';
 }
