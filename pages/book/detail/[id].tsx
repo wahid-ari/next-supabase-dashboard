@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLinkIcon, PhotographIcon } from '@heroicons/react/outline';
-import nookies from 'nookies';
+// import nookies from 'nookies';
 
 import { useBookData } from '@libs/swr';
 
@@ -28,6 +28,8 @@ export async function getServerSideProps(context: any) {
     }, // will be passed to the page component as props
   };
 }
+
+Book.auth = true;
 
 export default function Book({ id }) {
   const { data, error } = useBookData(id);

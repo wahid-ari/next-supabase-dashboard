@@ -2,7 +2,7 @@ import { useRef, useMemo } from 'react';
 import Link from 'next/link';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { twMerge } from 'tailwind-merge';
-import nookies from 'nookies';
+// import nookies from 'nookies';
 
 import { useGenreData } from '@libs/swr';
 
@@ -28,6 +28,8 @@ export async function getServerSideProps(context: any) {
     }, // will be passed to the page component as props
   };
 }
+
+Genre.auth = true;
 
 export default function Genre({ id }) {
   const { data, error } = useGenreData(id);

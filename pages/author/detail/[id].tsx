@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLinkIcon, PhotographIcon } from '@heroicons/react/outline';
-import nookies from 'nookies';
+// import nookies from 'nookies';
 
 import { useAuthorData } from '@libs/swr';
 
@@ -27,6 +27,8 @@ export async function getServerSideProps(context: any) {
     }, // will be passed to the page component as props
   };
 }
+
+Author.auth = true;
 
 export default function Author({ id }) {
   const { data, error } = useAuthorData(id);

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { mutate } from 'swr';
 import { TrashIcon } from '@heroicons/react/outline';
-import nookies from 'nookies';
+// import nookies from 'nookies';/
 
 import { useSessionsData } from '@libs/swr';
 
@@ -16,21 +16,23 @@ import InputDebounce from '@components/systems/InputDebounce';
 import Button from '@components/systems/Button';
 import Dialog from '@components/systems/Dialog';
 
-export async function getServerSideProps(context: any) {
-  // const cookies = nookies.get(context);
-  // if (!cookies.token) {
-  //   return {
-  //     redirect: {
-  //       destination: '/login',
-  //     },
-  //   };
-  // }
-  return {
-    props: {},
-  };
-}
+// export async function getServerSideProps(context: any) {
+//   const cookies = nookies.get(context);
+//   if (!cookies.token) {
+//     return {
+//       redirect: {
+//         destination: '/login',
+//       },
+//     };
+//   }
+//   return {
+//     props: {},
+//   };
+// }
 
-export default function Sessions() {
+Session.auth = true;
+
+export default function Session() {
   const { data, error } = useSessionsData();
   const { updateToast, pushToast } = useToast();
   const [inputDebounceValue, setInputDebounceValue] = useState('');

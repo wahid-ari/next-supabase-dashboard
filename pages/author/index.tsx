@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { mutate } from 'swr';
 import axios from 'axios';
 import { PlusSmIcon, ExternalLinkIcon } from '@heroicons/react/outline';
-import nookies from 'nookies';
+// import nookies from 'nookies';
 
 import { useAuthorsData } from '@libs/swr';
 
@@ -31,6 +31,8 @@ import InputDebounce from '@components/systems/InputDebounce';
 //     props: {},
 //   };
 // }
+
+Author.auth = true;
 
 export default function Author() {
   const { data, error } = useAuthorsData();

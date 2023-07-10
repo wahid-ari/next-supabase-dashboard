@@ -5,7 +5,7 @@ import axios from 'axios';
 import { PlusSmIcon } from '@heroicons/react/outline';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { twMerge } from 'tailwind-merge';
-import nookies from 'nookies';
+// import nookies from 'nookies';
 
 import { useBooksData } from '@libs/swr';
 
@@ -33,6 +33,8 @@ import InputDebounce from '@components/systems/InputDebounce';
 //     props: {},
 //   };
 // }
+
+Book.auth = true;
 
 export default function Book() {
   const { data, error } = useBooksData();

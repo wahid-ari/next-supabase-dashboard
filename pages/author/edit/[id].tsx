@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { mutate } from 'swr';
 import axios from 'axios';
-import nookies from 'nookies';
+// import nookies from 'nookies';
 
 import { useAuthorData } from '@libs/swr';
 
@@ -31,6 +31,8 @@ export async function getServerSideProps(context: any) {
     }, // will be passed to the page component as props
   };
 }
+
+Author.auth = true;
 
 export default function Author({ id }) {
   const { data, error } = useAuthorData(id);

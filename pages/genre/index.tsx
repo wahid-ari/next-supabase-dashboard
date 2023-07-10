@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { mutate } from 'swr';
 import axios from 'axios';
 import { PlusSmIcon } from '@heroicons/react/outline';
-import nookies from 'nookies';
+// import nookies from 'nookies';
 
 import { useGenresData } from '@libs/swr';
 
@@ -32,6 +32,8 @@ import InputDebounce from '@components/systems/InputDebounce';
 //   };
 // }
 
+Genre.auth = true;
+
 export default function Genre() {
   const { data, error } = useGenresData();
   const { updateToast, pushToast } = useToast();
@@ -52,7 +54,7 @@ export default function Genre() {
 
   async function handleCreate() {
     const toastId = pushToast({
-      message: `Creating ${name} genre`,
+      message: `Creating ${name}`,
       isLoading: true,
     });
     try {
@@ -92,7 +94,7 @@ export default function Genre() {
 
   async function handleDelete() {
     const toastId = pushToast({
-      message: `Deleting ${deleteItem.name} genre`,
+      message: `Deleting ${deleteItem.name}`,
       isLoading: true,
     });
     try {

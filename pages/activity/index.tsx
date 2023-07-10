@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import nookies from 'nookies';
+// import nookies from 'nookies';
 
 import { useLogsData } from '@libs/swr';
 
@@ -10,19 +10,21 @@ import InputDebounce from '@components/systems/InputDebounce';
 import ReactTable from '@components/systems/ReactTable';
 import Badge from '@components/systems/Badge';
 
-export async function getServerSideProps(context: any) {
-  // const cookies = nookies.get(context);
-  // if (!cookies.token) {
-  //   return {
-  //     redirect: {
-  //       destination: '/login',
-  //     },
-  //   };
-  // }
-  return {
-    props: {},
-  };
-}
+// export async function getServerSideProps(context: any) {
+//   const cookies = nookies.get(context);
+//   if (!cookies.token) {
+//     return {
+//       redirect: {
+//         destination: '/login',
+//       },
+//     };
+//   }
+//   return {
+//     props: {},
+//   };
+// }
+
+Log.auth = true;
 
 export default function Log() {
   const { data, error } = useLogsData();

@@ -15,14 +15,28 @@ import { AxiosProvider } from '@context/AxiosContext';
 import '@styles/globals.css';
 import '@styles/prism.css';
 
-// Show progress on All Pages
-// import Router from 'next/router';
-
-// Router.events.on('routeChangeStart', () => NProgress.start());
-// Router.events.on('routeChangeComplete', () => NProgress.done());
-// Router.events.on('routeChangeError', () => NProgress.done());
+import LoadingDots from '@components/systems/LoadingDots';
 
 const inter = Inter({ subsets: ['latin'] });
+
+function Auth({ children }) {
+  const router = useRouter();
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push('/login');
+    },
+  });
+
+  if (status === 'loading')
+    return (
+      <div className='flex min-h-screen flex-col items-center justify-center'>
+        <LoadingDots medium />
+      </div>
+    );
+
+  return children;
+}
 
 //Add custom appProp type then use union to add it
 type CustomAppProps = AppProps & {
@@ -31,6 +45,11 @@ type CustomAppProps = AppProps & {
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: CustomAppProps) {
   const router = useRouter();
+  // Show progress on All Pages
+  // import Router from 'next/router';
+  // Router.events.on('routeChangeStart', () => NProgress.start());
+  // Router.events.on('routeChangeComplete', () => NProgress.done());
+  // Router.events.on('routeChangeError', () => NProgress.done());
 
   function handleStart(url: string) {
     let splitUrl = url.split('/');
@@ -39,13 +58,15 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: CustomAppPro
       NProgress.start();
     }
   }
-  const handleStop = () => NProgress.done();
+
+  function handleStop() {
+    NProgress.done();
+  }
 
   useEffect(() => {
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleStop);
     router.events.on('routeChangeError', handleStop);
-
     return () => {
       router.events.off('routeChangeStart', handleStart);
       router.events.off('routeChangeComplete', handleStop);
@@ -81,20 +102,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: CustomAppPro
       </GlobalProvider>
     </ThemeProvider>
   );
-}
-
-function Auth({ children }) {
-  const router = useRouter();
-  const { status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      router.push('/login');
-    },
-  });
-
-  if (status === 'loading') return '';
-
-  return children;
 }
 
 export default MyApp;

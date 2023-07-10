@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { mutate } from 'swr';
 import axios from 'axios';
 import Select from 'react-select';
-import nookies from 'nookies';
+// import nookies from 'nookies';
 
 import { useAuthorsData, useGenresData } from '@libs/swr';
 
@@ -18,19 +18,21 @@ import SearchBox from '@components/systems/SearchBox';
 import Shimer from '@components/systems/Shimer';
 import Label from '@components/systems/Label';
 
-export async function getServerSideProps(context: any) {
-  // const cookies = nookies.get(context);
-  // if (!cookies.token) {
-  //   return {
-  //     redirect: {
-  //       destination: '/login',
-  //     },
-  //   };
-  // }
-  return {
-    props: {}, // will be passed to the page component as props
-  };
-}
+// export async function getServerSideProps(context: any) {
+//   const cookies = nookies.get(context);
+//   if (!cookies.token) {
+//     return {
+//       redirect: {
+//         destination: '/login',
+//       },
+//     };
+//   }
+//   return {
+//     props: {}, // will be passed to the page component as props
+//   };
+// }
+
+Book.auth = true;
 
 export default function Book() {
   const { data: authors, error: errorAuthors } = useAuthorsData();
