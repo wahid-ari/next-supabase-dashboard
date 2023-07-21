@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { supabase, getSessionToken, writeLogs } from '@libs/supabase';
+import slug from 'slug';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, body, query } = req;
@@ -8,28 +9,31 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      if (!query.id) {
+      if (!query.id && !query.slug) {
         const { data } = await supabase
           .from('book_books')
-          .select(`id, author_id, title, language, pages, published, link, image, book_authors (id, name)`)
+          .select(`id, author_id, slug, title, language, pages, published, link, image, book_authors (id, slug, name)`)
           .order('id');
         res.status(200).json(data);
-      } else if (query.id && query.seo) {
-        const { data } = await supabase.from('book_books').select(`title, description`).eq('id', query.id).single();
+      } else if (query.slug && query.seo) {
+        const { data } = await supabase.from('book_books').select(`title, description`).eq('slug', query.slug).single();
         // https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data);
       } else {
+        let column = query.id ? 'id' : 'slug';
+        let param = query.id ? query.id : query.slug;
         const { data: genres } = await supabase.from('book_genres').select(`*`).order('id');
+        const { data: books } = await supabase
+          .from('book_books')
+          .select(`*, book_authors (id, slug, name, image, bio, web)`)
+          .eq(column, param)
+          .order('id');
+        let bookId = books[0].id;
         const { data: books_genres } = await supabase
           .from('book_books_genres')
           .select(`*`)
-          .eq('book_id', query.id)
-          .order('id');
-        const { data: books } = await supabase
-          .from('book_books')
-          .select(`*, book_authors (id, name, image, bio, web)`)
-          .eq('id', query.id)
+          .eq('book_id', bookId)
           .order('id');
 
         const books_with_genres = [];
@@ -39,6 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               books_with_genres.push({
                 id: genre.id,
                 name: genre.name,
+                slug: genre.slug,
               });
             }
           }
@@ -56,6 +61,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!body.title) {
           res.status(422).json({ error: 'Title required' });
         } else {
+          let nameSlug = slug(body.title);
+          const { data: isSlugExist } = await supabase.from('book_books').select(`*`).eq('slug', nameSlug).order('id');
+          // if slug already exist, add books.length + 1 to slug to make it unique
+          if (isSlugExist.length > 0) {
+            const { data: books } = await supabase.from('book_books').select(`id`, { count: 'exact' });
+            nameSlug = `${nameSlug}-${books.length + 1}`;
+          }
           // get genre string from array
           let genre_string = ',';
           body.genre?.forEach((item: any) => {
@@ -67,6 +79,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             .from('book_books')
             .insert([
               {
+                slug: nameSlug,
                 author_id: body.author_id,
                 title: body.title,
                 isbn: body.isbn,
@@ -198,7 +211,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       break;
 
     default:
-      res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
-      res.status(405).end(`Method ${method} Not Allowed`);
+      res.status(200).json('Method required');
+      break;
   }
 }

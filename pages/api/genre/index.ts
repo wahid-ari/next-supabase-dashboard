@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { supabase, getSessionToken, writeLogs } from '@libs/supabase';
+import slug from 'slug';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, body, query } = req;
@@ -8,24 +9,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      if (!query.id) {
+      if (!query.id && !query.slug) {
         const { data } = await supabase.from('book_genres').select(`*`).order('id');
         res.status(200).json(data);
-      } else if (query.id && query.seo) {
-        const { data } = await supabase.from('book_genres').select(`name`).eq('id', query.id).single();
+      } else if (query.slug && query.seo) {
+        const { data } = await supabase.from('book_genres').select(`name`).eq('slug', query.slug).single();
         // https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data);
       } else {
-        const { data: genres } = await supabase.from('book_genres').select(`*`).eq('id', query.id).order('id');
+        let column = query.id ? 'id' : 'slug';
+        let param = query.id ? query.id : query.slug;
+        const { data: genres } = await supabase.from('book_genres').select(`*`).eq(column, param).order('id');
         const { data: books_genres } = await supabase
           .from('book_books_genres')
           .select(`*`)
-          .eq('genre_id', query.id)
+          .eq('genre_id', genres[0].id)
           .order('id');
         const { data: books } = await supabase
           .from('book_books')
-          .select(`id, title, published, image, book_authors (id, name, image)`)
+          .select(`id, slug, title, published, image, book_authors (id, slug, name, image)`)
           .order('id');
 
         const books_by_genres = [];
@@ -51,8 +54,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!body.name) {
           res.status(422).json({ error: 'Name required' });
         } else {
+          let nameSlug = slug(body.name);
+          const { data: isSlugExist } = await supabase.from('book_genres').select(`*`).eq('slug', nameSlug).order('id');
+          // if slug already exist, add genres.length + 1 to slug to make it unique
+          if (isSlugExist.length > 0) {
+            const { data: genres } = await supabase.from('book_genres').select(`id`, { count: 'exact' });
+            nameSlug = `${nameSlug}-${genres.length + 1}`;
+          }
           const { error } = await supabase.from('book_genres').insert([
             {
+              slug: nameSlug,
               name: body.name,
               link: body.link,
             },
@@ -119,7 +130,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       break;
 
     default:
-      res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
-      res.status(405).end(`Method ${method} Not Allowed`);
+      res.status(200).json('Method required');
+      break;
   }
 }

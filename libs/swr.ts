@@ -35,9 +35,9 @@ export function useBooksData() {
 }
 
 // detail book
-export function useBookData(id: string, seo?: boolean) {
+export function useBookData(id: string, slug?: string) {
   const { data, error, isLoading } = useSWR(
-    seo ? `${API_URL}/book?id=${id}&seo=true` : `${API_URL}/book?id=${id}`,
+    slug ? `${API_URL}/book?slug=${slug}` : `${API_URL}/book?id=${id}`,
     fetcher
   );
   return { data, error, isLoading };
@@ -48,11 +48,17 @@ export function useAuthorsData() {
   return { data, error, isLoading };
 }
 
-export function useAuthorData(id: string, seo?: boolean) {
+export function useAuthorData(id: string, slug?: string) {
   const { data, error, isLoading } = useSWR(
-    seo ? `${API_URL}/author?id=${id}&seo=true` : `${API_URL}/author?id=${id}`,
+    slug ? `${API_URL}/author?slug=${slug}` : `${API_URL}/author?id=${id}`,
     fetcher
   );
+  return { data, error, isLoading };
+}
+
+// get total Book and Quote in from each Author
+export function useAuthorTotalBookQuoteData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/author/total-book-quote`, fetcher);
   return { data, error, isLoading };
 }
 
@@ -61,9 +67,9 @@ export function useGenresData() {
   return { data, error, isLoading };
 }
 
-export function useGenreData(id: string, seo?: boolean) {
+export function useGenreData(id: string, slug?: boolean) {
   const { data, error, isLoading } = useSWR(
-    seo ? `${API_URL}/genre?id=${id}&seo=true` : `${API_URL}/genre?id=${id}`,
+    slug ? `${API_URL}/genre?slug=${slug}` : `${API_URL}/genre?id=${id}`,
     fetcher
   );
   return { data, error, isLoading };

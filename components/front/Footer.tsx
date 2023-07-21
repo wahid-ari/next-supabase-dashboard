@@ -66,7 +66,7 @@ export default function Footer({ className, ...props }: { className?: string; [p
               </h2>
               <ul className='text-neutral-700 dark:text-neutral-300'>
                 <li className='mb-2'>
-                  <a href='https://my-movie-docs.vercel.app' target='_blank' rel='noreferrer' className={linkClassName}>
+                  <a href='https://my-book-docs.vercel.app' target='_blank' rel='noreferrer' className={linkClassName}>
                     API Docs
                   </a>
                 </li>

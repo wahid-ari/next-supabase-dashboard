@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { supabase, getSessionToken, writeLogs } from '@libs/supabase';
+import slug from 'slug';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, body, query } = req;
@@ -8,21 +9,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      if (!query.id) {
+      if (!query.id && !query.slug) {
         const { data } = await supabase.from('book_authors').select(`*`).order('id');
         res.status(200).json(data);
-      } else if (query.id && query.seo) {
-        const { data } = await supabase.from('book_authors').select(`name, bio`).eq('id', query.id).single();
+      } else if (query.slug && query.seo) {
+        const { data } = await supabase.from('book_authors').select(`name, bio`).eq('slug', query.slug).single();
         // https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data);
       } else {
+        let column = query.id ? 'id' : 'slug';
+        let param = query.id ? query.id : query.slug;
         const { data }: any = await supabase
           .from('book_authors')
           .select(
-            `*, book_quotes (id, author_id, quote), book_books (id, title, pages, language, published, link, image, image_small)`
+            `*, book_quotes (id, quote), book_books (id, slug, title, pages, language, published, link, image, image_small)`
           )
-          .eq('id', query.id)
+          .eq(column, param)
           .order('id');
         const { book_books, book_quotes } = data[0];
         delete data[0].book_books;
@@ -46,8 +49,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!body.name) {
           res.status(422).json({ error: 'Name required' });
         } else {
+          let nameSlug = slug(body.name);
+          const { data: isSlugExist } = await supabase
+            .from('book_authors')
+            .select(`*`)
+            .eq('slug', nameSlug)
+            .order('id');
+          // if slug already exist, add authors.length + 1 to slug to make it unique
+          if (isSlugExist.length > 0) {
+            const { data: authors } = await supabase.from('book_authors').select(`id`, { count: 'exact' });
+            nameSlug = `${nameSlug}-${authors.length + 1}`;
+          }
           const { error } = await supabase.from('book_authors').insert([
             {
+              slug: nameSlug,
               name: body.name,
               link: body.link,
               image: body.image,
@@ -122,7 +137,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       break;
 
     default:
-      res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
-      res.status(405).end(`Method ${method} Not Allowed`);
+      res.status(200).json('Method required');
+      break;
   }
 }

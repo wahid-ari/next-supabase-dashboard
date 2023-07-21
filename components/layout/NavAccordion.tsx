@@ -35,7 +35,7 @@ export default function NavAccordion({ title, routeName, className, icon, childr
             <Disclosure.Button
               {...props}
               className={twMerge(
-                'flex w-full items-center justify-start gap-2 rounded py-2 pl-3 text-gray-700 outline-none transition-all',
+                'flex w-full items-center justify-start gap-2 rounded py-2 pl-2.5 pr-2 text-gray-700 outline-none transition-all',
                 'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 'dark:text-neutral-300 dark:hover:text-sky-500',
                 'hover:bg-gray-100 dark:hover:bg-neutral-800',

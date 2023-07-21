@@ -93,7 +93,7 @@ NavLink.external = ({ href, icon, className, children, ...props }: Other) => {
       target='_blank'
       rel='noopener noreferrer'
       className={twMerge(
-        'my-1 flex w-full items-center justify-start gap-2 px-3 py-2 transition-all',
+        'my-1 flex w-full items-center justify-start gap-2 px-2.5 py-2 transition-all',
         'rounded text-sm font-medium text-gray-600 hover:text-sky-600 dark:text-neutral-300',
         'hover:bg-gray-100 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',

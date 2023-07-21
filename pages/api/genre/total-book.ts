@@ -14,6 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         items.push({
           id: genre.id,
           label: genre.name,
+          slug: genre.slug,
           total: 0,
         });
       }
@@ -43,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       break;
 
     default:
-      res.setHeader('Allow', ['GET']);
-      res.status(405).end(`Method ${method} Not Allowed`);
+      res.status(200).json('Method required');
+      break;
   }
 }

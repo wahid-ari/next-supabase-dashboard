@@ -143,7 +143,7 @@ export default function Example() {
         <Navbar data-testid='navbar' className='!z-0 lg:!flex' />
         <Text className='mt-4 !text-red-600'>Navbar should visible only in small to medium screen</Text>
         <Text className='!text-red-600'>
-          we pass classname={"'"}flex{"'"} to Navbar here only for test purpose
+          we pass className={"'"}flex{"'"} to Navbar here only for test purpose
         </Text>
       </Wrapper>
 

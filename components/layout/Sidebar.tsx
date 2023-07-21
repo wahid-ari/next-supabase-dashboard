@@ -90,23 +90,23 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
           )}
         >
-          <NavLink isHome href='/dashboard' icon={<ViewGridIcon className='h-4 w-4' />}>
+          <NavLink isHome href='/dashboard' icon={<ViewGridIcon className='h-5 w-5' />}>
             Dashboard
           </NavLink>
 
-          <NavLink href='/search' icon={<SearchIcon className='h-4 w-4' />} className='mt-1'>
+          <NavLink href='/search' icon={<SearchIcon className='h-5 w-5' />} className='mt-1'>
             Search
           </NavLink>
 
-          <NavLink href='/author' icon={<UserGroupIcon className='h-4 w-4' />} className='mt-1'>
+          <NavLink href='/author' icon={<UserGroupIcon className='h-5 w-5' />} className='mt-1'>
             Author
           </NavLink>
 
-          <NavLink href='/book' icon={<BookOpenIcon className='h-4 w-4' />} className='mt-1'>
+          <NavLink href='/book' icon={<BookOpenIcon className='h-5 w-5' />} className='mt-1'>
             Book
           </NavLink>
 
-          <NavLink href='/genre' icon={<ColorSwatchIcon className='h-4 w-4' />} className='mt-1'>
+          <NavLink href='/genre' icon={<ColorSwatchIcon className='h-5 w-5' />} className='mt-1'>
             Genre
           </NavLink>
 
@@ -114,23 +114,23 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             title='Activity'
             routeName='activity'
             className='mt-1'
-            icon={<ClipboardListIcon className='h-4 w-4' />}
+            icon={<ClipboardListIcon className='h-5 w-5' />}
           >
-            <NavLink href='/activity' icon={<DocumentReportIcon className='h-4 w-4' />}>
+            <NavLink href='/activity' icon={<DocumentReportIcon className='h-5 w-5' />}>
               Log
             </NavLink>
 
-            <NavLink href='/activity/session' icon={<TableIcon className='h-4 w-4' />} className='mt-1.5'>
+            <NavLink href='/activity/session' icon={<TableIcon className='h-5 w-5' />} className='mt-1.5'>
               Session
             </NavLink>
           </NavAccordion>
 
-          <NavAccordion title='Design' routeName='design' icon={<TemplateIcon className='h-4 w-4' />}>
-            <NavLink href='/design' icon={<ViewGridAddIcon className='h-4 w-4' />}>
+          <NavAccordion title='Design' routeName='design' icon={<TemplateIcon className='h-5 w-5' />}>
+            <NavLink href='/design' icon={<ViewGridAddIcon className='h-5 w-5' />}>
               Component
               <Badge>New</Badge>
             </NavLink>
-            <NavLink href='/design/layout' className='relative mt-1.5' icon={<ViewBoardsIcon className='h-4 w-4' />}>
+            <NavLink href='/design/layout' className='relative mt-1.5' icon={<ViewBoardsIcon className='h-5 w-5' />}>
               Layout
               <span className='absolute left-24 top-2.5 flex h-5 w-5 animate-bounce items-center justify-center'>
                 <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
@@ -139,13 +139,13 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             </NavLink>
           </NavAccordion>
 
-          <NavLink href='/settings' icon={<CogIcon className='h-4 w-4' />} className='mt-1'>
+          <NavLink href='/settings' icon={<CogIcon className='h-5 w-5' />} className='mt-1'>
             Settings
           </NavLink>
 
           <NavLink.external
             href='https://my-book-docs.vercel.app'
-            icon={<ExternalLinkIcon className='h-4 w-4' />}
+            icon={<ExternalLinkIcon className='h-5 w-5' />}
             className='mt-1'
           >
             Docs
@@ -167,11 +167,11 @@ export default function Sidebar({ className, ...props }: { className?: string; [
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
             )}
           >
-            <LogoutIcon className='h-4 w-4' />
+            <LogoutIcon className='h-5 w-5' />
             Logout
           </button>
           {/* ) : (
-              <NavLink.login href='/login' icon={<LoginIcon className='h-4 w-4' />} className='mt-1'>
+              <NavLink.login href='/login' icon={<LoginIcon className='h-5 w-5' />} className='mt-1'>
                 Login
               </NavLink.login>
             )
