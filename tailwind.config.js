@@ -9,6 +9,13 @@ module.exports = {
       transitionProperty: {
         'max-height': 'max-height',
       },
+      keyframes: {
+        shimmer: {
+          '100%': {
+            transform: 'translateX(100%)',
+          },
+        },
+      },
     },
   },
   variants: {

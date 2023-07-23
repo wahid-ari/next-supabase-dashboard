@@ -6,7 +6,7 @@ import { ArrowSmRightIcon } from '@heroicons/react/outline';
 import { faker } from '@faker-js/faker';
 import ReactSelect from 'react-select';
 import * as HoverCard from '@radix-ui/react-hover-card';
-import { twMerge } from 'tailwind-merge';
+import { extendTailwindMerge, twMerge } from 'tailwind-merge';
 
 import { tabledata } from '@utils/tableData';
 
@@ -632,6 +632,11 @@ export default function Example() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#loading-dots'>
               LoadingDots
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#loading-skeleton'>
+              LoadingSkeleton
             </Link>
           </span>
         </div>
@@ -1598,9 +1603,80 @@ function dissmissAllToast() {
       <Wrapper id='loading-dots' name='LoadingDots' props={['medium', 'large']} noChildren>
         <LoadingDots data-testid='loadingdots' />
         <br />
+        <br />
         <LoadingDots medium data-testid='loadingdots-medium' />
         <br />
+        <br />
         <LoadingDots large data-testid='loadingdots-large' />
+      </Wrapper>
+
+      <Wrapper id='loading-skeleton' name='LoadingSkeleton' noClassName noProps noChildren>
+        <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+          <div
+            className={twMerge(
+              'relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/60 p-4',
+              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite]',
+              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
+              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
+            )}
+          >
+            <div className='h-24 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            <div className='space-y-3'>
+              <div className='h-3 w-3/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-3 w-4/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-3 w-2/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            </div>
+          </div>
+
+          <div
+            className={twMerge(
+              'relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/60 p-4',
+              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite]',
+              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
+              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
+            )}
+          >
+            <div className='h-44 w-full rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+          </div>
+
+          <div
+            className={twMerge(
+              'relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 p-4',
+              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite]',
+              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
+              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
+            )}
+          >
+            <div className='space-y-3'>
+              <div className='h-3 w-3/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-3 w-4/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-3 w-2/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            </div>
+            <div className='space-y-3'>
+              <div className='h-3 w-1/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-3 w-2/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-3 w-3/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-3 w-4/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='w-5/5 h-3 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            </div>
+          </div>
+
+          <div
+            className={twMerge(
+              'relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 p-4',
+              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite]',
+              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
+              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
+            )}
+          >
+            <div className='h-24 w-24 rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            <div className='space-y-3'>
+              <div className='h-3 w-3/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-3 w-4/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-3 w-2/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            </div>
+          </div>
+        </div>
       </Wrapper>
     </Layout>
   );
