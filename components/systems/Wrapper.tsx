@@ -3,10 +3,13 @@ import Link from 'next/link';
 
 import Badge from '@components/systems/Badge';
 import Heading from '@components/systems/Heading';
+import { ExternalLinkIcon } from '@heroicons/react/outline';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   id?: string;
   name?: string;
+  docs?: string;
   props?: string[];
   variant?: string[];
   noClassName?: boolean;
@@ -19,6 +22,7 @@ type Props = {
 export default function Wrapper({
   id,
   name,
+  docs,
   props,
   variant,
   noClassName,
@@ -29,8 +33,8 @@ export default function Wrapper({
 }: Props) {
   return (
     <section id={id} className='pt-8'>
-      <Heading className='group transition-all duration-500'>
-        <span className='text-neutral-500 transition-all duration-500 group-hover:text-black dark:group-hover:text-white'>
+      <Heading className='group flex transition-all duration-500'>
+        <span className='mr-2 text-neutral-500 transition-all duration-500 group-hover:text-black dark:group-hover:text-white'>
           #
         </span>{' '}
         <Link
@@ -39,6 +43,19 @@ export default function Wrapper({
         >
           {name}
         </Link>
+        {docs && (
+          <a
+            href={docs}
+            className={twMerge(
+              'ml-2 flex w-5 items-center rounded text-sm font-medium transition-all duration-200',
+              'text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+            )}
+            target='_blank'
+            rel='noreferrer'
+          >
+            <ExternalLinkIcon className='ml-1 h-5 w-5' />
+          </a>
+        )}
       </Heading>
       {noWrap ? (
         <div className='mb-2'>{children}</div>

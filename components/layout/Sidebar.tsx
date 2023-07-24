@@ -128,6 +128,9 @@ export default function Sidebar({ className, ...props }: { className?: string; [
           <NavAccordion title='Design' routeName='design' icon={<TemplateIcon className='h-5 w-5' />}>
             <NavLink href='/design' icon={<ViewGridAddIcon className='h-5 w-5' />}>
               Component
+            </NavLink>
+            <NavLink href='/design/ui' icon={<ViewGridAddIcon className='h-5 w-5' />} className='mt-1.5'>
+              UI
               <Badge>New</Badge>
             </NavLink>
             <NavLink href='/design/layout' className='relative mt-1.5' icon={<ViewBoardsIcon className='h-5 w-5' />}>
