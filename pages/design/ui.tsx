@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AlertCircle, ChevronRight, Loader2, Mail, Terminal } from 'lucide-react';
@@ -23,9 +24,14 @@ import { AspectRatio } from '@/components/ui/AspectRatio';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
 import { Badge, badgeVariants } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { Checkbox } from '@/components/ui/Checkbox';
 
 export default function Ui() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
+  const [checkboxValue, setCheckboxValue] = useState(true)
+  function handleChangeCheckbox() {
+    checkboxValue == true ? setCheckboxValue(false) : setCheckboxValue(true);
+  }
 
   return (
     <Layout title='Design System - MyBook'>
@@ -74,16 +80,21 @@ export default function Ui() {
               Button
             </Link>
           </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#checkbox'>
+              Checkbox
+            </Link>
+          </span>
         </div>
       </Wrapper>
 
       <Wrapper
         id='accordion'
         name='Accordion'
-        props={['type', 'collapsible']}
+        props={['type', 'collapsible', 'defaultValue']}
         docs='https://ui.shadcn.com/docs/components/accordion'
       >
-        <Accordion type='single' collapsible className='w-full'>
+        <Accordion type='single' collapsible defaultValue='item-1' className='w-full'>
           <AccordionItem value='item-1'>
             <AccordionTrigger className='text-base'>Is it accessible?</AccordionTrigger>
             <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
@@ -225,6 +236,38 @@ export default function Ui() {
         </div>
       </Wrapper>
 
+      <Wrapper id='checkbox' name='Checkbox' props={['']} docs='https://ui.shadcn.com/docs/components/checkbox'>
+        <div className='flex items-center space-x-2'>
+          <Checkbox id='terms' checked={checkboxValue} onCheckedChange={handleChangeCheckbox} />
+          <label
+            htmlFor='terms'
+            className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+          >
+            Accept terms and conditions
+          </label>
+        </div>
+        <div className='flex items-center space-x-2 mt-4'>
+          <Checkbox id='checkbox-disabled' disabled />
+          <label
+            htmlFor='checkbox-disabled'
+            className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+          >
+            Disabled
+          </label>
+        </div>
+        <div className='items-top flex space-x-2 mt-4'>
+          <Checkbox id='terms1' />
+          <div className='grid gap-1.5 leading-none'>
+            <label
+              htmlFor='terms1'
+              className='text-[15px] font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+            >
+              Accept terms and conditions
+            </label>
+            <p className='text-neutral-400 text-sm'>You agree to our Terms of Service and Privacy Policy.</p>
+          </div>
+        </div>
+      </Wrapper>
       <Wrapper id='' name='' props={['']} docs='https://ui.shadcn.com/docs/components/'></Wrapper>
     </Layout>
   );

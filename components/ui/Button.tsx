@@ -5,16 +5,16 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/libs/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:opacity-50 disabled:cursor-not-allowed',
+  'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50 disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
         default: 'bg-sky-600 shadow hover:bg-sky-700 text-white focus-visible:ring-sky-400',
         destructive: 'bg-red-600 text-white shadow-sm hover:bg-red-700 focus-visible:ring-red-400',
-        outline: 'border dark:border-neutral-700 shadow-sm hover:bg-neutral-100 dark:hover:bg-neutral-800',
-        secondary: 'bg-neutral-100 dark:bg-neutral-800 shadow-sm hover:bg-neutral-200 dark:hover:bg-neutral-700',
-        ghost: 'hover:bg-neutral-100 dark:hover:bg-neutral-800',
-        link: 'text-primary underline-offset-4 hover:underline',
+        outline: 'border dark:border-neutral-700 shadow-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 focus-visible:ring-sky-400',
+        secondary: 'bg-neutral-100 dark:bg-neutral-800 shadow-sm hover:bg-neutral-200 dark:hover:bg-neutral-700 focus-visible:ring-sky-400',
+        ghost: 'hover:bg-neutral-100 dark:hover:bg-neutral-800 focus-visible:ring-sky-400',
+        link: 'text-primary underline-offset-4 hover:underline focus-visible:ring-sky-400',
       },
       size: {
         default: 'h-9 px-4 py-2',
