@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -51,8 +51,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/Dialog';
-import { Input } from '@/components/ui/Input';
-import { Label } from '@/components/ui/Label';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -71,6 +69,26 @@ import {
   DropdownMenuCheckboxItem,
 } from '@/components/ui/DropdownMenu';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
+import {
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from '@/components/ui/Menubar';
+import { NavigationMenuDemo } from '@/components/ui/NavigationMenuDemo';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
+import { Progress } from '@/components/ui/Progress';
 
 export default function Ui() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
@@ -84,6 +102,12 @@ export default function Ui() {
   const [showActivityBar, setShowActivityBar] = useState(false);
   const [showPanel, setShowPanel] = useState(false);
   const [position, setPosition] = useState('bottom');
+
+  const [progress, setProgress] = useState(20);
+  useEffect(() => {
+    const timer = setTimeout(() => setProgress(70), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Layout title='Design System - MyBook'>
@@ -155,6 +179,36 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#hovercard'>
               HoverCard
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#input'>
+              Input
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#label'>
+              Label
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#menubar'>
+              Menubar
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#navigationmenu'>
+              NavigationMenu
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#popover'>
+              Popover
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#progress'>
+              Progress
             </Link>
           </span>
         </div>
@@ -516,7 +570,12 @@ export default function Ui() {
         </DropdownMenu>
       </Wrapper>
 
-      <Wrapper id='hovercard' name='HoverCard' props={['']} docs='https://ui.shadcn.com/docs/components/hover-card'>
+      <Wrapper
+        id='hovercard'
+        name='HoverCard'
+        props={['open', 'onOpenChange']}
+        docs='https://ui.shadcn.com/docs/components/hover-card'
+      >
         <HoverCard>
           <HoverCardTrigger asChild>
             <Button variant='link'>@nextjs</Button>
@@ -539,6 +598,141 @@ export default function Ui() {
           </HoverCardContent>
         </HoverCard>
       </Wrapper>
+
+      <Wrapper id='input' name='Input' props={['type']} docs='https://ui.shadcn.com/docs/components/input'>
+        <Input type='email' placeholder='Email' />
+      </Wrapper>
+
+      <Wrapper id='label' name='Label' docs='https://ui.shadcn.com/docs/components/label'>
+        <div>
+          <div className='flex items-center space-x-2'>
+            <Checkbox id='terms2' />
+            <Label htmlFor='terms2'>Accept terms and conditions</Label>
+          </div>
+        </div>
+      </Wrapper>
+
+      <Wrapper id='menubar' name='Menubar' docs='https://ui.shadcn.com/docs/components/menubar'>
+        <Menubar>
+          <MenubarMenu>
+            <MenubarTrigger>File</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem>
+                New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem disabled>New Incognito Window</MenubarItem>
+              <MenubarSeparator />
+              <MenubarSub>
+                <MenubarSubTrigger>Share</MenubarSubTrigger>
+                <MenubarSubContent>
+                  <MenubarItem>Email link</MenubarItem>
+                  <MenubarItem>Messages</MenubarItem>
+                  <MenubarItem>Notes</MenubarItem>
+                </MenubarSubContent>
+              </MenubarSub>
+              <MenubarSeparator />
+              <MenubarItem>
+                Print... <MenubarShortcut>⌘P</MenubarShortcut>
+              </MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>Edit</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem>
+                Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+              </MenubarItem>
+              <MenubarSeparator />
+              <MenubarSub>
+                <MenubarSubTrigger>Find</MenubarSubTrigger>
+                <MenubarSubContent>
+                  <MenubarItem>Search the web</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Find...</MenubarItem>
+                  <MenubarItem>Find Next</MenubarItem>
+                  <MenubarItem>Find Previous</MenubarItem>
+                </MenubarSubContent>
+              </MenubarSub>
+              <MenubarSeparator />
+              <MenubarItem>Cut</MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>View</MenubarTrigger>
+            <MenubarContent>
+              <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
+              <MenubarCheckboxItem checked>Always Show Full URLs</MenubarCheckboxItem>
+              <MenubarSeparator />
+              <MenubarItem inset>
+                Reload <MenubarShortcut>⌘R</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem disabled inset>
+                Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
+              </MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem inset>Toggle Fullscreen</MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem inset>Hide Sidebar</MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>Profiles</MenubarTrigger>
+            <MenubarContent>
+              <MenubarRadioGroup value='benoit'>
+                <MenubarRadioItem value='andy'>Andy</MenubarRadioItem>
+                <MenubarRadioItem value='benoit'>Benoit</MenubarRadioItem>
+                <MenubarRadioItem value='Luis'>Luis</MenubarRadioItem>
+              </MenubarRadioGroup>
+              <MenubarSeparator />
+              <MenubarItem inset>Edit...</MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem inset>Add Profile...</MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+        </Menubar>
+      </Wrapper>
+
+      <Wrapper id='navigationmenu' name='NavigationMenu' docs='https://ui.shadcn.com/docs/components/navigation-menu'>
+        <NavigationMenuDemo />
+      </Wrapper>
+
+      <Wrapper
+        id='popover'
+        name='Popover'
+        props={['open', 'onOpenChange']}
+        docs='https://ui.shadcn.com/docs/components/popover'
+      >
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant='outline'>Open popover</Button>
+          </PopoverTrigger>
+          <PopoverContent className='w-80'>
+            <div className='grid gap-4'>
+              <div className='space-y-2'>
+                <h4 className='font-medium leading-none'>Dimensions</h4>
+                <p className='text-muted-foreground text-sm'>Set the dimensions for the layer.</p>
+              </div>
+              <div className='grid gap-4'>
+                <div className='grid grid-cols-3 items-center gap-4'>
+                  <Label htmlFor='width'>Width</Label>
+                  <Input id='width' defaultValue='100%' className='col-span-2 h-8' />
+                </div>
+                <div className='grid grid-cols-3 items-center gap-4'>
+                  <Label htmlFor='height'>Height</Label>
+                  <Input id='height' defaultValue='25px' className='col-span-2 h-8' />
+                </div>
+              </div>
+            </div>
+          </PopoverContent>
+        </Popover>
+      </Wrapper>
+
+      <Wrapper id='progress' name='Progress' props={['value']} docs='https://ui.shadcn.com/docs/components/progress'>
+        <Progress value={progress} className='w-[60%]' />
+        <br />
+        <Progress value={progress} className='h-2' />
+      </Wrapper>
+
       <Wrapper id='' name='' props={['']} docs='https://ui.shadcn.com/docs/components/'></Wrapper>
     </Layout>
   );
