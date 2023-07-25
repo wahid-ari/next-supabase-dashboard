@@ -727,10 +727,14 @@ export default function Ui() {
         </Popover>
       </Wrapper>
 
-      <Wrapper id='progress' name='Progress' props={['value']} docs='https://ui.shadcn.com/docs/components/progress'>
-        <Progress value={progress} className='w-[60%]' />
+      <Wrapper id='progress' name='Progress' props={['value', 'color', 'showValue']} docs='https://ui.shadcn.com/docs/components/progress'>
+        <Progress value={progress} className='w-[60%]' showValue />
         <br />
-        <Progress value={progress} className='h-2' />
+        <Progress value={progress} color='bg-emerald-600' className='h-2' />
+        <br />
+        <Progress value={0} className='h-3' />
+        <br />
+        <Progress value={0} showValue />
       </Wrapper>
 
       <Wrapper id='' name='' props={['']} docs='https://ui.shadcn.com/docs/components/'></Wrapper>
