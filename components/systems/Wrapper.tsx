@@ -47,13 +47,13 @@ export default function Wrapper({
           <a
             href={docs}
             className={twMerge(
-              'ml-2 flex w-5 items-center rounded text-sm font-medium transition-all duration-200',
+              'ml-2 flex items-center justify-center rounded text-sm font-medium transition-all duration-200',
               'text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             )}
             target='_blank'
             rel='noreferrer'
           >
-            <ExternalLinkIcon className='ml-1 h-5 w-5' />
+            <ExternalLinkIcon className='h-4 w-4' />
           </a>
         )}
       </Heading>
