@@ -17,6 +17,8 @@ import {
   UserPlus,
   Users,
   CalendarDays,
+  Bold,
+  Italic,
 } from 'lucide-react';
 
 import Layout from '@components/layout/Layout';
@@ -111,6 +113,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { Textarea } from '@/components/ui/Textarea';
 import { ToastAction } from '@/components/ui/Toast';
 import { useToast } from '@/components/ui/use-toast';
+import { Toggle } from '@/components/ui/Toggle';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/Tooltip';
 
 export default function Ui() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
@@ -180,6 +184,8 @@ export default function Ui() {
   ];
 
   const { toast } = useToast();
+
+  const [toggleValue, setToggleValue] = useState(false);
 
   return (
     <Layout title='Design System - MyBook'>
@@ -1147,7 +1153,12 @@ export default function Ui() {
         <Textarea placeholder='Type your message here.' />
       </Wrapper>
 
-      <Wrapper id='toast' name='Toast' props={['']} docs='https://ui.shadcn.com/docs/components/toast'>
+      <Wrapper
+        id='toast'
+        name='Toast'
+        props={['title', 'description', 'action', 'variant']}
+        docs='https://ui.shadcn.com/docs/components/toast'
+      >
         <Button
           variant='outline'
           onClick={() => {
@@ -1189,9 +1200,53 @@ export default function Ui() {
         </Button>
       </Wrapper>
 
-      <Wrapper id='toggle' name='Toggle' props={['']} docs='https://ui.shadcn.com/docs/components/toggle'></Wrapper>
+      <Wrapper
+        id='toggle'
+        name='Toggle'
+        props={['defaultPressed', 'pressed', 'onPressedChange', 'disabled', 'variant', 'size']}
+        docs='https://ui.shadcn.com/docs/components/toggle'
+      >
+        <Toggle pressed={toggleValue} onPressedChange={setToggleValue} aria-label='Toggle italic'>
+          <Bold className='h-4 w-4' />
+        </Toggle>
+        <br />
+        <br />
+        <Toggle variant='outline' aria-label='Toggle italic'>
+          <Italic className='h-4 w-4' />
+        </Toggle>
+        <br />
+        <br />
+        <Toggle aria-label='Toggle italic'>
+          <Italic className='mr-2 h-4 w-4' />
+          Italic
+        </Toggle>
+        <br />
+        <br />
+        <Toggle size='sm' variant='outline' aria-label='Toggle italic'>
+          <Italic className='h-4 w-4' />
+        </Toggle>
+        <br />
+        <br />
+        <Text>{toggleValue == true ? 'true' : 'false'}</Text>
+      </Wrapper>
 
-      <Wrapper id='tooltip' name='Tooltip' props={['']} docs='https://ui.shadcn.com/docs/components/tooltip'></Wrapper>
+      <Wrapper id='tooltip' name='Tooltip' props={['']} docs='https://ui.shadcn.com/docs/components/tooltip'>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant='outline'>Hover</Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>
+                Labore sunt enim mollit nisi ea. Dolore anim nisi nostrud nulla consectetur deserunt esse eu
+                reprehenderit incididunt tempor esse aliquip. Nostrud officia do nulla est aute qui proident fugiat
+                laborum occaecat proident. Id aliqua eu sint Lorem amet nisi veniam minim magna nulla. Nisi duis esse
+                laborum et quis voluptate consequat incididunt ex.
+              </p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </Wrapper>
 
       <Wrapper id='tooltip' name='Tooltip' props={['']} docs='https://ui.shadcn.com/docs/components/tooltip'></Wrapper>
     </Layout>
