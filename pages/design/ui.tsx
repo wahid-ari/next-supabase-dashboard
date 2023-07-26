@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -19,9 +19,12 @@ import {
   CalendarDays,
 } from 'lucide-react';
 
+import { cn } from '@/libs/utils';
+
 import Layout from '@components/layout/Layout';
 import Wrapper from '@components/systems/Wrapper';
 import Title from '@components/systems/Title';
+import Text from '@/components/systems/Text';
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/Accordion';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert';
@@ -90,13 +93,26 @@ import { NavigationMenuDemo } from '@/components/ui/NavigationMenuDemo';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
 import { Progress } from '@/components/ui/Progress';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/RadioGroup';
-import Text from '@/components/systems/Text';
+import { ScrollArea } from '@/components/ui/ScrollArea';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/Select';
+import { Separator } from '@/components/ui/Separator';
+import { Skeleton } from '@/components/ui/Skeleton';
+import { Slider } from '@/components/ui/Slider';
+import { Switch } from '@/components/ui/Switch';
 
 export default function Ui() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
   const [checkboxValue, setCheckboxValue] = useState(true);
-  function handleChangeCheckbox() {
+  function handleCheckboxChange() {
     checkboxValue == true ? setCheckboxValue(false) : setCheckboxValue(true);
   }
 
@@ -114,6 +130,17 @@ export default function Ui() {
   }, []);
 
   const [radiogroupValue, setRadiogroupValue] = useState('default');
+
+  const tags = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
+
+  const [selectValue, setSelectValue] = useState('banana');
+  function handleSelectChange(e: any) {
+    setSelectValue(e);
+  }
+
+  const [sliderValue, setSliderValue] = useState([50]);
+
+  const [switchValue, setSwitchValue] = useState(false);
 
   return (
     <Layout title='Design System - MyBook'>
@@ -220,6 +247,36 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#radiogroup'>
               RadioGroup
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#scrollarea'>
+              ScrollArea
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#select'>
+              Select
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#separator'>
+              Separator
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#skeleton'>
+              Skeleton
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#slider'>
+              Slider
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#switch'>
+              Switch
             </Link>
           </span>
         </div>
@@ -383,6 +440,7 @@ export default function Ui() {
           <Checkbox
             id='terms'
             checked={checkboxValue}
+            // onCheckedChange={handleCheckboxChange}
             onCheckedChange={() => setCheckboxValue(checkboxValue ? false : true)}
           />
           <label
@@ -616,7 +674,7 @@ export default function Ui() {
         </HoverCard>
       </Wrapper>
 
-      <Wrapper id='input' name='Input' props={['type']} docs='https://ui.shadcn.com/docs/components/input'>
+      <Wrapper id='input' name='Input' props={['type']} docs='https://ui.shadcn.com/docs/components/input' noChildren>
         <Input type='email' placeholder='Email' />
       </Wrapper>
 
@@ -749,6 +807,7 @@ export default function Ui() {
         name='Progress'
         props={['value', 'color', 'showValue']}
         docs='https://ui.shadcn.com/docs/components/progress'
+        noChildren
       >
         <Progress value={progress} className='w-[60%]' showValue />
         <br />
@@ -783,7 +842,119 @@ export default function Ui() {
         <Text>{radiogroupValue}</Text>
       </Wrapper>
 
-      <Wrapper id='' name='' props={['']} docs='https://ui.shadcn.com/docs/components/'></Wrapper>
+      <Wrapper id='scrollarea' name='ScrollArea' docs='https://ui.shadcn.com/docs/components/scroll-area'>
+        <ScrollArea className='h-72 w-48 rounded-md border dark:border-neutral-700'>
+          <div className='p-4'>
+            <h4 className='mb-4 text-sm font-medium leading-none'>Tags</h4>
+            {tags.map((tag) => (
+              <Fragment key={tag}>
+                <div className='text-sm'>{tag}</div>
+                <Separator className='my-2' />
+              </Fragment>
+            ))}
+          </div>
+        </ScrollArea>
+      </Wrapper>
+
+      <Wrapper
+        id='select'
+        name='Select'
+        props={['defaultValue', 'value', 'onValueChange', 'disabled']}
+        docs='https://ui.shadcn.com/docs/components/select'
+      >
+        <Select
+          value={selectValue}
+          // onValueChange={handleSelectChange}
+          // onValueChange={(e) => setSelectValue(e)}
+          onValueChange={setSelectValue}
+        >
+          <SelectTrigger className='w-[180px]'>
+            <SelectValue placeholder='Select a fruit' />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Fruits</SelectLabel>
+              <Separator className='my-2' />
+              <SelectItem value='apple'>Apple</SelectItem>
+              <SelectItem value='banana'>Banana</SelectItem>
+              <SelectItem value='blueberry'>Blueberry</SelectItem>
+              <SelectItem value='grapes'>Grapes</SelectItem>
+              <SelectItem value='pineapple' disabled>
+                Pineapple
+              </SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <br />
+        <Text>{selectValue}</Text>
+      </Wrapper>
+
+      <Wrapper
+        id='separator'
+        name='Separator'
+        props={['orientation']}
+        docs='https://ui.shadcn.com/docs/components/separator'
+        noChildren
+      >
+        <div>
+          <div className='space-y-1'>
+            <h4 className='text-sm font-medium leading-none'>Radix Primitives</h4>
+            <p className='text-muted-foreground text-sm'>An open-source UI component library.</p>
+          </div>
+          <Separator className='my-4' />
+          <div className='flex h-5 items-center space-x-4 text-sm'>
+            <div>Blog</div>
+            <Separator orientation='vertical' />
+            <div>Docs</div>
+            <Separator orientation='vertical' />
+            <div>Source</div>
+          </div>
+        </div>
+      </Wrapper>
+
+      <Wrapper id='skeleton' name='Skeleton' docs='https://ui.shadcn.com/docs/components/skeleton' noChildren>
+        <div className='flex items-center space-x-4'>
+          <Skeleton className='h-12 w-12 rounded-full' />
+          <div className='space-y-2'>
+            <Skeleton className='h-4 w-[250px]' />
+            <Skeleton className='h-4 w-[200px]' />
+          </div>
+        </div>
+      </Wrapper>
+
+      <Wrapper
+        id='slider'
+        name='Slider'
+        props={['value', 'onValueChange', 'defaultValue', 'max', 'step']}
+        docs='https://ui.shadcn.com/docs/components/slider'
+      >
+        <Slider
+          defaultValue={[50]}
+          value={sliderValue}
+          // onValueChange={(e) => setSliderValue(e)}
+          onValueChange={setSliderValue}
+          max={100}
+          step={1}
+          className='w-[60%]'
+        />
+        <br />
+        <Text>{sliderValue}</Text>
+      </Wrapper>
+
+      <Wrapper
+        id='switch'
+        name='Switch'
+        props={['defaultChecked', 'checked', 'onCheckedChange', 'disabled', '']}
+        docs='https://ui.shadcn.com/docs/components/switch'
+      >
+        <div className='flex items-center space-x-2'>
+          <Switch id='airplane-mode' checked={switchValue} onCheckedChange={setSwitchValue} />
+          <Label htmlFor='airplane-mode'>Airplane Mode</Label>
+        </div>
+        <br />
+        <Text>{switchValue == true ? 'true' : 'false'}</Text>
+      </Wrapper>
+
       <Wrapper id='' name='' props={['']} docs='https://ui.shadcn.com/docs/components/'></Wrapper>
     </Layout>
   );
