@@ -19,8 +19,6 @@ import {
   CalendarDays,
 } from 'lucide-react';
 
-import { cn } from '@/libs/utils';
-
 import Layout from '@components/layout/Layout';
 import Wrapper from '@components/systems/Wrapper';
 import Title from '@components/systems/Title';
@@ -43,6 +41,7 @@ import { AspectRatio } from '@/components/ui/AspectRatio';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
 import { Badge, badgeVariants } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/Collapsible';
 import {
@@ -107,6 +106,9 @@ import { Separator } from '@/components/ui/Separator';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { Slider } from '@/components/ui/Slider';
 import { Switch } from '@/components/ui/Switch';
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/Table';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { Textarea } from '@/components/ui/Textarea';
 
 export default function Ui() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
@@ -141,6 +143,39 @@ export default function Ui() {
   const [sliderValue, setSliderValue] = useState([50]);
 
   const [switchValue, setSwitchValue] = useState(false);
+
+  const invoices = [
+    {
+      invoice: 'INV001',
+      paymentStatus: 'Paid',
+      totalAmount: '$250.00',
+      paymentMethod: 'Credit Card',
+    },
+    {
+      invoice: 'INV002',
+      paymentStatus: 'Pending',
+      totalAmount: '$150.00',
+      paymentMethod: 'PayPal',
+    },
+    {
+      invoice: 'INV003',
+      paymentStatus: 'Unpaid',
+      totalAmount: '$350.00',
+      paymentMethod: 'Bank Transfer',
+    },
+    {
+      invoice: 'INV004',
+      paymentStatus: 'Paid',
+      totalAmount: '$450.00',
+      paymentMethod: 'Credit Card',
+    },
+    {
+      invoice: 'INV005',
+      paymentStatus: 'Paid',
+      totalAmount: '$550.00',
+      paymentMethod: 'PayPal',
+    },
+  ];
 
   return (
     <Layout title='Design System - MyBook'>
@@ -187,6 +222,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#button'>
               Button
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#card'>
+              Card
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -277,6 +317,41 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#switch'>
               Switch
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#switch'>
+              Switch
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#table'>
+              Table
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#tabs'>
+              Tabs
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#textarea'>
+              Textarea
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#toast'>
+              Toast
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#toggle'>
+              Toggle
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#tooltip'>
+              Tooltip
             </Link>
           </span>
         </div>
@@ -428,6 +503,43 @@ export default function Ui() {
             <Link href='/login'>As Link</Link>
           </Button>
         </div>
+      </Wrapper>
+
+      <Wrapper id='card' name='Card' docs='https://ui.shadcn.com/docs/components/card'>
+        <Card className='w-[350px]'>
+          <CardHeader>
+            <CardTitle>Create project</CardTitle>
+            <CardDescription>Deploy your new project in one-click.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form>
+              <div className='grid w-full items-center gap-4'>
+                <div className='flex flex-col space-y-2.5'>
+                  <Label htmlFor='name'>Name</Label>
+                  <Input id='name' placeholder='Name of your project' />
+                </div>
+                <div className='flex flex-col space-y-2.5'>
+                  <Label htmlFor='framework'>Framework</Label>
+                  <Select>
+                    <SelectTrigger id='framework'>
+                      <SelectValue placeholder='Select' />
+                    </SelectTrigger>
+                    <SelectContent position='popper'>
+                      <SelectItem value='next'>Next.js</SelectItem>
+                      <SelectItem value='sveltekit'>SvelteKit</SelectItem>
+                      <SelectItem value='astro'>Astro</SelectItem>
+                      <SelectItem value='nuxt'>Nuxt.js</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </form>
+          </CardContent>
+          <CardFooter className='flex justify-between'>
+            <Button variant='outline'>Cancel</Button>
+            <Button>Deploy</Button>
+          </CardFooter>
+        </Card>
       </Wrapper>
 
       <Wrapper
@@ -846,10 +958,10 @@ export default function Ui() {
         <ScrollArea className='h-72 w-48 rounded-md border dark:border-neutral-700'>
           <div className='p-4'>
             <h4 className='mb-4 text-sm font-medium leading-none'>Tags</h4>
-            {tags.map((tag) => (
+            {tags.map((tag, i) => (
               <Fragment key={tag}>
                 <div className='text-sm'>{tag}</div>
-                <Separator className='my-2' />
+                {i < tags.length - 1 && <Separator className='my-2' />}
               </Fragment>
             ))}
           </div>
@@ -955,7 +1067,89 @@ export default function Ui() {
         <Text>{switchValue == true ? 'true' : 'false'}</Text>
       </Wrapper>
 
-      <Wrapper id='' name='' props={['']} docs='https://ui.shadcn.com/docs/components/'></Wrapper>
+      <Wrapper id='table' name='Table' docs='https://ui.shadcn.com/docs/components/table'>
+        <Table>
+          <TableCaption>A list of your recent invoices.</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead className='w-[100px]'>Invoice</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Method</TableHead>
+              <TableHead className='text-right'>Amount</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {invoices.map((invoice) => (
+              <TableRow key={invoice.invoice}>
+                <TableCell className='font-medium'>{invoice.invoice}</TableCell>
+                <TableCell>{invoice.paymentStatus}</TableCell>
+                <TableCell>{invoice.paymentMethod}</TableCell>
+                <TableCell className='text-right'>{invoice.totalAmount}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Wrapper>
+
+      <Wrapper
+        id='tabs'
+        name='Tabs'
+        props={['defaultValue', 'value', 'onValueChange']}
+        docs='https://ui.shadcn.com/docs/components/tabs'
+      >
+        <Tabs defaultValue='account' className='w-[400px]'>
+          <TabsList className='grid w-full grid-cols-2'>
+            <TabsTrigger value='account'>Account</TabsTrigger>
+            <TabsTrigger value='password'>Password</TabsTrigger>
+          </TabsList>
+          <TabsContent value='account'>
+            <Card>
+              <CardHeader>
+                <CardTitle>Account</CardTitle>
+                <CardDescription>Make changes to your account here. Click save when you are done.</CardDescription>
+              </CardHeader>
+              <CardContent className='space-y-2'>
+                <div className='space-y-2.5'>
+                  <Label htmlFor='name'>Name</Label>
+                  <Input id='name' defaultValue='Pedro Duarte' />
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Button>Save changes</Button>
+              </CardFooter>
+            </Card>
+          </TabsContent>
+          <TabsContent value='password'>
+            <Card>
+              <CardHeader>
+                <CardTitle>Password</CardTitle>
+                <CardDescription>Change your password here. After saving, you will be logged out.</CardDescription>
+              </CardHeader>
+              <CardContent className='space-y-2'>
+                <div className='space-y-2.5'>
+                  <Label htmlFor='new'>New password</Label>
+                  <Input id='new' type='password' />
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Button>Save password</Button>
+              </CardFooter>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      </Wrapper>
+
+      <Wrapper id='textarea' name='Textarea' docs='https://ui.shadcn.com/docs/components/textarea' noChildren>
+        <Textarea placeholder='Type your message here.' />
+      </Wrapper>
+
+      <Wrapper id='toast' name='Toast' props={['']} docs='https://ui.shadcn.com/docs/components/toast'></Wrapper>
+
+      <Wrapper id='toggle' name='Toggle' props={['']} docs='https://ui.shadcn.com/docs/components/toggle'></Wrapper>
+
+      <Wrapper id='tooltip' name='Tooltip' props={['']} docs='https://ui.shadcn.com/docs/components/tooltip'></Wrapper>
+
+      <Wrapper id='tooltip' name='Tooltip' props={['']} docs='https://ui.shadcn.com/docs/components/tooltip'></Wrapper>
     </Layout>
   );
 }
