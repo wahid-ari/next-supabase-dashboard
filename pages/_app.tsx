@@ -15,6 +15,7 @@ import { AxiosProvider } from '@context/AxiosContext';
 import '@styles/globals.css';
 import '@styles/prism.css';
 
+import { Toaster as UiToaster } from '@/components/ui/Toaster';
 import LoadingDots from '@components/systems/LoadingDots';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -80,6 +81,7 @@ function MyApp({ Component, pageProps }: CustomAppProps) {
         <SessionProvider session={pageProps.session}>
           <AxiosProvider>
             <main className={inter.className}>
+              <UiToaster />
               <Toaster
                 gutter={4}
                 toastOptions={{

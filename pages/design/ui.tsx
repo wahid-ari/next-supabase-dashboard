@@ -109,6 +109,8 @@ import { Switch } from '@/components/ui/Switch';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/Table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { Textarea } from '@/components/ui/Textarea';
+import { ToastAction } from '@/components/ui/Toast';
+import { useToast } from '@/components/ui/use-toast';
 
 export default function Ui() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
@@ -176,6 +178,8 @@ export default function Ui() {
       paymentMethod: 'PayPal',
     },
   ];
+
+  const { toast } = useToast();
 
   return (
     <Layout title='Design System - MyBook'>
@@ -1143,7 +1147,47 @@ export default function Ui() {
         <Textarea placeholder='Type your message here.' />
       </Wrapper>
 
-      <Wrapper id='toast' name='Toast' props={['']} docs='https://ui.shadcn.com/docs/components/toast'></Wrapper>
+      <Wrapper id='toast' name='Toast' props={['']} docs='https://ui.shadcn.com/docs/components/toast'>
+        <Button
+          variant='outline'
+          onClick={() => {
+            toast({
+              description: 'Your message has been sent.',
+            });
+          }}
+        >
+          Show Toast
+        </Button>
+        <br />
+        <br />
+        <Button
+          variant='outline'
+          onClick={() => {
+            toast({
+              title: 'Scheduled: Catch up ',
+              description: 'Friday, February 10, 2023 at 5:57 PM',
+              action: <ToastAction altText='Goto schedule to undo'>Undo</ToastAction>,
+            });
+          }}
+        >
+          Add to calendar
+        </Button>
+        <br />
+        <br />
+        <Button
+          variant='outline'
+          onClick={() => {
+            toast({
+              variant: 'destructive',
+              title: 'Uh oh! Something went wrong.',
+              description: 'There was a problem with your request.',
+              action: <ToastAction altText='Try again'>Try again</ToastAction>,
+            });
+          }}
+        >
+          Show Danger Toast
+        </Button>
+      </Wrapper>
 
       <Wrapper id='toggle' name='Toggle' props={['']} docs='https://ui.shadcn.com/docs/components/toggle'></Wrapper>
 
