@@ -89,13 +89,17 @@ import {
 import { NavigationMenuDemo } from '@/components/ui/NavigationMenuDemo';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
 import { Progress } from '@/components/ui/Progress';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/RadioGroup';
+import Text from '@/components/systems/Text';
 
 export default function Ui() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
+
   const [checkboxValue, setCheckboxValue] = useState(true);
   function handleChangeCheckbox() {
     checkboxValue == true ? setCheckboxValue(false) : setCheckboxValue(true);
   }
+
   const [isOpenCollapsible, setIsOpenCollapsible] = useState(false);
 
   const [showStatusBar, setShowStatusBar] = useState(true);
@@ -108,6 +112,8 @@ export default function Ui() {
     const timer = setTimeout(() => setProgress(70), 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  const [radiogroupValue, setRadiogroupValue] = useState('default');
 
   return (
     <Layout title='Design System - MyBook'>
@@ -209,6 +215,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#progress'>
               Progress
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#radiogroup'>
+              RadioGroup
             </Link>
           </span>
         </div>
@@ -365,11 +376,15 @@ export default function Ui() {
       <Wrapper
         id='checkbox'
         name='Checkbox'
-        props={['checked', 'onCheckedChange']}
+        props={['checked', 'onCheckedChange', 'disabled']}
         docs='https://ui.shadcn.com/docs/components/checkbox'
       >
         <div className='flex items-center space-x-2'>
-          <Checkbox id='terms' checked={checkboxValue} onCheckedChange={handleChangeCheckbox} />
+          <Checkbox
+            id='terms'
+            checked={checkboxValue}
+            onCheckedChange={() => setCheckboxValue(checkboxValue ? false : true)}
+          />
           <label
             htmlFor='terms'
             className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
@@ -398,6 +413,8 @@ export default function Ui() {
             <p className='text-sm text-neutral-400'>You agree to our Terms of Service and Privacy Policy.</p>
           </div>
         </div>
+        <br />
+        <Text>{checkboxValue ? 'true' : 'false'}</Text>
       </Wrapper>
 
       <Wrapper
@@ -727,7 +744,12 @@ export default function Ui() {
         </Popover>
       </Wrapper>
 
-      <Wrapper id='progress' name='Progress' props={['value', 'color', 'showValue']} docs='https://ui.shadcn.com/docs/components/progress'>
+      <Wrapper
+        id='progress'
+        name='Progress'
+        props={['value', 'color', 'showValue']}
+        docs='https://ui.shadcn.com/docs/components/progress'
+      >
         <Progress value={progress} className='w-[60%]' showValue />
         <br />
         <Progress value={progress} color='bg-emerald-600' className='h-2' />
@@ -737,6 +759,31 @@ export default function Ui() {
         <Progress value={0} showValue />
       </Wrapper>
 
+      <Wrapper
+        id='radiogroup'
+        name='RadioGroup'
+        props={['name', 'value', 'defaultValue', 'onValueChange', 'disabled']}
+        docs='https://ui.shadcn.com/docs/components/radio-group'
+      >
+        <RadioGroup defaultValue={radiogroupValue} onValueChange={setRadiogroupValue}>
+          <div className='mb-2 flex items-center space-x-2'>
+            <RadioGroupItem value='default' id='r1' />
+            <Label htmlFor='r1'>Default</Label>
+          </div>
+          <div className='mb-2 flex items-center space-x-2'>
+            <RadioGroupItem value='comfortable' id='r2' />
+            <Label htmlFor='r2'>Comfortable</Label>
+          </div>
+          <div className='mb-2 flex items-center space-x-2'>
+            <RadioGroupItem value='compact' id='r3' disabled />
+            <Label htmlFor='r3'>Compact</Label>
+          </div>
+        </RadioGroup>
+        <br />
+        <Text>{radiogroupValue}</Text>
+      </Wrapper>
+
+      <Wrapper id='' name='' props={['']} docs='https://ui.shadcn.com/docs/components/'></Wrapper>
       <Wrapper id='' name='' props={['']} docs='https://ui.shadcn.com/docs/components/'></Wrapper>
     </Layout>
   );
