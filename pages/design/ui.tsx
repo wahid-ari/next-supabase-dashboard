@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTheme } from 'next-themes';
 import {
   AlertCircle,
   ChevronRight,
@@ -19,6 +20,8 @@ import {
   CalendarDays,
   Bold,
   Italic,
+  Sun,
+  Moon,
 } from 'lucide-react';
 
 import Layout from '@components/layout/Layout';
@@ -183,9 +186,20 @@ export default function Ui() {
     },
   ];
 
+  const { theme, setTheme } = useTheme();
+
   const { toast } = useToast();
 
   const [toggleValue, setToggleValue] = useState(false);
+
+  // TODO : get component from this page https://ui.shadcn.com/docs/changelog
+  // TODO : Calendar
+  // TODO : Combobox
+  // TODO : Command
+  // TODO : Context Menu
+  // TODO : Data Table
+  // TODO : Date Picker
+  // TODO : Sheet
 
   return (
     <Layout title='Design System - MyBook'>
@@ -330,11 +344,6 @@ export default function Ui() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#switch'>
-              Switch
-            </Link>
-          </span>
-          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#table'>
               Table
             </Link>
@@ -347,6 +356,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#textarea'>
               Textarea
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#theme'>
+              Theme
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -1151,6 +1165,23 @@ export default function Ui() {
 
       <Wrapper id='textarea' name='Textarea' docs='https://ui.shadcn.com/docs/components/textarea' noChildren>
         <Textarea placeholder='Type your message here.' />
+      </Wrapper>
+
+      <Wrapper id='theme' name='Theme' noClassName noChildren docs='https://ui.shadcn.com/docs/dark-mode'>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant='outline' size='icon'>
+              <Sun className='h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />
+              <Moon className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
+              <span className='sr-only'>Toggle theme</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align='start'>
+            <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme('system')}>System</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </Wrapper>
 
       <Wrapper
