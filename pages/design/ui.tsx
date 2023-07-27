@@ -163,6 +163,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { Toggle } from '@/components/ui/Toggle';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/Tooltip';
 import { cn } from '@/libs/utils';
+import DataTableDemo from '@/components/ui/DataTableDemo';
 
 export default function Ui() {
   const router = useRouter();
@@ -282,7 +283,6 @@ export default function Ui() {
   ];
 
   // TODO : Calendar
-  // TODO : Data Table
   // TODO : Date Picker
 
   return (
@@ -294,6 +294,8 @@ export default function Ui() {
           <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
         </span>
       </div>
+
+      <DataTableDemo />
 
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
         <div className='columns-2 text-sky-600 dark:text-sky-500 sm:columns-3'>
