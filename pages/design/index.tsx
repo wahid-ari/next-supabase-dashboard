@@ -48,6 +48,17 @@ import Select from '@components/systems/Select';
 import TableSimple from '@components/systems/TableSimple';
 import LoadingDots from '@components/systems/LoadingDots';
 
+import { MoreHorizontal } from 'lucide-react';
+import { Button as ButtonUi } from '@/components/ui/Button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/DropdownMenu';
+
 const searchBoxData = [
   {
     id: 1,
@@ -380,6 +391,31 @@ export default function Example() {
         Header: 'Email',
         accessor: 'email',
         width: 300,
+      },
+      {
+        Header: 'Actions',
+        accessor: 'actions',
+        width: 10,
+        disableSortBy: true,
+        Cell: ({ row }) => {
+          const data = row.original;
+          return (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <ButtonUi variant='ghost' className='h-8 w-8 p-0'>
+                  <span className='sr-only'>Open menu</span>
+                  <MoreHorizontal className='h-4 w-4' />
+                </ButtonUi>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align='end'>
+                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                <DropdownMenuItem onClick={() => navigator.clipboard.writeText(data.name)}>Copy Name</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>View customer</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          );
+        },
       },
     ],
     []
