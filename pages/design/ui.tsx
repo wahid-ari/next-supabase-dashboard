@@ -1,6 +1,7 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect, Fragment, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import {
   AlertCircle,
@@ -22,6 +23,13 @@ import {
   Italic,
   Sun,
   Moon,
+  Calendar,
+  Smile,
+  Settings,
+  SunIcon,
+  MoonIcon,
+  LaptopIcon,
+  Check,
 } from 'lucide-react';
 
 import Layout from '@components/layout/Layout';
@@ -49,6 +57,32 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/Collapsible';
+import {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from '@/components/ui/Command';
+import {
+  ContextMenu,
+  ContextMenuCheckboxItem,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
+} from '@/components/ui/ContextMenu';
 import {
   Dialog,
   DialogContent,
@@ -108,6 +142,16 @@ import {
   SelectValue,
 } from '@/components/ui/Select';
 import { Separator } from '@/components/ui/Separator';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/Sheet';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { Slider } from '@/components/ui/Slider';
 import { Switch } from '@/components/ui/Switch';
@@ -118,8 +162,10 @@ import { ToastAction } from '@/components/ui/Toast';
 import { useToast } from '@/components/ui/use-toast';
 import { Toggle } from '@/components/ui/Toggle';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/Tooltip';
+import { cn } from '@/libs/utils';
 
 export default function Ui() {
+  const router = useRouter();
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
   const [checkboxValue, setCheckboxValue] = useState(true);
@@ -192,14 +238,52 @@ export default function Ui() {
 
   const [toggleValue, setToggleValue] = useState(false);
 
-  // TODO : get component from this page https://ui.shadcn.com/docs/changelog
+  const [openCommand, setOpenCommand] = useState(false);
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key?.toLowerCase() == 'k' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        setOpenCommand((openCommand) => !openCommand);
+      }
+    };
+
+    document.addEventListener('keydown', down);
+    return () => document.removeEventListener('keydown', down);
+  }, []);
+  const runCommand = useCallback((command: () => unknown) => {
+    setOpenCommand(false);
+    command();
+  }, []);
+
+  const [openCombobox, setOpenCombobox] = useState(false);
+  const [comboboxValue, setComboboxValue] = useState('');
+  const frameworks = [
+    {
+      value: 'next.js',
+      label: 'Next.js',
+    },
+    {
+      value: 'sveltekit',
+      label: 'SvelteKit',
+    },
+    {
+      value: 'nuxt.js',
+      label: 'Nuxt.js',
+    },
+    {
+      value: 'remix',
+      label: 'Remix',
+    },
+    {
+      value: 'astro',
+      label: 'Astro',
+    },
+  ];
+
   // TODO : Calendar
-  // TODO : Combobox
-  // TODO : Command
-  // TODO : Context Menu
   // TODO : Data Table
   // TODO : Date Picker
-  // TODO : Sheet
 
   return (
     <Layout title='Design System - MyBook'>
@@ -261,6 +345,21 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#collapsible'>
               Collapsible
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#combobox'>
+              Combobox
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#command'>
+              Command
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#contextmenu'>
+              ContextMenu
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -326,6 +425,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#separator'>
               Separator
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#sheet'>
+              Sheet
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -637,6 +741,200 @@ export default function Ui() {
             <div className='rounded-md border px-4 py-3 font-mono text-sm dark:border-neutral-800'>@stitches/react</div>
           </CollapsibleContent>
         </Collapsible>
+      </Wrapper>
+
+      <Wrapper
+        id='combobox'
+        name='Combobox'
+        props={['open', 'onOpenChange']}
+        docs='https://ui.shadcn.com/docs/components/combobox'
+      >
+        <Popover open={openCombobox} onOpenChange={setOpenCombobox}>
+          <PopoverTrigger asChild>
+            <Button
+              variant='outline'
+              role='combobox'
+              aria-expanded={openCombobox}
+              className='w-[200px] justify-between'
+            >
+              {comboboxValue
+                ? frameworks.find((framework) => framework.value === comboboxValue)?.label
+                : 'Select framework...'}
+              <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className='w-[200px] p-0'>
+            <Command>
+              <CommandInput placeholder='Search framework...' />
+              <CommandEmpty>No framework found.</CommandEmpty>
+              <CommandGroup>
+                {frameworks.map((framework) => (
+                  <CommandItem
+                    key={framework.value}
+                    onSelect={(currentValue) => {
+                      setComboboxValue(currentValue === comboboxValue ? '' : currentValue);
+                      setOpenCombobox(false);
+                    }}
+                  >
+                    <Check
+                      className={cn(
+                        'mr-2 h-4 w-4 text-emerald-600',
+                        comboboxValue === framework.value ? 'opacity-100' : 'opacity-0'
+                      )}
+                    />
+                    {framework.label}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </Command>
+          </PopoverContent>
+        </Popover>
+      </Wrapper>
+
+      <Wrapper
+        id='command'
+        name='Command'
+        props={['open', 'onOpenChange']}
+        docs='https://ui.shadcn.com/docs/components/command'
+      >
+        <Command className='rounded-lg border shadow-md dark:border-neutral-700'>
+          <CommandInput placeholder='Type a command or search...' />
+          <CommandList>
+            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandGroup heading='Suggestions'>
+              <CommandItem>
+                <Calendar className='mr-2 h-4 w-4' />
+                <span>Calendar</span>
+              </CommandItem>
+            </CommandGroup>
+            <CommandSeparator />
+            <CommandGroup heading='Settings'>
+              <CommandItem>
+                <User className='mr-2 h-4 w-4' />
+                <span>Profile</span>
+                <CommandShortcut>⌘P</CommandShortcut>
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+        <br />
+        <br />
+        <>
+          <p className='text-muted-foreground text-sm'>
+            Press{' '}
+            <kbd className='text-muted-foreground pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium opacity-100 dark:border-neutral-700 dark:bg-neutral-800'>
+              <span className='text-xs'>⌘</span>K
+            </kbd>
+            <kbd className='text-muted-foreground pointer-events-none ml-2 inline-flex h-5 select-none items-center gap-1 rounded border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium opacity-100 dark:border-neutral-700 dark:bg-neutral-800'>
+              <span className='text-xs'>Ctrl</span>K
+            </kbd>
+          </p>
+          <CommandDialog open={openCommand} onOpenChange={setOpenCommand}>
+            <CommandInput placeholder='Type a command or search...' />
+            <CommandList>
+              <CommandEmpty>No results found.</CommandEmpty>
+              <CommandGroup heading='Pages'>
+                <CommandItem
+                  onSelect={() => {
+                    runCommand(() => router.push('/design'));
+                  }}
+                >
+                  <Calendar className='mr-2 h-4 w-4' />
+                  <span>Design</span>
+                </CommandItem>
+                <CommandItem
+                  onSelect={() => {
+                    runCommand(() => router.push('/design/layout'));
+                  }}
+                >
+                  <Smile className='mr-2 h-4 w-4' />
+                  <span>Layout</span>
+                </CommandItem>
+              </CommandGroup>
+              <CommandSeparator />
+              <CommandGroup heading='Settings'>
+                <CommandItem>
+                  <User className='mr-2 h-4 w-4' />
+                  <span>Profile</span>
+                  <CommandShortcut>⌘P</CommandShortcut>
+                </CommandItem>
+                <CommandItem>
+                  <CreditCard className='mr-2 h-4 w-4' />
+                  <span>Billing</span>
+                  <CommandShortcut>⌘B</CommandShortcut>
+                </CommandItem>
+                <CommandItem>
+                  <Settings className='mr-2 h-4 w-4' />
+                  <span>Settings</span>
+                  <CommandShortcut>⌘S</CommandShortcut>
+                </CommandItem>
+              </CommandGroup>
+              <CommandSeparator />
+              <CommandGroup heading='Theme'>
+                <CommandItem onSelect={() => runCommand(() => setTheme('light'))}>
+                  <SunIcon className='mr-2 h-4 w-4' />
+                  Light
+                </CommandItem>
+                <CommandItem onSelect={() => runCommand(() => setTheme('dark'))}>
+                  <MoonIcon className='mr-2 h-4 w-4' />
+                  Dark
+                </CommandItem>
+                <CommandItem onSelect={() => runCommand(() => setTheme('system'))}>
+                  <LaptopIcon className='mr-2 h-4 w-4' />
+                  System
+                </CommandItem>
+              </CommandGroup>
+            </CommandList>
+          </CommandDialog>
+        </>
+      </Wrapper>
+
+      <Wrapper
+        id='contextmenu'
+        name='ContextMenu'
+        props={['onOpenChange']}
+        docs='https://ui.shadcn.com/docs/components/context-menu'
+      >
+        <ContextMenu>
+          <ContextMenuTrigger className='flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed border-neutral-300 text-sm dark:border-neutral-700'>
+            Right click here
+          </ContextMenuTrigger>
+          <ContextMenuContent className='w-64'>
+            <ContextMenuItem inset>
+              Back
+              <ContextMenuShortcut>⌘[</ContextMenuShortcut>
+            </ContextMenuItem>
+            <ContextMenuItem inset disabled>
+              Forward
+              <ContextMenuShortcut>⌘]</ContextMenuShortcut>
+            </ContextMenuItem>
+            <ContextMenuSub>
+              <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
+              <ContextMenuSubContent className='w-48'>
+                <ContextMenuItem>
+                  Save Page As...
+                  <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
+                </ContextMenuItem>
+                <ContextMenuItem>Name Window...</ContextMenuItem>
+                <ContextMenuSeparator />
+                <ContextMenuItem>Developer Tools</ContextMenuItem>
+              </ContextMenuSubContent>
+            </ContextMenuSub>
+            <ContextMenuSeparator />
+            <ContextMenuCheckboxItem checked>
+              Show Bookmarks Bar
+              <ContextMenuShortcut>⌘⇧B</ContextMenuShortcut>
+            </ContextMenuCheckboxItem>
+            <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+            <ContextMenuSeparator />
+            <ContextMenuRadioGroup value='pedro'>
+              <ContextMenuLabel inset>People</ContextMenuLabel>
+              <ContextMenuSeparator />
+              <ContextMenuRadioItem value='pedro'>Pedro Duarte</ContextMenuRadioItem>
+              <ContextMenuRadioItem value='colm'>Colm Tuite</ContextMenuRadioItem>
+            </ContextMenuRadioGroup>
+          </ContextMenuContent>
+        </ContextMenu>
       </Wrapper>
 
       <Wrapper
@@ -1046,6 +1344,58 @@ export default function Ui() {
             <div>Source</div>
           </div>
         </div>
+      </Wrapper>
+
+      <Wrapper
+        id='sheet'
+        name='Sheet'
+        props={['side', 'defaultOpen', 'open', 'onOpenChange']}
+        docs='https://ui.shadcn.com/docs/components/sheet'
+        noChildren
+      >
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant='outline'>Right</Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>Edit profile</SheetTitle>
+              <SheetDescription>Make changes to your profile here. Click save when you are done.</SheetDescription>
+            </SheetHeader>
+            <div className='grid gap-4 py-4'>
+              <div className='grid grid-cols-4 items-center gap-4'>
+                <Label htmlFor='name' className='text-right'>
+                  Name
+                </Label>
+                <Input id='name' value='Pedro Duarte' className='col-span-3' />
+              </div>
+              <div className='grid grid-cols-4 items-center gap-4'>
+                <Label htmlFor='username' className='text-right'>
+                  Username
+                </Label>
+                <Input id='username' value='@peduarte' className='col-span-3' />
+              </div>
+            </div>
+            <SheetFooter>
+              <SheetClose asChild>
+                <Button type='submit'>Save changes</Button>
+              </SheetClose>
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>
+        <br />
+        <br />
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant='outline'>Bottom</Button>
+          </SheetTrigger>
+          <SheetContent side='bottom'>
+            <SheetHeader>
+              <SheetTitle>Edit profile</SheetTitle>
+              <SheetDescription>Make changes to your profile here. Click save when you are done.</SheetDescription>
+            </SheetHeader>
+          </SheetContent>
+        </Sheet>
       </Wrapper>
 
       <Wrapper id='skeleton' name='Skeleton' docs='https://ui.shadcn.com/docs/components/skeleton' noChildren>
