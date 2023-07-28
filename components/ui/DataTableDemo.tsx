@@ -257,10 +257,10 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       const payment = row.original;
       return (
-        <div className='text-right font-medium'>
+        <div className='relative text-right font-medium'>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant='ghost' className='h-8 w-8 p-0'>
+              <Button variant='ghost' className='h-8 w-8 p-0 hover:bg-neutral-200'>
                 <span className='sr-only'>Open menu</span>
                 <MoreHorizontal className='h-4 w-4' />
               </Button>
@@ -269,6 +269,9 @@ export const columns: ColumnDef<Payment>[] = [
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem onClick={() => navigator.clipboard.writeText(payment.id)}>
                 Copy payment ID
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigator.clipboard.writeText(payment.email)}>
+                Copy email
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>View customer</DropdownMenuItem>

@@ -18,7 +18,7 @@ export function DataTablePagination<TData>({
 }: DataTablePaginationProps<TData>) {
   return (
     <div>
-      <div className='grid grid-cols-1 gap-4 py-4 sm:grid-cols-2'>
+      <div className='grid grid-cols-1 gap-x-4 gap-y-2  py-4 sm:grid-cols-2'>
         <div className='text-center text-[13px] text-neutral-600 dark:text-neutral-300 sm:text-left'>
           {showText || ''}
         </div>
