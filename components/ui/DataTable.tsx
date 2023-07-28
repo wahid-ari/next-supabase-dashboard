@@ -99,6 +99,7 @@ export function DataTable<TData, TValue>({
   return (
     <div>
       <div className='flex items-center gap-2 pb-4'>
+        {/* TODO move this to DataTableToolbar  */}
         <Input
           placeholder='Filter emails...'
           value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}

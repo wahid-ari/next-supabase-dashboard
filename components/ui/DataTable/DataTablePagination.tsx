@@ -49,7 +49,8 @@ export function DataTablePagination<TData>({
             </Select>
           </div>
           <div className='flex items-center gap-2'>
-            <span className='text-sm text-neutral-800 dark:text-gray-200'>Go to page</span>
+            <span className='text-sm hidden sm:flex text-neutral-800 dark:text-gray-200'>Go to page</span>
+            <span className='text-sm sm:hidden text-neutral-800 dark:text-gray-200'>Page</span>
             <Input
               placeholder='1'
               title='Page'
@@ -85,7 +86,7 @@ export function DataTablePagination<TData>({
               <span className='sr-only'>Go to previous page</span>
               <ChevronLeftIcon className='h-4 w-4' />
             </Button>
-            <div className='flex items-center justify-center text-sm font-medium'>
+            <div className='flex items-center justify-center text-[13px] sm:text-sm font-medium'>
               Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
             </div>
             <Button
