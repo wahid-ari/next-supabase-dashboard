@@ -133,145 +133,145 @@ export const columns: ColumnDef<Payment>[] = [
 
 export const data: Payment[] = [
   {
-    id: '1234510',
+    id: '123451',
     amount: 100,
     status: 'pending',
     email: 'amparo@qnekt.com',
   },
   {
-    id: '1234511',
+    id: '123452',
     amount: 125,
     status: 'processing',
     email: 'daisy@stelaecor.com',
   },
   {
-    id: '1234512',
+    id: '123453',
     amount: 150,
     status: 'success',
     email: 'hawkins@silodyne.com',
   },
   {
-    id: '1234513',
+    id: '123454',
     amount: 175,
     status: 'failed',
     email: 'heath@calcu.com',
   },
   {
-    id: '1234514',
+    id: '123455',
     amount: 200,
     status: 'pending',
     email: 'nellie@portaline.com',
   },
   {
-    id: '1234515',
+    id: '123456',
     amount: 225,
     status: 'processing',
     email: 'dianewil@comveyor.com',
   },
   {
-    id: '1234516',
+    id: '123457',
     amount: 250,
     status: 'success',
     email: 'jenning@vitricomp.com',
   },
   {
-    id: '1234517',
+    id: '123458',
     amount: 275,
     status: 'failed',
     email: 'sophie@aeora.com',
   },
   {
-    id: '1234518',
+    id: '123459',
     amount: 300,
     status: 'pending',
     email: 'kimhes@mitroc.com',
   },
   {
-    id: '1234519',
+    id: '1234510',
     amount: 325,
     status: 'processing',
     email: 'conway@flotonic.com',
   },
   {
-    id: '1234520',
+    id: '1234511',
     amount: 450,
     status: 'success',
     email: 'stafford@rooforia.com',
   },
   {
-    id: '1234521',
+    id: '1234512',
     amount: 575,
     status: 'failed',
     email: 'burksmul@extrawear.com',
   },
   {
-    id: '1234522',
+    id: '1234513',
     amount: 600,
     status: 'pending',
     email: 'renawel@vicon.com',
   },
   {
-    id: '1234523',
+    id: '1234514',
     amount: 625,
     status: 'processing',
     email: 'newmane@pyramax.com',
   },
   {
-    id: '1234524',
+    id: '1234515',
     amount: 650,
     status: 'success',
     email: 'landry@genesynk.com',
   },
   {
-    id: '1234525',
+    id: '1234516',
     amount: 675,
     status: 'failed',
     email: 'franks@pasturia.com',
   },
   {
-    id: '1234526',
+    id: '1234517',
     amount: 700,
     status: 'pending',
     email: 'tamika@diginetic.com',
   },
   {
-    id: '1234527',
+    id: '1234518',
     amount: 725,
     status: 'processing',
     email: 'cleveland@vetron.com',
   },
   {
-    id: '1234528',
+    id: '1234519',
     amount: 750,
     status: 'success',
     email: 'shelbye@dadabase.com',
   },
   {
-    id: '1234529',
+    id: '1234520',
     amount: 775,
     status: 'failed',
     email: 'terry@volax.com',
   },
   {
-    id: '1234530',
+    id: '1234521',
     amount: 800,
     status: 'pending',
     email: 'dums@elox.com',
   },
   {
-    id: '1234531',
+    id: '1234522',
     amount: 825,
     status: 'processing',
     email: 'genzy@hola.com',
   },
   {
-    id: '1234532',
+    id: '1234523',
     amount: 850,
     status: 'success',
     email: 'milen@trust.com',
   },
   {
-    id: '1234533',
+    id: '1234524',
     amount: 875,
     status: 'failed',
     email: 'konek@gmail.com',
@@ -280,8 +280,8 @@ export const data: Payment[] = [
 
 export default function DataTableDemo() {
   return (
-    <div className='container mx-auto py-10'>
-      <DataTable columns={columns} data={data} />
+    <div className='mx-auto py-10'>
+      <DataTable columns={columns} data={data} itemPerPage={[5, 10, 20]} />
     </div>
   );
 }

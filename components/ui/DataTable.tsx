@@ -29,13 +29,19 @@ import { DataTablePagination } from '@/components/ui/DataTable/DataTablePaginati
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  itemPerPage?: number[];
 }
 
-export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({
+  columns,
+  data,
+  itemPerPage = [10, 20, 30, 40, 50],
+}: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const [keyword, setKeyword] = React.useState('');
   const table = useReactTable({
     data,
     columns,
@@ -53,7 +59,32 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
       columnVisibility,
       rowSelection,
     },
+    initialState: {
+      pagination: {
+        pageSize: itemPerPage[0],
+      },
+    },
   });
+
+  // this is for showing total data in table
+  let pageSize = table.getState().pagination.pageSize;
+  let show = pageSize * (table.getState().pagination.pageIndex + 1);
+  if (keyword == '') {
+    // if not searching and in the last page
+    if (table.getState().pagination.pageIndex == table.getPageOptions().length - 1) {
+      show = data.length;
+    }
+  } else {
+    // if searching and in the last page
+    if (table.getState().pagination.pageIndex == table.getPageOptions().length - 1) {
+      show = table.getRowModel().rows?.length;
+    }
+  }
+  // if searching, show total data from filteredLength
+  let dataLength = keyword == '' ? data.length : table.getRowModel().rows?.length;
+  let showText = `Showing ${table.getState().pagination.pageIndex * pageSize + 1} to ${show} from ${dataLength} ${
+    keyword == '' ? 'total' : 'filtered'
+  } data`;
 
   return (
     <div>
@@ -61,7 +92,10 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
         <Input
           placeholder='Filter emails...'
           value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
-          onChange={(event) => table.getColumn('email')?.setFilterValue(event.target.value)}
+          onChange={(event) => {
+            table.getColumn('email')?.setFilterValue(event.target.value);
+            setKeyword(event.target.value);
+          }}
           className='h-9 max-w-xs'
         />
         <DropdownMenu>
@@ -94,7 +128,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} noHover>
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
@@ -124,7 +158,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} />
+      <DataTablePagination table={table} showText={showText} itemPerPage={itemPerPage} />
     </div>
   );
 }

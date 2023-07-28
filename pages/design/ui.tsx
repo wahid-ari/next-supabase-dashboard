@@ -636,7 +636,7 @@ export default function Ui() {
       </Wrapper>
 
       <Wrapper id='card' name='Card' docs='https://ui.shadcn.com/docs/components/card'>
-        <Card className='w-[350px]'>
+        <Card className='max-w-[350px]'>
           <CardHeader>
             <CardTitle>Create project</CardTitle>
             <CardDescription>Deploy your new project in one-click.</CardDescription>
@@ -723,8 +723,8 @@ export default function Ui() {
         props={['open', 'onOpenChange']}
         docs='https://ui.shadcn.com/docs/components/collapsible'
       >
-        <Collapsible open={isOpenCollapsible} onOpenChange={setIsOpenCollapsible} className='w-[350px] space-y-2'>
-          <div className='flex items-center justify-between space-x-4 px-4'>
+        <Collapsible open={isOpenCollapsible} onOpenChange={setIsOpenCollapsible} className='max-w-[350px] space-y-2'>
+          <div className='flex items-center justify-between space-x-4'>
             <h4 className='text-sm font-semibold'>@peduarte starred 3 repositories</h4>
             <CollapsibleTrigger asChild>
               <Button variant='outline' size='icon'>
@@ -898,7 +898,7 @@ export default function Ui() {
         docs='https://ui.shadcn.com/docs/components/context-menu'
       >
         <ContextMenu>
-          <ContextMenuTrigger className='flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed border-neutral-300 text-sm dark:border-neutral-700'>
+          <ContextMenuTrigger className='flex h-[150px] max-w-[300px] items-center justify-center rounded-md border border-dashed border-neutral-300 text-sm dark:border-neutral-700'>
             Right click here
           </ContextMenuTrigger>
           <ContextMenuContent className='w-64'>
@@ -1473,7 +1473,7 @@ export default function Ui() {
         props={['defaultValue', 'value', 'onValueChange']}
         docs='https://ui.shadcn.com/docs/components/tabs'
       >
-        <Tabs defaultValue='account' className='w-[400px]'>
+        <Tabs defaultValue='account' className='max-w-[400px]'>
           <TabsList className='grid w-full grid-cols-2'>
             <TabsTrigger value='account'>Account</TabsTrigger>
             <TabsTrigger value='password'>Password</TabsTrigger>
