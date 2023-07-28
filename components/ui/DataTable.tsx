@@ -3,16 +3,19 @@
 import * as React from 'react';
 import {
   ColumnDef,
-  SortingState,
   ColumnFiltersState,
+  SortingState,
+  VisibilityState,
   flexRender,
   getCoreRowModel,
-  useReactTable,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
   getPaginationRowModel,
   getSortedRowModel,
   getFilteredRowModel,
-  VisibilityState,
+  useReactTable,
 } from '@tanstack/react-table';
+import { Settings2 } from 'lucide-react';
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/Table';
 import { Button } from '@/components/ui/Button';
@@ -21,10 +24,12 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
-import { SlidersHorizontal } from 'lucide-react';
 import { DataTablePagination } from '@/components/ui/DataTable/DataTablePagination';
+import { DataTableToolbar } from '@/components/ui/DataTable/DataTableToolbar';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -45,14 +50,17 @@ export function DataTable<TData, TValue>({
   const table = useReactTable({
     data,
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
+    enableRowSelection: true,
     onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    getSortedRowModel: getSortedRowModel(),
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
     state: {
       sorting,
       columnFilters,
@@ -69,26 +77,28 @@ export function DataTable<TData, TValue>({
   // this is for showing total data in table
   let pageSize = table.getState().pagination.pageSize;
   let show = pageSize * (table.getState().pagination.pageIndex + 1);
-  if (keyword == '') {
+  const isFiltered = table.getState().columnFilters.length > 0 || keyword != '';
+  if (!isFiltered) {
     // if not searching and in the last page
-    if (table.getState().pagination.pageIndex == table.getPageOptions().length - 1) {
+    if (table.getState().pagination.pageIndex == table?.getPageOptions().length - 1) {
       show = data.length;
     }
   } else {
     // if searching and in the last page
-    if (table.getState().pagination.pageIndex == table.getPageOptions().length - 1) {
-      show = table.getRowModel().rows?.length;
+    if (table.getState().pagination.pageIndex == table?.getPageOptions().length - 1) {
+      show = table.getFilteredRowModel().rows.length;
     }
   }
+
   // if searching, show total data from filteredLength
-  let dataLength = keyword == '' ? data.length : table.getRowModel().rows?.length;
+  let dataLength = table.getFilteredRowModel().rows.length;
   let showText = `Showing ${table.getState().pagination.pageIndex * pageSize + 1} to ${show} from ${dataLength} ${
-    keyword == '' ? 'total' : 'filtered'
+    isFiltered ? 'filtered' : 'total'
   } data`;
 
   return (
     <div>
-      <div className='flex items-center gap-2 py-4'>
+      <div className='flex items-center gap-2 pb-4'>
         <Input
           placeholder='Filter emails...'
           value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
@@ -98,14 +108,17 @@ export function DataTable<TData, TValue>({
           }}
           className='h-9 max-w-xs'
         />
+        <DataTableToolbar table={table} />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant='outline' className='ml-auto'>
-              <SlidersHorizontal className='mr-2 h-4 w-4' />
+            <Button variant='outline' size='sm' className='ml-auto h-9'>
+              <Settings2 className='mr-2 h-4 w-4' />
               View
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end'>
+            <DropdownMenuLabel>Toggle Column</DropdownMenuLabel>
+            <DropdownMenuSeparator />
             {table
               .getAllColumns()
               .filter((column) => column.getCanHide())

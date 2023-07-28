@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/Input';
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
-  showText: string;
+  showText?: string;
   itemPerPage?: number[];
 }
 
@@ -19,7 +19,9 @@ export function DataTablePagination<TData>({
   return (
     <div>
       <div className='grid grid-cols-1 gap-4 py-4 sm:grid-cols-2'>
-        <div className='text-center text-[13px] text-neutral-600 dark:text-neutral-300 sm:text-left'>{showText}</div>
+        <div className='text-center text-[13px] text-neutral-600 dark:text-neutral-300 sm:text-left'>
+          {showText || ''}
+        </div>
         <div className='text-center text-[13px] text-neutral-600 dark:text-neutral-300 sm:text-right'>
           {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s) selected
         </div>

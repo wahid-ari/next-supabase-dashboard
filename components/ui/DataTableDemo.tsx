@@ -21,116 +21,6 @@ export type Payment = {
   email: string;
 };
 
-export const columns: ColumnDef<Payment>[] = [
-  {
-    id: 'select',
-    header: ({ table }) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected()}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label='Select all'
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label='Select row'
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: 'id',
-    header: 'ID',
-  },
-  {
-    accessorKey: 'email',
-    header: ({ column }) => {
-      return (
-        <Button variant='ghost' className='-ml-4' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
-          Email
-          <ArrowUpDown className='ml-2 h-4 w-4' />
-        </Button>
-      );
-    },
-  },
-  {
-    accessorKey: 'status',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Status' />,
-    cell: ({ row }) => {
-      const data = row.original;
-      if (data.status == 'pending') {
-        return (
-          <span className='rounded-full border border-orange-600 bg-orange-100 px-2 pb-0.5 text-[13px] font-medium text-orange-600'>
-            {data.status}
-          </span>
-        );
-      } else if (data.status == 'processing') {
-        return (
-          <span className='rounded-full border border-sky-600 bg-sky-100 px-2 pb-0.5 text-[13px] font-medium text-sky-600'>
-            {data.status}
-          </span>
-        );
-      } else if (data.status == 'success') {
-        return (
-          <span className='rounded-full border border-emerald-600 bg-emerald-100 px-2 pb-0.5 text-[13px] font-medium text-emerald-600'>
-            {data.status}
-          </span>
-        );
-      } else {
-        return (
-          <span className='rounded-full border border-red-600 bg-red-100 px-2 pb-0.5 text-[13px] font-medium text-red-600'>
-            {data.status}
-          </span>
-        );
-      }
-    },
-  },
-  {
-    accessorKey: 'amount',
-    header: () => <div className='text-right'>Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('amount'));
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      }).format(amount);
-
-      return <div className='text-right font-medium'>{formatted}</div>;
-    },
-  },
-  {
-    header: () => <div className='text-right'>Actions</div>,
-    id: 'actions',
-    cell: ({ row }) => {
-      const payment = row.original;
-      return (
-        <div className='text-right font-medium'>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant='ghost' className='h-8 w-8 p-0'>
-                <span className='sr-only'>Open menu</span>
-                <MoreHorizontal className='h-4 w-4' />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align='end'>
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem onClick={() => navigator.clipboard.writeText(payment.id)}>
-                Copy payment ID
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>View customer</DropdownMenuItem>
-              <DropdownMenuItem>View payment details</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      );
-    },
-  },
-];
-
 export const data: Payment[] = [
   {
     id: '123451',
@@ -278,9 +168,122 @@ export const data: Payment[] = [
   },
 ];
 
+export const columns: ColumnDef<Payment>[] = [
+  {
+    id: 'select',
+    header: ({ table }) => (
+      <Checkbox
+        checked={table.getIsAllPageRowsSelected()}
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label='Select all'
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label='Select row'
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: 'id',
+    header: 'ID',
+  },
+  {
+    accessorKey: 'email',
+    header: ({ column }) => {
+      return (
+        <Button variant='ghost' className='-ml-4' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+          Email
+          <ArrowUpDown className='ml-2 h-4 w-4' />
+        </Button>
+      );
+    },
+  },
+  {
+    accessorKey: 'status',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Status' />,
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
+    cell: ({ row }) => {
+      const data = row.original;
+      if (data.status == 'pending') {
+        return (
+          <span className='rounded-full border border-orange-600 bg-orange-100 px-2 pb-0.5 text-[13px] font-medium text-orange-600'>
+            {data.status}
+          </span>
+        );
+      } else if (data.status == 'processing') {
+        return (
+          <span className='rounded-full border border-sky-600 bg-sky-100 px-2 pb-0.5 text-[13px] font-medium text-sky-600'>
+            {data.status}
+          </span>
+        );
+      } else if (data.status == 'success') {
+        return (
+          <span className='rounded-full border border-emerald-600 bg-emerald-100 px-2 pb-0.5 text-[13px] font-medium text-emerald-600'>
+            {data.status}
+          </span>
+        );
+      } else {
+        return (
+          <span className='rounded-full border border-red-600 bg-red-100 px-2 pb-0.5 text-[13px] font-medium text-red-600'>
+            {data.status}
+          </span>
+        );
+      }
+    },
+  },
+  {
+    accessorKey: 'amount',
+    header: () => <div className='text-right'>Amount</div>,
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue('amount'));
+      const formatted = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      }).format(amount);
+
+      return <div className='text-right font-medium'>{formatted}</div>;
+    },
+  },
+  {
+    header: () => <div className='text-right'>Actions</div>,
+    id: 'actions',
+    cell: ({ row }) => {
+      const payment = row.original;
+      return (
+        <div className='text-right font-medium'>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant='ghost' className='h-8 w-8 p-0'>
+                <span className='sr-only'>Open menu</span>
+                <MoreHorizontal className='h-4 w-4' />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align='end'>
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuItem onClick={() => navigator.clipboard.writeText(payment.id)}>
+                Copy payment ID
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>View customer</DropdownMenuItem>
+              <DropdownMenuItem>View payment details</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      );
+    },
+  },
+];
+
 export default function DataTableDemo() {
   return (
-    <div className='mx-auto py-10'>
+    <div className='mx-auto'>
       <DataTable columns={columns} data={data} itemPerPage={[5, 10, 20]} />
     </div>
   );

@@ -295,8 +295,6 @@ export default function Ui() {
         </span>
       </div>
 
-      <DataTableDemo />
-
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
         <div className='columns-2 text-sky-600 dark:text-sky-500 sm:columns-3'>
           <span className='mb-3 block underline'>
@@ -362,6 +360,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#contextmenu'>
               ContextMenu
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#datatable'>
+              DataTable
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -937,6 +940,10 @@ export default function Ui() {
             </ContextMenuRadioGroup>
           </ContextMenuContent>
         </ContextMenu>
+      </Wrapper>
+
+      <Wrapper id='datatable' name='DataTable' docs='https://ui.shadcn.com/docs/components/data-table'>
+        <DataTableDemo />
       </Wrapper>
 
       <Wrapper
@@ -1630,8 +1637,6 @@ export default function Ui() {
           </Tooltip>
         </TooltipProvider>
       </Wrapper>
-
-      <Wrapper id='tooltip' name='Tooltip' props={['']} docs='https://ui.shadcn.com/docs/components/tooltip'></Wrapper>
     </Layout>
   );
 }
