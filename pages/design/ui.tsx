@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
+import { format } from 'date-fns';
 import {
   AlertCircle,
   ChevronRight,
@@ -23,13 +24,13 @@ import {
   Italic,
   Sun,
   Moon,
-  Calendar,
   Smile,
   Settings,
   SunIcon,
   MoonIcon,
   LaptopIcon,
   Check,
+  CalendarIcon,
 } from 'lucide-react';
 
 import Layout from '@components/layout/Layout';
@@ -54,6 +55,7 @@ import { AspectRatio } from '@/components/ui/AspectRatio';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
 import { Badge, badgeVariants } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { Calendar } from '@/components/ui/Calendar';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/Collapsible';
@@ -282,8 +284,7 @@ export default function Ui() {
     },
   ];
 
-  // TODO : Calendar
-  // TODO : Date Picker
+  const [date, setDate] = useState<Date | undefined>(new Date());
 
   return (
     <Layout title='Design System - MyBook'>
@@ -333,6 +334,11 @@ export default function Ui() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#calendar'>
+              Calendar
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#card'>
               Card
             </Link>
@@ -365,6 +371,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#datatable'>
               DataTable
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#datepicker'>
+              DatePicker
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -638,6 +649,24 @@ export default function Ui() {
         </div>
       </Wrapper>
 
+      <Wrapper
+        id='calendar'
+        name='Calendar'
+        props={['mode', 'selected', 'onSelect']}
+        docs='https://ui.shadcn.com/docs/components/calendar'
+      >
+        <div className='flex items-center'>
+          <Calendar
+            mode='single'
+            selected={date}
+            onSelect={setDate}
+            className='rounded-md border dark:border-neutral-700'
+          />
+        </div>
+        <br />
+        <Text>{date ? format(date, 'PPP') : 'Select Date'}</Text>
+      </Wrapper>
+
       <Wrapper id='card' name='Card' docs='https://ui.shadcn.com/docs/components/card'>
         <Card className='max-w-[350px]'>
           <CardHeader>
@@ -808,7 +837,7 @@ export default function Ui() {
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading='Suggestions'>
               <CommandItem>
-                <Calendar className='mr-2 h-4 w-4' />
+                <CalendarDays className='mr-2 h-4 w-4' />
                 <span>Calendar</span>
               </CommandItem>
             </CommandGroup>
@@ -844,7 +873,7 @@ export default function Ui() {
                     runCommand(() => router.push('/design'));
                   }}
                 >
-                  <Calendar className='mr-2 h-4 w-4' />
+                  <CalendarDays className='mr-2 h-4 w-4' />
                   <span>Design</span>
                 </CommandItem>
                 <CommandItem
@@ -944,6 +973,23 @@ export default function Ui() {
 
       <Wrapper id='datatable' name='DataTable' docs='https://ui.shadcn.com/docs/components/data-table'>
         <DataTableDemo />
+      </Wrapper>
+
+      <Wrapper id='datepicker' name='DatePicker' docs='https://ui.shadcn.com/docs/components/date-picker'>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button
+              variant={'outline'}
+              className={cn('justify-start text-left font-normal', !date && 'text-muted-foreground')}
+            >
+              <CalendarIcon className='mr-2 h-4 w-4' />
+              {date ? format(date, 'PPP') : <span>Pick a date</span>}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className='w-auto p-0'>
+            <Calendar mode='single' selected={date} onSelect={setDate} initialFocus />
+          </PopoverContent>
+        </Popover>
       </Wrapper>
 
       <Wrapper
