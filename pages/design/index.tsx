@@ -400,20 +400,24 @@ export default function Example() {
         Cell: ({ row }) => {
           const data = row.original;
           return (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <ButtonUi variant='ghost' className='h-8 w-8 p-0'>
-                  <span className='sr-only'>Open menu</span>
-                  <MoreHorizontal className='h-4 w-4' />
-                </ButtonUi>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align='end'>
-                <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => navigator.clipboard.writeText(data.name)}>Copy Name</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>View customer</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <div className='relative'>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <ButtonUi variant='ghost' className='h-8 w-8 p-0'>
+                    <span className='sr-only'>Open menu</span>
+                    <MoreHorizontal className='h-4 w-4' />
+                  </ButtonUi>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align='end'>
+                  <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                  <DropdownMenuItem onClick={() => navigator.clipboard.writeText(data.name)}>
+                    Copy Name
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>View customer</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           );
         },
       },

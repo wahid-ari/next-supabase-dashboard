@@ -38,14 +38,14 @@ export function DataTableFilter<TData, TValue>({ column, title, options }: DataT
         <Button
           variant='outline'
           size='sm'
-          className='h-9 border border-dashed border-neutral-300 dark:border-neutral-600'
+          className='h-9 border border-dashed border-neutral-300 px-2 dark:border-neutral-600 sm:px-3'
         >
           <PlusCircleIcon className='mr-2 h-4 w-4' />
           {title}
           {selectedValues?.size > 0 && (
             <>
-              <Separator orientation='vertical' className='mx-2 h-4' />
-              <Badge variant='secondary' className='rounded-sm px-1 font-normal md:hidden'>
+              <Separator orientation='vertical' className='mx-2 hidden h-4 sm:block' />
+              <Badge variant='secondary' className='ml-2 rounded-sm px-1 font-normal sm:ml-0 md:hidden'>
                 {selectedValues.size}
               </Badge>
               <div className='hidden space-x-1 md:flex'>

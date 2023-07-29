@@ -49,7 +49,6 @@ export function DataTablePagination<TData>({
             </Select>
           </div>
           <div className='flex items-center gap-2'>
-            {/* FIX This Font on light mode  */}
             <p className='hidden text-sm font-medium sm:flex'>Go to page</p>
             <p className='text-sm font-medium sm:hidden'>Page</p>
             <Input
