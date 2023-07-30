@@ -1,16 +1,13 @@
-import Image from 'next/image';
-
 import { cn } from '@/libs/utils';
 
 import { DemoCreateAccount } from '@/components/example/card/CreateAccount';
-// import { DemoCookieSettings } from '@/components/example/card/cookie-settings';
-// import { DemoDatePicker } from '@/components/example/card/date-picker';
-// import { DemoGithub } from '@/components/example/card/github-card';
-// import { DemoNotifications } from '@/components/example/card/notifications';
-// import { DemoPaymentMethod } from '@/components/example/card/payment-method';
-// import { DemoReportAnIssue } from '@/components/example/card/report-an-issue';
-// import { DemoShareDocument } from '@/components/example/card/share-document';
-// import { DemoTeamMembers } from '@/components/example/card/team-members';
+import { DemoPaymentMethod } from '@/components/example/card/PaymentMethod';
+import { DemoTeamMembers } from '@/components/example/card/TeamMembers';
+import { DemoShareDocument } from '@/components/example/card/ShareDocument';
+import { DemoNotifications } from '@/components/example/card/Notifications';
+import { DemoReportAnIssue } from '@/components/example/card/ReportAnIssue';
+import { DemoGithub } from '@/components/example/card/GithubCard';
+import { DemoCookieSettings } from '@/components/example/card/CookieSettings';
 
 function DemoContainer({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn('flex items-center justify-center [&>div]:w-full', className)} {...props} />;
@@ -18,23 +15,34 @@ function DemoContainer({ className, ...props }: React.HTMLAttributes<HTMLDivElem
 
 export default function CardsPage() {
   return (
-    <div className='grid items-start justify-center gap-6 rounded-lg lg:grid-cols-2 xl:grid-cols-3'>
+    <div className='grid items-start justify-center gap-6 rounded-lg lg:grid-cols-2'>
       <div className='col-span-2 grid items-start gap-6 lg:col-span-1'>
         <DemoContainer>
           <DemoCreateAccount />
         </DemoContainer>
-        <DemoContainer>{/* <DemoPaymentMethod /> */}</DemoContainer>
+        <DemoContainer>
+          <DemoPaymentMethod />
+        </DemoContainer>
+        <DemoContainer>
+          <DemoTeamMembers />
+        </DemoContainer>
+        <DemoContainer>
+          <DemoShareDocument />
+        </DemoContainer>
       </div>
       <div className='col-span-2 grid items-start gap-6 lg:col-span-1'>
-        <DemoContainer>{/* <DemoTeamMembers /> */}</DemoContainer>
-        <DemoContainer>{/* <DemoShareDocument /> */}</DemoContainer>
-        <DemoContainer>{/* <DemoDatePicker /> */}</DemoContainer>
-        <DemoContainer>{/* <DemoNotifications /> */}</DemoContainer>
-      </div>
-      <div className='col-span-2 grid items-start gap-6 lg:col-span-2 lg:grid-cols-2 xl:col-span-1 xl:grid-cols-1'>
-        <DemoContainer>{/* <DemoReportAnIssue /> */}</DemoContainer>
-        <DemoContainer>{/* <DemoGithub /> */}</DemoContainer>
-        <DemoContainer>{/* <DemoCookieSettings /> */}</DemoContainer>
+        <DemoContainer>
+          <DemoNotifications />
+        </DemoContainer>
+        <DemoContainer>
+          <DemoReportAnIssue />
+        </DemoContainer>
+        <DemoContainer>
+          <DemoGithub />
+        </DemoContainer>
+        <DemoContainer>
+          <DemoCookieSettings />
+        </DemoContainer>
       </div>
     </div>
   );

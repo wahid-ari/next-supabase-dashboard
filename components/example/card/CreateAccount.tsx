@@ -29,7 +29,9 @@ export function DemoCreateAccount() {
             <span className='w-full border-t dark:border-t-neutral-700' />
           </div>
           <div className='relative flex justify-center text-xs uppercase'>
-            <span className='dark:text-neutral-400 text-neutral-500 bg-white px-2 dark:bg-neutral-900'>Or continue with</span>
+            <span className='bg-white px-2 text-neutral-500 dark:bg-neutral-900 dark:text-neutral-400'>
+              Or continue with
+            </span>
           </div>
         </div>
         <div className='grid gap-2'>
