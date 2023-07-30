@@ -8,6 +8,9 @@ import { DemoNotifications } from '@/components/example/card/Notifications';
 import { DemoReportAnIssue } from '@/components/example/card/ReportAnIssue';
 import { DemoGithub } from '@/components/example/card/GithubCard';
 import { DemoCookieSettings } from '@/components/example/card/CookieSettings';
+import { ModelSelector } from '@/components/example/card/ModelSelector';
+import { TemperatureSelector } from '@/components/example/card/TemperatureSelector';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
 
 function DemoContainer({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn('flex items-center justify-center [&>div]:w-full', className)} {...props} />;
@@ -42,6 +45,18 @@ export default function CardsPage() {
         </DemoContainer>
         <DemoContainer>
           <DemoCookieSettings />
+        </DemoContainer>
+        <DemoContainer>
+          <Card>
+            <CardHeader>
+              <CardTitle>Combobox with Hovercard</CardTitle>
+              <CardDescription>Combobox with Hovercard</CardDescription>
+            </CardHeader>
+            <CardContent className='grid gap-6'>
+              <ModelSelector />
+              <TemperatureSelector defaultValue={[0.56]} />
+            </CardContent>
+          </Card>
         </DemoContainer>
       </div>
     </div>
