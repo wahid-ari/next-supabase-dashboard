@@ -4,6 +4,8 @@ import Layout from '@components/layout/Layout';
 import Wrapper from '@components/systems/Wrapper';
 import Title from '@components/systems/Title';
 
+import Dashboard from '@/components/example/dashboard/Dashboard';
+
 export default function Example() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
@@ -20,14 +22,16 @@ export default function Example() {
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
         <div className='columns-2 text-sky-600 dark:text-sky-500 sm:columns-3'>
           <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#breadcrumb'>
-              Breadcrumb
+            <Link className={tocClass} href='#dashboard'>
+              Dashboard
             </Link>
           </span>
         </div>
       </Wrapper>
 
-      <Wrapper id='breadcrumb' name='Breadcrumb' noChildren noClassName noProps></Wrapper>
+      <Wrapper id='dashboard' name='Dashboard' noChildren noClassName noProps>
+        <Dashboard />
+      </Wrapper>
     </Layout>
   );
 }
