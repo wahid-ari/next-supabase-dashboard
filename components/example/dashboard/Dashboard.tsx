@@ -14,29 +14,29 @@ import { UserNav } from '@/components/example/dashboard/UserNav';
 export default function DashboardPage() {
   return (
     <>
-      <div className='md:hidden'>
+      <div className='mb-8 md:hidden'>
         <Image
           src='https://github.com/vercel.png'
-          width={1280}
-          height={866}
+          width={880}
+          height={466}
           alt='Dashboard'
           className='block dark:hidden'
         />
         <Image
           src='https://github.com/vercel.png'
-          width={1280}
-          height={866}
+          width={880}
+          height={466}
           alt='Dashboard'
           className='hidden dark:block'
         />
       </div>
       <div className='flex-col md:flex'>
         <div className='border-b dark:border-b-neutral-700'>
-          <div className='flex h-16 items-center'>
+          <div className='flex items-center pb-4'>
             <TeamSwitcher />
             <MainNav className='mx-2 sm:mx-6' />
             <div className='ml-auto flex items-center space-x-4'>
-              <Input type='search' placeholder='Search...' className='hidden sm:flex md:w-[100px] lg:w-[200px]' />
+              <Input type='search' placeholder='Search...' className='hidden md:flex md:w-[200px] lg:w-[250px]' />
               <UserNav />
             </div>
           </div>
