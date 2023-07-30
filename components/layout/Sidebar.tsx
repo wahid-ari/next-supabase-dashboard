@@ -133,6 +133,10 @@ export default function Sidebar({ className, ...props }: { className?: string; [
               UI
               <Badge>New</Badge>
             </NavLink>
+            <NavLink href='/design/example' icon={<ViewGridAddIcon className='h-5 w-5' />} className='mt-1.5'>
+              Example
+              <Badge>New</Badge>
+            </NavLink>
             <NavLink href='/design/layout' className='relative mt-1.5' icon={<ViewBoardsIcon className='h-5 w-5' />}>
               Layout
               <span className='absolute left-24 top-2.5 flex h-5 w-5 animate-bounce items-center justify-center'>

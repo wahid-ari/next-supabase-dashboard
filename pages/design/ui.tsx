@@ -31,6 +31,9 @@ import {
   LaptopIcon,
   Check,
   CalendarIcon,
+  AlignRightIcon,
+  AlignCenterIcon,
+  AlignLeftIcon,
 } from 'lucide-react';
 
 import Layout from '@components/layout/Layout';
@@ -163,6 +166,7 @@ import { Textarea } from '@/components/ui/Textarea';
 import { ToastAction } from '@/components/ui/Toast';
 import { useToast } from '@/components/ui/use-toast';
 import { Toggle } from '@/components/ui/Toggle';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/ToggleGroup';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/Tooltip';
 import { cn } from '@/libs/utils';
 import DataTableDemo from '@/components/ui/DataTableDemo';
@@ -240,6 +244,8 @@ export default function Ui() {
   const { toast } = useToast();
 
   const [toggleValue, setToggleValue] = useState(false);
+
+  const [toggleGroupValue, setToggleGroupValue] = useState('center');
 
   const [openCommand, setOpenCommand] = useState(false);
 
@@ -491,6 +497,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#toggle'>
               Toggle
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#togglegroup'>
+              ToggleGroup
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -1664,6 +1675,34 @@ export default function Ui() {
         <br />
         <br />
         <Text>{toggleValue == true ? 'true' : 'false'}</Text>
+      </Wrapper>
+
+      <Wrapper
+        id='togglegroup'
+        name='ToggleGroup'
+        props={['type', 'value', 'defaultValue', 'onValueChange']}
+        docs='https://www.radix-ui.com/docs/primitives/components/toggle-group'
+      >
+        <ToggleGroup
+          type='single'
+          defaultValue='center'
+          value={toggleGroupValue}
+          onValueChange={setToggleGroupValue}
+          aria-label='Text alignment'
+        >
+          <ToggleGroupItem value='left' aria-label='Left aligned'>
+            <AlignLeftIcon className='h-4 w-4' />
+          </ToggleGroupItem>
+          <ToggleGroupItem value='center' aria-label='Center aligned'>
+            <AlignCenterIcon className='h-4 w-4' />
+          </ToggleGroupItem>
+          <ToggleGroupItem value='right' aria-label='Right aligned' disabled>
+            <AlignRightIcon className='h-4 w-4' />
+          </ToggleGroupItem>
+        </ToggleGroup>
+        <br />
+        <br />
+        <Text>{toggleGroupValue}</Text>
       </Wrapper>
 
       <Wrapper id='tooltip' name='Tooltip' props={['']} docs='https://ui.shadcn.com/docs/components/tooltip'>
