@@ -7,6 +7,7 @@ import Title from '@components/systems/Title';
 import Dashboard from '@/components/example/dashboard/Dashboard';
 import Card from '@/components/example/card/Card';
 import Music from '@/components/example/music/Music';
+import Auth from '@/components/example/auth/Auth';
 
 export default function Example() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
@@ -38,6 +39,11 @@ export default function Example() {
               Music
             </Link>
           </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#auth'>
+              Auth
+            </Link>
+          </span>
         </div>
       </Wrapper>
 
@@ -58,6 +64,17 @@ export default function Example() {
 
       <Wrapper id='music' name='Music' noChildren noClassName noProps docs='https://ui.shadcn.com/examples/music'>
         <Music />
+      </Wrapper>
+
+      <Wrapper
+        id='auth'
+        name='Auth'
+        noChildren
+        noClassName
+        noProps
+        docs='https://ui.shadcn.com/examples/authentication'
+      >
+        <Auth />
       </Wrapper>
     </Layout>
   );

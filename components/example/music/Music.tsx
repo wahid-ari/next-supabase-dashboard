@@ -20,7 +20,7 @@ export default function MusicPage() {
         <div className='bg-background'>
           <div className='grid md:grid-cols-6 xl:grid-cols-5'>
             <Sidebar playlists={playlists} className='hidden md:col-span-2 md:block xl:col-span-1' />
-            <div className='col-span-6 md:col-span-4 md:border-l dark:md:border-l-neutral-700 xl:col-span-4'>
+            <div className='col-span-6 overflow-hidden md:col-span-4 md:border-l dark:md:border-l-neutral-700 xl:col-span-4'>
               <div className='h-full py-4 md:p-6'>
                 <Tabs defaultValue='music' className='h-full space-y-6'>
                   <div className='space-between flex items-center'>
@@ -29,7 +29,7 @@ export default function MusicPage() {
                         Music
                       </TabsTrigger>
                       <TabsTrigger value='podcasts'>Podcasts</TabsTrigger>
-                      <TabsTrigger value='live' disabled>
+                      <TabsTrigger value='live' disabled className='hidden sm:block'>
                         Live
                       </TabsTrigger>
                     </TabsList>

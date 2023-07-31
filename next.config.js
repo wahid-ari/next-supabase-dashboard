@@ -23,7 +23,7 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ['images-na.ssl-images-amazon.com', 'i.gr-assets.com'],
+    domains: ['images-na.ssl-images-amazon.com', 'i.gr-assets.com', 'images.unsplash.com'],
     unoptimized: true,
   },
 };
