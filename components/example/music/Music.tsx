@@ -5,35 +5,23 @@ import { ScrollArea, ScrollBar } from '@/components/ui/ScrollArea';
 import { Separator } from '@/components/ui/Separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 
-// import { AlbumArtwork } from './components/album-artwork';
-// import { Menu } from './components/menu';
-// import { PodcastEmptyPlaceholder } from './components/podcast-empty-placeholder';
+import { AlbumArtwork } from '@/components/example/music/AlbumArtwork';
+import { Menu } from '@/components/example/music/Menu';
+import { PodcastEmptyPlaceholder } from '@/components/example/music/PodcastEmptyPlaceholder';
 import { Sidebar } from '@/components/example/music/Sidebar';
-// import { listenNowAlbums, madeForYouAlbums } from './data/albums';
-// import { playlists } from './data/playlists';
-export const playlists = [
-  'Recently Added',
-  'Recently Played',
-  'Top Songs',
-  'Top Albums',
-  'Top Artists',
-  'Bedtime Beats',
-  'Feeling Happy',
-  'I miss Y2K Pop',
-  'Runtober',
-  'Mellow Days',
-];
+import { listenNowAlbums, madeForYouAlbums } from '@/components/example/music/data';
+import { playlists } from '@/components/example/music/data';
 
 export default function MusicPage() {
   return (
-    <div className=''>
-      {/* <Menu /> */}
+    <div className='rounded-md border dark:border-neutral-700'>
+      <Menu />
       <div className='border-t dark:border-t-neutral-700'>
         <div className='bg-background'>
           <div className='grid md:grid-cols-6 xl:grid-cols-5'>
             <Sidebar playlists={playlists} className='hidden md:col-span-2 md:block xl:col-span-1' />
-            <div className='col-span-6 md:col-span-4 lg:border-l dark:lg:border-l-neutral-700 xl:col-span-4'>
-              <div className='h-full py-4 md:p-6 lg:px-8'>
+            <div className='col-span-6 md:col-span-4 md:border-l dark:md:border-l-neutral-700 xl:col-span-4'>
+              <div className='h-full py-4 md:p-6'>
                 <Tabs defaultValue='music' className='h-full space-y-6'>
                   <div className='space-between flex items-center'>
                     <TabsList>
@@ -65,16 +53,16 @@ export default function MusicPage() {
                     <div className='relative'>
                       <ScrollArea>
                         <div className='flex space-x-4 pb-4'>
-                          {/* {listenNowAlbums.map((album) => (
-                              <AlbumArtwork
-                                key={album.name}
-                                album={album}
-                                className='w-[250px]'
-                                aspectRatio='portrait'
-                                width={250}
-                                height={330}
-                              />
-                            ))} */}
+                          {listenNowAlbums.map((album) => (
+                            <AlbumArtwork
+                              key={album.name}
+                              album={album}
+                              className='w-[250px]'
+                              aspectRatio='portrait'
+                              width={250}
+                              height={330}
+                            />
+                          ))}
                         </div>
                         <ScrollBar orientation='horizontal' />
                       </ScrollArea>
@@ -89,16 +77,16 @@ export default function MusicPage() {
                     <div className='relative'>
                       <ScrollArea>
                         <div className='flex space-x-4 pb-4'>
-                          {/* {madeForYouAlbums.map((album) => (
-                              <AlbumArtwork
-                                key={album.name}
-                                album={album}
-                                className='w-[150px]'
-                                aspectRatio='square'
-                                width={150}
-                                height={150}
-                              />
-                            ))} */}
+                          {madeForYouAlbums.map((album) => (
+                            <AlbumArtwork
+                              key={album.name}
+                              album={album}
+                              className='w-[150px]'
+                              aspectRatio='square'
+                              width={150}
+                              height={150}
+                            />
+                          ))}
                         </div>
                         <ScrollBar orientation='horizontal' />
                       </ScrollArea>
@@ -114,7 +102,7 @@ export default function MusicPage() {
                       </div>
                     </div>
                     <Separator className='my-4' />
-                    {/* <PodcastEmptyPlaceholder /> */}
+                    <PodcastEmptyPlaceholder />
                   </TabsContent>
                 </Tabs>
               </div>
