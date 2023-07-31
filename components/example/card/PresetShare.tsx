@@ -1,11 +1,15 @@
 import { CopyIcon } from 'lucide-react';
 
+import useWindowSize from '@/hooks/useWindowSize';
+
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
 
 export function PresetShare() {
+  const { width } = useWindowSize();
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -13,7 +17,7 @@ export function PresetShare() {
           Share
         </Button>
       </PopoverTrigger>
-      <PopoverContent align='end' className='w-[520px]'>
+      <PopoverContent align={width < 900 ? 'center' : 'end'} className='sm:w-[520px]'>
         <div className='flex flex-col space-y-2 text-center sm:text-left'>
           <h3 className='text-lg font-semibold'>Share preset</h3>
           <p className='text-sm text-neutral-600 dark:text-neutral-400'>

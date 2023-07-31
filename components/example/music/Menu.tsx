@@ -33,13 +33,11 @@ export function Menu() {
         <MenubarContent>
           <MenubarSub>
             <MenubarSubTrigger>New</MenubarSubTrigger>
-            <MenubarSubContent className='w-[230px]'>
+            <MenubarSubContent>
               <MenubarItem>
                 Playlist <MenubarShortcut>⌘N</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem disabled>
-                Playlist from Selection <MenubarShortcut>⇧⌘N</MenubarShortcut>
-              </MenubarItem>
+              <MenubarItem disabled>Playlist from Selection</MenubarItem>
             </MenubarSubContent>
           </MenubarSub>
           <MenubarItem>
@@ -49,14 +47,10 @@ export function Menu() {
           <MenubarSub>
             <MenubarSubTrigger>Library</MenubarSubTrigger>
             <MenubarSubContent>
-              <MenubarSeparator />
               <MenubarItem disabled>Export Playlist...</MenubarItem>
               <MenubarItem>Show Duplicate Items</MenubarItem>
             </MenubarSubContent>
           </MenubarSub>
-          <MenubarItem>
-            Import... <MenubarShortcut>⌘O</MenubarShortcut>
-          </MenubarItem>
           <MenubarItem disabled>Burn Playlist to Disc...</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
