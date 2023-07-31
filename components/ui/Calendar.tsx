@@ -31,7 +31,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         nav_button_next: 'absolute right-1',
         table: 'w-full border-collapse space-y-1',
         head_row: 'flex',
-        head_cell: 'text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]',
+        head_cell: 'text-neutral-600 dark:text-neutral-400 rounded-md w-9 font-normal text-[0.8rem]',
         row: 'flex w-full mt-2',
         cell: 'text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20',
         day: cn(
@@ -42,8 +42,8 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
           'bg-sky-600 text-white hover:bg-sky-600 dark:hover:bg-sky-600 focus:bg-primary focus:text-primary-foreground',
         day_today:
           'bg-neutral-300 dark:bg-neutral-700 text-accent-foreground [&:has([aria-selected])]:bg-sky-600 dark:aria-selected:bg-sky-600',
-        day_outside: 'text-muted-foreground opacity-50',
-        day_disabled: 'text-muted-foreground opacity-50',
+        day_outside: 'text-neutral-600 dark:text-neutral-400 opacity-50',
+        day_disabled: 'text-neutral-600 dark:text-neutral-400 opacity-50',
         day_range_middle: 'aria-selected:bg-accent aria-selected:text-accent-foreground',
         day_hidden: 'invisible',
         ...classNames,

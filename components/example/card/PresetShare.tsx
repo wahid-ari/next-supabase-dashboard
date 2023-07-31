@@ -16,7 +16,7 @@ export function PresetShare() {
       <PopoverContent align='end' className='w-[520px]'>
         <div className='flex flex-col space-y-2 text-center sm:text-left'>
           <h3 className='text-lg font-semibold'>Share preset</h3>
-          <p className='text-muted-foreground text-sm'>
+          <p className='text-sm text-neutral-600 dark:text-neutral-400'>
             Anyone who has this link and an OpenAI account will be able to view this.
           </p>
         </div>

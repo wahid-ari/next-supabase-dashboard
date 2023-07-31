@@ -54,7 +54,7 @@ export function NavigationMenuDemo() {
                     href='/'
                   >
                     <div className='mb-2 mt-4 text-lg font-medium'>shadcn/ui</div>
-                    <p className='text-muted-foreground text-sm leading-tight'>
+                    <p className='text-sm leading-tight text-neutral-600 dark:text-neutral-400'>
                       Beautifully designed components built with Radix UI and Tailwind CSS.
                     </p>
                   </a>

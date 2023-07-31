@@ -865,12 +865,12 @@ export default function Ui() {
         <br />
         <br />
         <>
-          <p className='text-muted-foreground text-sm'>
+          <p className='text-sm text-neutral-600 dark:text-neutral-400'>
             Press{' '}
-            <kbd className='text-muted-foreground pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium opacity-100 dark:border-neutral-700 dark:bg-neutral-800'>
+            <kbd className='pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium text-neutral-600 opacity-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
               <span className='text-xs'>⌘</span>K
             </kbd>
-            <kbd className='text-muted-foreground pointer-events-none ml-2 inline-flex h-5 select-none items-center gap-1 rounded border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium opacity-100 dark:border-neutral-700 dark:bg-neutral-800'>
+            <kbd className='pointer-events-none ml-2 inline-flex h-5 select-none items-center gap-1 rounded border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium text-neutral-600 opacity-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
               <span className='text-xs'>Ctrl</span>K
             </kbd>
           </p>
@@ -991,7 +991,7 @@ export default function Ui() {
           <PopoverTrigger asChild>
             <Button
               variant={'outline'}
-              className={cn('justify-start text-left font-normal', !date && 'text-muted-foreground')}
+              className={cn('justify-start text-left font-normal', !date && 'text-neutral-600 dark:text-neutral-400')}
             >
               <CalendarIcon className='mr-2 h-4 w-4' />
               {date ? format(date, 'PPP') : <span>Pick a date</span>}
@@ -1285,7 +1285,7 @@ export default function Ui() {
             <div className='grid gap-4'>
               <div className='space-y-2'>
                 <h4 className='font-medium leading-none'>Dimensions</h4>
-                <p className='text-muted-foreground text-sm'>Set the dimensions for the layer.</p>
+                <p className='text-sm text-neutral-600 dark:text-neutral-400'>Set the dimensions for the layer.</p>
               </div>
               <div className='grid gap-4'>
                 <div className='grid grid-cols-3 items-center gap-4'>
@@ -1399,7 +1399,7 @@ export default function Ui() {
         <div>
           <div className='space-y-1'>
             <h4 className='text-sm font-medium leading-none'>Radix Primitives</h4>
-            <p className='text-muted-foreground text-sm'>An open-source UI component library.</p>
+            <p className='text-sm text-neutral-600 dark:text-neutral-400'>An open-source UI component library.</p>
           </div>
           <Separator className='my-4' />
           <div className='flex h-5 items-center space-x-4 text-sm'>

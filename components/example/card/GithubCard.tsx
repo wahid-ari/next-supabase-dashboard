@@ -63,7 +63,7 @@ export function DemoGithub() {
         </div>
       </CardHeader>
       <CardContent>
-        <div className='text-muted-foreground flex space-x-4 text-sm'>
+        <div className='flex space-x-4 text-sm text-neutral-600 dark:text-neutral-400'>
           <div className='flex items-center'>
             <CircleIcon className='mr-1 h-3 w-3 fill-sky-400 text-sky-400' />
             TypeScript

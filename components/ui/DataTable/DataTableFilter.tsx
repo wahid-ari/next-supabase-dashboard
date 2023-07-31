@@ -96,7 +96,7 @@ export function DataTableFilter<TData, TValue>({ column, title, options }: DataT
                     >
                       <CheckIcon className={cn('h-4 w-4 text-emerald-600')} />
                     </div>
-                    {option.icon && <option.icon className='text-muted-foreground mr-2 h-4 w-4' />}
+                    {option.icon && <option.icon className='mr-2 h-4 w-4 text-neutral-600 dark:text-neutral-400' />}
                     <span>{option.label}</span>
                     {facets?.get(option.value) && (
                       <span className='ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs'>

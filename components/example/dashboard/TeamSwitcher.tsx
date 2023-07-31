@@ -155,11 +155,11 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                 <SelectContent>
                   <SelectItem value='free' className='hover:bg-neutral-100 dark:hover:bg-neutral-800'>
                     <span className='font-medium'>Free</span> -{' '}
-                    <span className='text-muted-foreground'>Trial for two weeks</span>
+                    <span className='text-neutral-600 dark:text-neutral-400'>Trial for two weeks</span>
                   </SelectItem>
                   <SelectItem value='pro' className='hover:bg-neutral-100 dark:hover:bg-neutral-800'>
                     <span className='font-medium'>Pro</span> -{' '}
-                    <span className='text-muted-foreground'>$9/month per user</span>
+                    <span className='text-neutral-600 dark:text-neutral-400'>$9/month per user</span>
                   </SelectItem>
                 </SelectContent>
               </Select>

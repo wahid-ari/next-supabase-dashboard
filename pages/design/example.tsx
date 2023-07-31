@@ -6,6 +6,7 @@ import Title from '@components/systems/Title';
 
 import Dashboard from '@/components/example/dashboard/Dashboard';
 import Card from '@/components/example/card/Card';
+import Music from '@/components/example/music/Music';
 
 export default function Example() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
@@ -32,6 +33,11 @@ export default function Example() {
               Card
             </Link>
           </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#music'>
+              Music
+            </Link>
+          </span>
         </div>
       </Wrapper>
 
@@ -48,6 +54,10 @@ export default function Example() {
 
       <Wrapper id='card' name='Card' noChildren noClassName noProps docs='https://ui.shadcn.com/examples/card'>
         <Card />
+      </Wrapper>
+
+      <Wrapper id='music' name='Music' noChildren noClassName noProps docs='https://ui.shadcn.com/examples/music'>
+        <Music />
       </Wrapper>
     </Layout>
   );
