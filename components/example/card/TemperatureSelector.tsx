@@ -3,6 +3,8 @@
 import * as React from 'react';
 import { SliderProps } from '@radix-ui/react-slider';
 
+import useWindowSize from '@/hooks/useWindowSize';
+
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
 import { Label } from '@/components/ui/Label';
 import { Slider } from '@/components/ui/Slider';
@@ -12,6 +14,7 @@ interface TemperatureSelectorProps {
 }
 
 export function TemperatureSelector({ defaultValue }: TemperatureSelectorProps) {
+  const { width } = useWindowSize();
   const [value, setValue] = React.useState(defaultValue);
 
   return (
@@ -36,7 +39,7 @@ export function TemperatureSelector({ defaultValue }: TemperatureSelectorProps) 
             />
           </div>
         </HoverCardTrigger>
-        <HoverCardContent align='start' className='w-[260px] text-sm' side='left'>
+        <HoverCardContent align='center' className='w-[260px] text-sm' side={width < 1024 ? 'top' : 'left'}>
           Controls randomness: lowering results in less random completions. As the temperature approaches zero, the
           model will become deterministic and repetitive.
         </HoverCardContent>

@@ -11,6 +11,9 @@ import { DemoCookieSettings } from '@/components/example/card/CookieSettings';
 import { ModelSelector } from '@/components/example/card/ModelSelector';
 import { TemperatureSelector } from '@/components/example/card/TemperatureSelector';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
+import { PresetSave } from '@/components/example/card/PresetSave';
+import { PresetShare } from '@/components/example/card/PresetShare';
+import { PresetActions } from '@/components/example/card/PresetActions';
 
 function DemoContainer({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn('flex items-center justify-center [&>div]:w-full', className)} {...props} />;
@@ -55,6 +58,11 @@ export default function CardsPage() {
             <CardContent className='grid gap-6'>
               <ModelSelector />
               <TemperatureSelector defaultValue={[0.56]} />
+              <div className='mt-4 flex justify-between gap-3'>
+                <PresetSave />
+                <PresetShare />
+                <PresetActions />
+              </div>
             </CardContent>
           </Card>
         </DemoContainer>

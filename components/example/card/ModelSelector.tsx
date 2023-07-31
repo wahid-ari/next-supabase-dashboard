@@ -6,6 +6,8 @@ import { PopoverProps } from '@radix-ui/react-popover';
 
 import { cn } from '@/libs/utils';
 import { useMutationObserver } from '@/hooks/useMutationObserver';
+import useWindowSize from '@/hooks/useWindowSize';
+
 import { Button } from '@/components/ui/Button';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/Command';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
@@ -31,14 +33,12 @@ const modelsData: Model[] = [
     description:
       'Most capable GPT-3 model. Can do any task the other models can do, often with higher quality, longer output and better instruction-following. Also supports inserting completions within text.',
     type: 'GPT-3',
-    strengths: 'Complex intent, cause and effect, creative generation, search, summarization for audience',
   },
   {
     id: '464a47c3-7ab5-44d7-b669-f9cb5a9e8465',
     name: 'text-curie-001',
     description: 'Very capable, but faster and lower cost than Davinci.',
     type: 'GPT-3',
-    strengths: 'Language translation, complex classification, sentiment, summarization',
   },
   {
     id: 'b43c0ea9-5ad4-456a-ae29-26cd77b6d0fb',
@@ -53,7 +53,6 @@ const modelsData: Model[] = [
     description:
       'Almost as capable as Davinci Codex, but slightly faster. This speed advantage may make it preferable for real-time applications.',
     type: 'Codex',
-    strengths: 'Real-time application where low-latency is preferable',
   },
 ];
 
@@ -66,6 +65,7 @@ export function ModelSelector({ models = modelsData, types = typesData, ...props
   const [open, setOpen] = React.useState(false);
   const [selectedModel, setSelectedModel] = React.useState<Model>(models[0]);
   const [peekedModel, setPeekedModel] = React.useState<Model>(models[0]);
+  const { width } = useWindowSize();
 
   return (
     <div className='grid gap-2'>
@@ -73,7 +73,7 @@ export function ModelSelector({ models = modelsData, types = typesData, ...props
         <HoverCardTrigger asChild>
           <Label htmlFor='model'>Model</Label>
         </HoverCardTrigger>
-        <HoverCardContent align='start' className='w-[260px] text-sm' side='left'>
+        <HoverCardContent align='start' className='w-[260px] text-sm' side={width < 1024 ? 'top' : 'left'}>
           The model which will generate the completion. Some models are suitable for natural language tasks, others
           specialize in code. Learn more.
         </HoverCardContent>
@@ -93,16 +93,10 @@ export function ModelSelector({ models = modelsData, types = typesData, ...props
         </PopoverTrigger>
         <PopoverContent align='end' className='w-[250px] p-0'>
           <HoverCard>
-            <HoverCardContent side='left' align='start' forceMount className='min-h-[280px]'>
+            <HoverCardContent side='left' align='start' forceMount className='hidden sm:block'>
               <div className='grid gap-2'>
                 <h4 className='font-medium leading-none'>{peekedModel.name}</h4>
-                <div className='text-muted-foreground text-sm'>{peekedModel.description}</div>
-                {peekedModel.strengths ? (
-                  <div className='mt-4 grid gap-2'>
-                    <h5 className='text-sm font-medium leading-none'>Strengths</h5>
-                    <ul className='text-muted-foreground text-sm'>{peekedModel.strengths}</ul>
-                  </div>
-                ) : null}
+                <div className='text-sm text-neutral-600 dark:text-neutral-300'>{peekedModel.description}</div>
               </div>
             </HoverCardContent>
             <Command loop>
