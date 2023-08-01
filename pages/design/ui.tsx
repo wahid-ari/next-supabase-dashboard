@@ -39,7 +39,6 @@ import {
 import Layout from '@components/layout/Layout';
 import Wrapper from '@components/systems/Wrapper';
 import Title from '@components/systems/Title';
-import Text from '@/components/systems/Text';
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/Accordion';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert';
@@ -58,6 +57,7 @@ import { AspectRatio } from '@/components/ui/AspectRatio';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
 import { Badge, badgeVariants } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { Blockquote } from '@/components/ui/Blockquote';
 import { Calendar } from '@/components/ui/Calendar';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Checkbox } from '@/components/ui/Checkbox';
@@ -114,6 +114,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuCheckboxItem,
 } from '@/components/ui/DropdownMenu';
+import { Heading } from '@/components/ui/Heading';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
@@ -162,6 +163,7 @@ import { Slider } from '@/components/ui/Slider';
 import { Switch } from '@/components/ui/Switch';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/Table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { Text } from '@/components/ui/Text';
 import { Textarea } from '@/components/ui/Textarea';
 import { ToastAction } from '@/components/ui/Toast';
 import { useToast } from '@/components/ui/use-toast';
@@ -507,6 +509,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#tooltip'>
               Tooltip
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#typography'>
+              Typography
             </Link>
           </span>
         </div>
@@ -1721,6 +1728,96 @@ export default function Ui() {
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
+      </Wrapper>
+
+      <Wrapper id='typography' name='Typography' noProps docs='https://ui.shadcn.com/docs/components/typography#h1'>
+        <Heading>Heading</Heading>
+        <Text>Paragraph</Text>
+        <Blockquote>Blockquote</Blockquote>
+      </Wrapper>
+
+      <Wrapper
+        id='heading'
+        name='Heading'
+        props={['as', 'variant']}
+        docs='https://ui.shadcn.com/docs/components/typography#h1'
+      >
+        <Heading className='pb-4'>This is H1 with H1 style</Heading>
+        <Heading as='h2' variant='h2' className='pb-4'>
+          This is H2 with H2 style
+        </Heading>
+        <Heading as='h3' variant='h3' className='pb-4'>
+          This is H3 with H3 style
+        </Heading>
+        <Heading as='h4' variant='h4' className='pb-4'>
+          This is H4 with H4 style
+        </Heading>
+        <Heading as='h5' variant='h5' className='pb-4'>
+          This is H5 with H5 style
+        </Heading>
+        <Heading as='h1' variant='h5' className='pb-4'>
+          This is H1 with H5 style
+        </Heading>
+        <Heading as='h5'>This is H5 with H1 style</Heading>
+      </Wrapper>
+
+      <Wrapper
+        id='text'
+        name='Text'
+        props={['variant', 'size', 'weight']}
+        docs='https://ui.shadcn.com/docs/components/typography#p'
+      >
+        <Text>Default</Text>
+        <Text variant='muted'>Muted</Text>
+        <Text size='xs'>XS</Text>
+        <Text size='sm'>SM</Text>
+        <Text size='sm' variant='muted'>
+          SM Muted
+        </Text>
+        <Text size='sm' variant='muted' weight='semibold'>
+          SM Muted Semibold
+        </Text>
+        <Text size='lg'>LG</Text>
+        <Text size='lg' weight='semibold'>
+          LG Semibold
+        </Text>
+        <Text size='xl'>XL</Text>
+      </Wrapper>
+
+      <Wrapper
+        id='blockquote'
+        name='Blockquote'
+        props={['variant', 'size', 'weight']}
+        docs='https://ui.shadcn.com/docs/components/typography#blockquote'
+      >
+        <Blockquote>
+          After all, he said, &quot;everyone enjoys a good joke, so it&apos;s only fair that they should pay for the
+          privilege.
+        </Blockquote>
+        <Blockquote variant='muted'>
+          After all, he said, &quot;everyone enjoys a good joke, so it&apos;s only fair that they should pay for the
+          privilege.
+        </Blockquote>
+        <Blockquote size='sm'>
+          After all, he said, &quot;everyone enjoys a good joke, so it&apos;s only fair that they should pay for the
+          privilege.
+        </Blockquote>
+        <Blockquote size='sm' variant='muted'>
+          After all, he said, &quot;everyone enjoys a good joke, so it&apos;s only fair that they should pay for the
+          privilege.
+        </Blockquote>
+        <Blockquote size='sm' variant='muted' weight='semibold'>
+          After all, he said, &quot;everyone enjoys a good joke, so it&apos;s only fair that they should pay for the
+          privilege.
+        </Blockquote>
+        <Blockquote size='lg'>
+          After all, he said, &quot;everyone enjoys a good joke, so it&apos;s only fair that they should pay for the
+          privilege.
+        </Blockquote>
+        <Blockquote size='lg' weight='semibold'>
+          After all, he said, &quot;everyone enjoys a good joke, so it&apos;s only fair that they should pay for the
+          privilege.
+        </Blockquote>
       </Wrapper>
     </Layout>
   );
