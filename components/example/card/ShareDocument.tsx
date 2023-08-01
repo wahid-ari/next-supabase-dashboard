@@ -26,8 +26,8 @@ export function DemoShareDocument() {
           <h4 className='text-sm font-medium'>People with access</h4>
           <div className='grid gap-6'>
             <div className='flex items-center justify-between space-x-4'>
-              <div className='flex items-center space-x-4'>
-                <Avatar>
+              <div className='flex items-center sm:space-x-4'>
+                <Avatar className='hidden sm:block'>
                   <AvatarImage src='https://github.com/vercel.png' />
                   <AvatarFallback>OM</AvatarFallback>
                 </Avatar>
@@ -47,8 +47,8 @@ export function DemoShareDocument() {
               </Select>
             </div>
             <div className='flex items-center justify-between space-x-4'>
-              <div className='flex items-center space-x-4'>
-                <Avatar>
+              <div className='flex items-center sm:space-x-4'>
+                <Avatar className='hidden sm:block'>
                   <AvatarImage src='https://github.com/vercel.png' />
                   <AvatarFallback>IN</AvatarFallback>
                 </Avatar>

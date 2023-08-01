@@ -15,8 +15,8 @@ export function DemoTeamMembers() {
       </CardHeader>
       <CardContent className='grid gap-6'>
         <div className='flex items-center justify-between space-x-4'>
-          <div className='flex items-center space-x-4'>
-            <Avatar>
+          <div className='flex items-center sm:space-x-4'>
+            <Avatar className='hidden sm:block'>
               <AvatarImage src='https://github.com/vercel.png' />
               <AvatarFallback>OM</AvatarFallback>
             </Avatar>
@@ -52,8 +52,8 @@ export function DemoTeamMembers() {
           </Popover>
         </div>
         <div className='flex items-center justify-between space-x-4'>
-          <div className='flex items-center space-x-4'>
-            <Avatar>
+          <div className='flex items-center sm:space-x-4'>
+            <Avatar className='hidden sm:block'>
               <AvatarImage src='https://github.com/vercel.png' />
               <AvatarFallback>JL</AvatarFallback>
             </Avatar>
