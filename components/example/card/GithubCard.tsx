@@ -63,14 +63,24 @@ export function DemoGithub() {
         </div>
       </CardHeader>
       <CardContent>
-        <div className='flex space-x-4 text-sm text-neutral-600 dark:text-neutral-400'>
+        <div className='flex flex-wrap gap-x-4 gap-y-2 text-sm text-neutral-600 dark:text-neutral-400'>
           <div className='flex items-center'>
             <CircleIcon className='mr-1 h-3 w-3 fill-sky-400 text-sky-400' />
             TypeScript
           </div>
           <div className='flex items-center'>
-            <StarIcon className='mr-1 h-3 w-3' />
-            20k
+            {starred ? (
+              <>
+                <StarIcon className='mr-1 h-4 w-4 fill-yellow-500 text-yellow-500' />
+                Star
+              </>
+            ) : (
+              <>
+                <StarIcon className='mr-1 h-4 w-4' />
+                Star
+              </>
+            )}{' '}
+            20K
           </div>
           <div>Updated April 2023</div>
         </div>

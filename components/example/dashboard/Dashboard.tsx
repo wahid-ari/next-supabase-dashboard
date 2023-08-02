@@ -52,7 +52,7 @@ export default function DashboardPage() {
           <Tabs defaultValue='overview' className='space-y-4'>
             <TabsList>
               <TabsTrigger value='overview'>Overview</TabsTrigger>
-              <TabsTrigger value='analytics' disabled>
+              <TabsTrigger value='analytics'>
                 Analytics
               </TabsTrigger>
               <TabsTrigger value='reports' disabled>
@@ -168,6 +168,18 @@ export default function DashboardPage() {
                   </CardHeader>
                   <CardContent>
                     <RecentSales />
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+            <TabsContent value='analytics' className='space-y-4'>
+              <div className='grid gap-4 md:grid-cols-2'>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Overview</CardTitle>
+                  </CardHeader>
+                  <CardContent className='pl-2'>
+                    <Overview />
                   </CardContent>
                 </Card>
               </div>

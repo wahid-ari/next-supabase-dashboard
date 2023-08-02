@@ -48,7 +48,7 @@ export function DemoPaymentMethod() {
           <Label htmlFor='number'>Card number</Label>
           <Input id='number' placeholder='' />
         </div>
-        <div className='grid grid-cols-3 gap-4'>
+        <div className='grid grid-cols-2 gap-4 sm:grid-cols-3'>
           <div className='grid gap-2'>
             <Label htmlFor='month'>Expires</Label>
             <Select>
@@ -86,7 +86,7 @@ export function DemoPaymentMethod() {
               </SelectContent>
             </Select>
           </div>
-          <div className='grid gap-2'>
+          <div className='col-span-2 grid gap-2 sm:col-span-1'>
             <Label htmlFor='cvc'>CVC</Label>
             <Input id='cvc' placeholder='CVC' />
           </div>

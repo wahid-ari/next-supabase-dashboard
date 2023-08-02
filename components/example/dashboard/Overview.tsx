@@ -81,7 +81,7 @@ const data = [
 function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: any; label?: string }) {
   if (active && payload && payload.length) {
     return (
-      <div className='rounded bg-white p-2 shadow dark:bg-neutral-900'>
+      <div className='rounded bg-white/80 p-3 shadow backdrop-blur-sm dark:bg-neutral-900/80'>
         <p className='mb-2 font-medium'>{`${label} : $${payload[0].value}`}</p>
         {/* <p className='intro'>{getIntroOfPage(label)}</p> */}
         <p className='text-[13px]'>Anything you want can be displayed here.</p>
