@@ -92,10 +92,6 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
   return null;
 }
 
-function CustomizedCursor() {
-  return <div className='bg-red-500 hover:bg-red-500'></div>;
-}
-
 export function Overview() {
   const { theme } = useTheme();
   // const { width } = useWindowSize();
@@ -103,9 +99,15 @@ export function Overview() {
     // <Bar options={optionsBarChart(theme)} data={data} height={width > 500 ? 200 : 250} />
     <ResponsiveContainer width='100%' height={350}>
       <BarChart data={data}>
-        <XAxis dataKey='name' stroke='#888888' fontSize={12} tickLine={false} axisLine={false} />
+        <XAxis
+          dataKey='name'
+          stroke={theme == 'dark' ? '#a3a3a3' : '#525252'}
+          fontSize={12}
+          tickLine={false}
+          axisLine={false}
+        />
         <YAxis
-          stroke='#888888'
+          stroke={theme == 'dark' ? '#a3a3a3' : '#525252'}
           fontSize={12}
           tickLine={false}
           axisLine={false}
