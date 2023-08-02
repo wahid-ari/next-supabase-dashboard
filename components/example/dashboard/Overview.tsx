@@ -1,7 +1,7 @@
 'use client';
 
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
-// import { useTheme } from 'next-themes';
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import { useTheme } from 'next-themes';
 // import useWindowSize from '@hooks/useWindowSize';
 // import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 // import { Bar } from 'react-chartjs-2';
@@ -68,14 +68,40 @@ const data = [
     name: 'Apr',
     total: Math.floor(Math.random() * 5000) + 1000,
   },
+  {
+    name: 'May',
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
+  {
+    name: 'Jun',
+    total: Math.floor(Math.random() * 5000) + 1000,
+  },
 ];
 
+function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: any; label?: string }) {
+  if (active && payload && payload.length) {
+    return (
+      <div className='rounded bg-white p-2 shadow dark:bg-neutral-900'>
+        <p className='mb-2 font-medium'>{`${label} : $${payload[0].value}`}</p>
+        {/* <p className='intro'>{getIntroOfPage(label)}</p> */}
+        <p className='text-[13px]'>Anything you want can be displayed here.</p>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function CustomizedCursor() {
+  return <div className='bg-red-500 hover:bg-red-500'></div>;
+}
+
 export function Overview() {
-  // const { theme } = useTheme();
+  const { theme } = useTheme();
   // const { width } = useWindowSize();
   return (
     // <Bar options={optionsBarChart(theme)} data={data} height={width > 500 ? 200 : 250} />
-    <ResponsiveContainer width='99%' height={350}>
+    <ResponsiveContainer width='100%' height={350}>
       <BarChart data={data}>
         <XAxis dataKey='name' stroke='#888888' fontSize={12} tickLine={false} axisLine={false} />
         <YAxis
@@ -86,6 +112,16 @@ export function Overview() {
           tickFormatter={(value) => `$${value}`}
         />
         <Bar dataKey='total' fill='#adfa1d' radius={[4, 4, 0, 0]} />
+        <Tooltip
+          content={<CustomTooltip />}
+          cursor={{
+            stroke: theme == 'dark' ? '#525252' : '#a3a3a3',
+            strokeWidth: 1,
+            fill: 'transparent',
+            strokeDasharray: 10,
+          }}
+        />
+        {/* <CartesianGrid strokeDasharray='4' /> */}
       </BarChart>
     </ResponsiveContainer>
   );
