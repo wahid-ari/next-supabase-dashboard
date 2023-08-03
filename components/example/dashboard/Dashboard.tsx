@@ -6,6 +6,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { DateRangePicker } from '@/components/example/dashboard/DateRangePicker';
 import { MainNav } from '@/components/example/dashboard/MainNav';
 import { Overview } from '@/components/example/dashboard/Overview';
+import { Linechart } from '@/components/example/dashboard/Linechart';
+import { Areachart } from '@/components/example/dashboard/Areachart';
+import { Piechart } from '@/components/example/dashboard/Piechart';
 import { RecentSales } from '@/components/example/dashboard/RecentSales';
 import TeamSwitcher from '@/components/example/dashboard/TeamSwitcher';
 import { Input } from '@/components/ui/Input';
@@ -52,9 +55,7 @@ export default function DashboardPage() {
           <Tabs defaultValue='overview' className='space-y-4'>
             <TabsList>
               <TabsTrigger value='overview'>Overview</TabsTrigger>
-              <TabsTrigger value='analytics'>
-                Analytics
-              </TabsTrigger>
+              <TabsTrigger value='analytics'>Analytics</TabsTrigger>
               <TabsTrigger value='reports' disabled>
                 Reports
               </TabsTrigger>
@@ -180,6 +181,30 @@ export default function DashboardPage() {
                   </CardHeader>
                   <CardContent className='pl-2'>
                     <Overview />
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>LineChart</CardTitle>
+                  </CardHeader>
+                  <CardContent className='pl-2'>
+                    <Linechart />
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>AreaChart</CardTitle>
+                  </CardHeader>
+                  <CardContent className='pl-2'>
+                    <Areachart />
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>PieChart</CardTitle>
+                  </CardHeader>
+                  <CardContent className='pl-2'>
+                    <Piechart />
                   </CardContent>
                 </Card>
               </div>
