@@ -52,6 +52,12 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
   return null;
 }
 
+const renderColorfulLegendText = (value: string, entry: any) => {
+  // const { color } = entry;
+  // style={{ color }}
+  return <span className='capitalize text-neutral-800 dark:text-neutral-200'>{value}</span>;
+};
+
 export function Areachart() {
   const { theme } = useTheme();
   // const { width } = useWindowSize();
@@ -83,7 +89,7 @@ export function Areachart() {
             strokeDasharray: 10,
           }}
         />
-        <Legend />
+        <Legend formatter={renderColorfulLegendText} />
         {/* <CartesianGrid strokeDasharray='4' /> */}
       </AreaChart>
     </ResponsiveContainer>

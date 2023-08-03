@@ -69,6 +69,12 @@ const COLORS = [
   '#facc15',
 ];
 
+const renderColorfulLegendText = (value: string, entry: any) => {
+  // const { color } = entry;
+  // style={{ color }}
+  return <span className='text-neutral-800 dark:text-neutral-200'>{value}</span>;
+};
+
 export function Piechart() {
   const { theme } = useTheme();
   const { width } = useWindowSize();
@@ -102,7 +108,7 @@ export function Piechart() {
             strokeDasharray: 10,
           }}
         />
-        <Legend />
+        <Legend formatter={renderColorfulLegendText} />
       </PieChart>
     </ResponsiveContainer>
   );

@@ -52,6 +52,16 @@ function CustomTooltip({ active, payload, label }: { active?: boolean; payload?:
   return null;
 }
 
+const renderColorfulLegendText = (value: string, entry: any) => {
+  const { color } = entry;
+  // style={{ color }}
+  return (
+    <span className='capitalize' style={{ color }}>
+      {value}
+    </span>
+  );
+};
+
 export function Linechart() {
   const { theme } = useTheme();
   // const { width } = useWindowSize();
@@ -83,7 +93,7 @@ export function Linechart() {
             strokeDasharray: 10,
           }}
         />
-        <Legend />
+        <Legend formatter={renderColorfulLegendText} />
         {/* <CartesianGrid strokeDasharray='4' /> */}
       </LineChart>
     </ResponsiveContainer>

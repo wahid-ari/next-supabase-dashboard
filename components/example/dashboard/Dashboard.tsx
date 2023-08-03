@@ -203,7 +203,7 @@ export default function DashboardPage() {
                   <CardHeader>
                     <CardTitle>PieChart</CardTitle>
                   </CardHeader>
-                  <CardContent className='pl-2'>
+                  <CardContent>
                     <Piechart />
                   </CardContent>
                 </Card>

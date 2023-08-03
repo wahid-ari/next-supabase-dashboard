@@ -37,13 +37,13 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
       {/* note that the duration is longer then the one on body, controlling the bg-color */}
       <div className='relative h-5 w-5'>
         <span
-          className='motion-reduce:duration-[0s] absolute inset-0 rotate-90 transform text-black transition duration-500 dark:rotate-0 dark:text-white'
+          className='absolute inset-0 rotate-90 transform text-black transition duration-500 motion-reduce:duration-0 dark:rotate-0 dark:text-white'
           style={{ transformOrigin: '50% 100px' }}
         >
           <MoonIcon />
         </span>
         <span
-          className='motion-reduce:duration-[0s] absolute inset-0 rotate-0 transform text-black transition duration-500 dark:-rotate-90 dark:text-white'
+          className='absolute inset-0 rotate-0 transform text-black transition duration-500 motion-reduce:duration-0 dark:-rotate-90 dark:text-white'
           style={{ transformOrigin: '50% 100px' }}
         >
           <SunIcon />
