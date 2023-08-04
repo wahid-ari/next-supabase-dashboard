@@ -129,20 +129,24 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             <NavLink href='/design' icon={<ViewGridAddIcon className='h-5 w-5' />}>
               Component
             </NavLink>
-            <NavLink href='/design/ui' icon={<ViewGridAddIcon className='h-5 w-5' />} className='mt-1.5'>
-              UI
-              <Badge>New</Badge>
-            </NavLink>
-            <NavLink href='/design/example' icon={<ViewGridAddIcon className='h-5 w-5' />} className='mt-1.5'>
-              Example
-              <Badge>New</Badge>
-            </NavLink>
             <NavLink href='/design/layout' className='relative mt-1.5' icon={<ViewBoardsIcon className='h-5 w-5' />}>
               Layout
               <span className='absolute left-24 top-2.5 flex h-5 w-5 animate-bounce items-center justify-center'>
                 <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
                 <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
               </span>
+            </NavLink>
+            <NavLink href='/design/ui' icon={<ViewGridAddIcon className='h-5 w-5' />} className='mt-1.5'>
+              UI
+              <Badge>New</Badge>
+            </NavLink>
+            <NavLink href='/design/form' icon={<ViewGridAddIcon className='h-5 w-5' />} className='mt-1.5'>
+              Form
+              <Badge>New</Badge>
+            </NavLink>
+            <NavLink href='/design/example' icon={<ViewGridAddIcon className='h-5 w-5' />} className='mt-1.5'>
+              Example
+              <Badge>New</Badge>
             </NavLink>
           </NavAccordion>
 
