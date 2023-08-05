@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { format } from 'date-fns';
 import { CalendarIcon, Check, ChevronsUpDown } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
 import * as z from 'zod';
 
 import Layout from '@components/layout/Layout';
@@ -32,6 +32,16 @@ const InputFormSchema = z.object({
     .min(2, {
       message: 'Username must be at least 2 characters.',
     }),
+});
+
+const InputArrayFormSchema = z.object({
+  urls: z
+    .array(
+      z.object({
+        value: z.string().url({ message: 'Please enter a valid URL.' }),
+      })
+    )
+    .optional(),
 });
 
 const CheckboxFormSchema = z.object({
@@ -125,6 +135,17 @@ export default function FormPage() {
       username: text,
     });
   }, [text]);
+
+  const formInputArray = useForm<z.infer<typeof InputArrayFormSchema>>({
+    resolver: zodResolver(InputArrayFormSchema),
+    defaultValues: {
+      urls: [{ value: 'https://shadcn.com' }, { value: 'http://twitter.com/shadcn' }],
+    },
+  });
+  const { fields, append, remove } = useFieldArray({
+    name: 'urls',
+    control: formInputArray.control,
+  });
 
   const formCheckbox = useForm<z.infer<typeof CheckboxFormSchema>>({
     resolver: zodResolver(CheckboxFormSchema),
@@ -261,6 +282,58 @@ export default function FormPage() {
             <Button type='submit' className='mt-6'>
               Submit
             </Button>
+          </form>
+        </Form>
+        <br />
+        <br />
+        <Form {...formInputArray}>
+          <form onSubmit={formInputArray.handleSubmit(onSubmit)} className='space-y-8'>
+            <div>
+              <div className={cn(fields.length < 1 ? 'block' : 'hidden')}>
+                <FormLabel>URLs</FormLabel>
+                <FormDescription className='pt-2'>
+                  Add links to your website, blog, or social media profiles.
+                </FormDescription>
+              </div>
+              {fields.map((field, index) => (
+                <FormField
+                  control={formInputArray.control}
+                  key={field.id}
+                  name={`urls.${index}.value`}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className={cn(index !== 0 && 'sr-only')}>URLs</FormLabel>
+                      <FormDescription className={cn(index !== 0 && 'sr-only')}>
+                        Add links to your website, blog, or social media profiles.
+                      </FormDescription>
+                      <FormControl>
+                        <div className='flex items-center !mb-3'>
+                          <Input {...field} />
+                          <Button
+                            type='button'
+                            variant='destructive'
+                            size='sm'
+                            className='ml-3 h-7 w-7'
+                          
+                            onClick={() => remove(index)}
+                          >
+                            X
+                          </Button>
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              ))}
+              <Button type='button' variant='outline' size='sm' className='mt-2' onClick={() => append({ value: '' })}>
+                Add URL
+              </Button>
+              <Button type='button' variant='outline' size='sm' className='ml-2 mt-2' onClick={() => remove()}>
+                Remove All
+              </Button>
+            </div>
+            <Button type='submit'>Update URLs</Button>
           </form>
         </Form>
       </Wrapper>
