@@ -159,7 +159,7 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
       className='aria-selected:text-primary-foreground aria-selected:bg-neutral-200'
     >
       {model.name}
-      <CheckIcon className={cn('ml-auto h-4 w-4', isSelected ? 'opacity-100' : 'opacity-0')} />
+      <CheckIcon className={cn('ml-auto h-4 w-4', isSelected ? 'text-emerald-600 opacity-100' : 'opacity-0')} />
     </CommandItem>
   );
 }
