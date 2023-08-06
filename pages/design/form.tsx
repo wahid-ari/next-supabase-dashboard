@@ -307,14 +307,13 @@ export default function FormPage() {
                         Add links to your website, blog, or social media profiles.
                       </FormDescription>
                       <FormControl>
-                        <div className='flex items-center !mb-3'>
+                        <div className='!mb-3 flex items-center'>
                           <Input {...field} />
                           <Button
                             type='button'
                             variant='destructive'
                             size='sm'
                             className='ml-3 h-7 w-7'
-                          
                             onClick={() => remove(index)}
                           >
                             X
