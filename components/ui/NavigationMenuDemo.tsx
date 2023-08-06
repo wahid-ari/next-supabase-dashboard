@@ -53,7 +53,7 @@ export function NavigationMenuDemo() {
                     className='flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-neutral-200/50 to-neutral-200 p-6 no-underline outline-none focus:shadow-md dark:from-neutral-800/50 dark:to-neutral-800'
                     href='/'
                   >
-                    <div className='mb-2 mt-4 text-lg font-medium'>shadcn/ui</div>
+                    <div className='mb-2 mt-4 text-lg font-medium'>NextJS</div>
                     <p className='text-sm leading-tight text-neutral-600 dark:text-neutral-400'>
                       Beautifully designed components built with Radix UI and Tailwind CSS.
                     </p>

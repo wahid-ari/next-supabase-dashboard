@@ -25,21 +25,21 @@ export default function Tabs({ items, children, className, ...props }: Props) {
             <Tab
               key={index + 1}
               as='div'
-              className='rounded-t focus-visible:!outline-none focus-visible:!ring-2 focus-visible:ring-sky-600 focus-visible:!ring-offset-0'
+              className='rounded-t focus-visible:!outline-none focus-visible:!ring-0 focus-visible:!ring-offset-0'
             >
               {({ selected }) => (
                 <button
                   className={twMerge(
                     'relative w-full border-transparent py-2.5 text-sm font-semibold tracking-wide transition-all',
-                    'text-gray-500 hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200',
-                    'outline-none ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent',
-                    selected && '!border-b-sky-600 !text-sky-600 dark:!text-sky-500'
+                    'text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200',
+                    'rounded outline-none ring-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600',
+                    selected && '!text-sky-600 dark:!text-sky-500'
                   )}
                 >
                   {item}
                   {selected && (
                     <motion.div
-                      className='absolute bottom-0 left-0 right-0 z-10 h-[2px] rounded-full border-b-2 border-b-sky-500'
+                      className='absolute bottom-0 left-0 right-0 z-10 h-[2px] rounded-full border-b-2 border-b-sky-600'
                       layoutId='underline'
                       initial={false}
                     />
@@ -67,7 +67,7 @@ Tabs.panel = ({ children, className, ...props }: PanelProps) => {
       <Tab.Panel
         {...props}
         className={twMerge(
-          'rounded py-2 text-neutral-700 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 dark:text-neutral-200',
+          'rounded py-2 text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-0 dark:text-neutral-200',
           className
         )}
       >

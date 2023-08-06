@@ -22,48 +22,55 @@ export function DemoGithub() {
 
   return (
     <Card>
-      <CardHeader className='flex flex-row items-start justify-between space-y-0'>
-        <div className='space-y-1'>
-          <CardTitle>shadcn/ui</CardTitle>
-          <CardDescription>Beautifully designed components built with Radix UI and Tailwind CSS.</CardDescription>
+      <CardHeader>
+        <div className='flex items-center justify-between gap-2'>
+          <CardTitle>NextJS</CardTitle>
+          <div className='flex items-center space-x-1'>
+            <Toggle
+              pressed={starred}
+              size='sm'
+              variant='outline'
+              onPressedChange={setStarred}
+              aria-label='Star'
+              className='h-8 px-1.5'
+            >
+              {starred ? (
+                <>
+                  <StarIcon className='mr-1 h-4 w-4 fill-yellow-500 text-yellow-500' />
+                  Starred
+                </>
+              ) : (
+                <>
+                  <StarIcon className='mr-1 h-4 w-4' />
+                  Star
+                </>
+              )}
+            </Toggle>
+            <Separator orientation='vertical' className='h-[20px]' />
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant='outline' size='sm' className='px-2 shadow-none'>
+                  <ChevronDownIcon className='text-secondary-foreground h-4 w-4' />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align='end' alignOffset={-5} className='w-[200px]' forceMount>
+                <DropdownMenuLabel>Suggested Lists</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuCheckboxItem checked>Future Ideas</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem>My Stack</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem>Inspiration</DropdownMenuCheckboxItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <PlusIcon className='mr-2 h-4 w-4' /> Create List
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
-        <div className='bg-secondary text-secondary-foreground flex items-center space-x-1 rounded-md'>
-          <Toggle pressed={starred} onPressedChange={setStarred} aria-label='Star'>
-            {starred ? (
-              <>
-                <StarIcon className='mr-2 h-4 w-4 fill-yellow-500 text-yellow-500' />
-                Starred
-              </>
-            ) : (
-              <>
-                <StarIcon className='mr-2 h-4 w-4' />
-                Star
-              </>
-            )}
-          </Toggle>
-          <Separator orientation='vertical' className='h-[20px]' />
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant='secondary' className='px-2 shadow-none'>
-                <ChevronDownIcon className='text-secondary-foreground h-4 w-4' />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align='end' alignOffset={-5} className='w-[200px]' forceMount>
-              <DropdownMenuLabel>Suggested Lists</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuCheckboxItem checked>Future Ideas</DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem>My Stack</DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem>Inspiration</DropdownMenuCheckboxItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <PlusIcon className='mr-2 h-4 w-4' /> Create List
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+        <CardDescription>Beautifully designed components built with Radix UI and Tailwind CSS.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className='flex flex-wrap gap-x-4 gap-y-2 text-sm text-neutral-600 dark:text-neutral-400'>
+        <div className='flex flex-wrap gap-x-4 gap-y-1 text-sm text-neutral-600 dark:text-neutral-400'>
           <div className='flex items-center'>
             <CircleIcon className='mr-1 h-3 w-3 fill-sky-400 text-sky-400' />
             TypeScript
