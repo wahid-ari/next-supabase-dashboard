@@ -37,7 +37,7 @@ export function RecentSales() {
         <div className='mr-auto flex flex-col sm:w-full sm:flex-row sm:items-center sm:justify-between'>
           <div className='ml-4 space-y-1'>
             <p className='text-sm font-medium leading-none'>Isabella Nguyen</p>
-            <p className='text-sm text-neutral-500 dark:text-neutral-400'>isabella.nguyen@email.com</p>
+            <p className='text-sm text-neutral-500 dark:text-neutral-400'>isabella.ng@email.com</p>
           </div>
           <div className='ml-4 mt-1 font-medium sm:mt-0'>+$299.00</div>
         </div>

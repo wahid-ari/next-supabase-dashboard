@@ -25,7 +25,7 @@ export function DemoGithub() {
       <CardHeader>
         <div className='flex items-center justify-between gap-2'>
           <CardTitle>NextJS</CardTitle>
-          <div className='flex items-center space-x-1'>
+          <div className='flex items-center space-x-2'>
             <Toggle
               pressed={starred}
               size='sm'

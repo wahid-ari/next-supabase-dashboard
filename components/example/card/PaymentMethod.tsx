@@ -17,7 +17,7 @@ export function DemoPaymentMethod() {
         <RadioGroup defaultValue='cards' className='grid grid-cols-3 gap-4'>
           <Label
             htmlFor='paypal'
-            className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600'
+            className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600 [&:has([data-state=checked])]:bg-neutral-100 dark:[&:has([data-state=checked])]:bg-neutral-800'
           >
             <RadioGroupItem value='paypal' id='paypal' className='sr-only' />
             <Icons.paypal className='mb-3 h-6 w-6' />
@@ -25,7 +25,7 @@ export function DemoPaymentMethod() {
           </Label>
           <Label
             htmlFor='cards'
-            className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600'
+            className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600 [&:has([data-state=checked])]:bg-neutral-100 dark:[&:has([data-state=checked])]:bg-neutral-800'
           >
             <RadioGroupItem value='cards' id='cards' className='sr-only' />
             <Icons.cards className='mb-3 h-6 w-6' />
@@ -33,7 +33,7 @@ export function DemoPaymentMethod() {
           </Label>
           <Label
             htmlFor='apple'
-            className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600'
+            className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600 [&:has([data-state=checked])]:bg-neutral-100 dark:[&:has([data-state=checked])]:bg-neutral-800'
           >
             <RadioGroupItem value='apple' id='apple' className='sr-only' />
             <Icons.apple className='mb-3 h-6 w-6' />
