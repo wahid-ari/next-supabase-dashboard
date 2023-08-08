@@ -39,6 +39,7 @@ type User = (typeof users)[number];
 
 export function DemoChat() {
   const [open, setOpen] = React.useState(false);
+  const [message, setMessage] = React.useState('');
   const [selectedUsers, setSelectedUsers] = React.useState<User[]>([]);
 
   const [messages, setMessages] = React.useState([
@@ -96,23 +97,42 @@ export function DemoChat() {
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              setMessages([
-                ...messages,
+              setMessages((prev) => [
+                ...prev,
                 {
                   role: 'user',
-                  content: event.currentTarget.message.value,
+                  content: message,
+                  // content: event.currentTarget.message.value,
                 },
-                {
-                  role: 'agent',
-                  content: 'Reply for ' + event.currentTarget.message.value,
-                },
+                // {
+                //   role: 'agent',
+                //   content: 'Reply for ' + message,
+                //   content: 'Reply for ' + event.currentTarget.message.value,
+                // },
               ]);
-              event.currentTarget.message.value = '';
+              setTimeout(() => {
+                setMessages((prev) => [
+                  ...prev,
+                  {
+                    role: 'agent',
+                    content: 'Reply for ' + message,
+                    // content: 'Reply for ' + event.currentTarget.message.value,
+                  },
+                ]);
+                setMessage('');
+              }, 500);
+              // event.currentTarget.message.value = '';
             }}
             className='flex w-full items-center space-x-2'
           >
-            <Input id='message' placeholder='Type your message...' className='flex-1' />
-            <Button type='submit' size='icon'>
+            <Input
+              id='message'
+              placeholder='Type your message...'
+              className='flex-1'
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <Button type='submit' size='icon' disabled={message == '' ? true : false}>
               <Send className='h-4 w-4' />
               <span className='sr-only'>Send</span>
             </Button>
