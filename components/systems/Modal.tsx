@@ -4,9 +4,9 @@ import { ExclamationIcon, InformationCircleIcon } from '@heroicons/react/outline
 import Button from '@components/systems/Button';
 
 type Props = {
+  children: ReactNode;
   open: boolean;
   title: string;
-  children: ReactNode;
   isDanger?: boolean;
   onClose?: () => void;
   onConfirm?: () => void;
@@ -17,9 +17,9 @@ type Props = {
 };
 
 export default function Modal({
+  children,
   open,
   title,
-  children,
   isDanger,
   onClose,
   onConfirm,

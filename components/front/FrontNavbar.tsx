@@ -13,7 +13,7 @@ import ActiveLink from '@components/front/ActiveLink';
 import FrontThemeChanger from '@components/front/FrontThemeChanger';
 import NavbarSearch from '@components/front/NavbarSearch';
 
-function CustomActiveLink({ href, children }: { href: string; children: ReactNode }) {
+function CustomActiveLink({ children, href }: { children: ReactNode; href: string }) {
   return (
     <ActiveLink
       href={href}

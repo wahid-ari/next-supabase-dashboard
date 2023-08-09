@@ -2,12 +2,12 @@ import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
-  className?: string;
   children?: ReactNode;
+  className?: string;
   [props: string]: any;
 };
 
-export default function Section({ className, children, ...props }: Props) {
+export default function Section({ children, className, ...props }: Props) {
   return (
     <section
       {...props}
@@ -21,7 +21,7 @@ export default function Section({ className, children, ...props }: Props) {
   );
 }
 
-Section.small = ({ className, children, ...props }: Props) => {
+Section.small = ({ children, className, ...props }: Props) => {
   return (
     <section
       {...props}

@@ -5,15 +5,15 @@ import { ChevronRightIcon } from '@heroicons/react/solid';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
+  children: ReactNode;
   title?: string;
   routeName?: string;
   className?: string;
   icon?: ReactNode;
-  children: ReactNode;
   [props: string]: any;
 };
 
-export default function NavAccordion({ title, routeName, className, icon, children, ...props }: Props) {
+export default function NavAccordion({ children, title, routeName, className, icon, ...props }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [cek, setCek] = useState(false);
   const router = useRouter();

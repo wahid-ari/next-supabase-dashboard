@@ -3,13 +3,13 @@ import { ChevronDownIcon } from '@heroicons/react/outline';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
-  className?: string;
   children: string;
+  className?: string;
   count?: number;
   [props: string]: any;
 };
 
-export default function ShowMore({ className, children, count = 200, ...props }: Props) {
+export default function ShowMore({ children, className, count = 200, ...props }: Props) {
   const [showMore, setShowMore] = useState(false);
   const text = showMore ? children : children?.slice(0, count) + '...';
 

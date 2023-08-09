@@ -34,7 +34,7 @@ const textVariants = cva('leading-7 [&:not(:first-child)]:mt-4', {
 
 export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement>, VariantProps<typeof textVariants> {}
 
-export function Text({ className, variant, size, weight, children, ...props }: TextProps) {
+export function Text({ children, className, variant, size, weight, ...props }: TextProps) {
   return (
     <p className={cn(textVariants({ variant, size, weight, className }))} {...props}>
       {children}

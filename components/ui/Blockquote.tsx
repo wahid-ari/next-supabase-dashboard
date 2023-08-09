@@ -34,7 +34,7 @@ export interface BlockquoteProps
   extends React.HTMLAttributes<HTMLQuoteElement>,
     VariantProps<typeof blockquoteVariants> {}
 
-export function Blockquote({ className, variant, size, weight, children, ...props }: BlockquoteProps) {
+export function Blockquote({ children, className, variant, size, weight, ...props }: BlockquoteProps) {
   return (
     <blockquote className={cn(blockquoteVariants({ variant, size, weight, className }))} {...props}>
       &quot;{children}&quot;

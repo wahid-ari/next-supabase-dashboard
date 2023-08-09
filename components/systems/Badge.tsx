@@ -2,13 +2,13 @@ import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
+  children: ReactNode;
   className?: string;
   isLarge?: boolean;
-  children: ReactNode;
   [props: string]: any;
 };
 
-export default function Badge({ className, isLarge, children, ...props }: Props) {
+export default function Badge({ children, className, isLarge, ...props }: Props) {
   return (
     <span
       {...props}
@@ -24,7 +24,7 @@ export default function Badge({ className, isLarge, children, ...props }: Props)
   );
 }
 
-Badge.dark = ({ className, isLarge, children, ...props }: Props) => {
+Badge.dark = ({ children, className, isLarge, ...props }: Props) => {
   return (
     <span
       {...props}
@@ -40,7 +40,7 @@ Badge.dark = ({ className, isLarge, children, ...props }: Props) => {
   );
 };
 
-Badge.red = ({ className, isLarge, children, ...props }: Props) => {
+Badge.red = ({ children, className, isLarge, ...props }: Props) => {
   return (
     <span
       {...props}
@@ -56,7 +56,7 @@ Badge.red = ({ className, isLarge, children, ...props }: Props) => {
   );
 };
 
-Badge.green = ({ className, isLarge, children, ...props }: Props) => {
+Badge.green = ({ children, className, isLarge, ...props }: Props) => {
   return (
     <span
       {...props}
@@ -72,7 +72,7 @@ Badge.green = ({ className, isLarge, children, ...props }: Props) => {
   );
 };
 
-Badge.yellow = ({ className, isLarge, children, ...props }: Props) => {
+Badge.yellow = ({ children, className, isLarge, ...props }: Props) => {
   return (
     <span
       {...props}
@@ -88,7 +88,7 @@ Badge.yellow = ({ className, isLarge, children, ...props }: Props) => {
   );
 };
 
-Badge.indigo = ({ className, isLarge, children, ...props }: Props) => {
+Badge.indigo = ({ children, className, isLarge, ...props }: Props) => {
   return (
     <span
       {...props}
@@ -104,7 +104,7 @@ Badge.indigo = ({ className, isLarge, children, ...props }: Props) => {
   );
 };
 
-Badge.purple = ({ className, isLarge, children, ...props }: Props) => {
+Badge.purple = ({ children, className, isLarge, ...props }: Props) => {
   return (
     <span
       {...props}
@@ -120,7 +120,7 @@ Badge.purple = ({ className, isLarge, children, ...props }: Props) => {
   );
 };
 
-Badge.pink = ({ className, isLarge, children, ...props }: Props) => {
+Badge.pink = ({ children, className, isLarge, ...props }: Props) => {
   return (
     <span
       {...props}

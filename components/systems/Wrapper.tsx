@@ -7,6 +7,7 @@ import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
+  children?: ReactNode;
   id?: string;
   name?: string;
   docs?: string;
@@ -16,10 +17,10 @@ type Props = {
   noChildren?: boolean;
   noProps?: boolean;
   noWrap?: boolean;
-  children?: ReactNode;
 };
 
 export default function Wrapper({
+  children,
   id,
   name,
   docs,
@@ -29,7 +30,6 @@ export default function Wrapper({
   noChildren,
   noProps,
   noWrap,
-  children,
 }: Props) {
   return (
     <section id={id} className='pt-8'>

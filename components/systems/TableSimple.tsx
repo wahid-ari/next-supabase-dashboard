@@ -2,22 +2,22 @@ import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
+  children: ReactNode;
   className?: string;
   wrapperClassName?: string;
   head?: ReactNode;
   bordered?: boolean;
   caption?: string;
-  children: ReactNode;
   [props: string]: any;
 };
 
 export default function TableSimple({
+  children,
   className,
   wrapperClassName,
   head,
   bordered,
   caption,
-  children,
   ...props
 }: Props) {
   return (
@@ -47,12 +47,12 @@ export default function TableSimple({
 }
 
 type TrProps = {
-  className?: string;
   children: ReactNode;
+  className?: string;
   [props: string]: any;
 };
 
-TableSimple.tr = ({ className, children, ...props }: TrProps) => {
+TableSimple.tr = ({ children, className, ...props }: TrProps) => {
   return (
     <tr
       {...props}
@@ -67,14 +67,14 @@ TableSimple.tr = ({ className, children, ...props }: TrProps) => {
 };
 
 type TdProps = {
+  children: ReactNode;
   className?: string;
   shrink?: boolean;
   bordered?: boolean;
-  children: ReactNode;
   [props: string]: any;
 };
 
-TableSimple.td = ({ className, shrink, bordered, children, ...props }: TdProps) => {
+TableSimple.td = ({ children, className, shrink, bordered, ...props }: TdProps) => {
   return (
     <td
       {...props}

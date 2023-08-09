@@ -4,15 +4,15 @@ import { useRouter } from 'next/router';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
+  children: ReactNode;
   className?: string;
   href: string;
   icon?: ReactNode;
   isHome?: boolean;
-  children: ReactNode;
   [props: string]: any;
 };
 
-export default function NavLink({ className, href, icon, isHome, children, ...props }: Props) {
+export default function NavLink({ children, className, href, icon, isHome, ...props }: Props) {
   const router = useRouter();
   const isDetailOrAddRoute =
     (router.pathname.includes(href) && router.pathname.includes('[id]')) ||
@@ -78,14 +78,14 @@ export default function NavLink({ className, href, icon, isHome, children, ...pr
 }
 
 type Other = {
+  children: ReactNode;
   className?: string;
   href: string;
   icon?: ReactNode;
-  children: ReactNode;
   [props: string]: any;
 };
 
-NavLink.external = ({ href, icon, className, children, ...props }: Other) => {
+NavLink.external = ({ children, className, href, icon, ...props }: Other) => {
   return (
     <a
       {...props}
@@ -106,7 +106,7 @@ NavLink.external = ({ href, icon, className, children, ...props }: Other) => {
   );
 };
 
-NavLink.login = ({ href, icon, className, children, ...props }: Other) => {
+NavLink.login = ({ children, className, href, icon, ...props }: Other) => {
   return (
     <Link
       {...props}
@@ -126,7 +126,7 @@ NavLink.login = ({ href, icon, className, children, ...props }: Other) => {
   );
 };
 
-NavLink.logout = ({ href, icon, className, children, ...props }: Other) => {
+NavLink.logout = ({ children, className, href, icon, ...props }: Other) => {
   return (
     <Link
       {...props}

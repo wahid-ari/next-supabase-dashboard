@@ -2,13 +2,13 @@ import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
+  children: ReactNode;
   className?: string;
   small?: boolean;
-  children: ReactNode;
   [props: string]: any;
 };
 
-export default function Container({ className, small, children, ...props }: Props) {
+export default function Container({ children, className, small, ...props }: Props) {
   return (
     <div
       {...props}

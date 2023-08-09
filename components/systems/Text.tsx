@@ -2,12 +2,12 @@ import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
-  className?: string;
   children: ReactNode;
+  className?: string;
   [props: string]: any;
 };
 
-export default function Text({ className, children, ...props }: Props) {
+export default function Text({ children, className, ...props }: Props) {
   return (
     <p {...props} className={twMerge('text-sm text-neutral-700 dark:text-neutral-200', className)}>
       {children}
@@ -15,7 +15,7 @@ export default function Text({ className, children, ...props }: Props) {
   );
 }
 
-Text.light = ({ className, children, ...props }: Props) => {
+Text.light = ({ children, className, ...props }: Props) => {
   return (
     <p {...props} className={twMerge('text-sm font-light text-neutral-700 dark:text-neutral-200', className)}>
       {children}
@@ -23,7 +23,7 @@ Text.light = ({ className, children, ...props }: Props) => {
   );
 };
 
-Text.medium = ({ className, children, ...props }: Props) => {
+Text.medium = ({ children, className, ...props }: Props) => {
   return (
     <p {...props} className={twMerge('text-sm font-medium text-neutral-700 dark:text-neutral-200', className)}>
       {children}
@@ -31,7 +31,7 @@ Text.medium = ({ className, children, ...props }: Props) => {
   );
 };
 
-Text.semibold = ({ className, children, ...props }: Props) => {
+Text.semibold = ({ children, className, ...props }: Props) => {
   return (
     <p {...props} className={twMerge('text-sm font-semibold text-neutral-700 dark:text-neutral-200', className)}>
       {children}
@@ -39,7 +39,7 @@ Text.semibold = ({ className, children, ...props }: Props) => {
   );
 };
 
-Text.bold = ({ className, children, ...props }: Props) => {
+Text.bold = ({ children, className, ...props }: Props) => {
   return (
     <p {...props} className={twMerge('text-sm font-bold text-neutral-700 dark:text-neutral-200', className)}>
       {children}
@@ -47,7 +47,7 @@ Text.bold = ({ className, children, ...props }: Props) => {
   );
 };
 
-Text.extrabold = ({ className, children, ...props }: Props) => {
+Text.extrabold = ({ children, className, ...props }: Props) => {
   return (
     <p {...props} className={twMerge('text-sm font-extrabold text-neutral-700 dark:text-neutral-200', className)}>
       {children}

@@ -22,7 +22,7 @@ export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement>, 
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 }
 
-export function Heading({ className, as, variant, children, ...props }: HeadingProps) {
+export function Heading({ children, className, as, variant, ...props }: HeadingProps) {
   const Comp = as ? as : 'h1';
   return (
     <Comp className={cn(headingVariants({ variant, className }))} {...props}>

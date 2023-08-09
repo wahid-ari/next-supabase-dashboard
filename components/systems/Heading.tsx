@@ -2,15 +2,15 @@ import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
+  children: ReactNode;
   className?: string;
   h1?: boolean;
   h2?: boolean;
   h3?: boolean;
-  children: ReactNode;
   [props: string]: any;
 };
 
-export default function Heading({ className, h1, h2, h3, children, ...props }: Props) {
+export default function Heading({ children, className, h1, h2, h3, ...props }: Props) {
   if (h1) {
     return (
       <h1 {...props} className={twMerge('mb-4 text-3xl font-medium text-neutral-800 dark:text-neutral-100', className)}>

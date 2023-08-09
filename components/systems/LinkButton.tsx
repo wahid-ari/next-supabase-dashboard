@@ -3,13 +3,13 @@ import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
+  children: ReactNode;
   className?: string;
   href: string;
-  children: ReactNode;
   [props: string]: any;
 };
 
-export default function LinkButton({ className, href, children, ...props }: Props) {
+export default function LinkButton({ children, className, href, ...props }: Props) {
   return (
     <Link
       href={href}
@@ -25,7 +25,7 @@ export default function LinkButton({ className, href, children, ...props }: Prop
   );
 }
 
-LinkButton.secondary = ({ className, href, children, ...props }: Props) => {
+LinkButton.secondary = ({ children, className, href, ...props }: Props) => {
   return (
     <Link
       href={href}
@@ -42,7 +42,7 @@ LinkButton.secondary = ({ className, href, children, ...props }: Props) => {
   );
 };
 
-LinkButton.tertary = ({ className, href, children, ...props }: Props) => {
+LinkButton.tertary = ({ children, className, href, ...props }: Props) => {
   return (
     <Link
       href={href}

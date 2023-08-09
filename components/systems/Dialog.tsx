@@ -7,10 +7,10 @@ import { twMerge } from 'tailwind-merge';
 import Button from '@components/systems/Button';
 
 type Props = {
+  children: ReactNode;
   open?: boolean;
   setOpen?: Dispatch<SetStateAction<boolean>>;
   title?: string;
-  children: ReactNode;
   isDanger?: boolean;
   isEdit?: boolean;
   onClose?: () => void;
@@ -21,10 +21,10 @@ type Props = {
 };
 
 export default function Dialog({
+  children,
   open,
   setOpen,
   title,
-  children,
   isDanger,
   isEdit,
   onClose,

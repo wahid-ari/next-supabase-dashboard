@@ -5,6 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import Button from '@components/systems/Button';
 
 type Props = {
+  children: ReactNode;
   className?: string;
   head?: ReactNode;
   totalPage?: number;
@@ -14,11 +15,11 @@ type Props = {
   prev?: () => void;
   rowPerPage?: number;
   noPagination?: boolean;
-  children: ReactNode;
   [props: string]: any;
 };
 
 export default function Table({
+  children,
   className,
   head,
   totalPage = 0,
@@ -28,7 +29,6 @@ export default function Table({
   prev,
   rowPerPage,
   noPagination,
-  children,
   ...props
 }: Props) {
   return (
@@ -102,12 +102,12 @@ export default function Table({
 }
 
 type TrProps = {
-  className?: string;
   children: ReactNode;
+  className?: string;
   [props: string]: any;
 };
 
-Table.tr = ({ className, children, ...props }: TrProps) => {
+Table.tr = ({ children, className, ...props }: TrProps) => {
   return (
     <tr
       {...props}
@@ -122,13 +122,13 @@ Table.tr = ({ className, children, ...props }: TrProps) => {
 };
 
 type TdProps = {
+  children: ReactNode;
   className?: string;
   shrink?: boolean;
-  children: ReactNode;
   [props: string]: any;
 };
 
-Table.td = ({ className, shrink, children, ...props }: TdProps) => {
+Table.td = ({ children, className, shrink, ...props }: TdProps) => {
   return (
     <td {...props} className={twMerge('p-4', shrink && 'w-1', className)}>
       {children}

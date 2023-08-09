@@ -3,13 +3,13 @@ import { Tab } from '@headlessui/react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
-  items: string[];
   children: ReactNode;
   className?: string;
+  items: string[];
   [props: string]: any;
 };
 
-export default function FrontTabs({ items, children, className, ...props }: Props) {
+export default function FrontTabs({ children, className, items, ...props }: Props) {
   return (
     <Tab.Group>
       <Tab.List

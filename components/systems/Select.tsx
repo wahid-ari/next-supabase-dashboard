@@ -2,16 +2,16 @@ import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
+  children: ReactNode;
+  className?: string;
   label?: string;
   name: string;
-  className?: string;
   defaultValue?: any;
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  children: ReactNode;
   [props: string]: any;
 };
 
-export default function Select({ label, name, className, defaultValue, onChange, children, ...props }: Props) {
+export default function Select({ children, className, label, name, defaultValue, onChange, ...props }: Props) {
   return (
     <div className=''>
       {label && (
@@ -39,12 +39,12 @@ export default function Select({ label, name, className, defaultValue, onChange,
 }
 
 type OptionProps = {
-  value: any;
   children: ReactNode;
+  value: any;
   [props: string]: any;
 };
 
-Select.option = ({ value, children, ...props }: OptionProps) => {
+Select.option = ({ children, value, ...props }: OptionProps) => {
   return (
     <option value={value} {...props}>
       {children}

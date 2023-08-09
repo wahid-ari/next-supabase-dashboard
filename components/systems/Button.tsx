@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
+  children: ReactNode;
   className?: string;
   type?: 'submit' | 'reset' | 'button';
   value?: string | ReadonlyArray<string> | number;
@@ -9,11 +10,10 @@ type Props = {
   // onClick?: (e: any) => Promise<void>;
   // onClick?: () => void;
   disabled?: boolean;
-  children: ReactNode;
   [props: string]: any;
 };
 
-export default function Button({ className, type, value, onClick, disabled, children, ...props }: Props) {
+export default function Button({ children, className, type, value, onClick, disabled, ...props }: Props) {
   return (
     <button
       {...props}
@@ -33,7 +33,7 @@ export default function Button({ className, type, value, onClick, disabled, chil
   );
 }
 
-Button.secondary = ({ className, type, value, onClick, disabled, children, ...props }: Props) => {
+Button.secondary = ({ children, className, type, value, onClick, disabled, ...props }: Props) => {
   return (
     <button
       {...props}
@@ -54,7 +54,7 @@ Button.secondary = ({ className, type, value, onClick, disabled, children, ...pr
   );
 };
 
-Button.tertary = ({ className, type, value, onClick, disabled, children, ...props }: Props) => {
+Button.tertary = ({ children, className, type, value, onClick, disabled, ...props }: Props) => {
   return (
     <button
       {...props}
@@ -74,7 +74,7 @@ Button.tertary = ({ className, type, value, onClick, disabled, children, ...prop
   );
 };
 
-Button.success = ({ className, type, value, onClick, disabled, children, ...props }: Props) => {
+Button.success = ({ children, className, type, value, onClick, disabled, ...props }: Props) => {
   return (
     <button
       {...props}
@@ -94,7 +94,7 @@ Button.success = ({ className, type, value, onClick, disabled, children, ...prop
   );
 };
 
-Button.danger = ({ className, type, value, onClick, disabled, children, ...props }: Props) => {
+Button.danger = ({ children, className, type, value, onClick, disabled, ...props }: Props) => {
   return (
     <button
       {...props}
