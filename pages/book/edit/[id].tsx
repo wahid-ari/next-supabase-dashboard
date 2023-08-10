@@ -129,7 +129,8 @@ export default function Book({ id }) {
     }
   }, [selectedGenres]);
 
-  async function handleEdit() {
+  async function handleEdit(e) {
+    e.preventDefault();
     const toastId = pushToast({
       message: 'Updating book',
       isLoading: true,
@@ -164,7 +165,7 @@ export default function Book({ id }) {
       </div>
 
       {data ? (
-        <div className='grid grid-cols-1 gap-x-8 md:grid-cols-2'>
+        <form onSubmit={handleEdit} className='grid grid-cols-1 gap-x-8 md:grid-cols-2'>
           <div>
             <LabeledInput
               label='Title'
@@ -291,11 +292,11 @@ export default function Book({ id }) {
               placeholder='https://www.goodreads.com/book/show/2767052-the-hunger-games'
             />
 
-            <Button onClick={handleEdit} className='mt-3.5 w-full'>
+            <Button type='submit' className='mt-3.5 w-full'>
               Update
             </Button>
           </div>
-        </div>
+        </form>
       ) : (
         <Shimer className='!h-60' />
       )}

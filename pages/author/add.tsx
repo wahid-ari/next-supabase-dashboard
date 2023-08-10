@@ -40,7 +40,8 @@ export default function Author() {
   });
   const router = useRouter();
 
-  async function handleSave() {
+  async function handleSubmit(e) {
+    e.preventDefault();
     const toastId = pushToast({
       message: 'Creating author',
       isLoading: true,
@@ -65,7 +66,7 @@ export default function Author() {
         <Title>Create Author</Title>
       </div>
 
-      <div className='max-w-lg'>
+      <form onSubmit={handleSubmit} className='max-w-lg'>
         <LabeledInput
           label='Author Name'
           type='text'
@@ -119,10 +120,10 @@ export default function Author() {
           placeholder='Author Bio'
         />
 
-        <Button.success onClick={handleSave} className='w-full'>
+        <Button.success type='submit' className='w-full'>
           Save
         </Button.success>
-      </div>
+      </form>
     </Layout>
   );
 }

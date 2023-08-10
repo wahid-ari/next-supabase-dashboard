@@ -30,7 +30,7 @@ export default function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  async function handleLogin(e: any) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
     setLoading(true);
     let isError = false;
@@ -43,7 +43,7 @@ export default function Login() {
       pushToast({ message: "Password can't be empty", isError: true });
     }
 
-    // jika tidak ada error save data
+    // // jika tidak ada error save data
     if (!isError) {
       const toastId = pushToast({
         message: 'Login...',
@@ -79,7 +79,9 @@ export default function Login() {
         console.error(error);
       }
     }
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }
 
   if (status === 'loading') {
@@ -138,54 +140,57 @@ export default function Login() {
                 Login
               </Heading>
 
-              <div className='mb-5'>
-                <label className='block text-sm text-gray-800' htmlFor='username'>
-                  Username
-                </label>
-                <input
-                  type='text'
-                  name='username'
-                  placeholder='Username'
-                  value={form.username}
-                  onChange={handleChange}
-                  className='mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-gray-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:bg-white dark:text-neutral-800'
-                  autoComplete='off'
-                  required
-                />
-              </div>
-
-              <div className='mb-5'>
-                <label className='block text-sm text-gray-800' htmlFor='password'>
-                  Password
-                </label>
-                <div className='relative mb-4 flex items-center'>
+              <form onSubmit={handleSubmit}>
+                <div className='mb-5'>
+                  <label className='block text-sm text-gray-800' htmlFor='username'>
+                    Username
+                  </label>
                   <input
-                    type={showPassword ? 'text' : 'password'}
-                    name='password'
-                    placeholder='Password'
-                    value={form.password}
+                    type='text'
+                    name='username'
+                    placeholder='Username'
+                    value={form.username}
                     onChange={handleChange}
                     className='mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-gray-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:bg-white dark:text-neutral-800'
                     autoComplete='off'
                     required
                   />
-                  <button
-                    aria-label='show password'
-                    onClick={() => setShowPassword(!showPassword)}
-                    className='absolute right-0.5 z-10 mr-0.5 mt-2 rounded-md border-gray-300 p-1.5 outline-none ring-gray-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-600'
-                  >
-                    {showPassword ? (
-                      <EyeIcon className='h-5 w-5 text-gray-600' />
-                    ) : (
-                      <EyeOffIcon className='h-5 w-5 text-gray-600' />
-                    )}
-                  </button>
                 </div>
-              </div>
 
-              <Button onClick={handleLogin} className='w-full !text-base'>
-                {loading ? 'Logging in...' : 'Login'}
-              </Button>
+                <div className='mb-5'>
+                  <label className='block text-sm text-gray-800' htmlFor='password'>
+                    Password
+                  </label>
+                  <div className='relative mb-4 flex items-center'>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      name='password'
+                      placeholder='Password'
+                      value={form.password}
+                      onChange={handleChange}
+                      className='mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-gray-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:bg-white dark:text-neutral-800'
+                      autoComplete='off'
+                      required
+                    />
+                    <button
+                      type='button'
+                      aria-label='show password'
+                      onClick={() => setShowPassword(!showPassword)}
+                      className='absolute right-0.5 z-10 mr-0.5 mt-2 rounded-md border-gray-300 p-1.5 outline-none ring-gray-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-600'
+                    >
+                      {showPassword ? (
+                        <EyeIcon className='h-5 w-5 text-gray-600' />
+                      ) : (
+                        <EyeOffIcon className='h-5 w-5 text-gray-600' />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                <Button type='submit' className='w-full !text-base'>
+                  {loading ? 'Logging in...' : 'Login'}
+                </Button>
+              </form>
 
               <p className='mt-4 text-center font-normal dark:text-neutral-800'>
                 Dont have an account?{' '}

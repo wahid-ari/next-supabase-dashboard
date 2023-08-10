@@ -87,7 +87,8 @@ export default function Book() {
     setCreateItem({ ...createItem, genre: selectedGenres });
   }, [selectedGenres]);
 
-  async function handleSave() {
+  async function handleSave(e) {
+    e.preventDefault();
     const toastId = pushToast({
       message: 'Creating book',
       isLoading: true,
@@ -120,7 +121,7 @@ export default function Book() {
         <Title>Create Book</Title>
       </div>
 
-      <div className='grid grid-cols-1 gap-x-8 md:grid-cols-2'>
+      <form onSubmit={handleSave} className='grid grid-cols-1 gap-x-8 md:grid-cols-2'>
         <div>
           <LabeledInput
             label='Title'
@@ -247,11 +248,11 @@ export default function Book() {
             placeholder='https://www.goodreads.com/book/show/2767052-the-hunger-games'
           />
 
-          <Button.success onClick={handleSave} className='mt-3.5 w-full'>
+          <Button.success type='submit' className='mt-3.5 w-full'>
             Save
           </Button.success>
         </div>
-      </div>
+      </form>
     </Layout>
   );
 }

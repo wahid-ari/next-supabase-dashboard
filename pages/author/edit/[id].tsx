@@ -60,7 +60,8 @@ export default function Author({ id }) {
     }
   }, [data]);
 
-  async function handleEdit() {
+  async function handleEdit(e) {
+    e.preventDefault();
     const toastId = pushToast({
       message: 'Updating author',
       isLoading: true,
@@ -95,7 +96,7 @@ export default function Author({ id }) {
       </div>
 
       {data ? (
-        <div className='max-w-lg'>
+        <form className='max-w-lg' onSubmit={handleEdit}>
           <LabeledInput
             label='Author Name'
             type='text'
@@ -149,10 +150,10 @@ export default function Author({ id }) {
             placeholder='Author Bio'
           />
 
-          <Button onClick={handleEdit} className='w-full'>
+          <Button type='submit' className='w-full'>
             Update
           </Button>
-        </div>
+        </form>
       ) : (
         <Shimer className='!h-60' />
       )}
