@@ -16,7 +16,7 @@ import LoadingDots from '@components/systems/LoadingDots';
 import HeadSeo from '@components/layout/HeadSeo';
 
 export default function Login() {
-  const [form, setForm] = useState({ username: 'develop', password: 'password' });
+  const [form, setForm] = useState({ username: 'develop', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { updateToast, pushToast } = useToast();

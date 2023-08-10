@@ -1,4 +1,3 @@
-import ThemeChanger from '@components/layout/ThemeChanger';
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
@@ -43,7 +42,7 @@ test.describe('Testing NavAccordion Component', () => {
     const navAccordion = page.getByTestId('nav-accordion');
     await expect(navAccordion).toBeVisible();
     await expect(navAccordion).toHaveClass(
-      /flex w-full items-center justify-start gap-2 rounded py-2 pl-3 text-gray-700 outline-none transition-all/
+      /flex w-full items-center justify-start gap-2 rounded py-2 pl-2.5 pr-2 text-gray-700 outline-none transition-all/
     );
     await expect(navAccordion).toHaveText(/Design/);
     const navAccordionLink = page.getByTestId('nav-accordion-link');
