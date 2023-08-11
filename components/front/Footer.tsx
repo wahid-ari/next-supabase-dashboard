@@ -46,6 +46,11 @@ export default function Footer({ className, ...props }: { className?: string; [p
                     Home
                   </Link>
                 </li>
+                <li className='mb-2'>
+                  <Link href='/design' className={linkClassName}>
+                    Design
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
