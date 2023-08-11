@@ -6,8 +6,7 @@ function generateSiteMap(books: any, authors: any, genres: any) {
 
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-      
-      <!-- Manually generate page-->
+
       <url>
         <loc>${BASE_URL}</loc>
         <lastmod>${today.toISOString()}</lastmod>
@@ -28,12 +27,22 @@ function generateSiteMap(books: any, authors: any, genres: any) {
         <lastmod>${today.toISOString()}</lastmod>
         <priority>0.80</priority>
       </url>
+      <url>
+        <loc>${BASE_URL}/browse</loc>
+        <lastmod>${today.toISOString()}</lastmod>
+        <priority>0.80</priority>
+      </url>
+      <url>
+        <loc>${BASE_URL}/login</loc>
+        <lastmod>${today.toISOString()}</lastmod>
+        <priority>0.80</priority>
+      </url>
 
     ${books
       .map((book: any) => {
         return `
         <url>
-          <loc>${`${BASE_URL}/books/detail/${book.slug}`}</loc>
+          <loc>${`${BASE_URL}/books/${book.slug}`}</loc>
           <lastmod>${today.toISOString()}</lastmod>
         </url>
       `;
@@ -44,7 +53,7 @@ function generateSiteMap(books: any, authors: any, genres: any) {
       .map((author: any) => {
         return `
       <url>
-        <loc>${`${BASE_URL}/authors/detail/${author.slug}`}</loc>
+        <loc>${`${BASE_URL}/authors/${author.slug}`}</loc>
         <lastmod>${today.toISOString()}</lastmod>
       </url>
     `;
@@ -55,7 +64,7 @@ function generateSiteMap(books: any, authors: any, genres: any) {
       .map((genre: any) => {
         return `
       <url>
-        <loc>${`${BASE_URL}/genres/detail/${genre.slug}`}</loc>
+        <loc>${`${BASE_URL}/genres/${genre.slug}`}</loc>
         <lastmod>${today.toISOString()}</lastmod>
       </url>
     `;
