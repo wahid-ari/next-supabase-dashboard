@@ -1764,13 +1764,17 @@ export default function Ui() {
       <Wrapper
         id='text'
         name='Text'
-        props={['variant', 'size', 'weight']}
+        props={['as', 'variant', 'size', 'weight']}
         docs='https://ui.shadcn.com/docs/components/typography#p'
       >
         <Text>Default</Text>
-        <Text variant='muted'>Muted</Text>
-        <Text size='xs'>XS</Text>
-        <Text size='sm'>SM</Text>
+        <Text variant='muted' className='text-center'>
+          variant Muted text-center
+        </Text>
+        <Text size='xs' className='text-right'>
+          size XS text-right
+        </Text>
+        <Text size='sm'>size SM</Text>
         <Text size='sm' variant='muted'>
           SM Muted
         </Text>
@@ -1781,7 +1785,12 @@ export default function Ui() {
         <Text size='lg' weight='semibold'>
           LG Semibold
         </Text>
-        <Text size='xl'>XL</Text>
+        <Text size='xl' className='mb-4'>
+          XL
+        </Text>
+        <Text as='span' size='sm'>
+          as span
+        </Text>
       </Wrapper>
 
       <Wrapper

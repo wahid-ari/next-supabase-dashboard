@@ -124,7 +124,7 @@ export default function Search() {
   }
 
   return (
-    <Layout title='Search - MyBook'>
+    <Layout title='Search - MyBook' description='Search - MyBook'>
       <Title>Search</Title>
 
       <form className='mt-2' onSubmit={handleSubmit}>

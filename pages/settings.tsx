@@ -16,7 +16,7 @@ export default function Settings() {
   };
 
   return (
-    <Layout title='Settings - MyBook'>
+    <Layout title='Settings - MyBook' description='Settings - MyBook'>
       <Title>Settings</Title>
       <Text className='mb-2 mt-5'>Dark Mode</Text>
       <div
