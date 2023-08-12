@@ -7,4 +7,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://my-bookk.vercel.app/sitemap.xml 
+Sitemap: https://next-supabase-dashboard.vercel.app/sitemap.xml

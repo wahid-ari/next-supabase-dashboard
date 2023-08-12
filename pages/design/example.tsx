@@ -13,7 +13,7 @@ export default function Example() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
   return (
-    <Layout title='Example - MyBook'>
+    <Layout title='Example - MyBook' description='Example Components - MyBook'>
       <div className='relative'>
         <Title>Example</Title>
         <span className='absolute left-[105px] top-1 flex h-5 w-5 animate-bounce items-center justify-center'>

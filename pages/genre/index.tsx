@@ -131,7 +131,7 @@ export default function Genre() {
   }
 
   return (
-    <Layout title='Genre - MyBook' prefetch={['/api/genre']}>
+    <Layout title='Genre - MyBook' prefetch={['/api/genre']} description='View and Manage Genre - MyBook'>
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Genre</Title>
         <Button.success onClick={() => setOpenCreateDialog(true)} className='flex items-center gap-2'>

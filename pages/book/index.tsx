@@ -191,7 +191,7 @@ export default function Book() {
   }
 
   return (
-    <Layout title='Book - MyBook' prefetch={['/api/book']}>
+    <Layout title='Book - MyBook' prefetch={['/api/book']} description='View and Manage Book - MyBook'>
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Book</Title>
         <LinkButton href='book/add' className='flex items-center gap-2'>

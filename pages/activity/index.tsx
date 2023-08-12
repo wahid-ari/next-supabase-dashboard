@@ -117,7 +117,7 @@ export default function Log() {
   }
 
   return (
-    <Layout title='Logs - MyBook' prefetch={['/api/log']}>
+    <Layout title='Logs - MyBook' description='View and Manage Logs - MyBook' prefetch={['/api/log']}>
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Logs</Title>
       </div>

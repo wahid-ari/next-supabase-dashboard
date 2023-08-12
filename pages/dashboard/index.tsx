@@ -95,6 +95,7 @@ export default function Dashboard() {
         '/api/statistics/book-by-author',
         '/api/statistics/book-by-genre',
       ]}
+      description='View and Manage Data - MyBook'
     >
       <Titles>Dashboard</Titles>
 

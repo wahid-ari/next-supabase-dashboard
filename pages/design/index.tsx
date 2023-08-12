@@ -455,7 +455,7 @@ export default function Example() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
   return (
-    <Layout title='Design System - MyBook'>
+    <Layout title='Design System - MyBook' description='Example Design System - MyBook'>
       <Title>Components</Title>
 
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>

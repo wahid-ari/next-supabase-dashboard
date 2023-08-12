@@ -176,7 +176,7 @@ export default function Author() {
   }
 
   return (
-    <Layout title='Author - MyBook' prefetch={['/api/author']}>
+    <Layout title='Author - MyBook' prefetch={['/api/author']} description='View and Manage Author - MyBook'>
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Author</Title>
         <LinkButton href='author/add' className='flex items-center gap-2'>

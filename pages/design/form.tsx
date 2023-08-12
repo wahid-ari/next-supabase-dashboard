@@ -200,7 +200,7 @@ export default function FormPage() {
   }
 
   return (
-    <Layout title='Form - MyBook'>
+    <Layout title='Form - MyBook' description='Example Form - MyBook'>
       <div className='relative'>
         <Title>Form</Title>
         <span className='absolute left-[65px] top-1 flex h-5 w-5 animate-bounce items-center justify-center'>

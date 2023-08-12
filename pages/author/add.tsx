@@ -61,7 +61,7 @@ export default function Author() {
   }
 
   return (
-    <Layout title='Create Author - MyBook'>
+    <Layout title='Create Author - MyBook' description='Create New Author - MyBook'>
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Create Author</Title>
       </div>

@@ -44,7 +44,10 @@ export default function Book({ id }) {
   }
 
   return (
-    <Layout title={`${data ? data?.title + ' - MyBook' : 'Book Detail - MyBook'}`}>
+    <Layout
+      title={`${data ? data?.title + ' - MyBook' : 'Book Detail - MyBook'}`}
+      description='View Detail Book - MyBook'
+    >
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>{data?.title}</Title> : <Title>Book Detail</Title>}
       </div>

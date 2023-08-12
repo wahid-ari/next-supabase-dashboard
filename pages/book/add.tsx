@@ -116,7 +116,7 @@ export default function Book() {
   }
 
   return (
-    <Layout title='Create Book - MyBook'>
+    <Layout title='Create Book - MyBook' description='Create New Book - MyBook'>
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Create Book</Title>
       </div>
