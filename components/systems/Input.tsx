@@ -22,9 +22,9 @@ export default function Input({ className, type, name, placeholder, value, onCha
         value={value}
         onChange={onChange}
         className={twMerge(
-          'mt-2 w-full rounded-md border bg-white px-4 py-[0.6rem] text-sm font-medium outline-none dark:bg-neutral-900',
-          'border-gray-300 transition-all dark:border-neutral-700 dark:text-neutral-100',
-          'focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:focus:border-sky-500 dark:focus:ring-sky-500',
+          'mt-2 w-full rounded-md border border-neutral-300 px-4 py-[0.6rem] text-sm font-medium outline-none transition-all',
+          'bg-white text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100',
+          'focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-neutral-700 dark:focus:border-sky-500 dark:focus:ring-sky-500',
           className
         )}
       />
@@ -52,8 +52,8 @@ Input.disabled = ({ className, type, name, placeholder, defaultValue, ...props }
         placeholder={placeholder}
         defaultValue={defaultValue}
         className={twMerge(
-          'mt-2 w-full cursor-not-allowed rounded-md border border-gray-300 bg-gray-100 px-4 py-[0.6rem] text-sm font-medium',
-          'outline-none transition-all dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-500',
+          'mt-2 w-full cursor-not-allowed rounded-md border border-neutral-300 bg-gray-100 px-4 py-[0.6rem] text-sm',
+          'font-medium outline-none transition-all dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-500',
           className
         )}
         disabled

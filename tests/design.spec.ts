@@ -378,7 +378,7 @@ test.describe('Testing Input Component', () => {
     await expect(input).toBeEnabled();
     await expect(input).toBeEditable();
     await expect(input).toHaveValue('');
-    await expect(input).toHaveClass(/mt-2 w-full rounded-md border bg-white px-4/);
+    await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-neutral-300 px-4/);
   });
   test('renders a Input Disabled component', async ({ page }) => {
     const input = page.getByTestId('input-disabled');
@@ -408,7 +408,7 @@ test.describe('Testing LabeledInput Component', () => {
     await expect(input).toBeEnabled();
     await expect(input).toBeEditable();
     await expect(input).toHaveValue('');
-    await expect(input).toHaveClass(/mt-2 w-full rounded-md px-4/);
+    await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-neutral-300 px-4/);
   });
   test('renders a LabeledInput type Password component', async ({ page }) => {
     const input = page.getByTestId('labeledinput-password');
@@ -417,7 +417,7 @@ test.describe('Testing LabeledInput Component', () => {
     await expect(input).toBeEditable();
     await expect(input).toHaveValue('');
     await expect(input).toHaveAttribute('type', 'password');
-    await expect(input).toHaveClass(/mt-2 w-full rounded-md px-4/);
+    await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-neutral-300 px-4/);
   });
   test('renders a LabeledInput Disabled component', async ({ page }) => {
     const input = page.getByTestId('labeledinput-disabled');
@@ -436,7 +436,7 @@ test.describe('Testing InputDebounce Component', () => {
     await expect(input).toBeEnabled();
     await expect(input).toBeEditable();
     await expect(input).toHaveValue('');
-    await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-gray-300/);
+    await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-neutral-300 px-4/);
     await page.getByTestId('inputdebounce').fill('inputdebounce');
     const text = page.getByTestId('inputdebounce-text');
     await expect(text).toHaveText('inputdebounce');

@@ -1397,6 +1397,7 @@ function dissmissAllToast() {
           label='Confirmation Password'
           name='confirmation'
           placeholder='confirmation'
+          defaultValue='password'
           type='password'
           data-testid='labeledinput-disabled'
         />
