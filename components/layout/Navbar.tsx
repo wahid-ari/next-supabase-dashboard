@@ -14,12 +14,8 @@ import ThemeChanger from '@components/layout/ThemeChanger';
 export default function Navbar({ className, ...props }: { className?: string; [props: string]: any }) {
   const { setShowNav } = useContext(GlobalContext);
   // const admin = nookies.get(null, 'name');
-  const { data: session, status }: { data: any; status: any } = useSession();
+  const { data: session }: { data: any; status: any } = useSession();
   const mounted = useMounted();
-
-  const showMenu = () => {
-    setShowNav(true);
-  };
 
   return (
     <nav
@@ -40,7 +36,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
         >
           <MenuIcon
             className='h-5 w-5 text-gray-500 transition-all hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200'
-            onClick={showMenu}
+            onClick={() => setShowNav(true)}
           />
         </button>
         <Link
