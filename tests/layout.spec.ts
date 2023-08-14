@@ -133,7 +133,7 @@ test.describe('Testing Layout Component', () => {
   test('renders a Layout component', async ({ page }) => {
     const layout = page.getByTestId('layout');
     await expect(layout).toBeVisible();
-    await expect(layout).toHaveClass(/font-inter min-h-screen w-full bg-white text-sm dark:bg-neutral-900 lg:grid/);
+    await expect(layout).toHaveClass(/min-h-screen w-full bg-white text-sm dark:bg-neutral-900 lg:grid/);
   });
 });
 

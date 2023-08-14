@@ -22,7 +22,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
   };
 
   return (
-    <div
+    <nav
       {...props}
       className={twMerge(
         'sticky top-0 z-40 h-11 dark:text-neutral-50 lg:hidden',
@@ -61,6 +61,6 @@ export default function Navbar({ className, ...props }: { className?: string; [p
 
         {mounted && session?.name ? <Menu className='lg:hidden' /> : null}
       </div>
-    </div>
+    </nav>
   );
 }

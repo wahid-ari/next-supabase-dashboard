@@ -31,7 +31,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
 
       <div
         {...props}
-        className='font-inter min-h-screen w-full bg-white text-sm dark:bg-neutral-900 lg:grid'
+        className='min-h-screen w-full bg-white text-sm dark:bg-neutral-900 lg:grid'
         style={{ gridTemplateColumns: 'auto 1fr' }}
       >
         <Sidebar className={`${demo ? '!z-0' : ''}`} />

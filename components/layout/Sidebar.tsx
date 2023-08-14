@@ -59,7 +59,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
 
   return (
     <>
-      <div
+      <aside
         {...props}
         className={twMerge(
           'z-50 flex h-screen max-h-screen w-screen flex-col flex-nowrap border-r bg-white dark:border-neutral-800 dark:bg-neutral-900 lg:w-60',
@@ -188,7 +188,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             )
           ) : null} */}
         </div>
-      </div>
+      </aside>
       <Modal
         title='Logout'
         open={openModal}

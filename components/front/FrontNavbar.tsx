@@ -65,7 +65,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
 
             {/* Nav Link  */}
             <div className='hidden md:block'>
-              <div className='flex items-center md:space-x-2 min-[800px]:space-x-4 min-[900px]:space-x-6 lg:space-x-8'>
+              <div className='flex items-center md:space-x-4 min-[900px]:space-x-6 lg:space-x-8'>
                 <CustomActiveLink href='/'>Home</CustomActiveLink>
                 <CustomActiveLink href='/design'>Design</CustomActiveLink>
 
