@@ -8,6 +8,7 @@ import { twMerge } from 'tailwind-merge';
 import { useSession } from 'next-auth/react';
 
 import { useMounted } from '@hooks/useMounted';
+import { cn } from '@/libs/utils';
 
 import ActiveLink from '@components/front/ActiveLink';
 import FrontThemeChanger from '@components/front/FrontThemeChanger';
@@ -100,7 +101,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     leaveFrom='opacity-100 scale-100'
                     leaveTo='opacity-0 scale-95'
                   >
-                    <Popover.Panel className='absolute top-8 z-[11] flex w-40 flex-col space-y-2.5 rounded bg-white px-4 py-4 shadow dark:bg-[#1a1a1a]'>
+                    <Popover.Panel className='absolute top-8 z-[11] flex w-40 flex-col space-y-2.5 rounded bg-white px-4 py-4 shadow dark:border dark:border-neutral-800 dark:bg-[#1a1a1a]'>
                       <CustomActiveLink href='/#'>Studios</CustomActiveLink>
                     </Popover.Panel>
                   </Transition>
@@ -254,11 +255,17 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                           />
                         </div>
                       </Menu.Button>
-                      <Menu.Items className='space-y-1 px-3'>
+                      <Menu.Items className='space-y-1 px-3 focus-visible:outline-none focus-visible:ring-0'>
                         <Menu.Item>
-                          <ActiveLink activeClassName='!text-sky-500 dark:text-sky-500' href='/#' className={activeCn}>
-                            Studios
-                          </ActiveLink>
+                          {({ active }) => (
+                            <ActiveLink
+                              activeClassName='!text-sky-500 dark:text-sky-500'
+                              href='/#'
+                              className={cn(activeCn, active && 'bg-neutral-100 dark:bg-neutral-800')}
+                            >
+                              Studios
+                            </ActiveLink>
+                          )}
                         </Menu.Item>
                       </Menu.Items>
                     </>
