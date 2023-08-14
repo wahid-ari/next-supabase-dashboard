@@ -33,6 +33,7 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
     <nav className='flex w-full text-sm' aria-label='Breadcrumb'>
       <ol {...props} className='inline-flex flex-nowrap items-center space-x-1 whitespace-nowrap md:space-x-1'>
         <li className='-ml-0.5 inline-flex items-center'>
+          <ChevronRightIcon className='mr-1 h-5 w-5 text-gray-400' />
           <Link
             href='/'
             passHref
@@ -42,7 +43,6 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
               'dark:text-neutral-300 dark:hover:text-neutral-100'
             )}
           >
-            <ChevronRightIcon className='mr-1 h-5 w-5 text-gray-400' />
             Home
           </Link>
         </li>
