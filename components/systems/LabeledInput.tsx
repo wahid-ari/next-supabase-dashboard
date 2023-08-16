@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
 import { twMerge } from 'tailwind-merge';
 
