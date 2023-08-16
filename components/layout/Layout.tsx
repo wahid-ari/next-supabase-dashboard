@@ -29,7 +29,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
     <>
       <HeadSeo title={title} description={description} prefetch={prefetch} />
 
-      <div
+      <main
         {...props}
         className='min-h-screen w-full bg-white text-sm dark:bg-neutral-900 lg:grid'
         style={{ gridTemplateColumns: 'auto 1fr' }}
@@ -65,7 +65,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
 
           <div className='px-5 py-5'>{children}</div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

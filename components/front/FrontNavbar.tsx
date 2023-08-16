@@ -45,12 +45,12 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
   return (
     <Popover
       {...props}
-      as='nav'
+      as='header'
       className={twMerge('sticky top-0 z-10 border-b border-b-neutral-200/70 dark:border-b-neutral-800', className)}
     >
       <>
         <div className='mx-auto max-w-7xl px-4 py-3'>
-          <div className='flex items-center justify-between'>
+          <nav className='flex items-center justify-between'>
             {/* web logo  */}
             <Link
               href='/'
@@ -189,7 +189,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
               </Popover.Button>
             </div>
             {/* End Mobile menu button */}
-          </div>
+          </nav>
         </div>
 
         {/* Mobile menu panel */}
