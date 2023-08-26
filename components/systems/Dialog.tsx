@@ -1,10 +1,10 @@
 import { Dispatch, Fragment, ReactNode, SetStateAction } from 'react';
 import { Transition } from '@headlessui/react';
-import * as DialogRadix from '@radix-ui/react-dialog';
 import { ExclamationIcon, InformationCircleIcon, XIcon } from '@heroicons/react/outline';
+import * as DialogRadix from '@radix-ui/react-dialog';
 import { twMerge } from 'tailwind-merge';
 
-import Button from '@components/systems/Button';
+import Button from '@/components/systems/Button';
 
 type Props = {
   children: ReactNode;

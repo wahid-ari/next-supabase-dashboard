@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import Router from 'next/router';
-import axios from 'axios';
-import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
-import nookies from 'nookies';
 import Link from 'next/link';
+import Router from 'next/router';
+import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
+import axios from 'axios';
+import nookies from 'nookies';
 
-import { validateRegister } from '@validations/register';
+import { validateRegister } from '@/validations/register';
+import useToast from '@/hooks/useToast';
 
-import useToast from '@hooks/useToast';
-
-import Button from '@components/systems/Button';
-import Heading from '@components/systems/Heading';
-import HeadSeo from '@components/layout/HeadSeo';
+import HeadSeo from '@/components/layout/HeadSeo';
+import Button from '@/components/systems/Button';
+import Heading from '@/components/systems/Heading';
 
 export async function getServerSideProps(context: any) {
   const cookies = nookies.get(context);

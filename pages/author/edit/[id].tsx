@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { mutate } from 'swr';
 import axios from 'axios';
+import { mutate } from 'swr';
+
 // import nookies from 'nookies';
 
-import { useAuthorData } from '@libs/swr';
+import { useAuthorData } from '@/libs/swr';
+import useToast from '@/hooks/useToast';
 
-import useToast from '@hooks/useToast';
-
-import Layout from '@components/layout/Layout';
-import Title from '@components/systems/Title';
-import Shimer from '@components/systems/Shimer';
-import LabeledInput from '@components/systems/LabeledInput';
-import Button from '@components/systems/Button';
-import TextArea from '@components/systems/TextArea';
+import Layout from '@/components/layout/Layout';
+import Button from '@/components/systems/Button';
+import LabeledInput from '@/components/systems/LabeledInput';
+import Shimer from '@/components/systems/Shimer';
+import TextArea from '@/components/systems/TextArea';
+import Title from '@/components/systems/Title';
 
 export async function getServerSideProps(context: any) {
   const { id } = context.params;

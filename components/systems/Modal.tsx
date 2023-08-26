@@ -1,7 +1,8 @@
 import { Fragment, ReactNode } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { ExclamationIcon, InformationCircleIcon } from '@heroicons/react/outline';
-import Button from '@components/systems/Button';
+
+import Button from '@/components/systems/Button';
 
 type Props = {
   children: ReactNode;

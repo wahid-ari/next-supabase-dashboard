@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import nookies from 'nookies';
 import axios from 'axios';
 import { getSession, signOut } from 'next-auth/react';
+import nookies from 'nookies';
 
-import LoadingDots from '@components/systems/LoadingDots';
+import LoadingDots from '@/components/systems/LoadingDots';
 
 export default function Logout() {
   const router = useRouter();

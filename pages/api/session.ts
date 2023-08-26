@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { supabase, getSessionToken } from '@libs/supabase';
+
+import { getSessionToken, supabase } from '@/libs/supabase';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, query } = req;

@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { supabase } from '@libs/supabase';
-import { hash, compare } from 'bcryptjs';
+import { compare, hash } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+
+import { supabase } from '@/libs/supabase';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, body } = req;

@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { mutate } from 'swr';
-import axios from 'axios';
 import { PlusSmIcon } from '@heroicons/react/outline';
+import axios from 'axios';
+import { mutate } from 'swr';
+
 // import nookies from 'nookies';
 
-import { useGenresData } from '@libs/swr';
+import { useGenresData } from '@/libs/swr';
+import useToast from '@/hooks/useToast';
 
-import useToast from '@hooks/useToast';
-
-import Layout from '@components/layout/Layout';
-import TableSimple from '@components/systems/TableSimple';
-import Title from '@components/systems/Title';
-import Shimer from '@components/systems/Shimer';
-import Dialog from '@components/systems/Dialog';
-import Button from '@components/systems/Button';
-import LabeledInput from '@components/systems/LabeledInput';
-import InputDebounce from '@components/systems/InputDebounce';
+import Layout from '@/components/layout/Layout';
+import Button from '@/components/systems/Button';
+import Dialog from '@/components/systems/Dialog';
+import InputDebounce from '@/components/systems/InputDebounce';
+import LabeledInput from '@/components/systems/LabeledInput';
+import Shimer from '@/components/systems/Shimer';
+import TableSimple from '@/components/systems/TableSimple';
+import Title from '@/components/systems/Title';
 
 // export async function getServerSideProps(context: any) {
 //   const cookies = nookies.get(context);

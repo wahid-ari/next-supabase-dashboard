@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { CheckIcon, PlusCircleIcon } from 'lucide-react';
 import { Column } from '@tanstack/react-table';
+import { CheckIcon, PlusCircleIcon } from 'lucide-react';
 
 import { cn } from '@/libs/utils';
 

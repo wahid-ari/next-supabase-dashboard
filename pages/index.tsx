@@ -1,7 +1,8 @@
 // import Link from 'next/link';
-// import { useBooksData } from '@libs/swr';
-import FrontLayout from '@components/front/FrontLayout';
-// import Shimer from '@components/systems/Shimer';
+// import { useBooksData } from '@/libs/swr';
+import FrontLayout from '@/components/front/FrontLayout';
+
+// import Shimer from '@/components/systems/Shimer';
 
 export default function Home() {
   // const { data, error } = useBooksData();

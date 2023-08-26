@@ -2,16 +2,17 @@ import Image from 'next/image';
 
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Input } from '@/components/ui/Input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+
+import { Areachart } from '@/components/example/dashboard/Areachart';
 import { DateRangePicker } from '@/components/example/dashboard/DateRangePicker';
+import { Linechart } from '@/components/example/dashboard/Linechart';
 import { MainNav } from '@/components/example/dashboard/MainNav';
 import { Overview } from '@/components/example/dashboard/Overview';
-import { Linechart } from '@/components/example/dashboard/Linechart';
-import { Areachart } from '@/components/example/dashboard/Areachart';
 import { Piechart } from '@/components/example/dashboard/Piechart';
 import { RecentSales } from '@/components/example/dashboard/RecentSales';
 import TeamSwitcher from '@/components/example/dashboard/TeamSwitcher';
-import { Input } from '@/components/ui/Input';
 import { UserNav } from '@/components/example/dashboard/UserNav';
 
 export default function DashboardPage() {

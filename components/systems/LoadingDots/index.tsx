@@ -1,4 +1,5 @@
 import { twMerge } from 'tailwind-merge';
+
 import s from './LoadingDots.module.css';
 
 type Props = {

@@ -1,13 +1,12 @@
 import Link from 'next/link';
 
-import Layout from '@components/layout/Layout';
-import Wrapper from '@components/systems/Wrapper';
-import Title from '@components/systems/Title';
-
-import Dashboard from '@/components/example/dashboard/Dashboard';
-import Card from '@/components/example/card/Card';
-import Music from '@/components/example/music/Music';
 import Auth from '@/components/example/auth/Auth';
+import Card from '@/components/example/card/Card';
+import Dashboard from '@/components/example/dashboard/Dashboard';
+import Music from '@/components/example/music/Music';
+import Layout from '@/components/layout/Layout';
+import Title from '@/components/systems/Title';
+import Wrapper from '@/components/systems/Wrapper';
 
 export default function Example() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';

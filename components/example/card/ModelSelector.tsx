@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { ChevronsUpDown, CheckIcon } from 'lucide-react';
 import { PopoverProps } from '@radix-ui/react-popover';
+import { CheckIcon, ChevronsUpDown } from 'lucide-react';
 
 import { cn } from '@/libs/utils';
 import { useMutationObserver } from '@/hooks/useMutationObserver';

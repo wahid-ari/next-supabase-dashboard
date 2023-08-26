@@ -1,8 +1,8 @@
-import { useTheme } from 'next-themes';
 import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { useTheme } from 'next-themes';
 import { twMerge } from 'tailwind-merge';
 
-import { useMounted } from '@hooks/useMounted';
+import { useMounted } from '@/hooks/useMounted';
 
 export default function FrontThemeChanger({ variant = 'icon', ...props }: { variant?: string; [props: string]: any }) {
   const { theme, setTheme } = useTheme();

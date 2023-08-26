@@ -1,8 +1,9 @@
 'use client';
 
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import { useTheme } from 'next-themes';
-// import useWindowSize from '@hooks/useWindowSize';
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+
+// import useWindowSize from '@/hooks/useWindowSize';
 // import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 // import { Bar } from 'react-chartjs-2';
 

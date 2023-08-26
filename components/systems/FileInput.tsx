@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { PlusIcon } from '@heroicons/react/solid';
 import { twMerge } from 'tailwind-merge';
 
-import Button from '@components/systems/Button';
+import Button from '@/components/systems/Button';
 
 type Props = {
   className?: string;

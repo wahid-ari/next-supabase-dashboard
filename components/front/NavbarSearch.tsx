@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
-import { twMerge } from 'tailwind-merge';
 import { SearchIcon } from '@heroicons/react/outline';
+import { twMerge } from 'tailwind-merge';
 
 export default function NavbarSearch({ ...props }: { [props: string]: any }) {
   const query = useRef('');

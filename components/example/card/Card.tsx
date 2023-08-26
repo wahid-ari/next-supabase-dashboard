@@ -1,21 +1,22 @@
 import { cn } from '@/libs/utils';
 
-import { DemoCreateAccount } from '@/components/example/card/CreateAccount';
-import { DemoPaymentMethod } from '@/components/example/card/PaymentMethod';
-import { DemoTeamMembers } from '@/components/example/card/TeamMembers';
-import { DemoShareDocument } from '@/components/example/card/ShareDocument';
-import { DemoNotifications } from '@/components/example/card/Notifications';
-import { DemoReportAnIssue } from '@/components/example/card/ReportAnIssue';
-import { DemoGithub } from '@/components/example/card/GithubCard';
-import { DemoCookieSettings } from '@/components/example/card/CookieSettings';
-import { ModelSelector } from '@/components/example/card/ModelSelector';
-import { TemperatureSelector } from '@/components/example/card/TemperatureSelector';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
-import { PresetSave } from '@/components/example/card/PresetSave';
-import { PresetShare } from '@/components/example/card/PresetShare';
-import { PresetActions } from '@/components/example/card/PresetActions';
+
 import { DemoActivityGoal } from '@/components/example/card/ActivityGoal';
 import { DemoChat } from '@/components/example/card/Chat';
+import { DemoCookieSettings } from '@/components/example/card/CookieSettings';
+import { DemoCreateAccount } from '@/components/example/card/CreateAccount';
+import { DemoGithub } from '@/components/example/card/GithubCard';
+import { ModelSelector } from '@/components/example/card/ModelSelector';
+import { DemoNotifications } from '@/components/example/card/Notifications';
+import { DemoPaymentMethod } from '@/components/example/card/PaymentMethod';
+import { PresetActions } from '@/components/example/card/PresetActions';
+import { PresetSave } from '@/components/example/card/PresetSave';
+import { PresetShare } from '@/components/example/card/PresetShare';
+import { DemoReportAnIssue } from '@/components/example/card/ReportAnIssue';
+import { DemoShareDocument } from '@/components/example/card/ShareDocument';
+import { DemoTeamMembers } from '@/components/example/card/TeamMembers';
+import { TemperatureSelector } from '@/components/example/card/TemperatureSelector';
 
 function DemoContainer({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn('flex items-center justify-center [&>div]:w-full', className)} {...props} />;

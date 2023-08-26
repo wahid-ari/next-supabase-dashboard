@@ -1,9 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { ChevronsUpDownIcon, CheckIcon, PlusCircleIcon } from 'lucide-react';
+import { CheckIcon, ChevronsUpDownIcon, PlusCircleIcon } from 'lucide-react';
 
 import { cn } from '@/libs/utils';
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
 import { Button } from '@/components/ui/Button';
 import {

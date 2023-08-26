@@ -1,22 +1,20 @@
-import { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 import { BookOpenIcon, ColorSwatchIcon, UserGroupIcon } from '@heroicons/react/outline';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Title,
   ArcElement,
-  Tooltip,
+  BarElement,
+  CategoryScale,
+  Chart as ChartJS,
   Filler,
   Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
 } from 'chart.js';
+import { useTheme } from 'next-themes';
 import { Bar, Doughnut, Pie } from 'react-chartjs-2';
-
-import { populateData, options, optionsBarChart, optionsHorizontalBarChart } from '@utils/chartSetup';
 
 import {
   useBookByAuthorData,
@@ -25,13 +23,14 @@ import {
   useTotalAuthorsData,
   useTotalBooksData,
   useTotalGenresData,
-} from '@libs/swr';
+} from '@/libs/swr';
+import { options, optionsBarChart, optionsHorizontalBarChart, populateData } from '@/utils/chartSetup';
 
-import Layout from '@components/layout/Layout';
-import Titles from '@components/systems/Title';
-import Shimer from '@components/systems/Shimer';
-import Text from '@components/systems/Text';
-import Card from '@components/dashboard/Card';
+import Card from '@/components/dashboard/Card';
+import Layout from '@/components/layout/Layout';
+import Shimer from '@/components/systems/Shimer';
+import Text from '@/components/systems/Text';
+import Titles from '@/components/systems/Title';
 
 ChartJS.register(
   CategoryScale,

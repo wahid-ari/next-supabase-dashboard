@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { supabase } from '@libs/supabase';
-import authors from '@data/authors.json' assert { type: 'json' };
+import authors from '@/data/authors.json';
+
+import { supabase } from '@/libs/supabase';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method, query } = req;

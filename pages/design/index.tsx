@@ -1,54 +1,20 @@
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { useState, useRef, useMemo, useEffect } from 'react';
+import { faker } from '@faker-js/faker';
+import { Menu, Transition } from '@headlessui/react';
+import { ArrowSmRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
+import * as HoverCard from '@radix-ui/react-hover-card';
+import { MoreHorizontal } from 'lucide-react';
+import ReactSelect from 'react-select';
+import { extendTailwindMerge, twMerge } from 'tailwind-merge';
 import * as yup from 'yup';
 import { z } from 'zod';
-import { ArrowSmRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
-import { faker } from '@faker-js/faker';
-import ReactSelect from 'react-select';
-import * as HoverCard from '@radix-ui/react-hover-card';
-import { extendTailwindMerge, twMerge } from 'tailwind-merge';
 
-import { tabledata } from '@utils/tableData';
+import { tabledata } from '@/utils/tableData';
+import { validateFormObject } from '@/validations/zod';
+import { useMounted } from '@/hooks/useMounted';
+import useToast from '@/hooks/useToast';
 
-import { validateFormObject } from '@validations/zod';
-
-import { useMounted } from '@hooks/useMounted';
-import useToast from '@hooks/useToast';
-
-import Layout from '@components/layout/Layout';
-import Badge from '@components/systems/Badge';
-import Button from '@components/systems/Button';
-import Card from '@components/systems/Card';
-import Checkbox from '@components/systems/Checkbox';
-import Container from '@components/systems/Container';
-import Heading from '@components/systems/Heading';
-import Input from '@components/systems/Input';
-import InputDebounce from '@components/systems/InputDebounce';
-import Label from '@components/systems/Label';
-import LabeledInput from '@components/systems/LabeledInput';
-import LinkButton from '@components/systems/LinkButton';
-import Progress from '@components/systems/Progress';
-import Radio from '@components/systems/Radio';
-import Wrapper from '@components/systems/Wrapper';
-import Shimer from '@components/systems/Shimer';
-import Table from '@components/systems/Table';
-import Text from '@components/systems/Text';
-import Title from '@components/systems/Title';
-import Section from '@components/systems/Section';
-import Tabs from '@components/systems/Tabs';
-import Dialog from '@components/systems/Dialog';
-import Modal from '@components/systems/Modal';
-import SearchBox from '@components/systems/SearchBox';
-import ReactTable from '@components/systems/ReactTable';
-import TextArea from '@components/systems/TextArea';
-import ShowMore from '@components/systems/ShowMore';
-import Code from '@components/systems/Code';
-import FileInput from '@components/systems/FileInput';
-import Select from '@components/systems/Select';
-import TableSimple from '@components/systems/TableSimple';
-import LoadingDots from '@components/systems/LoadingDots';
-
-import { MoreHorizontal } from 'lucide-react';
 import { Button as ButtonUi } from '@/components/ui/Button';
 import {
   DropdownMenu,
@@ -58,7 +24,39 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
-import { Menu, Transition } from '@headlessui/react';
+
+import Layout from '@/components/layout/Layout';
+import Badge from '@/components/systems/Badge';
+import Button from '@/components/systems/Button';
+import Card from '@/components/systems/Card';
+import Checkbox from '@/components/systems/Checkbox';
+import Code from '@/components/systems/Code';
+import Container from '@/components/systems/Container';
+import Dialog from '@/components/systems/Dialog';
+import FileInput from '@/components/systems/FileInput';
+import Heading from '@/components/systems/Heading';
+import Input from '@/components/systems/Input';
+import InputDebounce from '@/components/systems/InputDebounce';
+import Label from '@/components/systems/Label';
+import LabeledInput from '@/components/systems/LabeledInput';
+import LinkButton from '@/components/systems/LinkButton';
+import LoadingDots from '@/components/systems/LoadingDots';
+import Modal from '@/components/systems/Modal';
+import Progress from '@/components/systems/Progress';
+import Radio from '@/components/systems/Radio';
+import ReactTable from '@/components/systems/ReactTable';
+import SearchBox from '@/components/systems/SearchBox';
+import Section from '@/components/systems/Section';
+import Select from '@/components/systems/Select';
+import Shimer from '@/components/systems/Shimer';
+import ShowMore from '@/components/systems/ShowMore';
+import Table from '@/components/systems/Table';
+import TableSimple from '@/components/systems/TableSimple';
+import Tabs from '@/components/systems/Tabs';
+import Text from '@/components/systems/Text';
+import TextArea from '@/components/systems/TextArea';
+import Title from '@/components/systems/Title';
+import Wrapper from '@/components/systems/Wrapper';
 
 const searchBoxData = [
   {
@@ -1139,7 +1137,7 @@ export default function Example() {
       <Wrapper id='code' name='Code' noChildren props={['name', 'code', 'lang']}>
         <Code
           data-testid='code'
-          code={`import useToast from '@utils/useToast()'
+          code={`import useToast from '@/utils/useToast()'
 
 const { updateToast, pushToast, dismissToast } = useToast();
 
@@ -1157,7 +1155,7 @@ function toastAsync() {
 
       <Wrapper id='usetoast' name='useToast (hook)' noProps noChildren noClassName>
         <Code
-          code={`import useToast from '@utils/useToast()'
+          code={`import useToast from '@/utils/useToast()'
 
 const { updateToast, pushToast, dismissToast } = useToast();
 

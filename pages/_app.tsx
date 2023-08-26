@@ -1,22 +1,25 @@
+import { useEffect } from 'react';
 import type { NextComponentType } from 'next';
 import { AppProps } from 'next/app';
-import { useEffect } from 'react';
-import { Toaster } from 'react-hot-toast';
-import { useRouter } from 'next/router';
 import { Inter } from 'next/font/google';
+import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import NProgress from 'nprogress';
+import { Toaster } from 'react-hot-toast';
+
 import 'nprogress/nprogress.css';
+
 import { SessionProvider, useSession } from 'next-auth/react';
 
-import { GlobalProvider } from '@context/GlobalContext';
-import { AxiosProvider } from '@context/AxiosContext';
+import { AxiosProvider } from '@/context/AxiosContext';
+import { GlobalProvider } from '@/context/GlobalContext';
 
-import '@styles/globals.css';
-import '@styles/prism.css';
+import '@/styles/globals.css';
+import '@/styles/prism.css';
 
 import { Toaster as UiToaster } from '@/components/ui/Toaster';
-import LoadingDots from '@components/systems/LoadingDots';
+
+import LoadingDots from '@/components/systems/LoadingDots';
 
 const inter = Inter({ subsets: ['latin'] });
 

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import Prism from 'prismjs';
 import { ClipboardIcon, DocumentDuplicateIcon } from '@heroicons/react/outline';
+import Prism from 'prismjs';
 import { twMerge } from 'tailwind-merge';
 
-import { useMounted } from '@hooks/useMounted';
+import { useMounted } from '@/hooks/useMounted';
 
 type Props = {
   name?: string;

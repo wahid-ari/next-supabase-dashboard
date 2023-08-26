@@ -3,10 +3,12 @@
 import * as React from 'react';
 
 import { cn } from '@/libs/utils';
-import { Icons } from '@/components/example/card/Icons';
+
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
+
+import { Icons } from '@/components/example/card/Icons';
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 

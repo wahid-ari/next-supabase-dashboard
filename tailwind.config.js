@@ -1,11 +1,8 @@
 module.exports = {
   darkMode: 'class',
-  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  content: ['./pages/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
-      // fontFamily: {
-      //   cool: ["PlusJakartaSans", "sans-serif"],
-      // },
       transitionProperty: {
         'max-height': 'max-height',
       },
@@ -33,10 +30,5 @@ module.exports = {
   variants: {
     scrollbar: ['dark', 'rounded'],
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('tailwind-scrollbar'),
-    require('tailwindcss-animate'),
-    require('tailwindcss-radix')(),
-  ],
+  plugins: [require('@tailwindcss/forms'), require('tailwind-scrollbar'), require('tailwindcss-animate')],
 };

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 import { twMerge } from 'tailwind-merge';
 
-import Button from '@components/systems/Button';
+import Button from '@/components/systems/Button';
 
 type Props = {
   children: ReactNode;

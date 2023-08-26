@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import useSWR from 'swr';
+import { searchHistoryAtom, useSearchHistory } from '@/store/useAtom';
 import { BookOpenIcon, ColorSwatchIcon, UserGroupIcon } from '@heroicons/react/outline';
 import { useAtom } from 'jotai';
+import useSWR from 'swr';
 import { twMerge } from 'tailwind-merge';
 
-import { searchHistoryAtom, useSearchHistory } from '@store/useAtom';
-// import { useSearchHistoryStore } from '@store/useStore';
+// import { useSearchHistoryStore } from '@/store/useStore';
 
-import { useMounted } from '@hooks/useMounted';
+import { useMounted } from '@/hooks/useMounted';
 
-import FrontLayout from '@components/front/FrontLayout';
-import LabeledInput from '@components/systems/LabeledInput';
-import Title from '@components/systems/Title';
-import Text from '@components/systems/Text';
-import Button from '@components/systems/Button';
-import Heading from '@components/systems/Heading';
-import BookListItem from '@components/dashboard/BookListItem';
-import AuthorListItem from '@components/dashboard/AuthorListItem';
+import AuthorListItem from '@/components/dashboard/AuthorListItem';
+import BookListItem from '@/components/dashboard/BookListItem';
+import FrontLayout from '@/components/front/FrontLayout';
+import Button from '@/components/systems/Button';
+import Heading from '@/components/systems/Heading';
+import LabeledInput from '@/components/systems/LabeledInput';
+import Text from '@/components/systems/Text';
+import Title from '@/components/systems/Title';
 
 const fetcher = (url: string) => fetch(url).then((result) => result.json());
 

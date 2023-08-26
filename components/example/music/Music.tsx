@@ -6,11 +6,10 @@ import { Separator } from '@/components/ui/Separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 
 import { AlbumArtwork } from '@/components/example/music/AlbumArtwork';
+import { listenNowAlbums, madeForYouAlbums, playlists } from '@/components/example/music/data';
 import { Menu } from '@/components/example/music/Menu';
 import { PodcastEmptyPlaceholder } from '@/components/example/music/PodcastEmptyPlaceholder';
 import { Sidebar } from '@/components/example/music/Sidebar';
-import { listenNowAlbums, madeForYouAlbums } from '@/components/example/music/data';
-import { playlists } from '@/components/example/music/data';
 
 export default function MusicPage() {
   return (

@@ -1,34 +1,34 @@
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { GlobalContext } from 'context/GlobalContext';
 import {
-  XIcon,
-  LogoutIcon,
-  ViewGridIcon,
+  BookOpenIcon,
+  ClipboardListIcon,
   CogIcon,
+  ColorSwatchIcon,
+  DocumentReportIcon,
+  ExternalLinkIcon,
+  LoginIcon,
+  LogoutIcon,
+  SearchIcon,
+  TableIcon,
   TemplateIcon,
   UserGroupIcon,
-  ColorSwatchIcon,
-  SearchIcon,
-  LoginIcon,
-  ExternalLinkIcon,
-  BookOpenIcon,
-  DocumentReportIcon,
   ViewBoardsIcon,
   ViewGridAddIcon,
-  TableIcon,
-  ClipboardListIcon,
+  ViewGridIcon,
+  XIcon,
 } from '@heroicons/react/outline';
+import { GlobalContext } from 'context/GlobalContext';
 // import nookies from 'nookies';
 import { twMerge } from 'tailwind-merge';
 
-// import { useMounted } from '@hooks/useMounted';
+import NavAccordion from '@/components/layout/NavAccordion';
+// import { useMounted } from '@/hooks/useMounted';
 
-import NavLink from '@components/layout/NavLink';
-import NavAccordion from '@components/layout/NavAccordion';
-import Modal from '@components/systems/Modal';
-import ThemeChanger from '@components/layout/ThemeChanger';
-import Badge from '@components/systems/Badge';
+import NavLink from '@/components/layout/NavLink';
+import ThemeChanger from '@/components/layout/ThemeChanger';
+import Badge from '@/components/systems/Badge';
+import Modal from '@/components/systems/Modal';
 
 export default function Sidebar({ className, ...props }: { className?: string; [props: string]: any }) {
   const router = useRouter();

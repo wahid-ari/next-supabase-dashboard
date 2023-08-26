@@ -1,7 +1,8 @@
 'use client';
 
-import { PieChart, Pie, ResponsiveContainer, Tooltip, Legend, Cell } from 'recharts';
 import { useTheme } from 'next-themes';
+import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
+
 import useWindowSize from '@/hooks/useWindowSize';
 
 const data = [

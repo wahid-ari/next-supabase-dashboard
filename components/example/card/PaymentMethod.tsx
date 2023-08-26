@@ -1,10 +1,11 @@
-import { Icons } from '@/components/example/card/Icons';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/RadioGroup';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
+
+import { Icons } from '@/components/example/card/Icons';
 
 export function DemoPaymentMethod() {
   return (

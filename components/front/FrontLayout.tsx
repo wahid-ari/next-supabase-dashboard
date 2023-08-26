@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-import HeadSeo from '@components/layout/HeadSeo';
-import FrontNavbar from '@components/front/FrontNavbar';
-import BackToTop from '@components/front/BackToTop';
-import Footer from '@components/front/Footer';
+import BackToTop from '@/components/front/BackToTop';
+import Footer from '@/components/front/Footer';
+import FrontNavbar from '@/components/front/FrontNavbar';
+import HeadSeo from '@/components/layout/HeadSeo';
 
 type Props = {
   children: ReactNode;

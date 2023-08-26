@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { supabase } from '@libs/supabase';
-import { hash, compare } from 'bcryptjs';
+import { compare, hash } from 'bcryptjs';
+
+import { supabase } from '@/libs/supabase';
 
 const admin_datas = [
   {

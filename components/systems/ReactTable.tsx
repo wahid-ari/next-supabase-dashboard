@@ -1,4 +1,4 @@
-import { useImperativeHandle, forwardRef, useMemo } from 'react';
+import { forwardRef, useImperativeHandle, useMemo } from 'react';
 import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
@@ -7,7 +7,7 @@ import {
   ChevronRightIcon,
   ChevronUpIcon,
 } from '@heroicons/react/outline';
-import { useTable, usePagination, useSortBy, useFilters, useGlobalFilter } from 'react-table';
+import { useFilters, useGlobalFilter, usePagination, useSortBy, useTable } from 'react-table';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {

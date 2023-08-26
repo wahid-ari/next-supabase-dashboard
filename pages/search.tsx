@@ -1,21 +1,21 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
+import { searchHistoryAtom, useSearchHistory } from '@/store/useAtom';
 import { useAtom } from 'jotai';
 import { twMerge } from 'tailwind-merge';
 
-import { useSearchData } from '@libs/swr';
+import { useSearchData } from '@/libs/swr';
 
-import { searchHistoryAtom, useSearchHistory } from '@store/useAtom';
-// import { useSearchHistoryStore } from '@store/useStore';
+import AuthorListItem from '@/components/dashboard/AuthorListItem';
+import BookListItem from '@/components/dashboard/BookListItem';
+// import { useSearchHistoryStore } from '@/store/useStore';
 
-import Layout from '@components/layout/Layout';
-import LabeledInput from '@components/systems/LabeledInput';
-import Title from '@components/systems/Title';
-import Text from '@components/systems/Text';
-import Button from '@components/systems/Button';
-import Heading from '@components/systems/Heading';
-import BookListItem from '@components/dashboard/BookListItem';
-import AuthorListItem from '@components/dashboard/AuthorListItem';
+import Layout from '@/components/layout/Layout';
+import Button from '@/components/systems/Button';
+import Heading from '@/components/systems/Heading';
+import LabeledInput from '@/components/systems/LabeledInput';
+import Text from '@/components/systems/Text';
+import Title from '@/components/systems/Title';
 
 Search.auth = true;
 

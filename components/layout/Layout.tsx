@@ -1,15 +1,15 @@
 import { ReactNode } from 'react';
-import { twMerge } from 'tailwind-merge';
 // import nookies from 'nookies';
 import { useSession } from 'next-auth/react';
+import { twMerge } from 'tailwind-merge';
 
-import { useMounted } from '@hooks/useMounted';
+import { useMounted } from '@/hooks/useMounted';
 
-import Breadcrumb from '@components/layout/Breadcrumb';
-import HeadSeo from '@components/layout/HeadSeo';
-import Menu from '@components/layout/Menu';
-import Navbar from '@components/layout/Navbar';
-import Sidebar from '@components/layout/Sidebar';
+import Breadcrumb from '@/components/layout/Breadcrumb';
+import HeadSeo from '@/components/layout/HeadSeo';
+import Menu from '@/components/layout/Menu';
+import Navbar from '@/components/layout/Navbar';
+import Sidebar from '@/components/layout/Sidebar';
 
 type Props = {
   children: ReactNode;

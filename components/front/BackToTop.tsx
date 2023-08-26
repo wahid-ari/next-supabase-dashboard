@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronUpIcon } from '@heroicons/react/outline';
 import { twMerge } from 'tailwind-merge';
 

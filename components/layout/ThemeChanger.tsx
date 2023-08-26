@@ -1,6 +1,7 @@
-import { useTheme } from 'next-themes';
 import { MoonIcon, SunIcon } from '@heroicons/react/outline';
-import { useMounted } from '@hooks/useMounted';
+import { useTheme } from 'next-themes';
+
+import { useMounted } from '@/hooks/useMounted';
 
 export default function ThemeChanger({ ...props }: { [props: string]: any }) {
   const { theme, setTheme } = useTheme();

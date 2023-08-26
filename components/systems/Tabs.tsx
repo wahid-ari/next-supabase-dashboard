@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Tab } from '@headlessui/react';
-import { twMerge } from 'tailwind-merge';
 import { motion } from 'framer-motion';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   children: ReactNode;

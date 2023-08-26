@@ -2,18 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"],
-      "@components/*": ["components/*"],
-      "@context/*": ["context/*"],
-      "@data/*": ["data/*"],
-      "@hooks/*": ["hooks/*"],
-      "@libs/*": ["libs/*"],
-      "@pages/*": ["pages/*"],
-      "@public/*": ["public/*"],
-      "@store/*": ["store/*"],
-      "@styles/*": ["styles/*"],
-      "@utils/*": ["utils/*"],
-      "@validations/*": ["validations/*"]
+      "@/*": ["./*"]
     },
     "target": "es5",
     "downlevelIteration": true,
@@ -31,6 +20,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

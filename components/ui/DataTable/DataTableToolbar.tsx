@@ -1,10 +1,10 @@
 'use client';
 
 import { Table } from '@tanstack/react-table';
-import { X, Settings2 } from 'lucide-react';
+import { Settings2, X } from 'lucide-react';
 
 import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
+import { DataTableFilter } from '@/components/ui/DataTable/DataTableFilter';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
-import { DataTableFilter } from '@/components/ui/DataTable/DataTableFilter';
+import { Input } from '@/components/ui/Input';
 
 export const status = [
   {

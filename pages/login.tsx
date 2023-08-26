@@ -1,19 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Router from 'next/router';
-import axios from 'axios';
-import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
 // import nookies from 'nookies';
 import Link from 'next/link';
-import { signIn } from 'next-auth/react';
-import { useSession } from 'next-auth/react';
+import Router from 'next/router';
+import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
+import axios from 'axios';
+import { signIn, useSession } from 'next-auth/react';
 
-import useToast from '@hooks/useToast';
+import useToast from '@/hooks/useToast';
 
-import Button from '@components/systems/Button';
-import Heading from '@components/systems/Heading';
-import LoadingDots from '@components/systems/LoadingDots';
-import HeadSeo from '@components/layout/HeadSeo';
+import HeadSeo from '@/components/layout/HeadSeo';
+import Button from '@/components/systems/Button';
+import Heading from '@/components/systems/Heading';
+import LoadingDots from '@/components/systems/LoadingDots';
 
 export default function Login() {
   const [form, setForm] = useState({ username: 'develop', password: '' });

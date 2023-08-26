@@ -1,22 +1,22 @@
-import { useState, useRef, useMemo } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { mutate } from 'swr';
+import { ExternalLinkIcon, PlusSmIcon } from '@heroicons/react/outline';
 import axios from 'axios';
-import { PlusSmIcon, ExternalLinkIcon } from '@heroicons/react/outline';
+import { mutate } from 'swr';
+
 // import nookies from 'nookies';
 
-import { useAuthorsData } from '@libs/swr';
+import { useAuthorsData } from '@/libs/swr';
+import useToast from '@/hooks/useToast';
 
-import useToast from '@hooks/useToast';
-
-import Layout from '@components/layout/Layout';
-import Title from '@components/systems/Title';
-import Shimer from '@components/systems/Shimer';
-import Dialog from '@components/systems/Dialog';
-import Button from '@components/systems/Button';
-import ReactTable from '@components/systems/ReactTable';
-import LinkButton from '@components/systems/LinkButton';
-import InputDebounce from '@components/systems/InputDebounce';
+import Layout from '@/components/layout/Layout';
+import Button from '@/components/systems/Button';
+import Dialog from '@/components/systems/Dialog';
+import InputDebounce from '@/components/systems/InputDebounce';
+import LinkButton from '@/components/systems/LinkButton';
+import ReactTable from '@/components/systems/ReactTable';
+import Shimer from '@/components/systems/Shimer';
+import Title from '@/components/systems/Title';
 
 // export async function getServerSideProps(context: any) {
 //   const cookies = nookies.get(context);

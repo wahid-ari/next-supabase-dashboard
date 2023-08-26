@@ -1,8 +1,10 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 
-import { DataTable } from '@/components/ui/DataTable';
 import { Button } from '@/components/ui/Button';
+import { Checkbox } from '@/components/ui/Checkbox';
+import { DataTable } from '@/components/ui/DataTable';
+import { DataTableColumnHeader } from '@/components/ui/DataTable/DataTableColumnHeader';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,8 +13,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
-import { Checkbox } from '@/components/ui/Checkbox';
-import { DataTableColumnHeader } from '@/components/ui/DataTable/DataTableColumnHeader';
 
 export type Payment = {
   id: string;

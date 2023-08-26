@@ -1,7 +1,9 @@
 import Link from 'next/link';
 
 import { cn } from '@/libs/utils';
+
 import { buttonVariants } from '@/components/ui/Button';
+
 import { UserAuthForm } from '@/components/example/auth/UserAuthForm';
 
 export default function AuthenticationPage() {
