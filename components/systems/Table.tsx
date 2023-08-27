@@ -74,7 +74,6 @@ export default function Table({
             )}
             <div className='flex items-center justify-end gap-2'>
               <Button.secondary
-                id='prev'
                 title='Prev'
                 aria-label='Prev'
                 onClick={prev}
@@ -84,7 +83,6 @@ export default function Table({
                 <ChevronLeftIcon className='h-4 w-4' />
               </Button.secondary>
               <Button.secondary
-                id='next'
                 title='Next'
                 aria-label='Next'
                 onClick={next}
@@ -133,5 +131,20 @@ Table.td = ({ children, className, shrink, ...props }: TdProps) => {
     <td {...props} className={twMerge('p-4', shrink && 'w-1', className)}>
       {children}
     </td>
+  );
+};
+
+type ThProps = {
+  children: ReactNode;
+  className?: string;
+  shrink?: boolean;
+  [props: string]: any;
+};
+
+Table.th = ({ children, className, shrink, ...props }: ThProps) => {
+  return (
+    <th {...props} className={twMerge('p-4', shrink && 'w-1', className)}>
+      {children}
+    </th>
   );
 };

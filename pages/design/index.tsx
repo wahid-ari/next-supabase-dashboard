@@ -489,7 +489,7 @@ export default function Example() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#reactselect'>
+            <Link className={tocClass} href='#react-select'>
               ReactSelect
             </Link>
           </span>
@@ -579,17 +579,17 @@ export default function Example() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#inputdebounce'>
+            <Link className={tocClass} href='#input-debounce'>
               InputDebounce
             </Link>
           </span>
           <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#textarea'>
+            <Link className={tocClass} href='#text-area'>
               TextArea
             </Link>
           </span>
           <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#textareadisabled'>
+            <Link className={tocClass} href='#textarea-disabled'>
               TextArea.disabled
             </Link>
           </span>
@@ -963,7 +963,7 @@ export default function Example() {
       </Wrapper>
 
       <Wrapper
-        id='reactselect'
+        id='react-select'
         name='ReactSelect'
         noChildren
         props={[
@@ -1349,7 +1349,7 @@ function dissmissAllToast() {
       </Wrapper>
 
       <Wrapper id='input' name='Input' props={['type', 'name', 'placeholder', 'value', 'onChange']}>
-        <Input name='input' placeholder='Input default' data-testid='input' />
+        <Input name='inputt' placeholder='Input default' data-testid='input' />
       </Wrapper>
 
       <Wrapper id='inputdisabled' name='Input.disabled' props={['type', 'name', 'placeholder', 'defaultValue']}>
@@ -1402,7 +1402,7 @@ function dissmissAllToast() {
       </Wrapper>
 
       <Wrapper
-        id='inputdebounce'
+        id='input-debounce'
         name='InputDebounce'
         props={[
           'label',
@@ -1429,7 +1429,7 @@ function dissmissAllToast() {
       </Wrapper>
 
       <Wrapper
-        id='textarea'
+        id='text-area'
         name='TextArea'
         props={['label', 'className', 'name', 'placeholder', 'value', 'onChange', 'height']}
         noChildren
@@ -1438,12 +1438,17 @@ function dissmissAllToast() {
       </Wrapper>
 
       <Wrapper
-        id='textareadisabled'
+        id='textarea-disabled'
         name='TextArea.disabled'
         props={['label', 'className', 'name', 'placeholder', 'value', 'onChange', 'height']}
         noChildren
       >
-        <TextArea.disabled label='TextArea' name='textarea' placeholder='text area' data-testid='textarea-disabled' />
+        <TextArea.disabled
+          label='TextArea'
+          name='textareadisabled'
+          placeholder='text area'
+          data-testid='textarea-disabled'
+        />
       </Wrapper>
 
       <Wrapper id='fileinput' name='FileInput' props={['className', 'label', 'name', 'value', 'onChange']} noChildren>
@@ -1502,7 +1507,7 @@ function dissmissAllToast() {
         <Radio name='radio' value='radio-red' label='Red' defaultChecked data-testid='radio-checked' />
         <Radio.disabled name='radios' label='Radio Disabled' data-testid='radio-disabled' />
         <Radio.disabled
-          name='radios'
+          name='radioss'
           label='Radio Checked Disabled'
           defaultChecked
           data-testid='radio-checked-disabled'
@@ -1552,15 +1557,15 @@ function dissmissAllToast() {
           data-testid='table'
           head={
             <>
-              <Table.td shrink>No</Table.td>
-              <Table.td>Column 1</Table.td>
-              <Table.td>Column 2</Table.td>
-              <Table.td>Column 3</Table.td>
-              <Table.td>Column 4</Table.td>
-              <Table.td>Column 5</Table.td>
-              <Table.td>Column 6</Table.td>
-              <Table.td>Column 7</Table.td>
-              <Table.td>Column 8</Table.td>
+              <Table.th shrink>No</Table.th>
+              <Table.th>Column 1</Table.th>
+              <Table.th>Column 2</Table.th>
+              <Table.th>Column 3</Table.th>
+              <Table.th>Column 4</Table.th>
+              <Table.th>Column 5</Table.th>
+              <Table.th>Column 6</Table.th>
+              <Table.th>Column 7</Table.th>
+              <Table.th>Column 8</Table.th>
             </>
           }
         >
@@ -1624,12 +1629,12 @@ function dissmissAllToast() {
           caption='Table 3.1: Badge'
           head={
             <>
-              <TableSimple.td shrink>No</TableSimple.td>
-              <TableSimple.td>Column 1</TableSimple.td>
-              <TableSimple.td>Column 2</TableSimple.td>
-              <TableSimple.td>Column 3</TableSimple.td>
-              <TableSimple.td>Column 4</TableSimple.td>
-              <TableSimple.td>Column 5</TableSimple.td>
+              <TableSimple.th shrink>No</TableSimple.th>
+              <TableSimple.th>Column 1</TableSimple.th>
+              <TableSimple.th>Column 2</TableSimple.th>
+              <TableSimple.th>Column 3</TableSimple.th>
+              <TableSimple.th>Column 4</TableSimple.th>
+              <TableSimple.th>Column 5</TableSimple.th>
             </>
           }
         >

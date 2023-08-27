@@ -84,3 +84,22 @@ TableSimple.td = ({ children, className, shrink, bordered, ...props }: TdProps) 
     </td>
   );
 };
+
+type ThProps = {
+  children: ReactNode;
+  className?: string;
+  shrink?: boolean;
+  bordered?: boolean;
+  [props: string]: any;
+};
+
+TableSimple.th = ({ children, className, shrink, bordered, ...props }: ThProps) => {
+  return (
+    <th
+      {...props}
+      className={twMerge('p-3', shrink && 'w-1', bordered && 'border-x dark:border-x-neutral-800', className)}
+    >
+      {children}
+    </th>
+  );
+};

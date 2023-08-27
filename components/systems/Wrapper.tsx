@@ -45,6 +45,7 @@ export default function Wrapper({
         </Link>
         {docs && (
           <a
+            aria-label={docs}
             href={docs}
             className={twMerge(
               'ml-2 flex items-center justify-center rounded text-sm font-medium transition-all duration-200',
