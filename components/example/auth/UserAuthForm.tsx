@@ -29,11 +29,11 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <form onSubmit={onSubmit}>
         <div className='grid gap-2'>
           <div className='grid gap-1'>
-            <Label className='sr-only' htmlFor='email'>
+            <Label className='sr-only' htmlFor='emails'>
               Email
             </Label>
             <Input
-              id='email'
+              id='emails'
               placeholder='name@example.com'
               type='email'
               autoCapitalize='none'
