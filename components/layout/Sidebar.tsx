@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import {
   BookOpenIcon,
@@ -18,7 +18,7 @@ import {
   ViewGridIcon,
   XIcon,
 } from '@heroicons/react/outline';
-import { GlobalContext } from 'context/GlobalContext';
+import { useShowNav } from 'context/GlobalContext';
 // import nookies from 'nookies';
 import { twMerge } from 'tailwind-merge';
 
@@ -33,7 +33,7 @@ import Modal from '@/components/systems/Modal';
 export default function Sidebar({ className, ...props }: { className?: string; [props: string]: any }) {
   const router = useRouter();
   const [openModal, setOpenModal] = useState(false);
-  const { showNav, setShowNav } = useContext(GlobalContext);
+  const { showNav, setShowNav } = useShowNav();
   // const admin = nookies.get(null, 'type');
   // const mounted = useMounted();
 
@@ -86,7 +86,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
 
         <div
           className={twMerge(
-            'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-4 dark:border-neutral-800 sm:flex-grow',
+            'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 dark:border-neutral-800 sm:flex-grow',
             'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
           )}
         >
@@ -94,26 +94,26 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             Dashboard
           </NavLink>
 
-          <NavLink href='/search' icon={<SearchIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/search' icon={<SearchIcon className='h-5 w-5' />} className='mt-0.5'>
             Search
           </NavLink>
 
-          <NavLink href='/author' icon={<UserGroupIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/author' icon={<UserGroupIcon className='h-5 w-5' />} className='mt-0.5'>
             Author
           </NavLink>
 
-          <NavLink href='/book' icon={<BookOpenIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/book' icon={<BookOpenIcon className='h-5 w-5' />} className='mt-0.5'>
             Book
           </NavLink>
 
-          <NavLink href='/genre' icon={<ColorSwatchIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/genre' icon={<ColorSwatchIcon className='h-5 w-5' />} className='mt-0.5'>
             Genre
           </NavLink>
 
           <NavAccordion
             title='Activity'
             routeName='activity'
-            className='mt-1'
+            className='mt-0.5'
             icon={<ClipboardListIcon className='h-5 w-5' />}
           >
             <NavLink href='/activity' icon={<DocumentReportIcon className='h-5 w-5' />}>
@@ -150,14 +150,14 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             </NavLink>
           </NavAccordion>
 
-          <NavLink href='/settings' icon={<CogIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/settings' icon={<CogIcon className='h-[21px] w-[21px]' />} className='mt-0.5'>
             Settings
           </NavLink>
 
           <NavLink.external
             href='https://my-book-docs.vercel.app'
-            icon={<ExternalLinkIcon className='h-5 w-5' />}
-            className='mt-1'
+            icon={<ExternalLinkIcon className='h-[18px] w-[18px]' />}
+            className='mt-0.5'
           >
             Docs
           </NavLink.external>
@@ -165,7 +165,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
 
         <hr className='mt-2 dark:border-neutral-800' />
 
-        <div className='px-3 py-2'>
+        <div className='px-4 py-2'>
           {/* FIX this  */}
           {/* {mounted ? (
             admin.name ? ( */}
@@ -173,7 +173,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             data-testid='button-logout'
             onClick={() => setOpenModal(true)}
             className={twMerge(
-              'flex w-full items-center justify-start gap-2 px-4 py-2 text-sm font-semibold transition-all',
+              'flex w-full items-center justify-start gap-2 px-3 py-2 text-sm font-semibold transition-all',
               'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
             )}
