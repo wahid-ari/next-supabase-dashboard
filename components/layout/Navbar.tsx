@@ -54,7 +54,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
         <div className='cursor-pointer pt-1'>
           <ThemeChanger />
         </div>
-
+        {/* Show on Mobile */}
         {mounted && session?.name ? <Menu className='lg:hidden' /> : null}
       </div>
     </nav>

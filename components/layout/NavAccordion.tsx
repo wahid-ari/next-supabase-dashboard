@@ -62,7 +62,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
               leaveFrom='max-h-screen'
               leaveTo='max-h-0'
             >
-              <Disclosure.Panel className='relative overflow-hidden py-1 pl-4 pr-1 transition-all'>
+              <Disclosure.Panel className='relative overflow-hidden py-0.5 px-2.5 transition-all'>
                 {children}
               </Disclosure.Panel>
             </Transition>
