@@ -150,13 +150,13 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             </NavLink>
           </NavAccordion>
 
-          <NavLink href='/settings' icon={<CogIcon className='h-[21px] w-[21px]' />} className='mt-0.5'>
+          <NavLink href='/settings' icon={<CogIcon className='h-5 w-5' />} className='mt-0.5'>
             Settings
           </NavLink>
 
           <NavLink.external
             href='https://my-book-docs.vercel.app'
-            icon={<ExternalLinkIcon className='h-[18px] w-[18px]' />}
+            icon={<ExternalLinkIcon className='h-5 w-5' />}
             className='mt-0.5'
           >
             Docs
@@ -173,12 +173,14 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             data-testid='button-logout'
             onClick={() => setOpenModal(true)}
             className={twMerge(
-              'flex w-full items-center justify-start gap-2 px-3 py-2 text-sm font-semibold transition-all',
+              'flex w-full items-center justify-start gap-2 px-3 py-1.5 text-sm font-medium transition-all',
               'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
             )}
           >
-            <LogoutIcon className='h-5 w-5' />
+            <div className='border rounded-md dark:border-neutral-800 p-0.5'>
+              <LogoutIcon className='h-5 w-5' />
+            </div>
             Logout
           </button>
           {/* ) : (

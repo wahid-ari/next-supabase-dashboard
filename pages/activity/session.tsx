@@ -74,16 +74,16 @@ export default function Session() {
 
   if (error) {
     return (
-      <Layout title='Sessions - MyBook'>
+      <Layout title='Session - MyBook'>
         <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
 
   return (
-    <Layout title='Sessions - MyBook' description='View and Manage Sessions - MyBook' prefetch={['/api/session']}>
+    <Layout title='Session - MyBook' description='View and Manage Session - MyBook' prefetch={['/api/session']}>
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
-        <Title>Sessions</Title>
+        <Title>Session</Title>
         <Button.danger onClick={() => setOpenDeleteAllDialog(true)} className='flex items-center gap-2'>
           <TrashIcon className='h-5 w-5' />
           Delete All
