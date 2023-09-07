@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     case 'GET':
       const { data: books } = await supabase.from('book_books').select(`id`, { count: 'exact' });
       // const { count: books } = await supabase.from('book_books').select(`*`, { count: 'exact', head: true });
-      // https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
+      // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
       res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
       // res.status(200).json({
       //   books: books

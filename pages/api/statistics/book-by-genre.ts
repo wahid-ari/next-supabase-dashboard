@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
       }
       // Remove duplicate values from an array of objects in javascript
-      // https://stackoverflow.com/questions/45439961/remove-duplicate-values-from-an-array-of-objects-in-javascript
+      // TODO Docs https://stackoverflow.com/questions/45439961/remove-duplicate-values-from-an-array-of-objects-in-javascript
       let data = result.reduce((unique, o) => {
         if (!unique.some((obj: any) => obj.id === o.id)) {
           unique.push(o);
@@ -38,7 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return unique;
       }, []);
       let sortedData = data.sort((a: any, b: any) => b.total - a.total).slice(0, 10);
-      // https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
+      // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
       res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
       res.status(200).json(sortedData);
       break;

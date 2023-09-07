@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(200).json(data);
       } else if (query.slug && query.seo) {
         const { data } = await supabase.from('book_books').select(`title, description`).eq('slug', query.slug).single();
-        // https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
+        // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data);
       } else {
@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
           }
         }
-        // https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
+        // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json({ ...books[0], genre_array: books_with_genres });
       }
