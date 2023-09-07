@@ -10,8 +10,10 @@ import {
   LoginIcon,
   LogoutIcon,
   SearchIcon,
+  ServerIcon,
   TableIcon,
   TemplateIcon,
+  TicketIcon,
   UserGroupIcon,
   ViewBoardsIcon,
   ViewGridAddIcon,
@@ -45,7 +47,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
     setShowNav(false);
   }, [router.pathname, setShowNav]);
 
-  // https://stackoverflow.com/questions/54989513/react-prevent-scroll-when-modal-is-open
+  // TODO Docs https://stackoverflow.com/questions/54989513/react-prevent-scroll-when-modal-is-open
   useEffect(() => {
     if (showNav) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'visible';
@@ -69,7 +71,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
       >
         <div className='flex items-center justify-between gap-2 px-5'>
           <button
-            className='rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 lg:hidden'
+            className='focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 lg:hidden border p-0.5 rounded-md dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800'
             onClick={hideMenu}
             id='closemenu'
             aria-label='Close Menu'
@@ -80,33 +82,33 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             MyBook
           </p>
           <div className='cursor-pointer pt-1'>
-            <ThemeChanger />
+            <ThemeChanger border />
           </div>
         </div>
 
         <div
           className={twMerge(
             'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 dark:border-neutral-800 sm:flex-grow',
-            'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
+            'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'
           )}
         >
-          <NavLink isHome href='/dashboard' icon={<ViewGridIcon className='h-5 w-5' />}>
+          <NavLink isHome href='/dashboard' icon={<ViewGridIcon className='h-[18px] w-[18px]' />}>
             Dashboard
           </NavLink>
 
-          <NavLink href='/search' icon={<SearchIcon className='h-5 w-5' />} className='mt-0.5'>
+          <NavLink href='/search' icon={<SearchIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Search
           </NavLink>
 
-          <NavLink href='/author' icon={<UserGroupIcon className='h-5 w-5' />} className='mt-0.5'>
+          <NavLink href='/author' icon={<UserGroupIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Author
           </NavLink>
 
-          <NavLink href='/book' icon={<BookOpenIcon className='h-5 w-5' />} className='mt-0.5'>
+          <NavLink href='/book' icon={<BookOpenIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Book
           </NavLink>
 
-          <NavLink href='/genre' icon={<ColorSwatchIcon className='h-5 w-5' />} className='mt-0.5'>
+          <NavLink href='/genre' icon={<ColorSwatchIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Genre
           </NavLink>
 
@@ -114,49 +116,54 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             title='Activity'
             routeName='activity'
             className='mt-0.5'
-            icon={<ClipboardListIcon className='h-5 w-5' />}
+            icon={<ClipboardListIcon className='h-[18px] w-[18px]' />}
           >
-            <NavLink href='/activity' icon={<DocumentReportIcon className='h-5 w-5' />}>
+            <NavLink href='/activity' icon={<DocumentReportIcon className='h-[18px] w-[18px]' />}>
               Log
             </NavLink>
 
-            <NavLink href='/activity/session' icon={<TableIcon className='h-5 w-5' />} className='mt-1.5'>
+            <NavLink href='/activity/session' icon={<TableIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               Session
             </NavLink>
           </NavAccordion>
 
-          <NavAccordion title='Design' routeName='design' icon={<TemplateIcon className='h-5 w-5' />}>
-            <NavLink href='/design' icon={<ViewGridAddIcon className='h-5 w-5' />}>
+          <NavAccordion title='Design' routeName='design' icon={<TemplateIcon className='h-[18px] w-[18px]' />}>
+            <NavLink href='/design' icon={<ViewGridAddIcon className='h-[18px] w-[18px]' />}>
               Component
             </NavLink>
-            <NavLink href='/design/layout' className='relative mt-1.5' icon={<ViewBoardsIcon className='h-5 w-5' />}>
+            <NavLink
+              href='/design/layout'
+              className='relative mt-1.5'
+              icon={<ViewBoardsIcon className='h-[18px] w-[18px]' />}
+            >
               Layout
               <span className='absolute left-24 top-2.5 flex h-5 w-5 animate-bounce items-center justify-center'>
                 <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
                 <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
               </span>
             </NavLink>
-            <NavLink href='/design/ui' icon={<ViewGridAddIcon className='h-5 w-5' />} className='mt-1.5'>
+            <NavLink href='/design/ui' icon={<ViewGridAddIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               UI
               <Badge>New</Badge>
             </NavLink>
-            <NavLink href='/design/form' icon={<ViewGridAddIcon className='h-5 w-5' />} className='mt-1.5'>
+
+            <NavLink href='/design/form' icon={<ServerIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               Form
               <Badge>New</Badge>
             </NavLink>
-            <NavLink href='/design/example' icon={<ViewGridAddIcon className='h-5 w-5' />} className='mt-1.5'>
+            <NavLink href='/design/example' icon={<TicketIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               Example
               <Badge>New</Badge>
             </NavLink>
           </NavAccordion>
 
-          <NavLink href='/settings' icon={<CogIcon className='h-5 w-5' />} className='mt-0.5'>
+          <NavLink href='/settings' icon={<CogIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Settings
           </NavLink>
 
           <NavLink.external
             href='https://my-book-docs.vercel.app'
-            icon={<ExternalLinkIcon className='h-5 w-5' />}
+            icon={<ExternalLinkIcon className='h-[18px] w-[18px]' />}
             className='mt-0.5'
           >
             Docs
@@ -178,13 +185,13 @@ export default function Sidebar({ className, ...props }: { className?: string; [
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
             )}
           >
-            <div className='border rounded-md dark:border-neutral-800 p-0.5'>
-              <LogoutIcon className='h-5 w-5' />
-            </div>
+            {/* <div className='border rounded-md dark:border-neutral-800 p-0.5'> */}
+            <LogoutIcon className='h-[19px] w-[19px]' />
+            {/* </div> */}
             Logout
           </button>
           {/* ) : (
-              <NavLink.login href='/login' icon={<LoginIcon className='h-5 w-5' />} className='mt-1'>
+              <NavLink.login href='/login' icon={<LoginIcon className='h-[18px] w-[18px]' />} className='mt-1'>
                 Login
               </NavLink.login>
             )

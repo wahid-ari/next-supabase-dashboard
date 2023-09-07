@@ -35,7 +35,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
             <Disclosure.Button
               {...props}
               className={twMerge(
-                'flex w-full font-medium items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 text-neutral-600 outline-none transition-all',
+                'group flex w-full font-medium items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 text-neutral-600 outline-none transition-all',
                 'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 'dark:text-neutral-300 dark:hover:text-sky-500',
                 'hover:bg-gray-100 dark:hover:bg-neutral-800',
@@ -43,7 +43,9 @@ export default function NavAccordion({ children, title, routeName, className, ic
               )}
             >
               <div className='flex-grow text-left text-sm flex items-center gap-2'>
-                <div className='border rounded-md dark:border-neutral-800 p-0.5'>{icon}</div>
+                <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800 dark:group-hover:border-neutral-700'>
+                  {icon}
+                </div>
                 <span>{title}</span>
               </div>
               <ChevronRightIcon

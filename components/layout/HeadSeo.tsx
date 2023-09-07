@@ -11,7 +11,7 @@ export default function HeadSeo({ title, description, prefetch }: Props) {
   const { route } = useRouter();
   // Fix Warning: A title element received an array with more than 1 element as children.In browsers title Elements can only have Text Nodes as ldren.If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in
   // the title and hydration will likely fail and fall back to client rendering
-  // https://github.com/vercel/next.js/discussions/38256#discussioncomment-3070196
+  // TODO Docs https://github.com/vercel/next.js/discussions/38256#discussioncomment-3070196
   let headTitle = `${title}`;
   let headDescription = `${description ? description : title}`;
 
@@ -52,7 +52,7 @@ export default function HeadSeo({ title, description, prefetch }: Props) {
         href={`${process.env.NEXT_PUBLIC_API_ROUTE}/sitemap.xml`}
       />
 
-      {/* TODO https://swr.vercel.app/docs/prefetching */}
+      {/* TODO Docs https://swr.vercel.app/docs/prefetching */}
       {prefetch?.length > 0 &&
         prefetch?.map((item, index) => {
           return <link key={index} rel='preload' href={item} as='fetch' crossOrigin='anonymous' />;

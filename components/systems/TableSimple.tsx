@@ -28,7 +28,7 @@ export default function TableSimple({
         wrapperClassName
       )}
     >
-      <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-700'>
+      <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'>
         <table
           {...props}
           className={twMerge('w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300', className)}

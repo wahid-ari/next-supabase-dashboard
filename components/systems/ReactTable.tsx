@@ -112,7 +112,7 @@ export const ReactTable = forwardRef(
 
     return (
       <div className={twMerge('w-full rounded border dark:border-neutral-800', className)}>
-        <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-700'>
+        <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'>
           <table
             {...getTableProps()}
             {...props}

@@ -53,7 +53,7 @@ export default function Code({ name = 'Code', code, className, lang = 'javascrip
             <DocumentDuplicateIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-600 dark:text-gray-400 dark:hover:text-gray-300' />
           )}
         </button>
-        <pre className='line-numbers scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-700 dark:scrollbar-thumb-neutral-700'>
+        <pre className='line-numbers scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-800 dark:scrollbar-thumb-neutral-800'>
           <code className={`language-${lang}`}>{code}</code>
         </pre>
       </div>

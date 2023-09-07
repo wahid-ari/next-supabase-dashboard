@@ -101,7 +101,12 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     leaveFrom='opacity-100 scale-100'
                     leaveTo='opacity-0 scale-95'
                   >
-                    <Popover.Panel className='absolute top-8 z-[11] flex w-40 flex-col space-y-2.5 rounded bg-white px-4 py-4 shadow dark:border dark:border-neutral-800 dark:bg-[#1a1a1a]'>
+                    <Popover.Panel
+                      className={cn(
+                        'absolute top-8 z-[11] flex w-40 flex-col space-y-2.5 rounded px-4 py-4 shadow',
+                        'dark:border dark:border-neutral-800 bg-white dark:bg-neutral-900'
+                      )}
+                    >
                       <CustomActiveLink href='/#'>Studios</CustomActiveLink>
                     </Popover.Panel>
                   </Transition>
