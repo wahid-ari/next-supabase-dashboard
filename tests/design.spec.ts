@@ -4,10 +4,10 @@ test.beforeEach(async ({ page }) => {
   await page.goto('http://localhost:3000/design');
 });
 
-test.describe('Testing Design Page', () => {
+test.describe('Testing Design Components Page', () => {
   test('page has title', async ({ page }) => {
     // Expect a title "to contain" a substring.
-    await expect(page).toHaveTitle(/Design/);
+    await expect(page).toHaveTitle(/Components/);
     await expect(page).toHaveURL(/design/);
   });
   test('page has Heading', async ({ page }) => {

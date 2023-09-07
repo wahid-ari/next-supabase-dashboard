@@ -4,10 +4,10 @@ test.beforeEach(async ({ page }) => {
   await page.goto('http://localhost:3000/design/layout');
 });
 
-test.describe('Testing Design Page', () => {
+test.describe('Testing Design Layout Page', () => {
   test('page has title', async ({ page }) => {
     // Expect a title "to contain" a substring.
-    await expect(page).toHaveTitle(/Design/);
+    await expect(page).toHaveTitle(/Layout/);
     await expect(page).toHaveURL(/layout/);
   });
   test('page has Heading', async ({ page }) => {
@@ -42,7 +42,7 @@ test.describe('Testing NavAccordion Component', () => {
     const navAccordion = page.getByTestId('nav-accordion');
     await expect(navAccordion).toBeVisible();
     await expect(navAccordion).toHaveClass(
-      /flex w-full items-center justify-start gap-2 rounded py-2 pl-2.5 pr-2 text-gray-700 outline-none transition-all/
+      /group flex w-full font-medium items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 text-neutral-600 outline-none transition-all/
     );
     await expect(navAccordion).toHaveText(/Design/);
     const navAccordionLink = page.getByTestId('nav-accordion-link');
@@ -66,10 +66,29 @@ test.describe('Testing NavLink Component', () => {
     const navLink = page.getByTestId('nav-link');
     await expect(navLink).toBeVisible();
     await expect(navLink).toHaveClass(
-      /flex w-full items-center justify-start gap-2 rounded px-3 py-2 text-sm transition-all/
+      /group flex w-full items-center font-medium justify-start gap-2 rounded px-3 py-1.5 text-sm transition-all/
     );
     await expect(navLink).toHaveText(/Layout/);
     await expect(navLink).toHaveAttribute('href', '/design/layout');
+  });
+  test('renders a NavLink.External component', async ({ page }) => {
+    const navLink = page.getByTestId('nav-link-external');
+    await expect(navLink).toBeVisible();
+    await expect(navLink).toHaveClass(
+      /rounded text-sm font-medium text-neutral-600 hover:text-sky-600 dark:text-neutral-300/
+    );
+    await expect(navLink).toHaveText(/External/);
+    await expect(navLink).toHaveAttribute('href', 'https://github.com');
+    await expect(navLink).toHaveAttribute('target', '_blank');
+  });
+  test('renders a NavLink.login component', async ({ page }) => {
+    const navLink = page.getByTestId('nav-link-login');
+    await expect(navLink).toBeVisible();
+    await expect(navLink).toHaveClass(
+      /text-emerald-500 hover:text-emerald-600 dark:text-emerald-600 dark:hover:text-emerald-500/
+    );
+    await expect(navLink).toHaveText(/Login/);
+    await expect(navLink).toHaveAttribute('href', '/login');
   });
   test('renders a NavLink.logout component', async ({ page }) => {
     const navLink = page.getByTestId('nav-link-logout');
@@ -86,7 +105,7 @@ test.describe('Testing ThemeChanger Component', () => {
     const themeChanger = page.getByTestId('theme-changer');
     await expect(themeChanger).toBeVisible();
     await expect(themeChanger).toHaveClass(
-      /rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/
+      /focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/
     );
   });
   test('should change theme to dark / light', async ({ page }) => {
@@ -104,7 +123,7 @@ test.describe('Testing Menu Component', () => {
     const menu = page.getByTestId('menu');
     await expect(menu).toBeVisible();
     await expect(menu).toHaveClass(
-      /inline-flex w-full items-center justify-center rounded text-gray-700 hover:text-gray-900/
+      /inline-flex w-full items-center font-medium justify-center rounded text-neutral-600 hover:text-neutral-900 transition-all/
     );
     await expect(menu).toHaveText('Menu');
   });

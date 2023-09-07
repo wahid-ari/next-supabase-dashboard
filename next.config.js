@@ -1,5 +1,5 @@
 module.exports = {
-  // https://vercel.com/guides/how-to-enable-cors#enabling-cors-in-a-next.js-app
+  // TODO Docs https://vercel.com/guides/how-to-enable-cors#enabling-cors-in-a-next.js-app
   async headers() {
     return [
       {
