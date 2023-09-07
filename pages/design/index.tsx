@@ -453,7 +453,7 @@ export default function Example() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
   return (
-    <Layout title='Design System - MyBook' description='Example Design System - MyBook'>
+    <Layout title='Components - MyBook' description='Example Components - MyBook'>
       <Title>Components</Title>
 
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
@@ -1214,7 +1214,7 @@ function dissmissAllToast() {
               className={twMerge(
                 'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
                 'bg-white p-2.5 !text-[15px] leading-5 text-neutral-700',
-                'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-700'
+                'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800'
               )}
             >
               Laborum sint culpa nisi commodo. Reprehenderit et laborum do commodo et fugiat elit ullamco. Tempor culpa

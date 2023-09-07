@@ -1,5 +1,12 @@
 import Link from 'next/link';
-import { LogoutIcon, TemplateIcon, ViewBoardsIcon, ViewGridAddIcon } from '@heroicons/react/outline';
+import {
+  ExternalLinkIcon,
+  LoginIcon,
+  LogoutIcon,
+  TemplateIcon,
+  ViewBoardsIcon,
+  ViewGridAddIcon,
+} from '@heroicons/react/outline';
 import { useTheme } from 'next-themes';
 
 import { useMounted } from '@/hooks/useMounted';
@@ -22,7 +29,7 @@ export default function Example() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
   return (
-    <Layout title='Design System - MyBook' description='Example Layout - MyBook'>
+    <Layout title='Layout - MyBook' description='Example Layout - MyBook'>
       <div className='relative'>
         <Title>Layout</Title>
         <span className='absolute left-[85px] top-1 flex h-5 w-5 animate-bounce items-center justify-center'>
@@ -46,6 +53,16 @@ export default function Example() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#nav-link'>
               NavLink
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#nav-link-external'>
+              NavLink.external
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#nav-link-login'>
+              NavLink.login
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -91,16 +108,16 @@ export default function Example() {
             data-testid='nav-accordion'
             title='Design'
             routeName='design'
-            icon={<TemplateIcon className='h-4 w-4' />}
+            icon={<TemplateIcon className='h-[18px] w-[18px]' />}
           >
             <NavLink
               data-testid='nav-accordion-link'
               href='/design/component'
-              icon={<ViewGridAddIcon className='h-4 w-4' />}
+              icon={<ViewGridAddIcon className='h-[18px] w-[18px]' />}
             >
               Component
             </NavLink>
-            <NavLink href='/design/layout' className='mt-1.5' icon={<ViewBoardsIcon className='h-4 w-4' />}>
+            <NavLink href='/design/layout' className='mt-1.5' icon={<ViewBoardsIcon className='h-[18px] w-[18px]' />}>
               Layout
             </NavLink>
           </NavAccordion>
@@ -113,24 +130,52 @@ export default function Example() {
             data-testid='nav-link'
             href='/design/layout'
             className='mt-1.5'
-            icon={<ViewBoardsIcon className='h-4 w-4' />}
+            icon={<ViewBoardsIcon className='h-[18px] w-[18px]' />}
           >
             Layout
           </NavLink>
         </div>
       </Wrapper>
 
+      <Wrapper id='nav-link-external' name='NavLink.external' props={['href', 'icon']}>
+        <div className='w-64'>
+          <NavLink.external
+            data-testid='nav-link-external'
+            href='https://github.com'
+            icon={<ExternalLinkIcon className='h-[18px] w-[18px]' />}
+          >
+            External
+          </NavLink.external>
+        </div>
+      </Wrapper>
+
+      <Wrapper id='nav-link-login' name='NavLink.login' props={['href', 'icon']}>
+        <div className='w-64'>
+          <NavLink.login data-testid='nav-link-login' href='/login' icon={<LoginIcon className='h-[18px] w-[18px]' />}>
+            Login
+          </NavLink.login>
+        </div>
+      </Wrapper>
+
       <Wrapper id='nav-link-logout' name='NavLink.logout' props={['href', 'icon']}>
         <div className='w-64'>
-          <NavLink.logout data-testid='nav-link-logout' href='/logout' icon={<LogoutIcon className='h-4 w-4' />}>
+          <NavLink.logout
+            data-testid='nav-link-logout'
+            href='/logout'
+            icon={<LogoutIcon className='h-[18px] w-[18px]' />}
+          >
             Logout
           </NavLink.logout>
         </div>
       </Wrapper>
 
       <Wrapper id='theme-changer' name='ThemeChanger' noChildren noClassName>
-        <ThemeChanger data-testid='theme-changer' />
-        {mounted ? <Text data-testid='theme-changer-value'>{theme}</Text> : null}
+        <ThemeChanger data-testid='theme-changer' border />
+        {mounted ? (
+          <Text data-testid='theme-changer-value' className='mt-2'>
+            {theme}
+          </Text>
+        ) : null}
       </Wrapper>
 
       <Wrapper id='menu' name='Menu' noChildren>
@@ -148,7 +193,7 @@ export default function Example() {
       </Wrapper>
 
       <Wrapper id='layout' name='Layout' noClassName props={['title', 'description', 'prefetch']}>
-        <Layout data-testid='layout' title='Design System - MyBook' demo={true}>
+        <Layout data-testid='layout' title='Layout - MyBook' demo={true}>
           <Title>Content</Title>
         </Layout>
         <Text className='mt-4 !text-red-600'>we pass prop demo=true to Layout here only for test purpose</Text>

@@ -296,7 +296,7 @@ export default function Ui() {
   const [date, setDate] = useState<Date | undefined>(new Date());
 
   return (
-    <Layout title='Design System - MyBook' description='Example UI - MyBook'>
+    <Layout title='UI - MyBook' description='Example UI - MyBook'>
       <div className='relative'>
         <Title>UI</Title>
         <span className='absolute left-[30px] top-1 flex h-5 w-5 animate-bounce items-center justify-center'>
