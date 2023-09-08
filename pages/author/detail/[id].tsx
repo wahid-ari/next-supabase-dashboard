@@ -3,8 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLinkIcon, PhotographIcon } from '@heroicons/react/outline';
 
-// import nookies from 'nookies';
-
 import { useAuthorData } from '@/libs/swr';
 
 import Layout from '@/components/layout/Layout';
@@ -14,14 +12,6 @@ import Title from '@/components/systems/Title';
 
 export async function getServerSideProps(context: any) {
   const { id } = context.params;
-  // const cookies = nookies.get(context);
-  // if (!cookies.token) {
-  //   return {
-  //     redirect: {
-  //       destination: '/login',
-  //     },
-  //   };
-  // }
   return {
     props: {
       id: id,

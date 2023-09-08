@@ -3,8 +3,6 @@ import Link from 'next/link';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { twMerge } from 'tailwind-merge';
 
-// import nookies from 'nookies';
-
 import { useGenreData } from '@/libs/swr';
 
 import Layout from '@/components/layout/Layout';
@@ -15,14 +13,6 @@ import Title from '@/components/systems/Title';
 
 export async function getServerSideProps(context: any) {
   const { id } = context.params;
-  // const cookies = nookies.get(context);
-  // if (!cookies.token) {
-  //   return {
-  //     redirect: {
-  //       destination: '/login',
-  //     },
-  //   };
-  // }
   return {
     props: {
       id: id,

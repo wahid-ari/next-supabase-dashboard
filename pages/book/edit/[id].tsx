@@ -4,8 +4,6 @@ import axios from 'axios';
 import Select from 'react-select';
 import { mutate } from 'swr';
 
-// import nookies from 'nookies';
-
 import { useAuthorsData, useBookData, useGenresData } from '@/libs/swr';
 import useToast from '@/hooks/useToast';
 
@@ -20,14 +18,6 @@ import Title from '@/components/systems/Title';
 
 export async function getServerSideProps(context: any) {
   const { id } = context.params;
-  // const cookies = nookies.get(context);
-  // if (!cookies.token) {
-  //   return {
-  //     redirect: {
-  //       destination: '/login',
-  //     },
-  //   };
-  // }
   return {
     props: {
       id: id,

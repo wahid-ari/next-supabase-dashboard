@@ -4,8 +4,6 @@ import { ExternalLinkIcon, PlusSmIcon } from '@heroicons/react/outline';
 import axios from 'axios';
 import { mutate } from 'swr';
 
-// import nookies from 'nookies';
-
 import { useAuthorsData } from '@/libs/swr';
 import useToast from '@/hooks/useToast';
 
@@ -17,20 +15,6 @@ import LinkButton from '@/components/systems/LinkButton';
 import ReactTable from '@/components/systems/ReactTable';
 import Shimer from '@/components/systems/Shimer';
 import Title from '@/components/systems/Title';
-
-// export async function getServerSideProps(context: any) {
-//   const cookies = nookies.get(context);
-//   if (!cookies.token) {
-//     return {
-//       redirect: {
-//         destination: '/login',
-//       },
-//     };
-//   }
-//   return {
-//     props: {},
-//   };
-// }
 
 Author.auth = true;
 

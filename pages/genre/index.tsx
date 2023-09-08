@@ -4,8 +4,6 @@ import { PlusSmIcon } from '@heroicons/react/outline';
 import axios from 'axios';
 import { mutate } from 'swr';
 
-// import nookies from 'nookies';
-
 import { useGenresData } from '@/libs/swr';
 import useToast from '@/hooks/useToast';
 
@@ -17,20 +15,6 @@ import LabeledInput from '@/components/systems/LabeledInput';
 import Shimer from '@/components/systems/Shimer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
-
-// export async function getServerSideProps(context: any) {
-//   const cookies = nookies.get(context);
-//   if (!cookies.token) {
-//     return {
-//       redirect: {
-//         destination: '/login',
-//       },
-//     };
-//   }
-//   return {
-//     props: {},
-//   };
-// }
 
 Genre.auth = true;
 

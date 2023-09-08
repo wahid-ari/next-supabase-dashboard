@@ -3,8 +3,6 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import { mutate } from 'swr';
 
-// import nookies from 'nookies';
-
 import useToast from '@/hooks/useToast';
 
 import Layout from '@/components/layout/Layout';
@@ -12,20 +10,6 @@ import Button from '@/components/systems/Button';
 import LabeledInput from '@/components/systems/LabeledInput';
 import TextArea from '@/components/systems/TextArea';
 import Title from '@/components/systems/Title';
-
-// export async function getServerSideProps(context: any) {
-//   const cookies = nookies.get(context);
-//   if (!cookies.token) {
-//     return {
-//       redirect: {
-//         destination: '/login',
-//       },
-//     };
-//   }
-//   return {
-//     props: {}, // will be passed to the page component as props
-//   };
-// }
 
 Author.auth = true;
 

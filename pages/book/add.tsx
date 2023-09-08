@@ -4,8 +4,6 @@ import axios from 'axios';
 import Select from 'react-select';
 import { mutate } from 'swr';
 
-// import nookies from 'nookies';
-
 import { useAuthorsData, useGenresData } from '@/libs/swr';
 import useToast from '@/hooks/useToast';
 
@@ -17,20 +15,6 @@ import SearchBox from '@/components/systems/SearchBox';
 import Shimer from '@/components/systems/Shimer';
 import TextArea from '@/components/systems/TextArea';
 import Title from '@/components/systems/Title';
-
-// export async function getServerSideProps(context: any) {
-//   const cookies = nookies.get(context);
-//   if (!cookies.token) {
-//     return {
-//       redirect: {
-//         destination: '/login',
-//       },
-//     };
-//   }
-//   return {
-//     props: {}, // will be passed to the page component as props
-//   };
-// }
 
 Book.auth = true;
 
