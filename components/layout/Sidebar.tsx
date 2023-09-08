@@ -82,7 +82,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
 
         <div
           className={twMerge(
-            'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 dark:border-neutral-800 sm:flex-grow',
+            'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 dark:border-neutral-800 lg:flex-grow',
             'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'
           )}
         >
@@ -163,20 +163,20 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             Docs
           </NavLink.external>
         </div>
-
+        {/* FIX Logout button not visible in mobile  */}
         <hr className='mt-2 dark:border-neutral-800' />
 
-        <div className='px-4 py-2'>
+        <div className='px-4 py-1.5'>
           <button
             data-testid='button-logout'
             onClick={() => setOpenModal(true)}
             className={twMerge(
-              'flex w-full items-center justify-start gap-2 px-3 py-1.5 text-sm font-medium transition-all',
+              'flex w-full items-center justify-start gap-2 px-4 py-1.5 text-sm font-medium transition-all',
               'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
             )}
           >
-            <LogoutIcon className='h-[19px] w-[19px]' />
+            <LogoutIcon className='h-[19px] w-[19px] mr-0.5' />
             Logout
           </button>
         </div>
