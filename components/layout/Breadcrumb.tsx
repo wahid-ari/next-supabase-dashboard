@@ -33,12 +33,12 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
     <nav className='flex w-full text-sm' aria-label='Breadcrumb'>
       <ol {...props} className='inline-flex flex-nowrap items-center space-x-1 whitespace-nowrap md:space-x-1'>
         <li className='-ml-0.5 inline-flex items-center'>
-          <ChevronRightIcon className='mr-1 h-5 w-5 text-gray-400' />
+          <ChevronRightIcon className='mr-1 h-5 w-5 text-neutral-400' />
           <Link
             href='/'
             passHref
             className={twMerge(
-              'inline-flex items-center rounded text-gray-700 transition-all hover:text-gray-900',
+              'inline-flex items-center rounded text-neutral-700 transition-all hover:text-neutral-900',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               'dark:text-neutral-300 dark:hover:text-neutral-100'
             )}
@@ -51,7 +51,7 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
             if (index === paths.length - 1) {
               return (
                 <li aria-current='page' key={index} className='flex items-center'>
-                  <ChevronRightIcon className='h-5 w-5 text-gray-500 dark:text-neutral-400' />
+                  <ChevronRightIcon className='h-5 w-5 text-neutral-500 dark:text-neutral-400' />
                   <span className='ml-1 mr-4 font-medium text-sky-600 dark:text-sky-500'>
                     {capitalizeFirstLetter(path)}
                   </span>
@@ -61,11 +61,11 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
             return (
               <li key={index}>
                 <div className='flex items-center'>
-                  <ChevronRightIcon className='h-5 w-5 text-gray-400' />
+                  <ChevronRightIcon className='h-5 w-5 text-neutral-400' />
                   <Link
                     href={(index !== 0 ? '/' : '') + paths.slice(0, index).join('/') + '/' + path}
                     className={twMerge(
-                      'ml-1 rounded text-gray-600 transition-all hover:text-gray-800',
+                      'ml-1 rounded text-neutral-600 transition-all hover:text-neutral-800',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       'dark:text-neutral-300 dark:hover:text-neutral-200'
                     )}

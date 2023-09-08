@@ -7,7 +7,6 @@ import {
   ColorSwatchIcon,
   DocumentReportIcon,
   ExternalLinkIcon,
-  LoginIcon,
   LogoutIcon,
   SearchIcon,
   ServerIcon,
@@ -21,12 +20,9 @@ import {
   XIcon,
 } from '@heroicons/react/outline';
 import { useShowNav } from 'context/GlobalContext';
-// import nookies from 'nookies';
 import { twMerge } from 'tailwind-merge';
 
 import NavAccordion from '@/components/layout/NavAccordion';
-// import { useMounted } from '@/hooks/useMounted';
-
 import NavLink from '@/components/layout/NavLink';
 import ThemeChanger from '@/components/layout/ThemeChanger';
 import Badge from '@/components/systems/Badge';
@@ -36,8 +32,6 @@ export default function Sidebar({ className, ...props }: { className?: string; [
   const router = useRouter();
   const [openModal, setOpenModal] = useState(false);
   const { showNav, setShowNav } = useShowNav();
-  // const admin = nookies.get(null, 'type');
-  // const mounted = useMounted();
 
   const hideMenu = () => {
     setShowNav(false);
@@ -71,12 +65,12 @@ export default function Sidebar({ className, ...props }: { className?: string; [
       >
         <div className='flex items-center justify-between gap-2 px-5'>
           <button
-            className='focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 lg:hidden border p-0.5 rounded-md dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+            className='focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 lg:hidden border p-0.5 rounded dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800'
             onClick={hideMenu}
             id='closemenu'
             aria-label='Close Menu'
           >
-            <XIcon className='h-5 w-5 text-gray-500 transition-all hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200' />
+            <XIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200' />
           </button>
           <p className='py-2.5 text-left text-base font-semibold tracking-wide text-neutral-800 dark:text-neutral-100'>
             MyBook
@@ -173,9 +167,6 @@ export default function Sidebar({ className, ...props }: { className?: string; [
         <hr className='mt-2 dark:border-neutral-800' />
 
         <div className='px-4 py-2'>
-          {/* FIX this  */}
-          {/* {mounted ? (
-            admin.name ? ( */}
           <button
             data-testid='button-logout'
             onClick={() => setOpenModal(true)}
@@ -185,17 +176,9 @@ export default function Sidebar({ className, ...props }: { className?: string; [
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
             )}
           >
-            {/* <div className='border rounded-md dark:border-neutral-800 p-0.5'> */}
             <LogoutIcon className='h-[19px] w-[19px]' />
-            {/* </div> */}
             Logout
           </button>
-          {/* ) : (
-              <NavLink.login href='/login' icon={<LoginIcon className='h-[18px] w-[18px]' />} className='mt-1'>
-                Login
-              </NavLink.login>
-            )
-          ) : null} */}
         </div>
       </aside>
       <Modal

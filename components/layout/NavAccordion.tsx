@@ -38,7 +38,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
                 'group flex w-full font-medium items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 text-neutral-600 outline-none transition-all',
                 'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 'dark:text-neutral-300 dark:hover:text-sky-500',
-                'hover:bg-gray-100 dark:hover:bg-neutral-800',
+                'hover:bg-neutral-100 dark:hover:bg-neutral-800',
                 className
               )}
             >
@@ -49,7 +49,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
                 <span>{title}</span>
               </div>
               <ChevronRightIcon
-                className={`h-5 w-5 text-gray-500 transition-all duration-300 dark:text-neutral-400 ${
+                className={`h-5 w-5 text-neutral-500 transition-all duration-300 dark:text-neutral-400 ${
                   open ? 'rotate-90 transform transition-transform' : 'transition-transform'
                 }`}
               />

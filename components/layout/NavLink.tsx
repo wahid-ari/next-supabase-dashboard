@@ -39,9 +39,9 @@ export default function NavLink({ children, className, href, icon, isHome, ...pr
         href={href}
         className={twMerge(
           'group flex w-full items-center font-medium justify-start gap-2 rounded px-3 py-1.5 text-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-          isHome && 'bg-gray-100 text-sky-600 dark:bg-neutral-800 dark:text-sky-500',
+          isHome && 'bg-neutral-100 text-sky-600 dark:bg-neutral-800 dark:text-sky-500',
           !isHome &&
-            'text-neutral-600 hover:bg-gray-100 hover:text-sky-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
+            'text-neutral-600 hover:bg-neutral-100 hover:text-sky-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
           className
         )}
       >
@@ -63,13 +63,13 @@ export default function NavLink({ children, className, href, icon, isHome, ...pr
         isDetailOrAddRoute
           ? // current route that includes href
             // if route start with 'design', all pages inside design folder will activate this
-            'bg-gray-100 text-sky-600 dark:bg-neutral-800 dark:text-sky-500'
+            'bg-neutral-100 text-sky-600 dark:bg-neutral-800 dark:text-sky-500'
           : router.pathname === href
           ? // current route that exactly match
             // pathname = /design, href = /design
-            'bg-gray-100 text-sky-600 dark:bg-neutral-800 dark:text-sky-500 dark:hover:text-sky-500'
+            'bg-neutral-100 text-sky-600 dark:bg-neutral-800 dark:text-sky-500 dark:hover:text-sky-500'
           : // not current route
-            'text-neutral-600 hover:bg-gray-100 hover:text-sky-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
+            'text-neutral-600 hover:bg-neutral-100 hover:text-sky-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
         className
       )}
     >
@@ -99,7 +99,7 @@ NavLink.external = ({ children, className, href, icon, ...props }: Other) => {
       className={twMerge(
         'group flex w-full items-center justify-start gap-2 px-3 py-1.5 transition-all',
         'rounded text-sm font-medium text-neutral-600 hover:text-sky-600 dark:text-neutral-300',
-        'hover:bg-gray-100 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
+        'hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
         className
       )}

@@ -1,9 +1,5 @@
 import { ReactNode } from 'react';
-// import nookies from 'nookies';
-import { useSession } from 'next-auth/react';
 import { twMerge } from 'tailwind-merge';
-
-import { useMounted } from '@/hooks/useMounted';
 
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import HeadSeo from '@/components/layout/HeadSeo';
@@ -21,10 +17,6 @@ type Props = {
 };
 
 export default function Layout({ children, title, description, prefetch, demo, ...props }: Props) {
-  // const admin = nookies.get(null, 'name');
-  const { data: session, status }: { data: any; status: any } = useSession();
-  const mounted = useMounted();
-
   return (
     <>
       <HeadSeo title={title} description={description} prefetch={prefetch} />
@@ -60,7 +52,7 @@ export default function Layout({ children, title, description, prefetch, demo, .
           >
             <Breadcrumb />
 
-            {mounted && session?.name ? <Menu /> : null}
+            <Menu />
           </div>
 
           <div className='px-5 pt-4 pb-5'>{children}</div>
