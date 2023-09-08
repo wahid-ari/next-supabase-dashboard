@@ -18,21 +18,21 @@ export default function NavbarSearch({ ...props }: { [props: string]: any }) {
 
   return (
     <form onSubmit={handleSubmit} {...props}>
-      <label htmlFor='search' className='sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+      <label htmlFor='search' className='sr-only mb-2 text-sm font-medium text-neutral-900 dark:text-white'>
         Search
       </label>
       <div className='relative'>
         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2'>
-          <SearchIcon className='h-5 w-5 text-gray-500 dark:text-gray-400' />
+          <SearchIcon className='h-5 w-5 text-neutral-500 dark:text-neutral-400' />
         </div>
         <input
           onChange={(e) => (query.current = e.target.value)}
           type='search'
           id='search'
           className={twMerge(
-            'block w-full rounded border border-neutral-200 p-2.5 pl-10 text-sm text-gray-900',
-            'bg-gray-50 focus:border-sky-500 focus:ring-sky-500 dark:border-neutral-800 dark:bg-neutral-800',
-            'dark:text-white dark:placeholder-gray-400 dark:focus:border-sky-500 dark:focus:ring-sky-500',
+            'block w-full rounded border border-neutral-200 p-2.5 pl-10 text-sm text-neutral-900',
+            'bg-neutral-50 focus:border-sky-500 focus:ring-sky-500 dark:border-neutral-800 dark:bg-neutral-800',
+            'dark:text-white dark:placeholder-neutral-400 dark:focus:border-sky-500 dark:focus:ring-sky-500',
             '!pr-20'
           )}
           placeholder='Search Movie, Actors...'

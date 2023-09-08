@@ -52,7 +52,7 @@ Input.disabled = ({ className, type, name, placeholder, defaultValue, ...props }
         placeholder={placeholder}
         defaultValue={defaultValue}
         className={twMerge(
-          'mt-2 w-full cursor-not-allowed rounded-md border border-neutral-300 bg-gray-100 px-4 py-[0.6rem] text-sm',
+          'mt-2 w-full cursor-not-allowed rounded-md border border-neutral-300 bg-neutral-100 px-4 py-[0.6rem] text-sm',
           'font-medium outline-none transition-all dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-500',
           className
         )}

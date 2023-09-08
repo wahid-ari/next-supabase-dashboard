@@ -9,7 +9,7 @@ type Props = {
 
 export default function Label({ children, className, ...props }: Props) {
   return (
-    <label {...props} className={twMerge('block text-gray-800 dark:text-neutral-300', className)}>
+    <label {...props} className={twMerge('block text-neutral-800 dark:text-neutral-300', className)}>
       {children}
     </label>
   );

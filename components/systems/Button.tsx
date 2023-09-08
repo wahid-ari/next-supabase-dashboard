@@ -42,8 +42,8 @@ Button.secondary = ({ children, className, type, value, onClick, disabled, ...pr
       onClick={onClick}
       disabled={disabled}
       className={twMerge(
-        disabled ? 'cursor-not-allowed' : 'hover:bg-gray-100 dark:hover:bg-neutral-900',
-        'rounded bg-gray-50 px-3 py-1.5 text-sm font-medium text-neutral-800 outline-none transition-all',
+        disabled ? 'cursor-not-allowed' : 'hover:bg-neutral-100 dark:hover:bg-neutral-900',
+        'rounded bg-neutral-50 px-3 py-1.5 text-sm font-medium text-neutral-800 outline-none transition-all',
         'border border-neutral-300 dark:border-neutral-800',
         'focus:ring-2 focus:ring-sky-500 dark:bg-neutral-800 dark:text-neutral-300',
         className

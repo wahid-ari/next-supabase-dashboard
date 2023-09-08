@@ -23,7 +23,7 @@ export default function FileInput({ className, label, name, value, onChange, ...
 
   return (
     <div className='mb-4'>
-      <label className='block text-sm text-gray-800 dark:text-neutral-300' htmlFor={name}>
+      <label className='block text-sm text-neutral-800 dark:text-neutral-300' htmlFor={name}>
         {label}
       </label>
       <Button.secondary title='Select File' onClick={handleClick} className='mt-2 w-full truncate !py-2'>
@@ -45,8 +45,8 @@ export default function FileInput({ className, label, name, value, onChange, ...
         onChange={onChange}
         className={twMerge(
           'mt-2 hidden h-12 w-full rounded-md bg-white px-4 py-[0.6rem] text-sm font-medium transition-all dark:bg-neutral-900 dark:text-neutral-100',
-          'border border-gray-300 outline-none focus:border-sky-500 dark:border-neutral-800 dark:focus:border-sky-500',
-          'ring-gray-300 focus:ring-1 focus:ring-sky-500 dark:ring-neutral-600 dark:focus:ring-sky-500',
+          'border border-neutral-300 outline-none focus:border-sky-500 dark:border-neutral-800 dark:focus:border-sky-500',
+          'ring-neutral-300 focus:ring-1 focus:ring-sky-500 dark:ring-neutral-600 dark:focus:ring-sky-500',
           className
         )}
         required

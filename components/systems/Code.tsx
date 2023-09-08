@@ -46,11 +46,11 @@ export default function Code({ name = 'Code', code, className, lang = 'javascrip
         >
           {copy ? (
             <div className='flex items-center'>
-              <ClipboardIcon className='h-5 w-5 transition-all dark:text-gray-400 dark:hover:text-gray-300' />
-              <span className='pl-1 text-xs text-neutral-600 dark:text-gray-300'>Copied !</span>
+              <ClipboardIcon className='h-5 w-5 transition-all dark:text-neutral-400 dark:hover:text-neutral-300' />
+              <span className='pl-1 text-xs text-neutral-600 dark:text-neutral-300'>Copied !</span>
             </div>
           ) : (
-            <DocumentDuplicateIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-600 dark:text-gray-400 dark:hover:text-gray-300' />
+            <DocumentDuplicateIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300' />
           )}
         </button>
         <pre className='line-numbers scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-800 dark:scrollbar-thumb-neutral-800'>

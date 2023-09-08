@@ -123,7 +123,7 @@ export const ReactTable = forwardRef(
                 <tr
                   key={i + 1}
                   {...headerGroup.getHeaderGroupProps()}
-                  className='border-b bg-gray-50 text-left text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'
+                  className='border-b bg-neutral-50 text-left text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'
                 >
                   {headerGroup.headers.map((column: any, i: number) => (
                     <th
@@ -269,7 +269,7 @@ export const ReactTable = forwardRef(
           </div>
 
           <div className='flex items-center justify-center gap-2 sm:justify-end'>
-            <span className='text-sm text-neutral-800 dark:text-gray-200'>Go to page</span>
+            <span className='text-sm text-neutral-800 dark:text-neutral-200'>Go to page</span>
             <input
               title='Page'
               type='number'
@@ -281,7 +281,7 @@ export const ReactTable = forwardRef(
                 gotoPage(page);
               }}
               className={twMerge(
-                'w-[72px] rounded-md border border-gray-300 bg-white px-3 py-[0.4rem] text-sm outline-none',
+                'w-[72px] rounded-md border border-neutral-300 bg-white px-3 py-[0.4rem] text-sm outline-none',
                 'transition-all focus:border-sky-500 focus:outline-none focus:ring-2',
                 'focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
               )}
@@ -294,7 +294,7 @@ export const ReactTable = forwardRef(
                 setPageSize(Number(e.target.value));
               }}
               className={twMerge(
-                'block w-[110px] cursor-pointer rounded-md border border-gray-300 bg-white px-3',
+                'block w-[110px] cursor-pointer rounded-md border border-neutral-300 bg-white px-3',
                 'py-[0.4rem] text-sm outline-none transition-all focus:border-sky-500 focus:outline-none',
                 'focus:ring-2 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
               )}

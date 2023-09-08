@@ -41,7 +41,7 @@ export default function Table({
       <div className='w-full overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800 lg:max-w-[calc(100vw_-_17rem)]'>
         <table {...props} className='w-full table-auto whitespace-nowrap text-neutral-700 dark:text-neutral-400'>
           <thead>
-            <tr className='whitespace-nowrap border-b bg-gray-50 text-sm font-bold dark:border-neutral-800 dark:bg-[#202020]'>
+            <tr className='whitespace-nowrap border-b bg-neutral-50 text-sm font-bold dark:border-neutral-800 dark:bg-[#202020]'>
               {head}
             </tr>
           </thead>
@@ -51,7 +51,7 @@ export default function Table({
       {noPagination ? (
         ''
       ) : (
-        <div className='bg-white text-xs font-medium text-gray-500 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-400'>
+        <div className='bg-white text-xs font-medium text-neutral-500 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-400'>
           <div className='flex w-full items-center justify-between gap-2 px-4 py-3'>
             {rowPerPage === 5 ? (
               totalData === 0 ? (
@@ -110,7 +110,7 @@ Table.tr = ({ children, className, ...props }: TrProps) => {
     <tr
       {...props}
       className={twMerge(
-        'border-b bg-white text-sm text-neutral-600 hover:bg-gray-50 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200',
+        'border-b bg-white text-sm text-neutral-600 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200',
         className
       )}
     >

@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon, ChevronRightIcon, MenuIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
-// import nookies from 'nookies';
 import { useSession } from 'next-auth/react';
 import { twMerge } from 'tailwind-merge';
 
@@ -20,7 +19,7 @@ function CustomActiveLink({ children, href }: { children: ReactNode; href: strin
       href={href}
       activeClassName='!text-sky-500 dark:!text-sky-500'
       className={twMerge(
-        'px-1 text-[15px] font-medium text-gray-700 transition-all duration-200',
+        'px-1 text-[15px] font-medium text-neutral-700 transition-all duration-200',
         'rounded hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
       )}
@@ -32,12 +31,11 @@ function CustomActiveLink({ children, href }: { children: ReactNode; href: strin
 
 const activeCn = twMerge(
   'block rounded px-3 py-1.5 text-[15px] font-medium',
-  'text-gray-600 hover:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
+  'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
 );
 
 export default function FrontNavbar({ className, ...props }: { className?: string; [props: string]: any }) {
-  // const admin = nookies.get(null, 'name');
   const { data: session, status }: { data: any; status: any } = useSession();
   const mounted = useMounted();
   const [isShowMore, setIsShowMore] = useState(false);
@@ -57,7 +55,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
               passHref
               className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             >
-              <div className='flex items-center justify-center font-medium text-gray-900 md:justify-start'>
+              <div className='flex items-center justify-center font-medium text-neutral-900 md:justify-start'>
                 <Image alt='Logo' src='/icon.png' width={30} height={30} className='mr-2 rounded-lg' unoptimized />
                 <span className='text-xl font-semibold text-neutral-800 dark:text-neutral-100'>MyBook</span>
               </div>
@@ -78,7 +76,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   <Popover.Button
                     className={twMerge(
                       'group flex items-center space-x-1 rounded px-1 text-[15px] font-medium transition-all duration-200',
-                      ' text-gray-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
+                      ' text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                     )}
                   >
@@ -121,7 +119,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                         aria-label='Search'
                         className={twMerge(
                           'group flex items-center space-x-2 rounded p-0.5 text-[15px] font-medium transition-all duration-200',
-                          ' text-gray-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
+                          ' text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                         )}
                       >
@@ -154,7 +152,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   <Link
                     href='/dashboard'
                     className={twMerge(
-                      'px-1 text-[15px] font-medium text-gray-700 transition-all duration-200',
+                      'px-1 text-[15px] font-medium text-neutral-700 transition-all duration-200',
                       'rounded hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                     )}
@@ -185,7 +183,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
               <Popover.Button
                 className={twMerge(
                   'inline-flex items-center justify-center rounded transition-all',
-                  'text-gray-500 hover:text-gray-600 dark:text-neutral-300 dark:hover:text-neutral-100',
+                  'text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-100',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 )}
               >
@@ -227,8 +225,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   <FrontThemeChanger />
                   <Popover.Button
                     className={twMerge(
-                      'rounded p-1 text-gray-700 transition-all dark:text-neutral-300',
-                      'hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
+                      'rounded p-1 text-neutral-700 transition-all dark:text-neutral-300',
+                      'hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
                       'focus:outline-none focus:ring-2 focus:ring-sky-500'
                     )}
                   >
@@ -248,7 +246,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 <Menu>
                   {({ open }) => (
                     <>
-                      <Menu.Button className='w-full rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-200 dark:hover:bg-neutral-800'>
+                      <Menu.Button className='w-full rounded px-3 py-1.5 text-[15px] font-medium text-neutral-600 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-200 dark:hover:bg-neutral-800'>
                         <div className='flex items-center justify-between'>
                           <span>More</span>
                           <ChevronRightIcon
@@ -283,8 +281,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   <Link
                     href={`${session?.name ? '/dashboard' : '/login'}`}
                     className={twMerge(
-                      'block rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100',
-                      'hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                      'block rounded px-3 py-1.5 text-[15px] font-medium text-neutral-600 hover:bg-neutral-100',
+                      'hover:text-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       'dark:text-neutral-200 dark:hover:bg-neutral-800'
                     )}
                   >

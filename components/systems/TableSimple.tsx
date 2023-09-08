@@ -35,7 +35,7 @@ export default function TableSimple({
         >
           {caption && <caption className='my-3 caption-bottom text-[13px] dark:text-neutral-300'>{caption}</caption>}
           <thead>
-            <tr className='border-b bg-gray-50 text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'>
+            <tr className='border-b bg-neutral-50 text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'>
               {head}
             </tr>
           </thead>

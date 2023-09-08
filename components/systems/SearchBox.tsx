@@ -30,7 +30,7 @@ export default function SearchBox({
     // @ts-ignore
     <Combobox value={value} by='id' onChange={onChange}>
       <div className='relative mt-1 pb-1'>
-        {label && <Combobox.Label className='text-gray-800 dark:text-neutral-300'>{label}</Combobox.Label>}
+        {label && <Combobox.Label className='text-neutral-800 dark:text-neutral-300'>{label}</Combobox.Label>}
         <div className='relative my-2 w-full cursor-default overflow-hidden rounded-md border border-neutral-300 p-[1px] text-left text-sm dark:border-neutral-600'>
           <Combobox.Input
             {...props}
@@ -40,7 +40,7 @@ export default function SearchBox({
             onChange={onChangeQuery}
           />
           <Combobox.Button title='Show options' className='absolute inset-y-0 right-0 flex items-center pr-2'>
-            <ChevronDownIcon className='h-5 w-5 text-gray-400' aria-hidden='true' />
+            <ChevronDownIcon className='h-5 w-5 text-neutral-400' aria-hidden='true' />
           </Combobox.Button>
         </div>
         <Transition
@@ -52,7 +52,7 @@ export default function SearchBox({
         >
           <Combobox.Options className='absolute z-10 max-h-40 w-full overflow-auto rounded-md bg-white py-1 text-sm shadow-lg dark:bg-neutral-800'>
             {filtered.length === 0 && query !== '' ? (
-              <div className='relative cursor-default select-none px-4 py-2 text-gray-700 dark:text-white'>
+              <div className='relative cursor-default select-none px-4 py-2 text-neutral-700 dark:text-white'>
                 Nothing found.
               </div>
             ) : (
@@ -62,7 +62,7 @@ export default function SearchBox({
                   className={({ active }) =>
                     twMerge(
                       'relative cursor-default select-none py-2 pl-10 pr-4',
-                      active ? 'bg-sky-500 text-white' : 'text-gray-900 dark:text-white'
+                      active ? 'bg-sky-500 text-white' : 'text-neutral-900 dark:text-white'
                     )
                   }
                   value={item}

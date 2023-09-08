@@ -41,7 +41,7 @@ export default function InputDebounce({
 
   return (
     <div className={`mb-4 ${wrapperClassName}`}>
-      <label className='block text-sm text-gray-800 dark:text-neutral-300' htmlFor={name}>
+      <label className='block text-sm text-neutral-800 dark:text-neutral-300' htmlFor={name}>
         {label}
       </label>
       <input

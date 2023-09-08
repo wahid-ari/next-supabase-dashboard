@@ -30,7 +30,7 @@ Badge.dark = ({ children, className, isLarge, ...props }: Props) => {
       {...props}
       className={twMerge(
         isLarge ? 'text-sm' : 'text-xs',
-        'whitespace-nowrap bg-gray-100 font-semibold text-gray-600 dark:bg-gray-600 dark:bg-opacity-10 dark:text-gray-400',
+        'whitespace-nowrap bg-neutral-100 font-semibold text-neutral-600 dark:bg-neutral-600 dark:bg-opacity-10 dark:text-neutral-400',
         'rounded-full px-[0.625rem] pb-[0.125rem] pt-[0.1rem]',
         className
       )}
