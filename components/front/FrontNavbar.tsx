@@ -66,7 +66,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
             <div className='hidden md:block'>
               <div className='flex items-center md:space-x-4 min-[900px]:space-x-6 lg:space-x-8'>
                 <CustomActiveLink href='/'>Home</CustomActiveLink>
-                <CustomActiveLink href='/design'>Design</CustomActiveLink>
+                <CustomActiveLink href='/dashboard'>Dashboard</CustomActiveLink>
 
                 <Popover
                   className='relative'
@@ -240,8 +240,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 <ActiveLink href='/' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
                   Home
                 </ActiveLink>
-                <ActiveLink href='/design' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
-                  Design
+                <ActiveLink href='/dashboard' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Dashboard
                 </ActiveLink>
                 <Menu>
                   {({ open }) => (

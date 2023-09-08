@@ -45,7 +45,7 @@ ChartJS.register(
   Legend
 );
 
-Dashboard.auth = true;
+// Dashboard.auth = true;
 
 export default function Dashboard() {
   // const { data, error } = useCountsData();

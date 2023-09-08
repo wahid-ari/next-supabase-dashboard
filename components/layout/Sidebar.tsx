@@ -58,7 +58,8 @@ export default function Sidebar({ className, ...props }: { className?: string; [
       <aside
         {...props}
         className={twMerge(
-          'z-50 flex h-screen max-h-screen w-screen flex-col flex-nowrap border-r bg-white dark:border-neutral-800 dark:bg-neutral-900 lg:w-60',
+          'z-50 flex h-full lg:h-screen lg:max-h-screen w-screen flex-col flex-nowrap border-r bg-white dark:border-neutral-800 dark:bg-neutral-900 lg:w-60',
+          // 'overflow-auto',
           showNav ? 'fixed lg:relative' : 'top-0 hidden lg:sticky lg:flex',
           className
         )}
