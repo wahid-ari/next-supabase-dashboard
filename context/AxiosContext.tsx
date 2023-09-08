@@ -1,12 +1,10 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
-// import nookies from 'nookies';
 import axios from 'axios';
 import { getSession } from 'next-auth/react';
 
 export const AxiosContext = createContext(null);
 
 export const AxiosProvider = ({ children }: { children: ReactNode }) => {
-  // const token = nookies.get(null, 'token');
   const [token, setToken] = useState(null);
   async function getSessionToken() {
     const session: any = await getSession();
