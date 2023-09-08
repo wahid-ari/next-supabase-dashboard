@@ -16,6 +16,7 @@
     "test-dashboard": "npx playwright test dashboard",
     "test-book": "npx playwright test tests/book.spec.ts",
     "test-ui": "npx playwright test --ui",
+    "test-ui-layout": "npx playwright test --ui tests/layout",
     "test-report": "npx playwright show-report",
     "test-trace": "npx playwright test --trace on",
     "test-trace-quote": "npx playwright test --trace on quote",

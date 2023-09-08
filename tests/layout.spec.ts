@@ -159,9 +159,7 @@ test.describe('Testing Sidebar Component', () => {
   test('renders a Sidebar component', async ({ page }) => {
     const sidebar = page.getByTestId('sidebar');
     await expect(sidebar).toBeVisible();
-    await expect(sidebar).toHaveClass(
-      /z-50 h-screen max-h-screen w-screen flex-col flex-nowrap border-r bg-white dark:border-neutral-800 dark:bg-neutral-900/
-    );
+    await expect(sidebar).toHaveClass(/z-50 h-full w-screen flex-col flex-nowrap border-r dark:border-neutral-800/);
     await expect(sidebar).toHaveText(/MyBook/);
   });
 });
