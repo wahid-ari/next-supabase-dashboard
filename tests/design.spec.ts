@@ -48,7 +48,7 @@ test.describe('Testing Button Component', () => {
   test('renders a Button Secondary component', async ({ page }) => {
     const button = page.getByTestId('button-secondary');
     await expect(button).toBeVisible();
-    await expect(button).toHaveClass(/rounded bg-gray-50 px-3 py-1.5 text-sm font-medium/);
+    await expect(button).toHaveClass(/rounded bg-neutral-50 px-3 py-1.5 text-sm font-medium/);
     await expect(button).toBeEnabled();
     await expect(button).toHaveText('Secondary');
   });
@@ -82,7 +82,7 @@ test.describe('Testing LinkButton Component', () => {
     const linkbutton = page.getByTestId('link-button-secondary');
     await expect(linkbutton).toBeVisible();
     await expect(linkbutton).toHaveClass(
-      /rounded border border-neutral-300 bg-gray-50 px-3 py-1.5 text-sm font-medium text-neutral-800/
+      /rounded border border-neutral-300 bg-neutral-50 px-3 py-1.5 text-sm font-medium text-neutral-800/
     );
     await expect(linkbutton).toHaveText('Link Button Secondary');
     await expect(linkbutton).toHaveAttribute('href', '/design#linkbutton');
@@ -154,7 +154,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-dark');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-xs whitespace-nowrap bg-gray-100 font-semibold text-gray-600 dark:bg-gray-600 dark:bg-opacity-10 dark:text-gray-400/
+      /text-xs whitespace-nowrap bg-neutral-100 font-semibold text-neutral-600 dark:bg-neutral-600 dark:bg-opacity-10 dark:text-neutral-400/
     );
     await expect(badge).toHaveText('dark');
   });
@@ -220,7 +220,7 @@ test.describe('Testing Badge Component', () => {
     const badge = page.getByTestId('badge-dark-large');
     await expect(badge).toBeVisible();
     await expect(badge).toHaveClass(
-      /text-sm whitespace-nowrap bg-gray-100 font-semibold text-gray-600 dark:bg-gray-600 dark:bg-opacity-10 dark:text-gray-400/
+      /text-sm whitespace-nowrap bg-neutral-100 font-semibold text-neutral-600 dark:bg-neutral-600 dark:bg-opacity-10 dark:text-neutral-400/
     );
     await expect(badge).toHaveText('dark');
   });
@@ -396,7 +396,7 @@ test.describe('Testing Label Component', () => {
     const label = page.getByTestId('label');
     await expect(label).toBeVisible();
     await expect(label).toHaveText('Label');
-    await expect(label).toHaveClass(/block text-gray-800 dark:text-neutral-300/);
+    await expect(label).toHaveClass(/block text-neutral-800 dark:text-neutral-300/);
   });
 });
 
@@ -452,7 +452,7 @@ test.describe('Testing TextArea Component', () => {
     await expect(textarea).toBeEditable();
     await expect(textarea).toHaveValue('');
     await expect(textarea).toHaveClass(
-      'mt-2 w-full rounded-md bg-white p-3 text-sm outline-none transition-all dark:bg-neutral-900 dark:text-white min-h-[80px] border border-gray-300 focus:border-sky-500 focus:ring-2 focus:ring-sky-500 dark:border-neutral-700'
+      'mt-2 w-full rounded-md bg-white p-3 text-sm outline-none transition-all dark:bg-neutral-900 dark:text-white min-h-[80px] border border-neutral-300 focus:border-sky-500 focus:ring-2 focus:ring-sky-500 dark:border-neutral-700'
     );
   });
   test('renders a TextArea Disabled component', async ({ page }) => {
@@ -462,7 +462,7 @@ test.describe('Testing TextArea Component', () => {
     await expect(textarea).not.toBeEditable();
     await expect(textarea).toHaveValue('');
     await expect(textarea).toHaveClass(
-      'mt-2 w-full cursor-not-allowed rounded-md p-3 text-sm text-neutral-500 min-h-[80px] border border-gray-300 bg-gray-100 dark:border-neutral-700 dark:bg-neutral-800'
+      'mt-2 w-full cursor-not-allowed rounded-md p-3 text-sm text-neutral-500 min-h-[80px] border border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800'
     );
   });
 });
@@ -572,7 +572,7 @@ test.describe('Testing Table Component', () => {
     const table = page.getByTestId('table-tr');
     await expect(table).toBeVisible();
     await expect(table).toHaveClass(
-      /border-b bg-white text-sm text-neutral-600 hover:bg-gray-50 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200/
+      /border-b bg-white text-sm text-neutral-600 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200/
     );
   });
   test('renders a Table.td component', async ({ page }) => {

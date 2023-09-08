@@ -122,9 +122,7 @@ test.describe('Testing Menu Component', () => {
   test('renders a Menu component', async ({ page }) => {
     const menu = page.getByTestId('menu');
     await expect(menu).toBeVisible();
-    await expect(menu).toHaveClass(
-      /inline-flex w-full items-center font-medium justify-center rounded text-neutral-600 hover:text-neutral-900 transition-all/
-    );
+    await expect(menu).toHaveClass(/inline-flex w-full items-center font-medium justify-center rounded transition-all/);
     await expect(menu).toHaveText('Menu');
   });
   test('should renders a Menu Item component', async ({ page }) => {
@@ -143,7 +141,7 @@ test.describe('Testing Navbar Component', () => {
     const navbar = page.getByTestId('navbar');
     await expect(navbar).toBeVisible();
     await expect(navbar).toHaveClass(/sticky top-0 z-40 h-11 dark:text-neutral-50 lg:hidden/);
-    await expect(navbar).toHaveText('MyBook');
+    await expect(navbar).toHaveText(/MyBook/);
   });
 });
 
