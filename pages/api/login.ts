@@ -22,9 +22,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   //     username: data.username,
   //     password: data.name,
   //   },
-  //   process.env.JWT_SECRET
+  //   process.env.NEXTAUTH_SECRET
   // );
-  // const user = jwt.verify(token, process.env.JWT_SECRET);
+  // const user = jwt.verify(token, process.env.NEXTAUTH_SECRET);
 
   switch (method) {
     case 'POST':
@@ -55,11 +55,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             name: data.name,
             type: data.type,
           },
-          process.env.JWT_SECRET
+          process.env.NEXTAUTH_SECRET
         );
         const { error: errorSession } = await supabase.from('book_sessions').insert({ user_id: data.id, token: token });
         if (errorSession) console.error('error inserting session', errorSession);
-        // const decode = jwt.verify(token, process.env.JWT_SECRET);
+        // const decode = jwt.verify(token, process.env.NEXTAUTH_SECRET);
         // console.log(decode)
         res.status(200).json({ ...data, token });
       }
@@ -81,7 +81,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 //       if (!token) {
 //         return res.json({ error: "Token not found" });
 //       }
-//       const user = jwt.verify(token, process.env.JWT_SECRET);
+//       const user = jwt.verify(token, process.env.NEXTAUTH_SECRET);
 //       if (!user) {
 //         return res.json({ error: "Token not valid" });
 //       }

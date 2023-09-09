@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
 import axios from 'axios';
 import { signIn, useSession } from 'next-auth/react';
@@ -14,6 +14,8 @@ import Heading from '@/components/systems/Heading';
 import LoadingDots from '@/components/systems/LoadingDots';
 
 export default function Login() {
+  const router = useRouter();
+  const callbackUrl = router.query.callbackUrl as string;
   const [form, setForm] = useState({ username: 'develop', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -58,7 +60,7 @@ export default function Login() {
             name,
             type,
             token,
-            callbackUrl: '/dashboard',
+            callbackUrl: callbackUrl || '/dashboard',
           });
           updateToast({
             toastId,

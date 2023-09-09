@@ -22,9 +22,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   //     username: data.username,
   //     password: data.name,
   //   },
-  //   process.env.JWT_SECRET
+  //   process.env.NEXTAUTH_SECRET
   // );
-  // const user = jwt.verify(token, process.env.JWT_SECRET);
+  // const user = jwt.verify(token, process.env.NEXTAUTH_SECRET);
 
   switch (method) {
     case 'POST':
@@ -65,7 +65,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 username: body.username,
                 password: body.name,
               },
-              process.env.JWT_SECRET
+              process.env.NEXTAUTH_SECRET
             );
             const { id, type } = user;
             const { username, name } = body;
@@ -93,7 +93,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 //       if (!token) {
 //         return res.json({ error: "Token not found" });
 //       }
-//       const user = jwt.verify(token, process.env.JWT_SECRET);
+//       const user = jwt.verify(token, process.env.NEXTAUTH_SECRET);
 //       if (!user) {
 //         return res.json({ error: "Token not valid" });
 //       }

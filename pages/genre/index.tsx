@@ -16,7 +16,7 @@ import Shimer from '@/components/systems/Shimer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
-Genre.auth = true;
+// Genre.auth = true;
 
 export default function Genre() {
   const { data, error } = useGenresData();

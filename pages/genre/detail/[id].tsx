@@ -21,7 +21,7 @@ export async function getServerSideProps(context: any) {
   };
 }
 
-Genre.auth = true;
+// Genre.auth = true;
 
 export default function Genre({ id }) {
   const { data, error } = useGenreData(id);
