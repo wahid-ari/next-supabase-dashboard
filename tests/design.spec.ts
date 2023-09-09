@@ -428,6 +428,22 @@ test.describe('Testing LabeledInput Component', () => {
   });
 });
 
+test.describe('Testing Input (Debounce Hook) Component', () => {
+  // Input (Debounce Hook) ----------------------------------------------------
+  test('renders a Input (Debounce Hook) component', async ({ page }) => {
+    const input = page.getByTestId('input-debounce-hook');
+    await expect(input).toBeVisible();
+    await expect(input).toBeEnabled();
+    await expect(input).toBeEditable();
+    await expect(input).toHaveValue('');
+    await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-neutral-300 px-4/);
+    await waitMounted(page);
+    await page.getByTestId('input-debounce-hook').fill('input debounce hook');
+    const text = page.getByTestId('input-debounce-hook-text');
+    await expect(text).toHaveText('input debounce hook');
+  });
+});
+
 test.describe('Testing InputDebounce Component', () => {
   // InputDebounce ----------------------------------------------------
   test('renders a InputDebounce component', async ({ page }) => {

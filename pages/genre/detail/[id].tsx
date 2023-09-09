@@ -1,9 +1,10 @@
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { twMerge } from 'tailwind-merge';
 
 import { useGenreData } from '@/libs/swr';
+import { useDebounce } from '@/hooks/useDebounce';
 
 import Layout from '@/components/layout/Layout';
 import LabeledInput from '@/components/systems/LabeledInput';
@@ -24,6 +25,8 @@ Genre.auth = true;
 
 export default function Genre({ id }) {
   const { data, error } = useGenreData(id);
+  const [inputDebounce, setInputDebounce] = useState('');
+  const debouncedValue = useDebounce(inputDebounce, 500);
 
   const column = useMemo(
     () => [
@@ -92,6 +95,10 @@ export default function Genre({ id }) {
 
   const tableInstance = useRef(null);
 
+  useEffect(() => {
+    tableInstance.current?.setGlobalFilter(debouncedValue);
+  }, [debouncedValue]);
+
   if (error) {
     return (
       <Layout title='Genre Detail - MyBook'>
@@ -117,8 +124,9 @@ export default function Genre({ id }) {
               id='caridata'
               name='caridata'
               placeholder='Keyword'
+              value={inputDebounce}
               onChange={(e) => {
-                tableInstance.current.setGlobalFilter(e.target.value);
+                setInputDebounce(e.target.value);
               }}
             />
 

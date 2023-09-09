@@ -6,12 +6,13 @@ import { ArrowSmRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { MoreHorizontal } from 'lucide-react';
 import ReactSelect from 'react-select';
-import { extendTailwindMerge, twMerge } from 'tailwind-merge';
+import { twMerge } from 'tailwind-merge';
 import * as yup from 'yup';
 import { z } from 'zod';
 
 import { tabledata } from '@/utils/tableData';
 import { validateFormObject } from '@/validations/zod';
+import { useDebounce } from '@/hooks/useDebounce';
 import { useMounted } from '@/hooks/useMounted';
 import useToast from '@/hooks/useToast';
 
@@ -75,6 +76,8 @@ const searchBoxData = [
 
 export default function Example() {
   const mounted = useMounted();
+  const [inputDebounce, setInputDebounce] = useState('');
+  const debouncedValue = useDebounce(inputDebounce, 500);
   const [inputDebounceValue, setInputDebounceValue] = useState();
   const [openDialog, setOpenDialog] = useState(false);
   const [openDangerDialog, setOpenDangerDialog] = useState(false);
@@ -576,6 +579,11 @@ export default function Example() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#labeledinputdisabled'>
               LabeledInput.disabled
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#input-debounce-hook'>
+              Input (Debounce Hook)
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -1399,6 +1407,20 @@ function dissmissAllToast() {
           type='password'
           data-testid='labeledinput-disabled'
         />
+      </Wrapper>
+
+      <Wrapper
+        id='input-debounce-hook'
+        name='Input (Debounce Hook)'
+        props={['type', 'name', 'placeholder', 'value', 'onChange']}
+      >
+        <Input
+          name='input-debounce-hook'
+          placeholder='Input debounce hook'
+          data-testid='input-debounce-hook'
+          onChange={(e) => setInputDebounce(e.target.value)}
+        />
+        <Text data-testid='input-debounce-hook-text'>{debouncedValue}</Text>
       </Wrapper>
 
       <Wrapper
