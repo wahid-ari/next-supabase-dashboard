@@ -1,4 +1,4 @@
-import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { MoonIcon, StopIcon, SunIcon } from '@heroicons/react/outline';
 import { useTheme } from 'next-themes';
 import { twMerge } from 'tailwind-merge';
 
@@ -12,13 +12,15 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
     return (
       <button
         className={twMerge(
-          'rounded-full border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
+          'rounded-md border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
           'focus:outline-none focus:ring-2 focus:ring-sky-500',
-          'inline-flex h-8 items-center justify-center overflow-hidden transition-all duration-200',
-          variant === 'icon' && 'w-8',
-          variant === 'labelled' && 'px-4'
+          'inline-flex items-center justify-center overflow-hidden transition-all duration-200',
+          variant === 'icon' && 'p-1',
+          variant === 'labelled' && 'px-2 py-1'
         )}
-      />
+      >
+        <StopIcon className='h-5 w-5 text-neutral-700 dark:text-neutral-200' />
+      </button>
     );
   }
 
