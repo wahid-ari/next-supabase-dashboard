@@ -83,7 +83,7 @@ function MyApp({ Component, pageProps }: CustomAppProps) {
       <GlobalProvider>
         <SessionProvider session={pageProps.session}>
           <AxiosProvider>
-            <main className={inter.className}>
+            <div className={inter.className}>
               <UiToaster />
               <Toaster
                 gutter={4}
@@ -101,7 +101,7 @@ function MyApp({ Component, pageProps }: CustomAppProps) {
               ) : (
                 <Component {...pageProps} />
               )}
-            </main>
+            </div>
           </AxiosProvider>
         </SessionProvider>
       </GlobalProvider>

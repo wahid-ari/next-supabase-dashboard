@@ -20,7 +20,7 @@ export default function FrontLayout({ children, title, description, className, .
       <HeadSeo title={title} description={description} />
       <div {...props} className='relative dark:bg-neutral-900'>
         <FrontNavbar className='bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30' />
-        <div className={twMerge('mx-auto min-h-screen w-full max-w-7xl p-4 pb-10', className)}>{children}</div>
+        <main className={twMerge('mx-auto min-h-screen w-full max-w-7xl p-4 pb-10', className)}>{children}</main>
         <Footer />
         <BackToTop />
       </div>
