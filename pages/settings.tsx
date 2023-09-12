@@ -20,6 +20,8 @@ export default function Settings() {
       <Title>Settings</Title>
       <Text className='mb-2 mt-5'>Dark Mode</Text>
       <div
+        role='button'
+        title='Change Theme'
         onClick={handleDarkMode}
         className='relative h-6 w-11 cursor-pointer rounded-full bg-neutral-300 transition-all dark:bg-sky-500'
       >

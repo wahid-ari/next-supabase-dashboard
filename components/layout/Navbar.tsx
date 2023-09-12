@@ -29,9 +29,10 @@ export default function Navbar({ className, ...props }: { className?: string; [p
           className='-ml-0.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
           id='menu'
           aria-label='Menu'
+          title='Menu'
         >
           <MenuIcon
-            className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200'
+            className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100'
             onClick={() => setShowNav(true)}
           />
         </button>

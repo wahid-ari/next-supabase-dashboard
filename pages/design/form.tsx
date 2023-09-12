@@ -311,6 +311,8 @@ export default function FormPage() {
                         <div className='!mb-3 flex items-center'>
                           <Input {...field} aria-label={`url-${index}`} />
                           <Button
+                            title='Remove'
+                            aria-label='Remove'
                             type='button'
                             variant='destructive'
                             size='sm'

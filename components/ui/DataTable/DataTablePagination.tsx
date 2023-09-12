@@ -36,7 +36,7 @@ export function DataTablePagination<TData>({
                 table.setPageSize(Number(value));
               }}
             >
-              <SelectTrigger id='show' aria-label='show' className='h-8 w-[70px]'>
+              <SelectTrigger id='show' aria-label='show' title='Show' className='h-8 w-[70px]'>
                 <SelectValue placeholder={table.getState().pagination.pageSize} />
               </SelectTrigger>
               <SelectContent side='top'>
@@ -69,6 +69,7 @@ export function DataTablePagination<TData>({
         <div className='flex items-center justify-center gap-2 sm:justify-end'>
           <div className='flex items-center space-x-2'>
             <Button
+              title='First Page'
               variant='outline'
               className='h-8 w-8 p-0'
               onClick={() => table.setPageIndex(0)}
@@ -78,6 +79,7 @@ export function DataTablePagination<TData>({
               <ChevronsLeft className='h-4 w-4' />
             </Button>
             <Button
+              title='Previous Page'
               variant='outline'
               className='h-8 w-8 p-0'
               onClick={() => table.previousPage()}
@@ -90,6 +92,7 @@ export function DataTablePagination<TData>({
               Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
             </div>
             <Button
+              title='Next Page'
               variant='outline'
               className='h-8 w-8 p-0'
               onClick={() => table.nextPage()}
@@ -99,6 +102,7 @@ export function DataTablePagination<TData>({
               <ChevronRightIcon className='h-4 w-4' />
             </Button>
             <Button
+              title='Last Page'
               variant='outline'
               className='h-8 w-8 p-0'
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}

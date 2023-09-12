@@ -175,16 +175,23 @@ export const columns: ColumnDef<Payment>[] = [
       <Checkbox
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        id='Select all'
         aria-label='Select all'
+        title='Select all'
       />
     ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label='Select row'
-      />
-    ),
+    cell: ({ row }) => {
+      const id = row.original.id;
+      return (
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          id={`Select ${id}`}
+          aria-label={`Select ${id}`}
+          title={`Select ${id}`}
+        />
+      );
+    },
     enableSorting: false,
     enableHiding: false,
   },
@@ -260,7 +267,7 @@ export const columns: ColumnDef<Payment>[] = [
         <div className='relative text-right font-medium'>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant='ghost' className='h-8 w-8 p-0 hover:bg-neutral-200'>
+              <Button variant='ghost' title='Open Action' className='h-8 w-8 p-0 hover:bg-neutral-200'>
                 <span className='sr-only'>Open menu</span>
                 <MoreHorizontal className='h-4 w-4' />
               </Button>

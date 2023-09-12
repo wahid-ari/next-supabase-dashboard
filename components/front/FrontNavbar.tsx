@@ -117,6 +117,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     <>
                       <Popover.Button
                         aria-label='Search'
+                        title='Search'
                         className={twMerge(
                           'group flex items-center space-x-2 rounded p-0.5 text-[15px] font-medium transition-all duration-200',
                           ' text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',

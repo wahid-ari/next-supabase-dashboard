@@ -73,8 +73,9 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             onClick={hideMenu}
             id='closemenu'
             aria-label='Close Menu'
+            title='Close Menu'
           >
-            <XIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200' />
+            <XIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
           </button>
           <p className='py-2.5 text-left text-base font-semibold tracking-wide text-neutral-800 dark:text-neutral-100'>
             MyBook
