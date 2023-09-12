@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ExternalLinkIcon, PhotographIcon } from '@heroicons/react/outline';
+import { PhotographIcon } from '@heroicons/react/outline';
+import { ArrowUpRightIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
@@ -62,7 +63,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
             rel='noreferrer'
           >
             Web
-            <ExternalLinkIcon className='ml-1 h-4 w-4' />
+            <ArrowUpRightIcon className='ml-1 h-4 w-4' />
           </a>
         ) : (
           <p>-</p>

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import { ExternalLinkIcon } from '@heroicons/react/outline';
+import { ArrowUpRightIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import Badge from '@/components/systems/Badge';
@@ -54,7 +54,7 @@ export default function Wrapper({
             target='_blank'
             rel='noreferrer'
           >
-            <ExternalLinkIcon className='h-4 w-4' />
+            <ArrowUpRightIcon className='h-5 w-5' />
           </a>
         )}
       </Heading>

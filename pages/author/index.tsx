@@ -1,7 +1,8 @@
 import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ExternalLinkIcon, PlusSmIcon } from '@heroicons/react/outline';
+import { PlusSmIcon } from '@heroicons/react/outline';
 import axios from 'axios';
+import { ArrowUpRightIcon } from 'lucide-react';
 import { mutate } from 'swr';
 
 import { useAuthorsData } from '@/libs/swr';
@@ -105,7 +106,7 @@ export default function Author() {
                 rel='noreferrer'
               >
                 Open
-                <ExternalLinkIcon className='ml-1 h-4 w-4' />
+                <ArrowUpRightIcon className='ml-1 h-4 w-4' />
               </a>
             );
           }

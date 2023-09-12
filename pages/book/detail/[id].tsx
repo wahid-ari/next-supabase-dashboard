@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ExternalLinkIcon, PhotographIcon } from '@heroicons/react/outline';
+import { PhotographIcon } from '@heroicons/react/outline';
+import { ArrowUpRightIcon } from 'lucide-react';
 
 import { useBookData } from '@/libs/swr';
 
@@ -117,7 +118,7 @@ export default function Book({ id }) {
                           rel='noreferrer'
                         >
                           Open
-                          <ExternalLinkIcon className='ml-1 h-4 w-4' />
+                          <ArrowUpRightIcon className='ml-1 h-4 w-4' />
                         </a>
                       ) : (
                         '-'
@@ -168,7 +169,7 @@ export default function Book({ id }) {
                       rel='noreferrer'
                     >
                       Web
-                      <ExternalLinkIcon className='ml-1 h-4 w-4' />
+                      <ArrowUpRightIcon className='ml-1 h-4 w-4' />
                     </a>
                   ) : null}
                 </div>
