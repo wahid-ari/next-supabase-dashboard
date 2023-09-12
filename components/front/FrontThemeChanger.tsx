@@ -32,7 +32,7 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
       onClick={() => setTheme(theme == 'dark' ? 'light' : 'dark')}
       className={twMerge(
         'rounded-md border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
-        'focus:outline-none focus:ring-2 focus:ring-sky-500',
+        'hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-sky-500',
         'inline-flex items-center justify-center overflow-hidden transition-all duration-200',
         variant === 'icon' && 'p-1',
         variant === 'labelled' && 'py-1 px-2'

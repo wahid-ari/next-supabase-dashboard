@@ -15,8 +15,8 @@ const linkIconClassName = twMerge(
 export default function Footer({ className, ...props }: { className?: string; [props: string]: any }) {
   return (
     <footer {...props} className={twMerge('border-t dark:border-neutral-800', className)}>
-      <div className='mx-auto max-w-7xl px-4 pb-6 pt-10 '>
-        <div className='gap-16 pb-2 md:flex md:justify-between'>
+      <div className='mx-auto max-w-7xl px-4 pb-6 pt-12'>
+        <div className='gap-16 pb-4 md:flex md:justify-between'>
           <div className='mb-6 md:mb-0 md:w-2/5'>
             {/* web logo  */}
             <Link href='/' passHref className='group inline-flex rounded focus-visible:outline-none'>

@@ -152,8 +152,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   <Link
                     href='/dashboard'
                     className={twMerge(
-                      'px-1 text-[15px] font-medium text-neutral-700 transition-all duration-200',
-                      'rounded hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
+                      'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
+                      'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                     )}
                     passHref
@@ -164,8 +164,9 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   <Link
                     href='/login'
                     className={twMerge(
-                      'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium text-neutral-700 dark:text-neutral-200 transition-all duration-200',
-                      'hover:bg-sky-500 hover:text-white dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                      'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
+                      'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                     )}
                     passHref
                   >
@@ -226,7 +227,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   <FrontThemeChanger />
                   <Popover.Button
                     className={twMerge(
-                      'rounded p-1 text-neutral-700 transition-all dark:text-neutral-300',
+                      'p-1 text-neutral-700 transition-all dark:text-neutral-300',
+                      'rounded-md border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
                       'hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
                       'focus:outline-none focus:ring-2 focus:ring-sky-500'
                     )}
