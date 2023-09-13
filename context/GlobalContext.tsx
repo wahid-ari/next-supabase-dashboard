@@ -11,7 +11,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
 export function useShowNav() {
   const context = useContext(GlobalContext);
   if (context === undefined) {
-    throw new Error('useCounter must be used within a GlobalProvider');
+    throw new Error('useShowNav must be used within a GlobalProvider');
   }
   return context;
 }
