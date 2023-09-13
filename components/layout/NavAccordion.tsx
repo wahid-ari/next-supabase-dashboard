@@ -4,6 +4,8 @@ import { Disclosure, Transition } from '@headlessui/react';
 import { ChevronRightIcon } from '@heroicons/react/solid';
 import { twMerge } from 'tailwind-merge';
 
+import { useMounted } from '@/hooks/useMounted';
+
 type Props = {
   children: ReactNode;
   title?: string;
@@ -15,8 +17,8 @@ type Props = {
 
 export default function NavAccordion({ children, title, routeName, className, icon, ...props }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [cek, setCek] = useState(false);
   const router = useRouter();
+  const mounted = useMounted();
 
   useEffect(() => {
     if (router.pathname.includes(routeName)) {
@@ -24,10 +26,34 @@ export default function NavAccordion({ children, title, routeName, className, ic
     } else {
       setIsOpen(false);
     }
-    setCek(true);
   }, [router, routeName]);
 
-  return cek ? (
+  if (!mounted) {
+    return (
+      <>
+        <button
+          className={twMerge(
+            'group flex w-full font-medium items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 text-neutral-600 outline-none transition-all',
+            'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+            'dark:text-neutral-300 dark:hover:text-sky-500',
+            'hover:bg-neutral-100 dark:hover:bg-neutral-800',
+            className
+          )}
+        >
+          <div className='flex-grow text-left text-sm flex items-center gap-2'>
+            <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800 dark:group-hover:border-neutral-700'>
+              {icon}
+            </div>
+            <span>{title}</span>
+          </div>
+          <ChevronRightIcon className={`h-5 w-5 text-neutral-500 transition-all duration-300 dark:text-neutral-400`} />
+        </button>
+        <hr className='ml-3 dark:border-neutral-800' />
+      </>
+    );
+  }
+
+  return (
     <>
       <Disclosure defaultOpen={isOpen}>
         {({ open }) => (
@@ -71,5 +97,5 @@ export default function NavAccordion({ children, title, routeName, className, ic
       </Disclosure>
       <hr className='ml-3 dark:border-neutral-800' />
     </>
-  ) : null;
+  );
 }
