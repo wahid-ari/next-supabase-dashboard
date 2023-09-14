@@ -17,8 +17,7 @@ export default function Logout() {
           token: session?.token,
         });
         if (res.status == 200) {
-          const data = await signOut({ redirect: false, callbackUrl: '/' });
-          router.push(data.url);
+          signOut({ redirect: true, callbackUrl: '/' });
         }
       } catch (error) {
         console.error(error);
