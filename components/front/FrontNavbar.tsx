@@ -174,7 +174,14 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   </Link>
                 )
               ) : (
-                <span className='text-[15px] font-medium text-neutral-700 dark:text-neutral-200'>Loading..</span>
+                <div
+                  className={cn(
+                    'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
+                    'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200'
+                  )}
+                >
+                  <span>Loading</span>
+                </div>
               )}
 
               <FrontThemeChanger />
