@@ -9,7 +9,7 @@ import ReactTable from '@/components/systems/ReactTable';
 import Shimer from '@/components/systems/Shimer';
 import Title from '@/components/systems/Title';
 
-Log.auth = true;
+// Log.auth = true;
 
 export default function Log() {
   const { data, error } = useLogsData();

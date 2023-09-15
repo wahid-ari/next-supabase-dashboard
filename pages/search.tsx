@@ -17,7 +17,7 @@ import LabeledInput from '@/components/systems/LabeledInput';
 import Text from '@/components/systems/Text';
 import Title from '@/components/systems/Title';
 
-Search.auth = true;
+// Search.auth = true;
 
 export default function Search() {
   const router = useRouter();

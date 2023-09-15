@@ -15,7 +15,7 @@ import Shimer from '@/components/systems/Shimer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
-Session.auth = true;
+// Session.auth = true;
 
 export default function Session() {
   const router = useRouter();
