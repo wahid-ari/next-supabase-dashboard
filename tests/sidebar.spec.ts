@@ -34,10 +34,10 @@ test.describe('Testing Sidebar Link', () => {
     await expect(page).toHaveURL(/genre/);
     await expect(page).toHaveTitle(/Genre/);
   });
-  test('should open Settings page', async ({ page }) => {
-    await expect(page.getByRole('link', { name: 'Settings' })).toHaveAttribute('href', '/settings');
-    await page.getByRole('link', { name: 'Settings' }).click();
-    await expect(page).toHaveURL(/settings/);
-    await expect(page).toHaveTitle(/Settings/);
+  test('should open Setting page', async ({ page }) => {
+    await expect(page.getByRole('link', { name: 'Setting' })).toHaveAttribute('href', '/setting');
+    await page.getByRole('link', { name: 'Setting' }).click();
+    await expect(page).toHaveURL(/setting/);
+    await expect(page).toHaveTitle(/Setting/);
   });
 });
