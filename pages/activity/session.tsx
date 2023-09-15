@@ -68,10 +68,10 @@ export default function Session() {
     <Layout title='Session - MyBook' description='View and Manage Session - MyBook' prefetch={['/api/session']}>
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Session</Title>
-        <Button.danger onClick={() => setOpenDeleteAllDialog(true)} className='flex items-center gap-2'>
+        {/* <Button.danger onClick={() => setOpenDeleteAllDialog(true)} className='flex items-center gap-2'>
           <TrashIcon className='h-5 w-5' />
           Delete All
-        </Button.danger>
+        </Button.danger> */}
       </div>
 
       <Dialog

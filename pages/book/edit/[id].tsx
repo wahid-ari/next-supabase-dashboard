@@ -282,7 +282,7 @@ export default function Book({ id }) {
               placeholder='https://www.goodreads.com/book/show/2767052-the-hunger-games'
             />
 
-            <Button type='submit' className='mt-3.5 w-full'>
+            <Button type='submit' className='mt-2 py-2 w-full'>
               Update
             </Button>
           </div>
