@@ -6,25 +6,25 @@ const API_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}/api`;
 
 // get total record count on each table for dashboard
 export function useCountsData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard`, fetcher);
+  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
 // get total books record count for dashboard
 export function useTotalBooksData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-books`, fetcher);
+  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-books`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
 // get total authors record count for dashboard
 export function useTotalAuthorsData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-authors`, fetcher);
+  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-authors`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
 // get total genres record count for dashboard
 export function useTotalGenresData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-genres`, fetcher);
+  const { data, error, isLoading } = useSWR(`${API_URL}/dashboard/total-genres`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
@@ -38,7 +38,8 @@ export function useBooksData() {
 export function useBookData(id: string, slug?: string) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/book?slug=${slug}` : `${API_URL}/book?id=${id}`,
-    fetcher
+    fetcher,
+    { refreshInterval: 1000 }
   );
   return { data, error, isLoading };
 }
@@ -51,14 +52,15 @@ export function useAuthorsData() {
 export function useAuthorData(id: string, slug?: string) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/author?slug=${slug}` : `${API_URL}/author?id=${id}`,
-    fetcher
+    fetcher,
+    { refreshInterval: 1000 }
   );
   return { data, error, isLoading };
 }
 
-// get total Book and Quote in from each Author
+// get total Book and Quote from each Author
 export function useAuthorTotalBookQuoteData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/author/total-book-quote`, fetcher);
+  const { data, error, isLoading } = useSWR(`${API_URL}/author/total-book-quote`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
@@ -70,14 +72,15 @@ export function useGenresData() {
 export function useGenreData(id: string, slug?: boolean) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/genre?slug=${slug}` : `${API_URL}/genre?id=${id}`,
-    fetcher
+    fetcher,
+    { refreshInterval: 1000 }
   );
   return { data, error, isLoading };
 }
 
 // get total Book in each Genre
 export function useGenreTotalBookData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/genre/total-book`, fetcher);
+  const { data, error, isLoading } = useSWR(`${API_URL}/genre/total-book`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
@@ -88,12 +91,12 @@ export function useSearchData(query: string | string[]) {
 
 // Statistic
 export function useBookByAuthorData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/book-by-author`, fetcher);
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/book-by-author`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
 export function useBookByGenreData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/book-by-genre`, fetcher);
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/book-by-genre`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
