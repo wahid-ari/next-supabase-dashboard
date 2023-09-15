@@ -43,7 +43,7 @@ export default function Akun({ className, ...props }: Props) {
               {(mounted && session?.name) || 'Menu'}
 
               <ChevronDownIcon
-                className={twMerge('ml-1 h-5 w-4 pb-0.5 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
+                className={twMerge('ml-1 h-5 w-4 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
                 aria-hidden='true'
               />
             </Menu.Button>
@@ -60,7 +60,7 @@ export default function Akun({ className, ...props }: Props) {
                   <Menu.Item>
                     {({ active }) => (
                       <Link
-                        href='/settings'
+                        href='/setting'
                         className={twMerge(
                           'flex w-full rounded px-2 py-1.5 text-sm',
                           active

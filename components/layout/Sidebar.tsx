@@ -156,8 +156,8 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             </NavLink>
           </NavAccordion>
 
-          <NavLink href='/settings' icon={<CogIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
-            Settings
+          <NavLink href='/setting' icon={<CogIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+            Setting
           </NavLink>
 
           <NavLink.external
