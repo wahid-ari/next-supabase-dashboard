@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { TrashIcon } from '@heroicons/react/outline';
 import axios from 'axios';
 import { mutate } from 'swr';
@@ -17,6 +18,7 @@ import Title from '@/components/systems/Title';
 Session.auth = true;
 
 export default function Session() {
+  const router = useRouter();
   const { data, error } = useSessionsData();
   const { updateToast, pushToast } = useToast();
   const [inputDebounceValue, setInputDebounceValue] = useState('');
@@ -42,12 +44,12 @@ export default function Session() {
       if (res.status == 200) {
         setOpenDeleteAllDialog(false);
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/session`);
+        router.push('/activity/session');
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/session`);
     }
   }
 

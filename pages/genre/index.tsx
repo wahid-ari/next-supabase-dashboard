@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { PlusSmIcon } from '@heroicons/react/outline';
 import axios from 'axios';
 import { mutate } from 'swr';
@@ -19,6 +20,7 @@ import Title from '@/components/systems/Title';
 // Genre.auth = true;
 
 export default function Genre() {
+  const router = useRouter();
   const { data, error } = useGenresData();
   const { updateToast, pushToast } = useToast();
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
@@ -47,12 +49,12 @@ export default function Genre() {
         setOpenCreateDialog(false);
         setName('');
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
+        router.push('/genre');
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
     }
   }
 
@@ -67,12 +69,12 @@ export default function Genre() {
         setOpenEditDialog(false);
         setEditItem({ id: null, name: '' });
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
+        router.push('/genre');
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
     }
   }
 
@@ -87,12 +89,12 @@ export default function Genre() {
         setOpenDeleteDialog(false);
         setDeleteItem({ id: null, name: '' });
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
+        router.push('/genre');
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
     }
   }
 

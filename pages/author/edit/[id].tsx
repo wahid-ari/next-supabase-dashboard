@@ -60,14 +60,13 @@ export default function Author({ id }) {
       const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author`, { id: id, ...editItem });
       if (res.status == 201) {
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author`);
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author?id=${id}`);
         router.push('/author');
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author`);
-      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author?id=${id}`);
     }
   }
 

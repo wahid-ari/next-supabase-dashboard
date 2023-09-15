@@ -81,13 +81,12 @@ export default function Book() {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`, createItem);
       if (res.status == 200) {
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`);
         router.push('/book');
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`);
     }
   }
 

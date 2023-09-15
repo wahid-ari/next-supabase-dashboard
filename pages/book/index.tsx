@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { PlusSmIcon } from '@heroicons/react/outline';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import axios from 'axios';
@@ -21,6 +22,7 @@ import Title from '@/components/systems/Title';
 Book.auth = true;
 
 export default function Book() {
+  const router = useRouter();
   const { data, error } = useBooksData();
   const { updateToast, pushToast } = useToast();
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -38,12 +40,12 @@ export default function Book() {
         setOpenDeleteDialog(false);
         setDeleteItem({ id: null, name: '' });
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`);
+        router.push('/book');
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`);
     }
   }
 

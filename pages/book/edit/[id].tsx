@@ -129,14 +129,13 @@ export default function Book({ id }) {
       const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`, { id: id, ...editItem });
       if (res.status == 201) {
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`);
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book?id=${id}`);
         router.push('/book');
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`);
-      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book?id=${id}`);
     }
   }
 

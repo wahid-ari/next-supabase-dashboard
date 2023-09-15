@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { PlusSmIcon } from '@heroicons/react/outline';
 import axios from 'axios';
 import { ArrowUpRightIcon } from 'lucide-react';
@@ -20,6 +21,7 @@ import Title from '@/components/systems/Title';
 Author.auth = true;
 
 export default function Author() {
+  const router = useRouter();
   const { data, error } = useAuthorsData();
   const { updateToast, pushToast } = useToast();
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -37,12 +39,12 @@ export default function Author() {
         setOpenDeleteDialog(false);
         setDeleteItem({ id: null, name: '' });
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author`);
+        router.push('/author');
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author`);
     }
   }
 
