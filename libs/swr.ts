@@ -30,7 +30,7 @@ export function useTotalGenresData() {
 
 // all books
 export function useBooksData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/book`, fetcher);
+  const { data, error, isLoading } = useSWR(`${API_URL}/book`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
@@ -44,7 +44,7 @@ export function useBookData(id: string, slug?: string) {
 }
 
 export function useAuthorsData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/author`, fetcher);
+  const { data, error, isLoading } = useSWR(`${API_URL}/author`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
@@ -63,7 +63,7 @@ export function useAuthorTotalBookQuoteData() {
 }
 
 export function useGenresData() {
-  const { data, error, isLoading } = useSWR(`${API_URL}/genre`, fetcher);
+  const { data, error, isLoading } = useSWR(`${API_URL}/genre`, fetcher, { refreshInterval: 1000 });
   return { data, error, isLoading };
 }
 
