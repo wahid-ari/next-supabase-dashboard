@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { PhotographIcon } from '@heroicons/react/outline';
 import { ArrowUpRightIcon } from 'lucide-react';
 
@@ -12,18 +13,11 @@ import Shimer from '@/components/systems/Shimer';
 import ShowMore from '@/components/systems/ShowMore';
 import Title from '@/components/systems/Title';
 
-export async function getServerSideProps(context: any) {
-  const { id } = context.params;
-  return {
-    props: {
-      id: id,
-    }, // will be passed to the page component as props
-  };
-}
-
 Book.auth = true;
 
-export default function Book({ id }) {
+export default function Book() {
+  const router = useRouter();
+  const id = router.query?.id as string;
   const { data, error } = useBookData(id);
   const [isLoading, setLoading] = useState(true);
 

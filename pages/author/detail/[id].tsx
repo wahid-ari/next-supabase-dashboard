@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { PhotographIcon } from '@heroicons/react/outline';
 import { ArrowUpRightIcon } from 'lucide-react';
 
@@ -11,18 +12,11 @@ import Heading from '@/components/systems/Heading';
 import Shimer from '@/components/systems/Shimer';
 import Title from '@/components/systems/Title';
 
-export async function getServerSideProps(context: any) {
-  const { id } = context.params;
-  return {
-    props: {
-      id: id,
-    }, // will be passed to the page component as props
-  };
-}
-
 Author.auth = true;
 
-export default function Author({ id }) {
+export default function Author() {
+  const router = useRouter();
+  const id = router.query?.id as string;
   const { data, error } = useAuthorData(id);
   const [isLoading, setLoading] = useState(true);
 

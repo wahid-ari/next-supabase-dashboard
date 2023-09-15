@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { twMerge } from 'tailwind-merge';
 
@@ -12,18 +13,11 @@ import ReactTable from '@/components/systems/ReactTable';
 import Shimer from '@/components/systems/Shimer';
 import Title from '@/components/systems/Title';
 
-export async function getServerSideProps(context: any) {
-  const { id } = context.params;
-  return {
-    props: {
-      id: id,
-    }, // will be passed to the page component as props
-  };
-}
-
 // Genre.auth = true;
 
-export default function Genre({ id }) {
+export default function Genre() {
+  const router = useRouter();
+  const id = router.query?.id as string;
   const { data, error } = useGenreData(id);
   const [inputDebounce, setInputDebounce] = useState('');
   const debouncedValue = useDebounce(inputDebounce, 500);

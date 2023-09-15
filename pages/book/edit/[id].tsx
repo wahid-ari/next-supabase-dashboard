@@ -16,18 +16,11 @@ import Shimer from '@/components/systems/Shimer';
 import TextArea from '@/components/systems/TextArea';
 import Title from '@/components/systems/Title';
 
-export async function getServerSideProps(context: any) {
-  const { id } = context.params;
-  return {
-    props: {
-      id: id,
-    }, // will be passed to the page component as props
-  };
-}
-
 Book.auth = true;
 
-export default function Book({ id }) {
+export default function Book() {
+  const router = useRouter();
+  const id = router.query?.id as string;
   const { data, error } = useBookData(id);
   const { data: authors, error: errorAuthors } = useAuthorsData();
   const { data: genres, error: errorGenres } = useGenresData();
@@ -43,7 +36,6 @@ export default function Book({ id }) {
     image: '',
     description: '',
   });
-  const router = useRouter();
   const [selectedAuthor, setSelectedAuthor] = useState(null);
   const [queryAuthor, setQueryAuthor] = useState('');
   const [selectedGenres, setSelectedGenres] = useState();

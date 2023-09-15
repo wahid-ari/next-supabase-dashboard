@@ -13,18 +13,11 @@ import Shimer from '@/components/systems/Shimer';
 import TextArea from '@/components/systems/TextArea';
 import Title from '@/components/systems/Title';
 
-export async function getServerSideProps(context: any) {
-  const { id } = context.params;
-  return {
-    props: {
-      id: id,
-    }, // will be passed to the page component as props
-  };
-}
-
 Author.auth = true;
 
-export default function Author({ id }) {
+export default function Author() {
+  const router = useRouter();
+  const id = router.query?.id as string;
   const { data, error } = useAuthorData(id);
   const { updateToast, pushToast } = useToast();
   const [editItem, setEditItem] = useState({
@@ -35,7 +28,6 @@ export default function Author({ id }) {
     web: '',
     bio: '',
   });
-  const router = useRouter();
 
   useEffect(() => {
     if (data) {
