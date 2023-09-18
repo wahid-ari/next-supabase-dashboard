@@ -437,7 +437,6 @@ test.describe('Testing Input (Debounce Hook) Component', () => {
     await expect(input).toBeEditable();
     await expect(input).toHaveValue('');
     await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-neutral-300 px-4/);
-    await waitMounted(page);
     await page.getByTestId('input-debounce-hook').fill('input debounce hook');
     const text = page.getByTestId('input-debounce-hook-text');
     await expect(text).toHaveText('input debounce hook');
