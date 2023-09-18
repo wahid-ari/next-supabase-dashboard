@@ -1,12 +1,10 @@
 import { useAtom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 
-export const searchHistoryData = {
+export const searchHistoryAtom = atomWithStorage('search-history', {
   books: [],
   authors: [],
-};
-
-export const searchHistoryAtom = atomWithStorage('search-history', searchHistoryData);
+});
 
 export function useSearchHistory() {
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
@@ -31,7 +29,10 @@ export function useSearchHistory() {
     setSearchHistory({ ...searchHistory, authors: [] });
   }
   function resetAllSearchHistory() {
-    setSearchHistory(searchHistoryData);
+    setSearchHistory({
+      books: [],
+      authors: [],
+    });
   }
   return {
     addBooksHistory,
@@ -42,4 +43,17 @@ export function useSearchHistory() {
     resetAuthorsHistory,
     resetAllSearchHistory,
   };
+}
+
+export function compareSearchResult(history: any, newResults: any) {
+  let newHistory = history;
+  // iterate each search result
+  for (const newResult of newResults) {
+    // check if new result already in the history
+    const exists = history.findIndex((item) => item.id == newResult.id) > -1;
+    if (!exists) {
+      newHistory.push(newResult);
+    }
+  }
+  return newHistory;
 }
