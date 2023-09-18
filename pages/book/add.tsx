@@ -19,6 +19,7 @@ import Title from '@/components/systems/Title';
 Book.auth = true;
 
 export default function Book() {
+  const router = useRouter();
   const { data: authors, error: errorAuthors } = useAuthorsData();
   const { data: genres, error: errorGenres } = useGenresData();
   const { updateToast, pushToast } = useToast();
@@ -33,7 +34,6 @@ export default function Book() {
     image: '',
     description: '',
   });
-  const router = useRouter();
   const [selectedAuthor, setSelectedAuthor] = useState(null);
   const [queryAuthor, setQueryAuthor] = useState('');
   const filteredAuthor =

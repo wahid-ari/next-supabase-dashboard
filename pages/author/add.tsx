@@ -14,6 +14,7 @@ import Title from '@/components/systems/Title';
 Author.auth = true;
 
 export default function Author() {
+  const router = useRouter();
   const { updateToast, pushToast } = useToast();
   const [createItem, setCreateItem] = useState({
     name: '',
@@ -23,7 +24,6 @@ export default function Author() {
     web: '',
     bio: '',
   });
-  const router = useRouter();
 
   async function handleSubmit(e) {
     e.preventDefault();
