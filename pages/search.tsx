@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { searchHistoryAtom, useSearchHistory } from '@/store/useAtom';
+import { compareSearchResult, searchHistoryAtom, useSearchHistory } from '@/store/useAtom';
 import { useAtom } from 'jotai';
 import { twMerge } from 'tailwind-merge';
 
 import { useSearchData } from '@/libs/swr';
+import { useMounted } from '@/hooks/useMounted';
 
 import AuthorListItem from '@/components/dashboard/AuthorListItem';
 import BookListItem from '@/components/dashboard/BookListItem';
@@ -20,12 +21,17 @@ import Title from '@/components/systems/Title';
 // Search.auth = true;
 
 export default function Search() {
+  const mounted = useMounted();
   const router = useRouter();
-  const search = router.query.q;
-  const query = useRef(search);
+  const search = router.query?.q as string;
+  const [query, setQuery] = useState(search || '');
   const { data, error } = useSearchData(search);
 
-  const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
+  useEffect(() => {
+    setQuery(search);
+  }, [search]);
+
+  const [searchHistory] = useAtom(searchHistoryAtom);
   const {
     addBooksHistory,
     addAuthorsHistory,
@@ -45,19 +51,6 @@ export default function Search() {
   // const resetAuthorsHistory = useSearchHistoryStore((state: any) => state.resetAuthorsHistory);
 
   // const resetAllSearchHistory = useSearchHistoryStore((state: any) => state.resetAllSearchHistory);
-
-  function compareSearchResult(history: any, newResults: any) {
-    let newHistory = history;
-    // iterate each search result
-    for (const b of newResults) {
-      // check if new result already in the history
-      const exists = history.findIndex((item: any) => item.id == b.id) > -1;
-      if (!exists) {
-        newHistory.push(b);
-      }
-    }
-    return newHistory;
-  }
 
   useEffect(() => {
     if (data?.books?.length > 0) {
@@ -108,12 +101,14 @@ export default function Search() {
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    if (query.current !== '') {
-      router.push(`?q=${query.current}`);
+    if (query !== '') {
+      router.push(`?q=${query}`);
     } else {
       router.push(`/search`);
     }
   }
+
+  if (!mounted) return null;
 
   if (error) {
     return (
@@ -127,15 +122,15 @@ export default function Search() {
     <Layout title='Search - MyBook' description='Search - MyBook'>
       <Title>Search</Title>
 
-      <form className='mt-2' onSubmit={handleSubmit}>
+      <form className='mt-4' onSubmit={handleSubmit}>
         <div className='flex items-end gap-2'>
           <LabeledInput
             wrapperClassName='w-full sm:max-w-sm'
             name='search'
-            id='search'
             placeholder='Search Title, Author, ISBN'
             type='text'
-            onChange={(e) => (query.current = e.target.value)}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
             required
           />
           <Button type='submit' value='Submit' className='mb-4 !py-2.5 px-5'>
@@ -149,8 +144,8 @@ export default function Search() {
           {!data && <Text>Searching &#8220;{search}&#8221;...</Text>}
 
           {data?.books.length < 1 && data?.authors.length < 1 ? (
-            <div className='rounded border border-red-500 p-3'>
-              <p className='text-red-500'>{`No results for "${query.current || search}"`}</p>
+            <div className='mt-8 rounded border border-red-500 p-3'>
+              <p className='text-red-500'>{`No results for "${query || search}"`}</p>
             </div>
           ) : null}
 

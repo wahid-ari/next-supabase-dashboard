@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { searchHistoryAtom, useSearchHistory } from '@/store/useAtom';
-import { BookOpenIcon, ColorSwatchIcon, UserGroupIcon } from '@heroicons/react/outline';
+import { compareSearchResult, searchHistoryAtom, useSearchHistory } from '@/store/useAtom';
 import { useAtom } from 'jotai';
-import useSWR from 'swr';
+import { BookIcon, LayoutListIcon, UsersIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
+import { useSearchData } from '@/libs/swr';
 // import { useSearchHistoryStore } from '@/store/useStore';
 
 import { useMounted } from '@/hooks/useMounted';
@@ -20,20 +20,18 @@ import LabeledInput from '@/components/systems/LabeledInput';
 import Text from '@/components/systems/Text';
 import Title from '@/components/systems/Title';
 
-const fetcher = (url: string) => fetch(url).then((result) => result.json());
-
 export default function Browse() {
   const mounted = useMounted();
   const router = useRouter();
-  const search = router.query.q;
+  const search = router.query?.q as string;
   const [query, setQuery] = useState(search || '');
-  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/search?q=${search}`, fetcher);
+  const { data, error } = useSearchData(search);
 
   useEffect(() => {
     setQuery(search);
   }, [search]);
 
-  const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
+  const [searchHistory] = useAtom(searchHistoryAtom);
   const {
     addBooksHistory,
     addAuthorsHistory,
@@ -43,28 +41,15 @@ export default function Browse() {
     resetAuthorsHistory,
     resetAllSearchHistory,
   } = useSearchHistory();
-  // const moviesHistory = useSearchHistoryStore((state) => state.movies);
-  // const setMoviesHistory = useSearchHistoryStore((state) => state.setMovies);
-  // const resetMoviesHistory = useSearchHistoryStore((state) => state.resetMovies);
+  // const booksHistory = useSearchHistoryStore((state) => state.books);
+  // const setBooksHistory = useSearchHistoryStore((state) => state.setBooks);
+  // const resetBooksHistory = useSearchHistoryStore((state) => state.resetBooks);
 
-  // const actorsHistory = useSearchHistoryStore((state) => state.actors);
-  // const setActorsHistory = useSearchHistoryStore((state) => state.setActors);
-  // const resetActorsHistory = useSearchHistoryStore((state) => state.resetActors);
+  // const authorsHistory = useSearchHistoryStore((state) => state.authors);
+  // const setAuthorsHistory = useSearchHistoryStore((state) => state.setAuthors);
+  // const resetAuthorsHistory = useSearchHistoryStore((state) => state.resetAuthors);
 
   // const resetAllSearchHistory = useSearchHistoryStore((state) => state.resetAllSearchHistory);
-
-  function compareSearchResult(history: any, newResults: any) {
-    let newHistory = history;
-    // iterate each search result
-    for (const newResult of newResults) {
-      // check if new result already in the history
-      const exists = history.findIndex((item) => item.id == newResult.id) > -1;
-      if (!exists) {
-        newHistory.push(newResult);
-      }
-    }
-    return newHistory;
-  }
 
   useEffect(() => {
     if (data?.books?.length > 0) {
@@ -79,15 +64,15 @@ export default function Browse() {
         // first time searching, set search result to search history directly
         addBooksHistory(data?.books);
       }
-      // if (moviesHistory.length > 0) {
+      // if (booksHistory.length > 0) {
       //   // compare history with new search result
-      //   let newMovies = compareSearchResult(moviesHistory, data?.movies);
-      //   if (newMovies != moviesHistory) {
-      //     setMoviesHistory(newMovies);
+      //   let newMovies = compareSearchResult(booksHistory, data?.books);
+      //   if (newMovies != booksHistory) {
+      //     setBooksHistory(newMovies);
       //   }
       // } else {
       //   // first time searching, set search result to search history directly
-      //   setMoviesHistory(data?.movies);
+      //   setBooksHistory(data?.books);
       // }
     }
     // Authors
@@ -101,19 +86,19 @@ export default function Browse() {
         addAuthorsHistory(data?.authors);
       }
     }
-    // if (data?.actors?.length > 0) {
-    //   if (actorsHistory.length > 0) {
-    //     let newActors = compareSearchResult(actorsHistory, data?.actors);
-    //     if (newActors != actorsHistory) {
-    //       setActorsHistory(newActors);
+    // if (data?.authors?.length > 0) {
+    //   if (authorsHistory.length > 0) {
+    //     let newActors = compareSearchResult(authorsHistory, data?.authors);
+    //     if (newActors != authorsHistory) {
+    //       setAuthorsHistory(newActors);
     //     }
     //   } else {
-    //     setActorsHistory(data?.actors);
+    //     setAuthorsHistory(data?.authors);
     //   }
     // }
   }, [addAuthorsHistory, addBooksHistory, data, searchHistory.authors, searchHistory.books]);
 
-  function handleSubmit(e) {
+  function handleSubmit(e: any) {
     e.preventDefault();
     if (query !== '') {
       router.push(`?q=${query}`);
@@ -134,11 +119,9 @@ export default function Browse() {
 
   return (
     <FrontLayout title='Browse - MyBook' description='Browse books - MyBook'>
-      <div className='py-2'>
-        <Title>Search</Title>
-      </div>
+      <Title>Browse</Title>
 
-      <form className='mt-2' onSubmit={handleSubmit}>
+      <form className='mt-4' onSubmit={handleSubmit}>
         <div className='flex items-end gap-2'>
           <LabeledInput
             wrapperClassName='w-full'
@@ -157,9 +140,9 @@ export default function Browse() {
 
       {search ? (
         <>
-          {!data && <Text>Searching...</Text>}
+          {!data && <Text>Searching &#8220;{search}&#8221;...</Text>}
 
-          {data?.movies?.length < 1 && data?.actors?.length < 1 ? (
+          {data?.books?.length < 1 && data?.authors?.length < 1 ? (
             <div className='mb-12 mt-8 rounded border border-red-500 p-3'>
               <p className='text-red-500'>{`No results for "${query || search}"`}</p>
             </div>
@@ -315,7 +298,7 @@ export default function Browse() {
             <h2 className='bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Book
             </h2>
-            <BookOpenIcon className='h-10 w-10 text-yellow-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <BookIcon className='h-10 w-10 text-yellow-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
@@ -326,7 +309,7 @@ export default function Browse() {
             <h2 className='bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Author
             </h2>
-            <UserGroupIcon className='h-10 w-10 text-purple-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <UsersIcon className='h-10 w-10 text-purple-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
@@ -337,7 +320,7 @@ export default function Browse() {
             <h2 className='bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Genre
             </h2>
-            <ColorSwatchIcon className='h-10 w-10 text-blue-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <LayoutListIcon className='h-10 w-10 text-blue-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
       </div>
