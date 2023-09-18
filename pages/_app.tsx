@@ -3,15 +3,13 @@ import type { NextComponentType } from 'next';
 import { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
 import { useRouter } from 'next/router';
-import { ThemeProvider } from 'next-themes';
 import NProgress from 'nprogress';
 import { Toaster } from 'react-hot-toast';
 
 import 'nprogress/nprogress.css';
 
-import { SessionProvider, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
-import { AxiosProvider } from '@/context/AxiosContext';
 import { GlobalProvider } from '@/context/GlobalContext';
 
 import '@/styles/globals.css';
@@ -79,33 +77,27 @@ function MyApp({ Component, pageProps }: CustomAppProps) {
   }, [router]);
 
   return (
-    <ThemeProvider attribute='class' storageKey='theme' enableSystem={false} defaultTheme='light'>
-      <GlobalProvider>
-        <SessionProvider session={pageProps.session}>
-          <AxiosProvider>
-            <div className={inter.className}>
-              <UiToaster />
-              <Toaster
-                gutter={4}
-                toastOptions={{
-                  style: {
-                    maxWidth: 380,
-                    padding: '2px 4px',
-                  },
-                }}
-              />
-              {Component.auth ? (
-                <Auth>
-                  <Component {...pageProps} />
-                </Auth>
-              ) : (
-                <Component {...pageProps} />
-              )}
-            </div>
-          </AxiosProvider>
-        </SessionProvider>
-      </GlobalProvider>
-    </ThemeProvider>
+    <GlobalProvider session={pageProps.session}>
+      <div className={inter.className}>
+        <UiToaster />
+        <Toaster
+          gutter={4}
+          toastOptions={{
+            style: {
+              maxWidth: 380,
+              padding: '2px 4px',
+            },
+          }}
+        />
+        {Component.auth ? (
+          <Auth>
+            <Component {...pageProps} />
+          </Auth>
+        ) : (
+          <Component {...pageProps} />
+        )}
+      </div>
+    </GlobalProvider>
   );
 }
 
