@@ -11,6 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .from('book_books')
         .select(`title, description, slug, created_at`)
         .order('id');
+      res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
       res.status(200).json({ books });
       break;
 
