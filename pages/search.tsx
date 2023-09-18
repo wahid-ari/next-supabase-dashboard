@@ -5,7 +5,6 @@ import { useAtom } from 'jotai';
 import { twMerge } from 'tailwind-merge';
 
 import { useSearchData } from '@/libs/swr';
-import { useMounted } from '@/hooks/useMounted';
 
 import AuthorListItem from '@/components/dashboard/AuthorListItem';
 import BookListItem from '@/components/dashboard/BookListItem';
@@ -21,7 +20,6 @@ import Title from '@/components/systems/Title';
 // Search.auth = true;
 
 export default function Search() {
-  const mounted = useMounted();
   const router = useRouter();
   const search = router.query?.q as string;
   const [query, setQuery] = useState(search || '');
@@ -107,8 +105,6 @@ export default function Search() {
       router.push(`/search`);
     }
   }
-
-  if (!mounted) return null;
 
   if (error) {
     return (

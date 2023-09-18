@@ -7,9 +7,8 @@ import { BookIcon, LayoutListIcon, UsersIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { useSearchData } from '@/libs/swr';
-// import { useSearchHistoryStore } from '@/store/useStore';
 
-import { useMounted } from '@/hooks/useMounted';
+// import { useSearchHistoryStore } from '@/store/useStore';
 
 import AuthorListItem from '@/components/dashboard/AuthorListItem';
 import BookListItem from '@/components/dashboard/BookListItem';
@@ -21,7 +20,6 @@ import Text from '@/components/systems/Text';
 import Title from '@/components/systems/Title';
 
 export default function Browse() {
-  const mounted = useMounted();
   const router = useRouter();
   const search = router.query?.q as string;
   const [query, setQuery] = useState(search || '');
@@ -106,8 +104,6 @@ export default function Browse() {
       router.push(`/browse`);
     }
   }
-
-  if (!mounted) return null;
 
   if (error) {
     return (
