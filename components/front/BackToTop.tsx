@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ChevronUpIcon } from '@heroicons/react/outline';
+import { ChevronUpIcon } from 'lucide-react';
 
 import { cn } from '@/libs/utils';
 

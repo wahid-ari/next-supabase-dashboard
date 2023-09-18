@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Disclosure, Transition } from '@headlessui/react';
-import { ChevronRightIcon } from '@heroicons/react/solid';
+import { ChevronRightIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { useMounted } from '@/hooks/useMounted';

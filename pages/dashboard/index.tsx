@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { BookOpenIcon, ColorSwatchIcon, UserGroupIcon } from '@heroicons/react/outline';
 import {
   ArcElement,
   BarElement,
@@ -13,6 +12,7 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
+import { BookIcon, LayoutListIcon, UsersIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Bar, Doughnut, Pie } from 'react-chartjs-2';
 
@@ -48,11 +48,11 @@ ChartJS.register(
 // Dashboard.auth = true;
 
 export default function Dashboard() {
+  const { theme } = useTheme();
   // const { data, error } = useCountsData();
   const { data: totalAuthors, error: errorTotalAuthors } = useTotalAuthorsData();
   const { data: totalBooks, error: errorTotalBooks } = useTotalBooksData();
   const { data: totalGenres, error: errorTotalGenres } = useTotalGenresData();
-  const { theme } = useTheme();
   const { data: bookByGenre, error: errorBookByGenre } = useBookByGenreData();
   const { data: bookByAuthor, error: errorBookByAuthor } = useBookByAuthorData();
 
@@ -104,14 +104,20 @@ export default function Dashboard() {
             title='Author'
             link='/author'
             count={totalAuthors.authors}
-            icon={<UserGroupIcon />}
+            icon={<UsersIcon className='h-12 w-12' />}
             data-testid='author-count'
           />
         ) : (
           <Shimer className='!h-24 w-full' />
         )}
         {totalBooks ? (
-          <Card title='Book' link='/book' count={totalBooks.books} icon={<BookOpenIcon />} data-testid='book-count' />
+          <Card
+            title='Book'
+            link='/book'
+            count={totalBooks.books}
+            icon={<BookIcon className='h-12 w-12' />}
+            data-testid='book-count'
+          />
         ) : (
           <Shimer className='!h-24 w-full' />
         )}
@@ -120,7 +126,7 @@ export default function Dashboard() {
             title='Genre'
             link='/genre'
             count={totalGenres.genres}
-            icon={<ColorSwatchIcon />}
+            icon={<LayoutListIcon className='h-12 w-12' />}
             data-testid='genre-count'
           />
         ) : (

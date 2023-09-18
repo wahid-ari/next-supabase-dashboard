@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import Button from '@/components/systems/Button';

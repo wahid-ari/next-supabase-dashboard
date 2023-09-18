@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
-import { CheckIcon, ChevronDownIcon } from '@heroicons/react/outline';
+import { CheckIcon, ChevronDownIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {

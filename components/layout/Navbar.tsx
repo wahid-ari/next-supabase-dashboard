@@ -1,11 +1,9 @@
 import { useContext } from 'react';
 import Link from 'next/link';
-import { MenuIcon } from '@heroicons/react/solid';
-import { useSession } from 'next-auth/react';
+import { MenuIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { GlobalContext } from '@/context/GlobalContext';
-import { useMounted } from '@/hooks/useMounted';
 
 import Menu from '@/components/layout/Menu';
 import ThemeChanger from '@/components/layout/ThemeChanger';

@@ -1,4 +1,4 @@
-import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { MoonIcon, SunIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import { cn } from '@/libs/utils';
@@ -21,7 +21,7 @@ export default function ThemeChanger({ border, ...props }: { border?: boolean; [
       )}
     >
       {theme == 'dark' ? (
-        <SunIcon className='h-5 w-5 text-neutral-300 transition-all hover:text-neutral-100' />
+        <SunIcon className='h-[19px] w-[19px] text-neutral-300 transition-all hover:text-neutral-100' />
       ) : (
         <MoonIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-700' />
       )}

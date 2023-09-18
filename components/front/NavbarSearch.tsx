@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
-import { SearchIcon } from '@heroicons/react/outline';
+import { SearchIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 export default function NavbarSearch({ ...props }: { [props: string]: any }) {

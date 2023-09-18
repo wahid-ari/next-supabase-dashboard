@@ -1,12 +1,12 @@
 import { forwardRef, useImperativeHandle, useMemo } from 'react';
 import {
-  ChevronDoubleLeftIcon,
-  ChevronDoubleRightIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  ChevronsLeftIcon,
+  ChevronsRightIcon,
   ChevronUpIcon,
-} from '@heroicons/react/outline';
+} from 'lucide-react';
 import { useFilters, useGlobalFilter, usePagination, useSortBy, useTable } from 'react-table';
 import { twMerge } from 'tailwind-merge';
 
@@ -219,7 +219,7 @@ export const ReactTable = forwardRef(
                   : 'cursor-not-allowed'
               )}
             >
-              <ChevronDoubleLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
+              <ChevronsLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
             <button
               onClick={() => previousPage()}
@@ -264,7 +264,7 @@ export const ReactTable = forwardRef(
                   : 'cursor-not-allowed'
               )}
             >
-              <ChevronDoubleRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
+              <ChevronsRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
           </div>
 

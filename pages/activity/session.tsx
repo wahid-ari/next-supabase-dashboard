@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { TrashIcon } from '@heroicons/react/outline';
 import axios from 'axios';
+import { TrashIcon } from 'lucide-react';
 import { mutate } from 'swr';
 
 import { useSessionsData } from '@/libs/swr';

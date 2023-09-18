@@ -1,6 +1,6 @@
 import { Fragment, ReactNode } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { ExclamationIcon, InformationCircleIcon } from '@heroicons/react/outline';
+import { AlertTriangleIcon, InfoIcon } from 'lucide-react';
 
 import Button from '@/components/systems/Button';
 
@@ -67,11 +67,11 @@ export default function Modal({
                 {showIcon ? (
                   isDanger ? (
                     <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100'>
-                      <ExclamationIcon className='h-6 w-6 text-red-600' aria-hidden='true' />
+                      <AlertTriangleIcon className='h-6 w-6 text-red-600' aria-hidden='true' />
                     </div>
                   ) : (
                     <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100'>
-                      <InformationCircleIcon className='h-6 w-6 text-blue-600' aria-hidden='true' />
+                      <InfoIcon className='h-6 w-6 text-blue-600' aria-hidden='true' />
                     </div>
                   )
                 ) : null}

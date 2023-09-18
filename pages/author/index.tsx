@@ -1,9 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { PlusSmIcon } from '@heroicons/react/outline';
 import axios from 'axios';
-import { ArrowUpRightIcon } from 'lucide-react';
+import { ArrowUpRightIcon, PlusIcon } from 'lucide-react';
 import { mutate } from 'swr';
 
 import { useAuthorsData } from '@/libs/swr';
@@ -21,7 +19,6 @@ import Title from '@/components/systems/Title';
 Author.auth = true;
 
 export default function Author() {
-  const router = useRouter();
   const { data, error } = useAuthorsData();
   const { updateToast, pushToast } = useToast();
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -40,7 +37,6 @@ export default function Author() {
         setDeleteItem({ id: null, name: '' });
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author`);
-        router.push('/author');
       }
     } catch (error) {
       console.error(error);
@@ -167,7 +163,7 @@ export default function Author() {
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Author</Title>
         <LinkButton href='author/add' className='flex items-center gap-2'>
-          <PlusSmIcon className='h-5 w-5' />
+          <PlusIcon className='h-5 w-5' />
           Add New Author
         </LinkButton>
       </div>

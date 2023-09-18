@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
+import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {

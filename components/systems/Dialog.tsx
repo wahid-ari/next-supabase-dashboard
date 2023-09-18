@@ -1,7 +1,7 @@
 import { Dispatch, Fragment, ReactNode, SetStateAction } from 'react';
 import { Transition } from '@headlessui/react';
-import { ExclamationIcon, InformationCircleIcon, XIcon } from '@heroicons/react/outline';
 import * as DialogRadix from '@radix-ui/react-dialog';
+import { AlertTriangleIcon, InfoIcon, XIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import Button from '@/components/systems/Button';
@@ -80,11 +80,11 @@ export default function Dialog({
               {showIcon ? (
                 isDanger ? (
                   <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0'>
-                    <ExclamationIcon className='h-6 w-6 text-red-600' aria-hidden='true' />
+                    <AlertTriangleIcon className='h-6 w-6 text-red-600' aria-hidden='true' />
                   </div>
                 ) : (
                   <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0'>
-                    <InformationCircleIcon className='h-6 w-6 text-blue-600' aria-hidden='true' />
+                    <InfoIcon className='h-6 w-6 text-blue-600' aria-hidden='true' />
                   </div>
                 )
               ) : null}

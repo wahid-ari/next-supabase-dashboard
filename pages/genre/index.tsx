@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { PlusSmIcon } from '@heroicons/react/outline';
 import axios from 'axios';
+import { PlusIcon } from 'lucide-react';
 import { mutate } from 'swr';
 
 import { useGenresData } from '@/libs/swr';
@@ -20,7 +19,6 @@ import Title from '@/components/systems/Title';
 // Genre.auth = true;
 
 export default function Genre() {
-  const router = useRouter();
   const { data, error } = useGenresData();
   const { updateToast, pushToast } = useToast();
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
@@ -50,7 +48,6 @@ export default function Genre() {
         setName('');
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
-        router.push('/genre');
       }
     } catch (error) {
       console.error(error);
@@ -70,7 +67,6 @@ export default function Genre() {
         setEditItem({ id: null, name: '' });
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
-        router.push('/genre');
       }
     } catch (error) {
       console.error(error);
@@ -90,7 +86,6 @@ export default function Genre() {
         setDeleteItem({ id: null, name: '' });
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
-        router.push('/genre');
       }
     } catch (error) {
       console.error(error);
@@ -121,7 +116,7 @@ export default function Genre() {
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Genre</Title>
         <Button.success onClick={() => setOpenCreateDialog(true)} className='flex items-center gap-2'>
-          <PlusSmIcon className='h-5 w-5' />
+          <PlusIcon className='h-4 w-4' />
           Add New Genre
         </Button.success>
       </div>

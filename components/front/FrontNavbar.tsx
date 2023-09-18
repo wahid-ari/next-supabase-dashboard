@@ -2,7 +2,7 @@ import { Fragment, ReactNode, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, Popover, Transition } from '@headlessui/react';
-import { ChevronDownIcon, ChevronRightIcon, MenuIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon, ChevronRightIcon, MenuIcon, SearchIcon, XIcon } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import { twMerge } from 'tailwind-merge';
 
@@ -124,7 +124,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                         )}
                       >
-                        <SearchIcon className='h-5 w-5' />
+                        <SearchIcon className='h-[18px] w-[18px]' />
                       </Popover.Button>
                       <Transition
                         as={Fragment}

@@ -1,25 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import {
-  BookOpenIcon,
-  ClipboardListIcon,
-  CogIcon,
-  ColorSwatchIcon,
-  DocumentReportIcon,
-  ExternalLinkIcon,
-  LogoutIcon,
-  SearchIcon,
-  ServerIcon,
-  TableIcon,
-  TemplateIcon,
-  TicketIcon,
-  UserGroupIcon,
-  ViewBoardsIcon,
-  ViewGridAddIcon,
-  ViewGridIcon,
-  XIcon,
-} from '@heroicons/react/outline';
 import { useShowNav } from 'context/GlobalContext';
+import {
+  BookIcon,
+  ComputerIcon,
+  ContainerIcon,
+  ExternalLinkIcon,
+  GanttChartSquareIcon,
+  LayersIcon,
+  LayoutDashboardIcon,
+  LayoutGridIcon,
+  LayoutListIcon,
+  LayoutPanelLeftIcon,
+  ListTodoIcon,
+  ListTreeIcon,
+  LogOutIcon,
+  SearchIcon,
+  SettingsIcon,
+  SheetIcon,
+  UsersIcon,
+  XIcon,
+} from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import NavAccordion from '@/components/layout/NavAccordion';
@@ -91,7 +92,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'
           )}
         >
-          <NavLink isHome href='/dashboard' icon={<ViewGridIcon className='h-[18px] w-[18px]' />}>
+          <NavLink isHome href='/dashboard' icon={<LayoutGridIcon className='h-[18px] w-[18px]' />}>
             Dashboard
           </NavLink>
 
@@ -99,15 +100,15 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             Search
           </NavLink>
 
-          <NavLink href='/author' icon={<UserGroupIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+          <NavLink href='/author' icon={<UsersIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Author
           </NavLink>
 
-          <NavLink href='/book' icon={<BookOpenIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+          <NavLink href='/book' icon={<BookIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Book
           </NavLink>
 
-          <NavLink href='/genre' icon={<ColorSwatchIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+          <NavLink href='/genre' icon={<LayoutListIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Genre
           </NavLink>
 
@@ -115,25 +116,25 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             title='Activity'
             routeName='activity'
             className='mt-0.5'
-            icon={<ClipboardListIcon className='h-[18px] w-[18px]' />}
+            icon={<GanttChartSquareIcon className='h-[18px] w-[18px]' />}
           >
-            <NavLink href='/activity' icon={<DocumentReportIcon className='h-[18px] w-[18px]' />}>
+            <NavLink href='/activity' icon={<ListTreeIcon className='h-[18px] w-[18px]' />}>
               Log
             </NavLink>
 
-            <NavLink href='/activity/session' icon={<TableIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
+            <NavLink href='/activity/session' icon={<SheetIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               Session
             </NavLink>
           </NavAccordion>
 
-          <NavAccordion title='Design' routeName='design' icon={<TemplateIcon className='h-[18px] w-[18px]' />}>
-            <NavLink href='/design' icon={<ViewGridAddIcon className='h-[18px] w-[18px]' />}>
+          <NavAccordion title='Design' routeName='design' icon={<LayoutPanelLeftIcon className='h-[18px] w-[18px]' />}>
+            <NavLink href='/design' icon={<LayersIcon className='h-[18px] w-[18px]' />}>
               Component
             </NavLink>
             <NavLink
               href='/design/layout'
               className='relative mt-1.5'
-              icon={<ViewBoardsIcon className='h-[18px] w-[18px]' />}
+              icon={<LayoutDashboardIcon className='h-[18px] w-[18px]' />}
             >
               Layout
               <span className='absolute left-24 top-2.5 flex h-5 w-5 animate-bounce items-center justify-center'>
@@ -141,22 +142,22 @@ export default function Sidebar({ className, ...props }: { className?: string; [
                 <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
               </span>
             </NavLink>
-            <NavLink href='/design/ui' icon={<ViewGridAddIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
+            <NavLink href='/design/ui' icon={<ContainerIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               UI
               <Badge>New</Badge>
             </NavLink>
 
-            <NavLink href='/design/form' icon={<ServerIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
+            <NavLink href='/design/form' icon={<ListTodoIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               Form
               <Badge>New</Badge>
             </NavLink>
-            <NavLink href='/design/example' icon={<TicketIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
+            <NavLink href='/design/example' icon={<ComputerIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               Example
               <Badge>New</Badge>
             </NavLink>
           </NavAccordion>
 
-          <NavLink href='/setting' icon={<CogIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
+          <NavLink href='/setting' icon={<SettingsIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Setting
           </NavLink>
 
@@ -181,7 +182,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
             )}
           >
-            <LogoutIcon className='h-[19px] w-[19px] mr-0.5' />
+            <LogOutIcon className='h-[18px] w-[18px] mr-0.5' />
             Logout
           </button>
         </div>

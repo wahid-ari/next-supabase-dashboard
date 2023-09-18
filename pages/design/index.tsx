@@ -2,9 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { faker } from '@faker-js/faker';
 import { Menu, Transition } from '@headlessui/react';
-import { ArrowSmRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
 import * as HoverCard from '@radix-ui/react-hover-card';
-import { MoreHorizontal } from 'lucide-react';
+import { ArrowRightIcon, ChevronDownIcon, MoreHorizontal } from 'lucide-react';
 import ReactSelect from 'react-select';
 import { twMerge } from 'tailwind-merge';
 import * as yup from 'yup';
@@ -1290,7 +1289,7 @@ function dissmissAllToast() {
           <Button data-testid='button-primary'>Primary</Button>
           <Button.success data-testid='button-success'>Success</Button.success>
           <Button.danger data-testid='button-danger' className='flex items-center gap-2'>
-            <ArrowSmRightIcon className='h-4 w-4' />
+            <ArrowRightIcon className='h-4 w-4' />
             Danger
           </Button.danger>
           <Button.secondary data-testid='button-secondary'>Secondary</Button.secondary>
@@ -1304,7 +1303,7 @@ function dissmissAllToast() {
       <Wrapper id='linkbutton' name='LinkButton' variant={['secondary', 'tertary']} props={['href']}>
         <div className='flex flex-wrap items-center gap-2'>
           <LinkButton href='/design#linkbutton' className='flex items-center gap-2' data-testid='link-button'>
-            <ArrowSmRightIcon className='h-5 w-5' />
+            <ArrowRightIcon className='h-4 w-4' />
             Link Button
           </LinkButton>
           <LinkButton.secondary href='/design#linkbutton' data-testid='link-button-secondary'>
@@ -1827,6 +1826,42 @@ function dissmissAllToast() {
               <div className='h-3 w-2/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </div>
           </div>
+
+          <div
+            className={twMerge(
+              'relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/60 h-8',
+              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_3s_infinite]',
+              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
+              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
+            )}
+          ></div>
+
+          <div
+            className={twMerge(
+              'relative isolate space-y-5 overflow-hidden rounded-full bg-neutral-200/60 h-20 w-20',
+              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_3s_infinite]',
+              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
+              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
+            )}
+          ></div>
+
+          <div
+            className={twMerge(
+              'relative isolate space-y-5 overflow-hidden rounded bg-neutral-200/60 h-20',
+              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_3s_infinite]',
+              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
+              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
+            )}
+          ></div>
+
+          <div
+            className={twMerge(
+              'relative isolate space-y-5 overflow-hidden rounded-3xl bg-neutral-200/60 h-20 w-20',
+              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_3s_infinite]',
+              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
+              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
+            )}
+          ></div>
         </div>
       </Wrapper>
     </Layout>

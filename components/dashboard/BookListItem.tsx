@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PhotographIcon } from '@heroicons/react/outline';
+import { ImageIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
@@ -37,7 +37,7 @@ export default function BookListItem({ href, image, title, published, ...props }
           </div>
         ) : (
           <div className='flex h-20 w-14 items-center justify-center rounded bg-neutral-200 dark:bg-neutral-800'>
-            <PhotographIcon className='h-8 w-8 text-neutral-500' />
+            <ImageIcon className='h-8 w-8 text-neutral-500' />
           </div>
         )}
       </Link>

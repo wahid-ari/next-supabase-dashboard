@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import {
+  ContainerIcon,
   ExternalLinkIcon,
-  LoginIcon,
-  LogoutIcon,
-  TemplateIcon,
-  ViewBoardsIcon,
-  ViewGridAddIcon,
-} from '@heroicons/react/outline';
+  LayersIcon,
+  LayoutDashboardIcon,
+  LayoutPanelLeftIcon,
+  LogInIcon,
+  LogOutIcon,
+} from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import { useMounted } from '@/hooks/useMounted';
@@ -108,16 +109,16 @@ export default function Example() {
             data-testid='nav-accordion'
             title='Design'
             routeName='design'
-            icon={<TemplateIcon className='h-[18px] w-[18px]' />}
+            icon={<LayoutPanelLeftIcon className='h-4 w-4' />}
           >
             <NavLink
               data-testid='nav-accordion-link'
               href='/design/component'
-              icon={<ViewGridAddIcon className='h-[18px] w-[18px]' />}
+              icon={<LayersIcon className='h-4 w-4' />}
             >
               Component
             </NavLink>
-            <NavLink href='/design/layout' className='mt-1.5' icon={<ViewBoardsIcon className='h-[18px] w-[18px]' />}>
+            <NavLink href='/design/layout' className='mt-1.5' icon={<LayoutDashboardIcon className='h-4 w-4' />}>
               Layout
             </NavLink>
           </NavAccordion>
@@ -130,7 +131,7 @@ export default function Example() {
             data-testid='nav-link'
             href='/design/layout'
             className='mt-1.5'
-            icon={<ViewBoardsIcon className='h-[18px] w-[18px]' />}
+            icon={<ContainerIcon className='h-4 w-4' />}
           >
             Layout
           </NavLink>
@@ -142,7 +143,7 @@ export default function Example() {
           <NavLink.external
             data-testid='nav-link-external'
             href='https://github.com'
-            icon={<ExternalLinkIcon className='h-[18px] w-[18px]' />}
+            icon={<ExternalLinkIcon className='h-4 w-4' />}
           >
             External
           </NavLink.external>
@@ -151,7 +152,7 @@ export default function Example() {
 
       <Wrapper id='nav-link-login' name='NavLink.login' props={['href', 'icon']}>
         <div className='w-64'>
-          <NavLink.login data-testid='nav-link-login' href='/login' icon={<LoginIcon className='h-[18px] w-[18px]' />}>
+          <NavLink.login data-testid='nav-link-login' href='/login' icon={<LogInIcon className='h-4 w-4' />}>
             Login
           </NavLink.login>
         </div>
@@ -159,11 +160,7 @@ export default function Example() {
 
       <Wrapper id='nav-link-logout' name='NavLink.logout' props={['href', 'icon']}>
         <div className='w-64'>
-          <NavLink.logout
-            data-testid='nav-link-logout'
-            href='/logout'
-            icon={<LogoutIcon className='h-[18px] w-[18px]' />}
-          >
+          <NavLink.logout data-testid='nav-link-logout' href='/logout' icon={<LogOutIcon className='h-4 w-4' />}>
             Logout
           </NavLink.logout>
         </div>

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
-import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
 import axios from 'axios';
+import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { signIn, useSession } from 'next-auth/react';
 
 import useToast from '@/hooks/useToast';

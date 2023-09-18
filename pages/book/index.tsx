@@ -1,9 +1,8 @@
 import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { PlusSmIcon } from '@heroicons/react/outline';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import axios from 'axios';
+import { PlusIcon } from 'lucide-react';
 import { mutate } from 'swr';
 import { twMerge } from 'tailwind-merge';
 
@@ -22,7 +21,6 @@ import Title from '@/components/systems/Title';
 Book.auth = true;
 
 export default function Book() {
-  const router = useRouter();
   const { data, error } = useBooksData();
   const { updateToast, pushToast } = useToast();
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -41,7 +39,6 @@ export default function Book() {
         setDeleteItem({ id: null, name: '' });
         updateToast({ toastId, message: res?.data?.message, isError: false });
         mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`);
-        router.push('/book');
       }
     } catch (error) {
       console.error(error);
@@ -181,7 +178,7 @@ export default function Book() {
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Book</Title>
         <LinkButton href='book/add' className='flex items-center gap-2'>
-          <PlusSmIcon className='h-5 w-5' />
+          <PlusIcon className='h-5 w-5' />
           Add New Book
         </LinkButton>
       </div>

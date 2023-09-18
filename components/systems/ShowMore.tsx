@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {

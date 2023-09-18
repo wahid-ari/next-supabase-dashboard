@@ -2,8 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { PhotographIcon } from '@heroicons/react/outline';
-import { ArrowUpRightIcon } from 'lucide-react';
+import { ArrowUpRightIcon, ImageIcon } from 'lucide-react';
 
 import { useBookData } from '@/libs/swr';
 
@@ -55,7 +54,7 @@ export default function Book() {
           ) : (
             <div className='mx-auto w-3/5 overflow-hidden sm:mx-0 sm:w-1/4 lg:w-1/5'>
               <div className='flex h-64 w-full items-center justify-center rounded bg-neutral-200 dark:bg-neutral-800'>
-                <PhotographIcon className='h-16 w-16 text-neutral-500' />
+                <ImageIcon className='h-16 w-16 text-neutral-500' />
               </div>
             </div>
           )}
@@ -145,7 +144,7 @@ export default function Book() {
                   </Link>
                 ) : (
                   <div className='flex h-20 w-20 items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800'>
-                    <PhotographIcon className='h-8 w-8 text-neutral-500' />
+                    <ImageIcon className='h-8 w-8 text-neutral-500' />
                   </div>
                 )}
                 <div>

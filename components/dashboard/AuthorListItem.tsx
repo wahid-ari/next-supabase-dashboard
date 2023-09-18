@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PhotographIcon } from '@heroicons/react/outline';
-import { ArrowUpRightIcon } from 'lucide-react';
+import { ArrowUpRightIcon, ImageIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
@@ -38,7 +37,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
           </div>
         ) : (
           <div className='flex h-16 w-16 items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800'>
-            <PhotographIcon className='h-8 w-8 text-neutral-500' />
+            <ImageIcon className='h-8 w-8 text-neutral-500' />
           </div>
         )}
       </Link>

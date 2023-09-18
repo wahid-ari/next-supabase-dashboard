@@ -1,4 +1,4 @@
-import { MoonIcon, StopIcon, SunIcon } from '@heroicons/react/outline';
+import { MoonIcon, SunIcon, SunMoonIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { twMerge } from 'tailwind-merge';
 
@@ -19,7 +19,7 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
           variant === 'labelled' && 'px-2 py-1'
         )}
       >
-        <StopIcon className='h-5 w-5 text-neutral-700 dark:text-neutral-200' />
+        <SunMoonIcon className='h-5 w-5 text-neutral-700 dark:text-neutral-200' />
       </button>
     );
   }
@@ -41,16 +41,16 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
       {/* note that the duration is longer then the one on body, controlling the bg-color */}
       <div className='relative h-5 w-5'>
         <span
-          className='absolute inset-0 rotate-90 transform text-neutral-700 dark:text-neutral-200 transition duration-500 motion-reduce:duration-0 dark:rotate-0'
+          className='flex items-center justify-center absolute inset-0 rotate-90 transform text-neutral-700 dark:text-neutral-200 transition duration-500 motion-reduce:duration-0 dark:rotate-0'
           style={{ transformOrigin: '50% 100px' }}
         >
-          <MoonIcon />
+          <MoonIcon className='h-[19px] w-[19px]' />
         </span>
         <span
-          className='absolute inset-0 rotate-0 transform text-neutral-700 dark:text-neutral-200 transition duration-500 motion-reduce:duration-0 dark:-rotate-90'
+          className='flex items-center justify-center absolute inset-0 rotate-0 transform text-neutral-700 dark:text-neutral-200 transition duration-500 motion-reduce:duration-0 dark:-rotate-90'
           style={{ transformOrigin: '50% 100px' }}
         >
-          <SunIcon />
+          <SunIcon className='h-[19px] w-[19px]' />
         </span>
       </div>
       <span className={twMerge('ml-1 text-sm text-neutral-700 dark:text-neutral-200', variant === 'icon' && 'sr-only')}>
