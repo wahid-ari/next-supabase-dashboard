@@ -40,7 +40,7 @@ test.describe('Testing Search Page', () => {
     await expect(page.getByRole('heading', { name: 'Authors' })).toBeVisible();
     await expect(page.getByText('Jane Austen')).toBeVisible();
     // go to setting page and back to search page
-    await page.getByRole('link', { name: 'Settings' }).click();
+    await page.getByRole('link', { name: 'Setting' }).click();
     await page.getByRole('link', { name: 'Search' }).click();
     // show search history
     await expect(page.getByText('Recent Search')).toBeVisible();
@@ -60,7 +60,7 @@ test.describe('Testing Search Page', () => {
     await expect(page.getByRole('heading', { name: 'Authors' })).toBeVisible();
     await expect(page.getByText('Jane Austen')).toBeVisible();
     // go to setting page and back to search page
-    await page.getByRole('link', { name: 'Settings' }).click();
+    await page.getByRole('link', { name: 'Setting' }).click();
     await page.getByRole('link', { name: 'Search' }).click();
     // show search history
     await expect(page.getByText('Recent Search')).toBeVisible();
@@ -87,7 +87,7 @@ test.describe('Testing Search Page', () => {
     await expect(page.getByRole('heading', { name: 'Authors' })).toBeVisible();
     await expect(page.getByText('Jane Austen')).toBeVisible();
     // go to setting page and back to search page
-    await page.getByRole('link', { name: 'Settings' }).click();
+    await page.getByRole('link', { name: 'Setting' }).click();
     await page.getByRole('link', { name: 'Search' }).click();
     // show search history
     await expect(page.getByText('Recent Search')).toBeVisible();
@@ -114,7 +114,7 @@ test.describe('Testing Search Page', () => {
     await expect(page.getByRole('heading', { name: 'Authors' })).toBeVisible();
     await expect(page.getByText('Jane Austen')).toBeVisible();
     // go to setting page and back to search page
-    await page.getByRole('link', { name: 'Settings' }).click();
+    await page.getByRole('link', { name: 'Setting' }).click();
     await page.getByRole('link', { name: 'Search' }).click();
     // show search history
     await expect(page.getByText('Recent Search')).toBeVisible();
@@ -139,7 +139,7 @@ test.describe('Testing Search Page', () => {
     await expect(page.getByRole('heading', { name: 'Authors' })).toBeVisible();
     await expect(page.getByText('Jane Austen')).toBeVisible();
     // go to setting page and back to search page
-    await page.getByRole('link', { name: 'Settings' }).click();
+    await page.getByRole('link', { name: 'Setting' }).click();
     await page.getByRole('link', { name: 'Search' }).click();
     // show search history
     await expect(page.getByText('Recent Search')).toBeVisible();
@@ -162,7 +162,7 @@ test.describe('Testing Search Page', () => {
     await expect(page.getByRole('heading', { name: 'Books' })).toBeVisible();
     await expect(page.getByText('Mockingjay (The Hunger Games #3)')).toBeVisible();
     // go to setting page and back to search page
-    await page.getByRole('link', { name: 'Settings' }).click();
+    await page.getByRole('link', { name: 'Setting' }).click();
     await page.getByRole('link', { name: 'Search' }).click();
     // show search history
     await expect(page.getByText('Recent Search')).toBeVisible();

@@ -21,8 +21,8 @@ import Title from '@/components/systems/Title';
 
 export default function Search() {
   const router = useRouter();
-  const search = router.query?.q as string;
-  const [query, setQuery] = useState(search || '');
+  const search = (router.query?.q as string) || '';
+  const [query, setQuery] = useState(search);
   const { data, error } = useSearchData(search);
 
   useEffect(() => {
