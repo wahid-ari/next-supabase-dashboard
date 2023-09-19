@@ -24,7 +24,7 @@ import {
   useTotalBooksData,
   useTotalGenresData,
 } from '@/libs/swr';
-import { options, optionsBarChart, optionsHorizontalBarChart, populateData } from '@/utils/chartSetup';
+import { options, optionsBarChart, optionsHorizontalBarChart, populateData } from '@/utils/chart-setup';
 
 import Card from '@/components/dashboard/Card';
 import Layout from '@/components/layout/Layout';

@@ -3,7 +3,7 @@ import { ClipboardCopyIcon, ClipboardPasteIcon } from 'lucide-react';
 import Prism from 'prismjs';
 import { twMerge } from 'tailwind-merge';
 
-import { useMounted } from '@/hooks/useMounted';
+import { useMounted } from '@/hooks/use-mounted';
 
 type Props = {
   name?: string;

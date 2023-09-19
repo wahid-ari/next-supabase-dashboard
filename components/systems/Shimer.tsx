@@ -5,7 +5,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { useTheme } from 'next-themes';
 import { twMerge } from 'tailwind-merge';
 
-import { useMounted } from '@/hooks/useMounted';
+import { useMounted } from '@/hooks/use-mounted';
 
 export default function Shimer({ className, dataTestId }: { className?: string; dataTestId?: string }) {
   const { theme } = useTheme();

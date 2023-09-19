@@ -7,7 +7,7 @@ import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import nookies from 'nookies';
 
 import { validateRegister } from '@/validations/register';
-import useToast from '@/hooks/useToast';
+import useToast from '@/hooks/use-hot-toast';
 
 import HeadSeo from '@/components/layout/HeadSeo';
 import Button from '@/components/systems/Button';

@@ -5,7 +5,7 @@ import { ArrowUpRightIcon, PlusIcon } from 'lucide-react';
 import { mutate } from 'swr';
 
 import { useAuthorsData } from '@/libs/swr';
-import useToast from '@/hooks/useToast';
+import useToast from '@/hooks/use-hot-toast';
 
 import Layout from '@/components/layout/Layout';
 import Button from '@/components/systems/Button';

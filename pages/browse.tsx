@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { compareSearchResult, searchHistoryAtom, useSearchHistory } from '@/store/useAtom';
-import { useAtom } from 'jotai';
 import { BookIcon, LayoutListIcon, UsersIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
+import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
+// import { useSearchHistoryStore } from '@/store/use-store';
 import { useSearchData } from '@/libs/swr';
-
-// import { useSearchHistoryStore } from '@/store/useStore';
 
 import AuthorListItem from '@/components/dashboard/AuthorListItem';
 import BookListItem from '@/components/dashboard/BookListItem';
@@ -29,8 +27,9 @@ export default function Browse() {
     setQuery(search);
   }, [search]);
 
-  const [searchHistory] = useAtom(searchHistoryAtom);
   const {
+    searchHistory,
+    setSearchHistory,
     addBooksHistory,
     addAuthorsHistory,
     removeBooksHistory,

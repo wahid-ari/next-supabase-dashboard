@@ -5,7 +5,7 @@ import * as HoverCard from '@radix-ui/react-hover-card';
 import { twMerge } from 'tailwind-merge';
 
 import { useGenreData } from '@/libs/swr';
-import { useDebounce } from '@/hooks/useDebounce';
+import { useDebounce } from '@/hooks/use-debounce';
 
 import Layout from '@/components/layout/Layout';
 import LabeledInput from '@/components/systems/LabeledInput';

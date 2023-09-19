@@ -6,7 +6,7 @@ import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { signIn, useSession } from 'next-auth/react';
 
-import useToast from '@/hooks/useToast';
+import useToast from '@/hooks/use-hot-toast';
 
 import HeadSeo from '@/components/layout/HeadSeo';
 import Button from '@/components/systems/Button';

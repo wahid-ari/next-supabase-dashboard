@@ -28,7 +28,13 @@ export function GlobalProvider({ children, session }: { children: ReactNode; ses
 
   return (
     <GlobalContext.Provider value={{ showNav, setShowNav, token }}>
-      <ThemeProvider attribute='class' storageKey='theme' enableSystem={false} defaultTheme='light'>
+      <ThemeProvider
+        attribute='class'
+        storageKey='theme'
+        enableSystem={false}
+        defaultTheme='light'
+        disableTransitionOnChange
+      >
         <SessionProvider session={session}>{children}</SessionProvider>
       </ThemeProvider>
     </GlobalContext.Provider>

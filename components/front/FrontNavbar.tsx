@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/react';
 import { twMerge } from 'tailwind-merge';
 
 import { cn } from '@/libs/utils';
-import { useMounted } from '@/hooks/useMounted';
+import { useMounted } from '@/hooks/use-mounted';
 
 import ActiveLink from '@/components/front/ActiveLink';
 import FrontThemeChanger from '@/components/front/FrontThemeChanger';

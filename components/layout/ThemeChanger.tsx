@@ -2,7 +2,7 @@ import { MoonIcon, SunIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import { cn } from '@/libs/utils';
-import { useMounted } from '@/hooks/useMounted';
+import { useMounted } from '@/hooks/use-mounted';
 
 export default function ThemeChanger({ border, ...props }: { border?: boolean; [props: string]: any }) {
   const { theme, setTheme } = useTheme();

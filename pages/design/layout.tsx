@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
-import { useMounted } from '@/hooks/useMounted';
+import { useMounted } from '@/hooks/use-mounted';
 
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import Layout from '@/components/layout/Layout';

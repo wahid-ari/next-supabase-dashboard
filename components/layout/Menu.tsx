@@ -6,7 +6,7 @@ import { ChevronDownIcon } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import { twMerge } from 'tailwind-merge';
 
-import { useMounted } from '@/hooks/useMounted';
+import { useMounted } from '@/hooks/use-mounted';
 
 import Modal from '@/components/systems/Modal';
 

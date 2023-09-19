@@ -5,8 +5,8 @@ import { PopoverProps } from '@radix-ui/react-popover';
 import { CheckIcon, ChevronsUpDown } from 'lucide-react';
 
 import { cn } from '@/libs/utils';
-import { useMutationObserver } from '@/hooks/useMutationObserver';
-import useWindowSize from '@/hooks/useWindowSize';
+import { useMutationObserver } from '@/hooks/use-mutation-observer';
+import useWindowSize from '@/hooks/use-window-size';
 
 import { Button } from '@/components/ui/Button';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/Command';

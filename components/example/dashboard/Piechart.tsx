@@ -3,7 +3,7 @@
 import { useTheme } from 'next-themes';
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/hooks/use-window-size';
 
 const data = [
   {

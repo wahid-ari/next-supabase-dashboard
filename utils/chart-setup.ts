@@ -14,6 +14,8 @@ const colors = [
   '#facc15',
 ];
 
+// FIX rename this hook to chart-setup
+
 // Populate Data for ChartJS
 function populateData(param: any, type?: string) {
   let labels = [];

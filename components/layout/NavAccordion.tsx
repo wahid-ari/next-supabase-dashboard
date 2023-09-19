@@ -4,7 +4,7 @@ import { Disclosure, Transition } from '@headlessui/react';
 import { ChevronRightIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
-import { useMounted } from '@/hooks/useMounted';
+import { useMounted } from '@/hooks/use-mounted';
 
 type Props = {
   children: ReactNode;

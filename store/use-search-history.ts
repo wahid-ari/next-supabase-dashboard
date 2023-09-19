@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 
-export const searchHistoryAtom = atomWithStorage('search-history', {
+const searchHistoryAtom = atomWithStorage('search-history', {
   books: [],
   authors: [],
 });
@@ -35,6 +35,8 @@ export function useSearchHistory() {
     });
   }
   return {
+    searchHistory,
+    setSearchHistory,
     addBooksHistory,
     addAuthorsHistory,
     removeBooksHistory,

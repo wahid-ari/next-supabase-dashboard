@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { SliderProps } from '@radix-ui/react-slider';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/hooks/use-window-size';
 
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
 import { Label } from '@/components/ui/Label';

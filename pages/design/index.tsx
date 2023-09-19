@@ -9,11 +9,11 @@ import { twMerge } from 'tailwind-merge';
 import * as yup from 'yup';
 import { z } from 'zod';
 
-import { tabledata } from '@/utils/tableData';
+import { tabledata } from '@/utils/table-data';
 import { validateFormObject } from '@/validations/zod';
-import { useDebounce } from '@/hooks/useDebounce';
-import { useMounted } from '@/hooks/useMounted';
-import useToast from '@/hooks/useToast';
+import { useDebounce } from '@/hooks/use-debounce';
+import useToast from '@/hooks/use-hot-toast';
+import { useMounted } from '@/hooks/use-mounted';
 
 import { Button as ButtonUi } from '@/components/ui/Button';
 import {
