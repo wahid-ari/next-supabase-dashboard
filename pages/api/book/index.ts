@@ -199,7 +199,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           const { error: errorBooksGenres } = await supabase.from('book_books_genres').delete().eq('book_id', query.id);
           const { error } = await supabase.from('book_books').delete().eq('id', query.id);
           if (error || errorBooksGenres) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ error: error.message, detail: error.details });
           }
           // Write logs
           const errorLogs = await writeLogs(sessionDelete.user_id, 'delete', 'book', query.id);

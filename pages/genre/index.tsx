@@ -12,7 +12,7 @@ import Button from '@/components/systems/Button';
 import Dialog from '@/components/systems/Dialog';
 import InputDebounce from '@/components/systems/InputDebounce';
 import LabeledInput from '@/components/systems/LabeledInput';
-import Shimer from '@/components/systems/Shimer';
+import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
@@ -89,7 +89,12 @@ export default function Genre() {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      const { detail } = error?.response?.data;
+      if (detail) {
+        updateToast({ toastId, message: detail, isError: true });
+      } else {
+        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      }
     }
   }
 
@@ -221,7 +226,7 @@ export default function Genre() {
           })}
         </TableSimple>
       ) : (
-        <Shimer className='!h-60' />
+        <Shimmer className='!h-60' />
       )}
     </Layout>
   );

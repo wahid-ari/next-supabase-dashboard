@@ -15,7 +15,7 @@ import Dialog from '@/components/systems/Dialog';
 import InputDebounce from '@/components/systems/InputDebounce';
 import LinkButton from '@/components/systems/LinkButton';
 import ReactTable from '@/components/systems/ReactTable';
-import Shimer from '@/components/systems/Shimer';
+import Shimmer from '@/components/systems/Shimmer';
 import Title from '@/components/systems/Title';
 
 Book.auth = true;
@@ -42,7 +42,12 @@ export default function Book() {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      const { detail } = error?.response?.data;
+      if (detail) {
+        updateToast({ toastId, message: detail, isError: true });
+      } else {
+        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      }
     }
   }
 
@@ -198,7 +203,7 @@ export default function Book() {
       {data ? (
         <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} itemPerPage={[10, 20, 50, 100]} />
       ) : (
-        <Shimer className='!h-60' />
+        <Shimmer className='!h-60' />
       )}
 
       <Dialog
