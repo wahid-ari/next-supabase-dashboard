@@ -16,11 +16,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           .select(`id, author_id, slug, title, language, pages, published, link, image, book_authors (id, slug, name)`)
           .order('id');
         res.status(200).json(data);
+        return;
       } else if (query.slug && query.seo) {
         const { data } = await supabase.from('book_books').select(`title, description`).eq('slug', query.slug).single();
         // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
         res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data);
+        return;
       } else {
         let column = query.id ? 'id' : 'slug';
         let param = query.id ? query.id : query.slug;
@@ -61,6 +63,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (sessionPost) {
         if (!body.title) {
           res.status(422).json({ error: 'Title required' });
+          return;
         } else {
           let nameSlug = slug(body.title);
           const { data: isSlugExist } = await supabase.from('book_books').select(`*`).eq('slug', nameSlug).order('id');
@@ -96,6 +99,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             .select();
           if (error) {
             res.status(422).json({ error: error.message });
+            return;
           }
           // get book id after inserting
           const bookId = data[0].id;
@@ -113,12 +117,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             const { error } = await supabase.from('book_books_genres').insert(genre);
             if (error) {
               res.status(422).json({ error: error.message });
+              return;
             }
           }
           // Write logs
           const errorLogs = await writeLogs(sessionPost.user_id, 'create', 'book');
           if (errorLogs) {
             res.status(422).json({ error: error.message });
+            return;
           }
           res.status(200).json({ message: 'Success add book' });
         }
@@ -131,6 +137,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (sessionPut) {
         if (!body.title) {
           res.status(422).json({ error: 'Title required' });
+          return;
         } else {
           // get genre string from array
           let genre_string = ',';
@@ -156,11 +163,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             .eq('id', body.id);
           if (error) {
             res.status(422).json({ error: error.message });
+            return;
           }
           // delete genre related to edited book
           const { error: errorBooksGenres } = await supabase.from('book_books_genres').delete().eq('book_id', body.id);
           if (errorBooksGenres) {
             res.status(422).json({ error: errorBooksGenres.message });
+            return;
           }
           // if edited book have genre
           if (body.genre?.length > 0) {
@@ -176,12 +185,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             const { error } = await supabase.from('book_books_genres').insert(genre);
             if (error) {
               res.status(422).json({ error: error.message });
+              return;
             }
           }
           // Write logs
           const errorLogs = await writeLogs(sessionPut.user_id, 'update', 'book', body.id);
           if (errorLogs) {
             res.status(422).json({ error: error.message });
+            return;
           }
           res.status(201).json({ message: 'Success update book' });
         }
@@ -194,17 +205,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (sessionDelete) {
         if (!query.id) {
           res.status(422).json({ error: 'Id required' });
+          return;
         } else {
           // delete genre related to book in book_books_genres table
           const { error: errorBooksGenres } = await supabase.from('book_books_genres').delete().eq('book_id', query.id);
           const { error } = await supabase.from('book_books').delete().eq('id', query.id);
           if (error || errorBooksGenres) {
             res.status(422).json({ error: error.message, detail: error.details });
+            return;
           }
           // Write logs
           const errorLogs = await writeLogs(sessionDelete.user_id, 'delete', 'book', query.id);
           if (errorLogs) {
             res.status(422).json({ error: error.message });
+            return;
           }
           res.status(200).json({ message: 'Success delete book' });
         }

@@ -26,10 +26,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
           }
           res.status(200).json({ message: 'Success delete all session' });
+          return;
         } else {
           const { error } = await supabase.from('book_sessions').delete().eq('id', query.id);
           if (error) {
             res.status(422).json({ error: error.message });
+            return;
           }
           res.status(200).json({ message: 'Success delete session' });
         }

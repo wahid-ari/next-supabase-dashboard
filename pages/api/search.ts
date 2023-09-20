@@ -9,6 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     case 'GET':
       if (!query.q) {
         res.status(200).json({ message: 'Query Required' });
+        return;
       }
       // TODO Docs https://supabase.com/docs/guides/database/full-text-search#search-multiple-columns
       // create function in supabase > sql editor > new query

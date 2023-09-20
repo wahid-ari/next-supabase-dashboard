@@ -11,9 +11,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (!query.generate) {
         const { data } = await supabase.from('book_authors').select(`*`).order('id');
         res.status(200).send(JSON.stringify(data, null, 2));
+        return;
       } else if (query.generate == 'true') {
         const { data } = await supabase.from('book_authors').insert(authors);
         res.status(200).json(data);
+        return;
       } else {
         const { data } = await supabase
           .from('book_authors')
