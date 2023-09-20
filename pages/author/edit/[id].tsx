@@ -9,7 +9,7 @@ import useToast from '@/hooks/use-hot-toast';
 import Layout from '@/components/layout/Layout';
 import Button from '@/components/systems/Button';
 import LabeledInput from '@/components/systems/LabeledInput';
-import Shimer from '@/components/systems/Shimer';
+import Shimmer from '@/components/systems/Shimmer';
 import TextArea from '@/components/systems/TextArea';
 import Title from '@/components/systems/Title';
 
@@ -141,7 +141,7 @@ export default function Author() {
           </div>
         </form>
       ) : (
-        <Shimer className='!h-60' />
+        <Shimmer className='!h-60' />
       )}
     </Layout>
   );
