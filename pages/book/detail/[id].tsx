@@ -8,7 +8,7 @@ import { useBookData } from '@/libs/swr';
 
 import Layout from '@/components/layout/Layout';
 import Heading from '@/components/systems/Heading';
-import Shimer from '@/components/systems/Shimer';
+import Shimmer from '@/components/systems/Shimmer';
 import ShowMore from '@/components/systems/ShowMore';
 import Title from '@/components/systems/Title';
 
@@ -178,10 +178,10 @@ export default function Book() {
       ) : (
         <div className='gap-6 sm:flex'>
           <div className='mx-auto w-2/4 overflow-hidden sm:mx-0 sm:w-1/4 lg:w-1/5'>
-            <Shimer className='!h-60' />
+            <Shimmer className='!h-60' />
           </div>
           <div className='mt-6 w-full sm:mt-0 sm:w-3/4'>
-            <Shimer className='!h-60' />
+            <Shimmer className='!h-60' />
           </div>
         </div>
       )}

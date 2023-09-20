@@ -10,7 +10,7 @@ import { useDebounce } from '@/hooks/use-debounce';
 import Layout from '@/components/layout/Layout';
 import LabeledInput from '@/components/systems/LabeledInput';
 import ReactTable from '@/components/systems/ReactTable';
-import Shimer from '@/components/systems/Shimer';
+import Shimmer from '@/components/systems/Shimmer';
 import Title from '@/components/systems/Title';
 
 // Genre.auth = true;
@@ -132,7 +132,7 @@ export default function Genre() {
           </div>
         )
       ) : (
-        <Shimer className='!h-60' />
+        <Shimmer className='!h-60' />
       )}
     </Layout>
   );

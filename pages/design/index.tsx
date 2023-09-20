@@ -48,7 +48,7 @@ import ReactTable from '@/components/systems/ReactTable';
 import SearchBox from '@/components/systems/SearchBox';
 import Section from '@/components/systems/Section';
 import Select from '@/components/systems/Select';
-import Shimer from '@/components/systems/Shimer';
+import Shimmer from '@/components/systems/Shimmer';
 import ShowMore from '@/components/systems/ShowMore';
 import Table from '@/components/systems/Table';
 import TableSimple from '@/components/systems/TableSimple';
@@ -616,8 +616,8 @@ export default function Example() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#shimer'>
-              Shimer
+            <Link className={tocClass} href='#shimmer'>
+              Shimmer
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -1535,10 +1535,10 @@ function dissmissAllToast() {
         />
       </Wrapper>
 
-      <Wrapper id='shimer' name='Shimer' noChildren noProps>
-        <Shimer className='max-w-[5rem]' dataTestId='shimer' />
-        <Shimer className='max-w-[10rem]' />
-        <Shimer className='max-w-[15rem]' />
+      <Wrapper id='shimmer' name='Shimmer' noChildren noProps>
+        <Shimmer className='max-w-[5rem] mb-2' data-testid='shimmer' />
+        <Shimmer className='max-w-[10rem] mb-2' />
+        <Shimmer className='max-w-[15rem]' />
       </Wrapper>
 
       <Wrapper id='tabs' name='Tabs' props={['items']}>
@@ -1762,41 +1762,20 @@ function dissmissAllToast() {
 
       <Wrapper id='loading-skeleton' name='LoadingSkeleton' noClassName noProps noChildren>
         <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-          <div
-            className={twMerge(
-              'relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/60 p-4',
-              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite]',
-              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
-              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
-            )}
-          >
+          <Shimmer className='space-y-5 rounded-2xl'>
             <div className='h-24 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div className='space-y-3'>
               <div className='h-3 w-3/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-3 w-4/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-3 w-2/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </div>
-          </div>
+          </Shimmer>
 
-          <div
-            className={twMerge(
-              'relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/60 p-4',
-              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite]',
-              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
-              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
-            )}
-          >
+          <Shimmer className='space-y-5 rounded-2xl'>
             <div className='h-44 w-full rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-          </div>
+          </Shimmer>
 
-          <div
-            className={twMerge(
-              'relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 p-4',
-              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite]',
-              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
-              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
-            )}
-          >
+          <Shimmer className='space-y-5 rounded-2xl'>
             <div className='space-y-3'>
               <div className='h-3 w-3/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-3 w-4/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
@@ -1809,59 +1788,24 @@ function dissmissAllToast() {
               <div className='h-3 w-4/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='w-5/5 h-3 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </div>
-          </div>
+          </Shimmer>
 
-          <div
-            className={twMerge(
-              'relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 p-4',
-              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite]',
-              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
-              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
-            )}
-          >
+          <Shimmer className='space-y-5 rounded-2xl'>
             <div className='h-24 w-24 rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div className='space-y-3'>
               <div className='h-3 w-3/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-3 w-4/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-3 w-2/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </div>
-          </div>
+          </Shimmer>
 
-          <div
-            className={twMerge(
-              'relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/60 h-8',
-              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_3s_infinite]',
-              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
-              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
-            )}
-          ></div>
+          <Shimmer className='rounded-2xl h-8' />
 
-          <div
-            className={twMerge(
-              'relative isolate space-y-5 overflow-hidden rounded-full bg-neutral-200/60 h-20 w-20',
-              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_3s_infinite]',
-              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
-              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
-            )}
-          ></div>
+          <Shimmer className='rounded-full h-20 w-20' />
 
-          <div
-            className={twMerge(
-              'relative isolate space-y-5 overflow-hidden rounded bg-neutral-200/60 h-20',
-              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_3s_infinite]',
-              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
-              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
-            )}
-          ></div>
+          <Shimmer className='rounded h-20' />
 
-          <div
-            className={twMerge(
-              'relative isolate space-y-5 overflow-hidden rounded-3xl bg-neutral-200/60 h-20 w-20',
-              'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_3s_infinite]',
-              'before:bg-gradient-to-r before:from-transparent before:via-white/60',
-              'before:to-transparent dark:bg-[#1f1f1f] dark:before:via-rose-100/10'
-            )}
-          ></div>
+          <Shimmer className='rounded-3xl h-20 w-20' />
         </div>
       </Wrapper>
     </Layout>

@@ -11,7 +11,7 @@ import Layout from '@/components/layout/Layout';
 import Button from '@/components/systems/Button';
 import Dialog from '@/components/systems/Dialog';
 import InputDebounce from '@/components/systems/InputDebounce';
-import Shimer from '@/components/systems/Shimer';
+import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
@@ -124,7 +124,7 @@ export default function Session() {
           })}
         </TableSimple>
       ) : (
-        <Shimer className='!h-60' />
+        <Shimmer className='!h-60' />
       )}
     </Layout>
   );

@@ -542,13 +542,12 @@ test.describe('Testing Progress Component', () => {
   });
 });
 
-test.describe('Testing Shimer Component', () => {
-  // Shimer ----------------------------------------------------
-  test('renders a Shimer component', async ({ page }) => {
-    const shimerContainer = page.getByTestId('shimer');
-    await expect(shimerContainer).toBeVisible();
-    await expect(shimerContainer).toHaveAttribute('aria-live', 'polite');
-    await expect(shimerContainer).toHaveAttribute('aria-busy', 'true');
+test.describe('Testing Shimmer Component', () => {
+  // Shimmer ----------------------------------------------------
+  test('renders a Shimmer component', async ({ page }) => {
+    const shimmer = page.getByTestId('shimmer');
+    await expect(shimmer).toBeVisible();
+    await expect(shimmer).toHaveClass(/relative overflow-hidden rounded/);
   });
 });
 

@@ -12,7 +12,7 @@ import Button from '@/components/systems/Button';
 import Label from '@/components/systems/Label';
 import LabeledInput from '@/components/systems/LabeledInput';
 import SearchBox from '@/components/systems/SearchBox';
-import Shimer from '@/components/systems/Shimer';
+import Shimmer from '@/components/systems/Shimmer';
 import TextArea from '@/components/systems/TextArea';
 import Title from '@/components/systems/Title';
 
@@ -144,7 +144,7 @@ export default function Book() {
               />
             </>
           ) : (
-            <Shimer className='h-10' />
+            <Shimmer className='h-10' />
           )}
 
           {filteredAuthor ? (
@@ -159,7 +159,7 @@ export default function Book() {
               query={queryAuthor}
             />
           ) : (
-            <Shimer className='h-10' />
+            <Shimmer className='h-10' />
           )}
 
           <LabeledInput
