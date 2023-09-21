@@ -1087,7 +1087,7 @@ export default function Example() {
                 leaveFrom='transform opacity-100 scale-100'
                 leaveTo='transform opacity-0 scale-95'
               >
-                <Menu.Items className='absolute z-50 mt-2 w-32 origin-top-right rounded-md border bg-white shadow-md focus:outline-none dark:border-neutral-700 dark:bg-neutral-900'>
+                <Menu.Items className='mt-2 w-32 origin-top-right rounded-md border bg-white shadow-md focus:outline-none dark:border-neutral-800 dark:bg-neutral-900'>
                   <div className='space-y-1 px-2 py-2'>
                     <Menu.Item>
                       {({ active }) => (
@@ -1527,7 +1527,6 @@ function dissmissAllToast() {
       <Wrapper
         id='radio'
         name='Radio'
-        variant={['disabled']}
         props={['name', 'label', 'value', 'onChange', 'checked', 'defaultChecked', 'disabled']}
         noChildren
       >
