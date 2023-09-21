@@ -557,7 +557,7 @@ export default function Example() {
           </span>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#inputdisabled'>
-              Input.disabled
+              Input disabled
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -577,7 +577,7 @@ export default function Example() {
           </span>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#labeledinputdisabled'>
-              LabeledInput.disabled
+              LabeledInput disabled
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -597,7 +597,7 @@ export default function Example() {
           </span>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#textarea-disabled'>
-              TextArea.disabled
+              TextArea disabled
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -1318,14 +1318,14 @@ function dissmissAllToast() {
       <Wrapper
         id='checkbox'
         name='Checkbox'
-        variant={['disabled']}
-        props={['name', 'label', 'value', 'onChange', 'defaultChecked']}
+        props={['name', 'label', 'value', 'onChange', 'checked', 'defaultChecked', 'disabled']}
         noChildren
       >
         <Checkbox name='checkbox-default' label='Checkbox' data-testid='checkbox' />
         <Checkbox name='checkbox-checked' label='Checkbox Checked' data-testid='checkbox-checked' defaultChecked />
-        <Checkbox.disabled name='checkbox-disabled' label='Checkbox Disabled' data-testid='checkbox-disabled' />
-        <Checkbox.disabled
+        <Checkbox disabled name='checkbox-disabled' label='Checkbox Disabled' data-testid='checkbox-disabled' />
+        <Checkbox
+          disabled
           name='checkbox-checked-disabled'
           label='Checkbox Checked Disabled'
           data-testid='checkbox-checked-disabled'
@@ -1355,16 +1355,21 @@ function dissmissAllToast() {
         <Heading data-testid='heading-h4'>Heading 4 (default)</Heading>
       </Wrapper>
 
-      <Wrapper id='input' name='Input' props={['type', 'name', 'placeholder', 'value', 'onChange']}>
+      <Wrapper id='input' name='Input' props={['type', 'name', 'placeholder', 'value', 'defaultValue', 'onChange']}>
         <Input name='inputt' placeholder='Input default' data-testid='input' />
       </Wrapper>
 
-      <Wrapper id='inputdisabled' name='Input.disabled' props={['type', 'name', 'placeholder', 'defaultValue']}>
-        <Input.disabled
+      <Wrapper
+        id='inputdisabled'
+        name='Input disabled'
+        props={['type', 'name', 'placeholder', , 'value', 'defaultValue', 'onChange']}
+      >
+        <Input
           name='input-disabled'
           placeholder='Input default'
           defaultValue='Has a value'
           data-testid='input-disabled'
+          disabled
         />
       </Wrapper>
 
@@ -1375,7 +1380,7 @@ function dissmissAllToast() {
       <Wrapper
         id='labeledinput'
         name='LabeledInput'
-        props={['label', 'name', 'type', 'placeholder', 'value', 'onChange', 'wrapperClassName']}
+        props={['label', 'type', 'name', 'placeholder', 'value', 'defaultValue', 'onChange', 'wrapperClassName']}
       >
         <LabeledInput
           label='Email'
@@ -1395,16 +1400,17 @@ function dissmissAllToast() {
 
       <Wrapper
         id='labeledinputdisabled'
-        name='LabeledInput.disabled'
-        props={['label', 'type', 'name', 'placeholder', 'defaultValue', 'wrapperClassName']}
+        name='LabeledInput disabled'
+        props={['label', 'type', 'name', 'placeholder', 'value', 'defaultValue', 'onChange', 'wrapperClassName']}
       >
-        <LabeledInput.disabled
+        <LabeledInput
           label='Confirmation Password'
           name='confirmation'
           placeholder='confirmation'
           defaultValue='password'
           type='password'
           data-testid='labeledinput-disabled'
+          disabled
         />
       </Wrapper>
 
@@ -1452,7 +1458,7 @@ function dissmissAllToast() {
       <Wrapper
         id='text-area'
         name='TextArea'
-        props={['label', 'className', 'name', 'placeholder', 'value', 'onChange', 'height']}
+        props={['label', 'className', 'name', 'placeholder', 'value', 'defaultValue', 'onChange', 'height']}
         noChildren
       >
         <TextArea label='TextArea' name='textarea' placeholder='text area' data-testid='textarea' />
@@ -1460,15 +1466,16 @@ function dissmissAllToast() {
 
       <Wrapper
         id='textarea-disabled'
-        name='TextArea.disabled'
-        props={['label', 'className', 'name', 'placeholder', 'value', 'onChange', 'height']}
+        name='TextArea disabled'
+        props={['label', 'className', 'name', 'placeholder', 'value', 'defaultValue', 'onChange', 'height']}
         noChildren
       >
-        <TextArea.disabled
+        <TextArea
           label='TextArea'
           name='textareadisabled'
           placeholder='text area'
           data-testid='textarea-disabled'
+          disabled
         />
       </Wrapper>
 
@@ -1521,13 +1528,14 @@ function dissmissAllToast() {
         id='radio'
         name='Radio'
         variant={['disabled']}
-        props={['name', 'label', 'value', 'onChange', 'checked', 'defaultChecked']}
+        props={['name', 'label', 'value', 'onChange', 'checked', 'defaultChecked', 'disabled']}
         noChildren
       >
         <Radio name='radio' value='radio-blue' label='Blue' data-testid='radio' />
         <Radio name='radio' value='radio-red' label='Red' defaultChecked data-testid='radio-checked' />
-        <Radio.disabled name='radios' label='Radio Disabled' data-testid='radio-disabled' />
-        <Radio.disabled
+        <Radio disabled name='radios' label='Radio Disabled' data-testid='radio-disabled' />
+        <Radio
+          disabled
           name='radioss'
           label='Radio Checked Disabled'
           defaultChecked

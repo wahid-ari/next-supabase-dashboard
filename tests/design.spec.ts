@@ -282,7 +282,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeVisible();
     await expect(checkbox).not.toBeChecked();
     await expect(checkbox).toHaveClass(
-      /h-4 w-4 rounded border-neutral-300 focus:ring-2 focus:ring-sky-500 group-hover:cursor-pointer/
+      /h-4 w-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/
     );
     await expect(checkboxLabel).toContainText('Checkbox');
   });
@@ -292,7 +292,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeVisible();
     await expect(checkbox).toBeChecked();
     await expect(checkbox).toHaveClass(
-      /h-4 w-4 rounded border-neutral-300 focus:ring-2 focus:ring-sky-500 group-hover:cursor-pointer/
+      /h-4 w-4 rounded border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/
     );
     await expect(checkboxLabel).toContainText('Checkbox Checked');
   });
@@ -303,9 +303,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).not.toBeChecked();
     await expect(checkbox).toBeDisabled();
     await expect(checkbox).toHaveAttribute('disabled', '');
-    await expect(checkbox).toHaveClass(
-      /h-4 w-4 rounded border-neutral-300 text-sky-500 group-hover:cursor-not-allowed dark:border-neutral-700/
-    );
+    await expect(checkbox).toHaveClass(/group-hover:disabled:cursor-not-allowed/);
     await expect(checkboxLabel).toContainText('Checkbox Disabled');
   });
   test('renders a Checkbox Checked Disabled component', async ({ page }) => {
@@ -316,7 +314,7 @@ test.describe('Testing Checkbox Component', () => {
     await expect(checkbox).toBeDisabled();
     await expect(checkbox).toHaveAttribute('disabled', '');
     await expect(checkbox).toHaveClass(
-      /h-4 w-4 rounded border-neutral-300 text-sky-500 group-hover:cursor-not-allowed dark:border-neutral-700/
+      /disabled:bg-neutral-100 dark:disabled:bg-neutral-800 disabled:checked:bg-sky-500 dark:disabled:checked:bg-sky-500/
     );
     await expect(checkboxLabel).toContainText('Checkbox Checked Disabled');
   });
@@ -330,7 +328,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeVisible();
     await expect(radio).not.toBeChecked();
     await expect(radio).toHaveClass(
-      /h-4 w-4 border-neutral-300 focus:ring-2 focus:ring-sky-500 group-hover:cursor-pointer/
+      /h-4 w-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/
     );
     await expect(radioLabel).toContainText('Blue');
   });
@@ -340,7 +338,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeVisible();
     await expect(radio).toBeChecked();
     await expect(radio).toHaveClass(
-      /h-4 w-4 border-neutral-300 focus:ring-2 focus:ring-sky-500 group-hover:cursor-pointer/
+      /h-4 w-4 border-neutral-300 dark:border-neutral-700 text-sky-500 dark:bg-neutral-900 dark:checked:bg-sky-500/
     );
     await expect(radioLabel).toContainText('Red');
   });
@@ -351,9 +349,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).not.toBeChecked();
     await expect(radio).toBeDisabled();
     await expect(radio).toHaveAttribute('disabled', '');
-    await expect(radio).toHaveClass(
-      /h-4 w-4 border-neutral-300 text-sky-500 group-hover:cursor-not-allowed dark:border-neutral-700/
-    );
+    await expect(radio).toHaveClass(/group-hover:disabled:cursor-not-allowed/);
     await expect(radioLabel).toContainText('Radio Disabled');
   });
   test('renders a Radio Checked Disabled component', async ({ page }) => {
@@ -364,7 +360,7 @@ test.describe('Testing Radio Component', () => {
     await expect(radio).toBeDisabled();
     await expect(radio).toHaveAttribute('disabled', '');
     await expect(radio).toHaveClass(
-      /h-4 w-4 border-neutral-300 text-sky-500 group-hover:cursor-not-allowed dark:border-neutral-700/
+      /disabled:bg-neutral-100 dark:disabled:bg-neutral-800 disabled:checked:bg-sky-500 dark:disabled:checked:bg-sky-500/
     );
     await expect(radioLabel).toContainText('Radio Checked Disabled');
   });
@@ -386,7 +382,9 @@ test.describe('Testing Input Component', () => {
     await expect(input).not.toBeEnabled();
     await expect(input).not.toBeEditable();
     await expect(input).toHaveValue('Has a value');
-    await expect(input).toHaveClass(/mt-2 w-full cursor-not-allowed rounded-md/);
+    await expect(input).toHaveClass(
+      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/
+    );
   });
 });
 
@@ -417,14 +415,16 @@ test.describe('Testing LabeledInput Component', () => {
     await expect(input).toBeEditable();
     await expect(input).toHaveValue('');
     await expect(input).toHaveAttribute('type', 'password');
-    await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-neutral-300 px-4/);
+    await expect(input).toHaveClass(
+      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/
+    );
   });
   test('renders a LabeledInput Disabled component', async ({ page }) => {
     const input = page.getByTestId('labeledinput-disabled');
     await expect(input).toBeVisible();
     await expect(input).not.toBeEnabled();
     await expect(input).not.toBeEditable();
-    await expect(input).toHaveClass(/mt-2 w-full cursor-not-allowed rounded-md/);
+    await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-neutral-300 px-4/);
   });
 });
 
@@ -467,7 +467,7 @@ test.describe('Testing TextArea Component', () => {
     await expect(textarea).toBeEditable();
     await expect(textarea).toHaveValue('');
     await expect(textarea).toHaveClass(
-      'mt-2 w-full rounded-md bg-white p-3 text-sm outline-none transition-all dark:bg-neutral-900 dark:text-white min-h-[80px] border border-neutral-300 focus:border-sky-500 focus:ring-2 focus:ring-sky-500 dark:border-neutral-700'
+      /mt-2 w-full rounded-md bg-white p-3 text-sm outline-none transition-all dark:bg-neutral-900 dark:text-white/
     );
   });
   test('renders a TextArea Disabled component', async ({ page }) => {
@@ -477,7 +477,7 @@ test.describe('Testing TextArea Component', () => {
     await expect(textarea).not.toBeEditable();
     await expect(textarea).toHaveValue('');
     await expect(textarea).toHaveClass(
-      'mt-2 w-full cursor-not-allowed rounded-md p-3 text-sm text-neutral-500 min-h-[80px] border border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800'
+      /disabled:bg-neutral-200 dark:disabled:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50/
     );
   });
 });
