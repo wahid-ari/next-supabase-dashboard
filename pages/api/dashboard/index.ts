@@ -9,30 +9,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     case 'GET':
       const { data: authors } = await supabase.from('book_authors').select(`id`, { count: 'exact' });
       const { data: books } = await supabase.from('book_books').select(`id`, { count: 'exact' });
-      const { data: quotes } = await supabase.from('book_quotes').select(`id`, { count: 'exact' });
-      const { data: tags } = await supabase.from('book_tags').select(`id`, { count: 'exact' });
       const { data: genres } = await supabase.from('book_genres').select(`id`, { count: 'exact' });
 
       // const { count: authors } = await supabase.from('book_authors').select(`*`, { count: 'exact', head: true });
       // const { count: books } = await supabase.from('book_books').select(`*`, { count: 'exact', head: true });
-      // const { count: quotes } = await supabase.from('book_quotes').select(`*`, { count: 'exact', head: true });
-      // const { count: tags } = await supabase.from('book_tags').select(`*`, { count: 'exact', head: true });
       // const { count: genres } = await supabase.from('book_genres').select(`*`, { count: 'exact', head: true });
       // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
       res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
       // res.status(200).json({
       //   authors: authors,
       //   books: books,
-      //   quotes: quotes,
-      //   genres: genres,
-      //   tags: tags,
+      //   genres: genres
       // });
       res.status(200).json({
         authors: authors.length,
         books: books.length,
-        quotes: quotes.length,
         genres: genres.length,
-        tags: tags.length,
       });
       break;
 
