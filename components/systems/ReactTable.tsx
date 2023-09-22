@@ -116,7 +116,7 @@ export const ReactTable = forwardRef(
           <table
             {...getTableProps()}
             {...props}
-            className='w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300'
+            className='w-full whitespace-nowrap text-neutral-800 dark:text-neutral-100'
           >
             <thead>
               {headerGroups.map((headerGroup: any, i: number) => (
@@ -129,7 +129,7 @@ export const ReactTable = forwardRef(
                     <th
                       key={i + 1}
                       {...column.getHeaderProps(column.getSortByToggleProps())}
-                      className={`p-3 font-semibold first:w-1 ${column.Header == 'Action' && 'w-1'}
+                      className={`p-3 font-medium first:w-1 ${column.Header == 'Action' && 'w-1'}
                     ${bordered ? 'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800' : ''}`}
                     >
                       <span className='flex items-center gap-1.5'>
@@ -282,7 +282,7 @@ export const ReactTable = forwardRef(
               }}
               className={twMerge(
                 'w-[72px] rounded-md border border-neutral-300 bg-white px-3 py-[0.4rem] text-sm outline-none',
-                'transition-all focus:border-sky-500 focus:outline-none focus:ring-2',
+                'transition-all focus:border-transparent dark:focus:border-transparent focus:outline-none focus:ring-2',
                 'focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
               )}
               placeholder='1'
@@ -295,7 +295,7 @@ export const ReactTable = forwardRef(
               }}
               className={twMerge(
                 'block w-[110px] cursor-pointer rounded-md border border-neutral-300 bg-white px-3',
-                'py-[0.4rem] text-sm outline-none transition-all focus:border-sky-500 focus:outline-none',
+                'py-[0.4rem] text-sm outline-none transition-all focus:border-transparent dark:focus:border-transparent focus:outline-none',
                 'focus:ring-2 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
               )}
             >

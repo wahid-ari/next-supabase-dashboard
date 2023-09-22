@@ -31,7 +31,7 @@ export default function TableSimple({
       <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'>
         <table
           {...props}
-          className={twMerge('w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300', className)}
+          className={twMerge('w-full whitespace-nowrap text-neutral-800 dark:text-neutral-100', className)}
         >
           {caption && <caption className='my-3 caption-bottom text-[13px] dark:text-neutral-300'>{caption}</caption>}
           <thead>
@@ -97,7 +97,12 @@ TableSimple.th = ({ children, className, shrink, bordered, ...props }: ThProps) 
   return (
     <th
       {...props}
-      className={twMerge('p-3', shrink && 'w-1', bordered && 'border-x dark:border-x-neutral-800', className)}
+      className={twMerge(
+        'p-3 font-medium',
+        shrink && 'w-1',
+        bordered && 'border-x dark:border-x-neutral-800',
+        className
+      )}
     >
       {children}
     </th>

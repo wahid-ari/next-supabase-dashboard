@@ -15,7 +15,6 @@ const ToastViewport = React.forwardRef<
     ref={ref}
     className={cn(
       'fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]',
-      // FIX: remove ring that visible during closing toast using keyboard enter
       'ring-offset-white focus:outline-none focus:ring-offset-2 focus-visible:ring-0 dark:ring-offset-neutral-900',
       className
     )}

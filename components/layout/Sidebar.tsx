@@ -169,7 +169,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             Docs
           </NavLink.external>
         </div>
-        {/* FIX Logout button not visible in mobile  */}
+
         <hr className='mt-2 dark:border-neutral-800' />
 
         <div className='px-4 py-1.5'>

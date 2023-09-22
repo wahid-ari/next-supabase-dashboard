@@ -39,9 +39,9 @@ export default function Table({
       )}
     >
       <div className='w-full overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800 lg:max-w-[calc(100vw_-_17rem)]'>
-        <table {...props} className='w-full table-auto whitespace-nowrap text-neutral-700 dark:text-neutral-400'>
+        <table {...props} className='w-full table-auto whitespace-nowrap text-neutral-800 dark:text-neutral-100'>
           <thead>
-            <tr className='whitespace-nowrap border-b bg-neutral-50 text-sm font-bold dark:border-neutral-800 dark:bg-[#202020]'>
+            <tr className='whitespace-nowrap border-b bg-neutral-50 text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'>
               {head}
             </tr>
           </thead>
@@ -128,7 +128,7 @@ type TdProps = {
 
 Table.td = ({ children, className, shrink, ...props }: TdProps) => {
   return (
-    <td {...props} className={twMerge('p-4', shrink && 'w-1', className)}>
+    <td {...props} className={twMerge('p-3', shrink && 'w-1', className)}>
       {children}
     </td>
   );
@@ -143,7 +143,7 @@ type ThProps = {
 
 Table.th = ({ children, className, shrink, ...props }: ThProps) => {
   return (
-    <th {...props} className={twMerge('p-4', shrink && 'w-1', className)}>
+    <th {...props} className={twMerge('p-3 font-medium', shrink && 'w-1', className)}>
       {children}
     </th>
   );

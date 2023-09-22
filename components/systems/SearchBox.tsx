@@ -40,7 +40,7 @@ export default function SearchBox({
             onChange={onChangeQuery}
           />
           <Combobox.Button title='Show options' className='absolute inset-y-0 right-0 flex items-center pr-2'>
-            <ChevronDownIcon className='h-5 w-5 text-neutral-400' aria-hidden='true' />
+            <ChevronDownIcon className='h-5 w-5 dark:text-neutral-300 text-neutral-500' aria-hidden='true' />
           </Combobox.Button>
         </div>
         <Transition
