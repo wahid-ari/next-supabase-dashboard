@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import axios from 'axios';
-import { PlusIcon } from 'lucide-react';
+import { ChevronsUpDownIcon, ChevronUpIcon, PlusIcon } from 'lucide-react';
 import { mutate } from 'swr';
 import { twMerge } from 'tailwind-merge';
 
@@ -16,6 +16,7 @@ import InputDebounce from '@/components/systems/InputDebounce';
 import LinkButton from '@/components/systems/LinkButton';
 import ReactTable from '@/components/systems/ReactTable';
 import Shimmer from '@/components/systems/Shimmer';
+import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
 Book.auth = true;
@@ -203,7 +204,51 @@ export default function Book() {
       {data ? (
         <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} itemPerPage={[10, 20, 50, 100]} />
       ) : (
-        <Shimmer className='!h-60' />
+        <TableSimple
+          head={
+            <>
+              <TableSimple.th className='flex gap-1 items-center'>
+                No <ChevronUpIcon className='w-4 h-4 opacity-50' />
+              </TableSimple.th>
+              <TableSimple.th className='w-64 md:w-auto'>
+                <div className='flex gap-1 items-center'>
+                  Title <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                </div>
+              </TableSimple.th>
+              <TableSimple.th className='w-64'>
+                <div className='flex gap-1 items-center'>
+                  Author <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                </div>
+              </TableSimple.th>
+              <TableSimple.th className='w-32'>
+                <div className='flex gap-1 items-center'>
+                  Year <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                </div>
+              </TableSimple.th>
+              <TableSimple.th className='w-32'>Action</TableSimple.th>
+            </>
+          }
+        >
+          {[...Array(10).keys()].map((e, index) => (
+            <TableSimple.tr key={index}>
+              <TableSimple.td shrink>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+            </TableSimple.tr>
+          ))}
+        </TableSimple>
       )}
 
       <Dialog

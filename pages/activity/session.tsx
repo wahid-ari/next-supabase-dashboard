@@ -124,7 +124,41 @@ export default function Session() {
           })}
         </TableSimple>
       ) : (
-        <Shimmer className='!h-60' />
+        <TableSimple
+          head={
+            <>
+              <TableSimple.th shrink>No</TableSimple.th>
+              <TableSimple.th shrink>ID</TableSimple.th>
+              <TableSimple.th className='w-28'>Name</TableSimple.th>
+              <TableSimple.th className='text-left'>Token</TableSimple.th>
+              <TableSimple.th className='w-28'>Date</TableSimple.th>
+              <TableSimple.th className='w-28'>Time</TableSimple.th>
+            </>
+          }
+        >
+          {[...Array(5).keys()].map((e, index) => (
+            <TableSimple.tr key={index}>
+              <TableSimple.td shrink>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+            </TableSimple.tr>
+          ))}
+        </TableSimple>
       )}
     </Layout>
   );

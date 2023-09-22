@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as HoverCard from '@radix-ui/react-hover-card';
+import { ChevronsUpDownIcon, ChevronUpIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 import { useGenreData } from '@/libs/swr';
@@ -11,6 +12,7 @@ import Layout from '@/components/layout/Layout';
 import LabeledInput from '@/components/systems/LabeledInput';
 import ReactTable from '@/components/systems/ReactTable';
 import Shimmer from '@/components/systems/Shimmer';
+import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
 // Genre.auth = true;
@@ -110,29 +112,60 @@ export default function Genre() {
         {data ? <Title>{data?.name} Books</Title> : <Title>Genre Detail</Title>}
       </div>
 
+      <LabeledInput
+        label='Search Data'
+        id='caridata'
+        name='caridata'
+        placeholder='Keyword'
+        value={inputDebounce}
+        onChange={(e) => {
+          setInputDebounce(e.target.value);
+        }}
+      />
+
       {data ? (
         data?.books_by_genres?.length > 0 ? (
-          <>
-            <LabeledInput
-              label='Search Data'
-              id='caridata'
-              name='caridata'
-              placeholder='Keyword'
-              value={inputDebounce}
-              onChange={(e) => {
-                setInputDebounce(e.target.value);
-              }}
-            />
-
-            <ReactTable columns={column} data={data.books_by_genres} ref={tableInstance} page_size={20} />
-          </>
+          <ReactTable columns={column} data={data.books_by_genres} ref={tableInstance} page_size={20} />
         ) : (
           <div className='rounded border border-red-500 p-3'>
             <p className='text-red-500'>No Book in Genre {data?.name} </p>
           </div>
         )
       ) : (
-        <Shimmer className='!h-60' />
+        <TableSimple
+          head={
+            <>
+              <TableSimple.th className='flex gap-1 items-center'>
+                No <ChevronUpIcon className='w-4 h-4 opacity-50' />
+              </TableSimple.th>
+              <TableSimple.th className='text-left'>
+                <div className='flex gap-1 items-center'>
+                  Title <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                </div>
+              </TableSimple.th>
+              <TableSimple.th className='sm:w-48 md:w-64 lg:w-80'>
+                <div className='flex gap-1 items-center'>
+                  Author
+                  <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                </div>
+              </TableSimple.th>
+            </>
+          }
+        >
+          {[...Array(5).keys()].map((e, index) => (
+            <TableSimple.tr key={index}>
+              <TableSimple.td shrink>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+            </TableSimple.tr>
+          ))}
+        </TableSimple>
       )}
     </Layout>
   );

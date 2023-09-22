@@ -226,7 +226,30 @@ export default function Genre() {
           })}
         </TableSimple>
       ) : (
-        <Shimmer className='!h-60' />
+        <TableSimple
+          head={
+            <>
+              <TableSimple.th shrink>No</TableSimple.th>
+              <TableSimple.th className='text-left'>Name</TableSimple.th>
+              <TableSimple.th className='w-32'>Action</TableSimple.th>
+            </>
+          }
+        >
+          {[...Array(10).keys()].map((e, index) => (
+            <TableSimple.tr key={index}>
+              <TableSimple.td shrink>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td className='flex gap-2'>
+                <Shimmer className='p-3 w-full' />
+                <Shimmer className='p-3 w-full' />
+              </TableSimple.td>
+            </TableSimple.tr>
+          ))}
+        </TableSimple>
       )}
     </Layout>
   );

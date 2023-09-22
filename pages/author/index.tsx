@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
-import { ArrowUpRightIcon, PlusIcon } from 'lucide-react';
+import { ArrowUpRightIcon, ChevronsUpDownIcon, ChevronUpIcon, PlusIcon } from 'lucide-react';
 import { mutate } from 'swr';
 
 import { useAuthorsData } from '@/libs/swr';
@@ -14,6 +14,7 @@ import InputDebounce from '@/components/systems/InputDebounce';
 import LinkButton from '@/components/systems/LinkButton';
 import ReactTable from '@/components/systems/ReactTable';
 import Shimmer from '@/components/systems/Shimmer';
+import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
 Author.auth = true;
@@ -188,7 +189,43 @@ export default function Author() {
       {data ? (
         <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} itemPerPage={[10, 20, 50, 100]} />
       ) : (
-        <Shimmer className='!h-60' />
+        <TableSimple
+          head={
+            <>
+              <TableSimple.th className='flex gap-1 items-center'>
+                No <ChevronUpIcon className='w-4 h-4 opacity-50' />
+              </TableSimple.th>
+              <TableSimple.th className='w-64 md:w-80'>
+                <div className='flex gap-1 items-center'>
+                  Name <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                </div>
+              </TableSimple.th>
+              <TableSimple.th className='w-80 text-left'>Born</TableSimple.th>
+              <TableSimple.th className='w-44 text-left'>Web</TableSimple.th>
+              <TableSimple.th className='w-32 text-left'>Action</TableSimple.th>
+            </>
+          }
+        >
+          {[...Array(10).keys()].map((e, index) => (
+            <TableSimple.tr key={index}>
+              <TableSimple.td shrink>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+            </TableSimple.tr>
+          ))}
+        </TableSimple>
       )}
 
       <Dialog
