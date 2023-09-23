@@ -29,7 +29,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
               fill
               className={twMerge(
                 'rounded-full object-cover brightness-90 hover:brightness-100',
-                isLoading ? 'blur-2xl' : 'blur-0'
+                isLoading ? 'blur-sm' : 'blur-0'
               )}
               onLoadingComplete={() => setLoading(false)}
               unoptimized

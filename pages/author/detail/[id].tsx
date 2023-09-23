@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ArrowUpRightIcon, ImageIcon } from 'lucide-react';
+import { twMerge } from 'tailwind-merge';
 
 import { useAuthorData } from '@/libs/swr';
 
@@ -45,7 +46,7 @@ export default function Author() {
                 src={data?.image}
                 width={250}
                 height={250}
-                className={`mx-auto w-52 rounded ${isLoading ? 'blur-2xl' : 'blur-0'}`}
+                className={`mx-auto w-52 rounded ${isLoading ? 'blur-sm' : 'blur-0'}`}
                 onLoadingComplete={() => setLoading(false)}
                 unoptimized
               />
@@ -123,7 +124,7 @@ export default function Author() {
                           width={50}
                           height={70}
                           className={`w-14 rounded object-cover brightness-90 group-hover:brightness-100 ${
-                            isLoading ? 'blur-2xl' : 'blur-0'
+                            isLoading ? 'blur-sm' : 'blur-0'
                           }`}
                           onLoadingComplete={() => setLoading(false)}
                           unoptimized
@@ -150,9 +151,15 @@ export default function Author() {
             {data?.quotes?.length > 0 ? (
               <div className='mt-6'>
                 <Heading>{data?.name} Quotes</Heading>
-                {data?.quotes.map((item: any) => {
+                {data?.quotes.map((item: any, index: number) => {
                   return (
-                    <div key={item.id} className='mb-4 border-b pb-2 dark:border-b-neutral-700'>
+                    <div
+                      key={item.id}
+                      className={twMerge(
+                        'mb-4 pb-4',
+                        index < data?.quotes.length - 1 && 'border-b dark:border-b-neutral-800'
+                      )}
+                    >
                       <p className='text-[15px] font-medium text-neutral-900 dark:text-neutral-100'>
                         &#8220;{item.quote}&#8221;
                       </p>

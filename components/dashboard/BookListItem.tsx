@@ -29,7 +29,7 @@ export default function BookListItem({ href, image, title, published, ...props }
               fill
               className={twMerge(
                 'rounded object-cover brightness-90 hover:brightness-100',
-                isLoading ? 'blur-2xl' : 'blur-0'
+                isLoading ? 'blur-sm' : 'blur-0'
               )}
               onLoadingComplete={() => setLoading(false)}
               unoptimized
