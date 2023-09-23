@@ -580,7 +580,7 @@ test.describe('Testing Table Component', () => {
   test('renders a Table component', async ({ page }) => {
     const table = page.getByTestId('table');
     await expect(table).toBeVisible();
-    await expect(table).toHaveClass(/w-full table-auto whitespace-nowrap text-neutral-700 dark:text-neutral-100/);
+    await expect(table).toHaveClass(/w-full table-auto whitespace-nowrap text-neutral-800 dark:text-neutral-100/);
   });
   test('renders a Table.tr component', async ({ page }) => {
     const table = page.getByTestId('table-tr');

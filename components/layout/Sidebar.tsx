@@ -170,7 +170,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
           </NavLink.external>
         </div>
 
-        <hr className='mt-2 dark:border-neutral-800' />
+        <hr className='mt-2 dark:border-neutral-800 mx-7 lg:mx-0' />
 
         <div className='px-4 py-1.5'>
           <button
