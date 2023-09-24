@@ -51,15 +51,14 @@ export default function Table({
       {noPagination ? (
         ''
       ) : (
-        <div className='bg-white text-xs font-medium text-neutral-500 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-400'>
+        <div className='bg-white text-[13px] font-medium text-neutral-600 dark:border-neutral-800 dark:bg-transparent dark:text-neutral-300'>
           <div className='flex w-full items-center justify-between gap-2 px-4 py-3'>
             {rowPerPage === 5 ? (
               totalData === 0 ? (
                 <p className='whitespace-nowrap'>No data</p>
               ) : (
                 <p className='whitespace-nowrap'>
-                  Showing <span className='font-bold'>{(currentPage - 1) * 5 + 1}</span> -{' '}
-                  <span className='font-bold'>{currentPage * 5}</span>{' '}
+                  Showing {(currentPage - 1) * 5 + 1} - {currentPage * 5}{' '}
                   {/* dari <span className="font-bold">{totalData}</span> data */}
                 </p>
               )
@@ -67,9 +66,8 @@ export default function Table({
               <p className='whitespace-nowrap'>No data</p>
             ) : (
               <p className='whitespace-nowrap'>
-                Showing <span className='font-bold'>{(currentPage - 1) * 5 + 1}</span> -{' '}
-                <span className='font-bold'>{currentPage !== totalPage ? currentPage * 5 : totalData}</span> from{' '}
-                <span className='font-bold'>{totalData}</span> data
+                Showing {(currentPage - 1) * 5 + 1} - {currentPage !== totalPage ? currentPage * 5 : totalData} from{' '}
+                {totalData} data
               </p>
             )}
             <div className='flex items-center justify-end gap-2'>
