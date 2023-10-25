@@ -1426,6 +1426,7 @@ function dissmissAllToast() {
           onChange={(e) => setInputDebounce(e.target.value)}
         />
         <Text data-testid='input-debounce-hook-text'>{debouncedValue}</Text>
+        <Text>Slower</Text>
       </Wrapper>
 
       <Wrapper
@@ -1453,6 +1454,7 @@ function dissmissAllToast() {
           data-testid='inputdebounce'
         />
         <Text data-testid='inputdebounce-text'>{inputDebounceValue}</Text>
+        <Text>Faster</Text>
       </Wrapper>
 
       <Wrapper

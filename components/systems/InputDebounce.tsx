@@ -19,7 +19,7 @@ export default function InputDebounce({
   name,
   label,
   placeholder,
-  value: initialValue,
+  value,
   defaultValue,
   onChange,
   type,
@@ -28,18 +28,18 @@ export default function InputDebounce({
   debounce = 300,
   ...props
 }: Props) {
-  const [value, setValue] = useState(initialValue || defaultValue);
+  const [debounceValue, setDebounceValue] = useState(value || defaultValue);
 
   useEffect(() => {
-    setValue(initialValue);
-  }, [initialValue]);
+    setDebounceValue(value);
+  }, [value]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      onChange(value);
+      onChange(debounceValue);
     }, debounce);
     return () => clearTimeout(timeout);
-  }, [value, debounce, onChange]);
+  }, [debounceValue, debounce, onChange]);
 
   return (
     <div className={`mb-4 ${wrapperClassName}`}>
@@ -52,9 +52,9 @@ export default function InputDebounce({
         type={type}
         name={name}
         placeholder={placeholder}
-        value={value}
+        value={debounceValue}
         defaultValue={defaultValue}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => setDebounceValue(e.target.value)}
         className={twMerge(
           'mt-2 w-full rounded-md border border-neutral-300 px-4 py-[0.6rem] text-sm font-medium outline-none transition-all',
           'bg-white text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100',

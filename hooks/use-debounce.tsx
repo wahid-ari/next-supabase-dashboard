@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
-// FIX rename this hook to use-debounce
-export function useDebounce<T>(value: T, delay?: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+export function useDebounce(value: string, delay?: number) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedValue(value), delay || 500);
