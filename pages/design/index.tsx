@@ -48,6 +48,7 @@ import ReactTable from '@/components/systems/ReactTable';
 import SearchBox from '@/components/systems/SearchBox';
 import Section from '@/components/systems/Section';
 import Select from '@/components/systems/Select';
+import SelectBox from '@/components/systems/SelectBox';
 import Shimmer from '@/components/systems/Shimmer';
 import ShowMore from '@/components/systems/ShowMore';
 import Table from '@/components/systems/Table';
@@ -286,6 +287,11 @@ export default function Example() {
 
   function onPrev() {}
 
+  const [selectBox, setSelectBox] = useState();
+  function handleSelectBoxChange(e) {
+    setSelectBox(e);
+  }
+
   const [selectedSearchBox, setSelectedSearchBox] = useState();
   const [querySearchBox, setQuerySearchBox] = useState('');
   const filteredSearchBox =
@@ -483,6 +489,11 @@ export default function Example() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#modal'>
               Modal
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#selectbox'>
+              SelectBox
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -949,23 +960,38 @@ export default function Example() {
       </Wrapper>
 
       <Wrapper
+        id='selectbox'
+        name='SelectBox'
+        noClassName
+        noChildren
+        props={['label', 'name', 'value', 'placeholder', 'onChange', 'options']}
+      >
+        <SelectBox
+          data-testid='selectbox'
+          label='Select Box'
+          placeholder='Select Box'
+          value={selectBox}
+          onChange={handleSelectBoxChange}
+          options={searchBoxData}
+        />
+      </Wrapper>
+
+      <Wrapper
         id='searchbox'
         name='SearchBox'
         noClassName
-        noProps
         noChildren
-        props={['label', 'value', 'placeholder', 'onChange', 'query', 'onChangeQuery', 'afterLeave', 'filtered']}
+        props={['label', 'name', 'value', 'placeholder', 'onChange', 'query', 'onChangeQuery', 'options']}
       >
         <SearchBox
           data-testid='searchbox'
           label='Search Box'
-          value={selectedSearchBox}
           placeholder='Search or Select'
+          value={selectedSearchBox}
           onChange={setSelectedSearchBox}
-          onChangeQuery={(e) => setQuerySearchBox(e.target.value)}
-          afterLeave={() => setQuerySearchBox('')}
-          filtered={filteredSearchBox}
           query={querySearchBox}
+          onChangeQuery={(e) => setQuerySearchBox(e.target.value)}
+          options={filteredSearchBox}
         />
       </Wrapper>
 
@@ -993,19 +1019,16 @@ export default function Example() {
           id='reactselect'
           instanceId='reactselect'
           aria-label='React Select'
-          // @ts-ignore
-          options={reactSelectData}
-          isMulti
+          placeholder='Search or Select'
+          name='reactselect'
+          classNamePrefix='react-select'
           noOptionsMessage={() => 'Not Found'}
           value={reactSelect}
           // @ts-ignore
+          options={reactSelectData}
+          // @ts-ignore
           onChange={setReactSelect}
-          placeholder='Search or Select'
-          name='reactselect'
-          classNames={{
-            option: (option) => (option.isSelected ? '!border-red-600' : '!border-grey-300'),
-          }}
-          classNamePrefix='react-select'
+          isMulti
           theme={(theme) => ({
             ...theme,
             colors: {
