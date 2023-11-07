@@ -186,7 +186,7 @@ export default function Dashboard() {
           </div>
           {bookByGenre ? (
             <div className='m-auto w-80 py-3'>
-              <ResponsiveContainer width='100%' height={350}>
+              <ResponsiveContainer width='99%' height={350}>
                 <PieChart data={bookByGenre}>
                   <PieRecharts
                     className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
@@ -247,7 +247,7 @@ export default function Dashboard() {
           </div>
           <div className='m-auto p-3'>
             {bookByAuthor ? (
-              <ResponsiveContainer width='100%' height={350}>
+              <ResponsiveContainer width='99%' height={350}>
                 <BarChart
                   data={bookByAuthor}
                   barCategoryGap={
