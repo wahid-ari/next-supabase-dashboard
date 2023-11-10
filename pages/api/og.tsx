@@ -95,7 +95,7 @@ export default async function handler(req: NextApiRequest) {
       { width: 1200, height: 630 }
     );
   } catch (e) {
-    console.log(`${e.message}`);
+    console.error(`${e.message}`);
     return new Response(`Failed to generate the image`, {
       status: 500,
     });
