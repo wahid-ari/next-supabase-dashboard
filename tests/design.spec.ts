@@ -805,6 +805,9 @@ test.describe('Testing SelectBox Component', () => {
     await expect(selectbox).toHaveClass(
       /h-10 relative my-2 w-full text-left border transition-all rounded-md cursor-pointer text-sm/,
     );
+  });
+  test('selecting option in SelectBox component', async ({ page }) => {
+    const selectbox = page.getByTestId('selectbox');
     await selectbox.click();
     await expect(page.getByRole('option', { name: 'Select 1' })).toBeVisible();
     await expect(page.getByRole('option', { name: 'Select 1' })).toHaveClass(
@@ -824,6 +827,9 @@ test.describe('Testing SearchBox Component', () => {
     await expect(searchbox).toHaveClass(
       /w-full rounded-md py-2 pl-3 pr-10 text-sm text-neutral-900 dark:bg-neutral-900 dark:text-white/,
     );
+  });
+  test('selecting option in SearchBox component', async ({ page }) => {
+    const searchbox = page.getByTestId('searchbox');
     await searchbox.fill('Option 1');
     await expect(page.getByRole('option', { name: 'Option 1' })).toBeVisible();
     await expect(page.getByRole('option', { name: 'Option 1' })).toHaveClass(/relative cursor-pointer py-2 pl-10 pr-4/);
