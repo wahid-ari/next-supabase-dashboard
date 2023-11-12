@@ -57,7 +57,7 @@ ChartJS.register(
   ArcElement,
   Tooltip,
   Filler,
-  Legend
+  Legend,
 );
 
 // Dashboard.auth = true;

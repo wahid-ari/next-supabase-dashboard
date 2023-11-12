@@ -157,7 +157,7 @@ export default function Author() {
                       key={item.id}
                       className={twMerge(
                         'mb-4 pb-4',
-                        index < data?.quotes.length - 1 && 'border-b dark:border-b-neutral-800'
+                        index < data?.quotes.length - 1 && 'border-b dark:border-b-neutral-800',
                       )}
                     >
                       <p className='text-[15px] font-medium text-neutral-900 dark:text-neutral-100'>

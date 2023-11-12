@@ -151,7 +151,7 @@ export default function Author() {
         },
       },
     ],
-    []
+    [],
   );
 
   const tableInstance = useRef(null);

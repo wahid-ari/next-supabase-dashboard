@@ -39,7 +39,7 @@ export function useBookData(id: string, slug?: string) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/book?slug=${slug}` : `${API_URL}/book?id=${id}`,
     fetcher,
-    { refreshInterval: 1000 }
+    { refreshInterval: 1000 },
   );
   return { data, error, isLoading };
 }
@@ -53,7 +53,7 @@ export function useAuthorData(id: string, slug?: string) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/author?slug=${slug}` : `${API_URL}/author?id=${id}`,
     fetcher,
-    { refreshInterval: 1000 }
+    { refreshInterval: 1000 },
   );
   return { data, error, isLoading };
 }
@@ -73,7 +73,7 @@ export function useGenreData(id: string, slug?: boolean) {
   const { data, error, isLoading } = useSWR(
     slug ? `${API_URL}/genre?slug=${slug}` : `${API_URL}/genre?id=${id}`,
     fetcher,
-    { refreshInterval: 1000 }
+    { refreshInterval: 1000 },
   );
   return { data, error, isLoading };
 }

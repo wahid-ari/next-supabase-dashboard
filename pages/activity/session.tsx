@@ -32,7 +32,7 @@ export default function Session() {
           item.book_users.name
             .toLowerCase()
             .replace(/\s+/g, '')
-            .includes(inputDebounceValue.toLowerCase().replace(/\s+/g, ''))
+            .includes(inputDebounceValue.toLowerCase().replace(/\s+/g, '')),
         );
 
   async function handleDeleteAll() {

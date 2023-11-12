@@ -58,7 +58,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             name: data.name,
             type: data.type,
           },
-          process.env.NEXTAUTH_SECRET
+          process.env.NEXTAUTH_SECRET,
         );
         const { error: errorSession } = await supabase.from('book_sessions').insert({ user_id: data.id, token: token });
         if (errorSession) console.error('error inserting session', errorSession);
