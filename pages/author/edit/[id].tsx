@@ -19,7 +19,7 @@ export default function Author() {
   const router = useRouter();
   const id = router.query?.id as string;
   const { data, error } = useAuthorData(id);
-  const { updateToast, pushToast } = useToast();
+  const { updateToast, pushToast, dismissToast } = useToast();
   const [editItem, setEditItem] = useState({
     name: '',
     link: '',
@@ -58,7 +58,20 @@ export default function Author() {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      if (Array.isArray(error?.response?.data?.error)) {
+        const errors = [...error?.response?.data?.error].reverse();
+        // show all error
+        dismissToast();
+        errors.forEach((item: any) => {
+          pushToast({ message: item?.message, isError: true });
+        });
+        // only show one error
+        // errors.map((item: any) => {
+        //   updateToast({ toastId, message: item?.message, isError: true });
+        // })
+      } else {
+        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      }
     }
   }
 

@@ -24,7 +24,7 @@ export default function Book() {
   const { data, error } = useBookData(id);
   const { data: authors, error: errorAuthors } = useAuthorsData();
   const { data: genres, error: errorGenres } = useGenresData();
-  const { updateToast, pushToast } = useToast();
+  const { updateToast, pushToast, dismissToast } = useToast();
   const [editItem, setEditItem] = useState({
     author_id: null,
     title: '',
@@ -127,7 +127,20 @@ export default function Book() {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      if (Array.isArray(error?.response?.data?.error)) {
+        const errors = [...error?.response?.data?.error].reverse();
+        // show all error
+        dismissToast();
+        errors.forEach((item: any) => {
+          pushToast({ message: item?.message, isError: true });
+        });
+        // only show one error
+        // errors.map((item: any) => {
+        //   updateToast({ toastId, message: item?.message, isError: true });
+        // })
+      } else {
+        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      }
     }
   }
 

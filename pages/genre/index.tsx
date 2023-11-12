@@ -20,7 +20,7 @@ import Title from '@/components/systems/Title';
 
 export default function Genre() {
   const { data, error } = useGenresData();
-  const { updateToast, pushToast } = useToast();
+  const { updateToast, pushToast, dismissToast } = useToast();
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -51,7 +51,20 @@ export default function Genre() {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      if (Array.isArray(error?.response?.data?.error)) {
+        const errors = [...error?.response?.data?.error].reverse();
+        // show all error
+        dismissToast();
+        errors.forEach((item: any) => {
+          pushToast({ message: item?.message, isError: true });
+        });
+        // only show one error
+        // errors.map((item: any) => {
+        //   updateToast({ toastId, message: item?.message, isError: true });
+        // })
+      } else {
+        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      }
     }
   }
 
@@ -70,7 +83,20 @@ export default function Genre() {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      if (Array.isArray(error?.response?.data?.error)) {
+        const errors = [...error?.response?.data?.error].reverse();
+        // show all error
+        dismissToast();
+        errors.forEach((item: any) => {
+          pushToast({ message: item?.message, isError: true });
+        });
+        // only show one error
+        // errors.map((item: any) => {
+        //   updateToast({ toastId, message: item?.message, isError: true });
+        // })
+      } else {
+        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      }
     }
   }
 
