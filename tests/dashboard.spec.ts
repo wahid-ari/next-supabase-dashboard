@@ -37,14 +37,26 @@ test.describe('Testing Data Count', () => {
 });
 
 test.describe('Testing Statistic', () => {
-  test('page show statistic Total Book by Genre', async ({ page }) => {
-    const bookByGenre = page.getByText('Total Book by Genre');
+  test('page show statistic Total Book by Genre (Recharts)', async ({ page }) => {
+    const bookByGenre = page.getByText('Total Book by Genre (Recharts)', { exact: true });
     await expect(bookByGenre).toBeVisible();
-    await expect(bookByGenre).toContainText('Total Book by Genre');
+    await expect(bookByGenre).toHaveText('Total Book by Genre (Recharts)');
+    await expect(bookByGenre).toHaveClass(/text-sm font-medium text-neutral-700 dark:text-neutral-200/);
+  });
+  test('page show statistic Total Book by Author (Recharts)', async ({ page }) => {
+    const bookByAuthor = page.getByText('Total Book by Author (Recharts)', { exact: true });
+    await expect(bookByAuthor).toBeVisible();
+    await expect(bookByAuthor).toContainText('Total Book by Author (Recharts)');
+    await expect(bookByAuthor).toHaveClass(/text-sm font-medium text-neutral-700 dark:text-neutral-200/);
+  });
+  test('page show statistic Total Book by Genre', async ({ page }) => {
+    const bookByGenre = page.getByText('Total Book by Genre', { exact: true });
+    await expect(bookByGenre).toBeVisible();
+    await expect(bookByGenre).toHaveText('Total Book by Genre');
     await expect(bookByGenre).toHaveClass(/text-sm font-medium text-neutral-700 dark:text-neutral-200/);
   });
   test('page show statistic Total Book by Author', async ({ page }) => {
-    const bookByAuthor = page.getByText('Total Book by Author');
+    const bookByAuthor = page.getByText('Total Book by Author', { exact: true });
     await expect(bookByAuthor).toBeVisible();
     await expect(bookByAuthor).toContainText('Total Book by Author');
     await expect(bookByAuthor).toHaveClass(/text-sm font-medium text-neutral-700 dark:text-neutral-200/);
