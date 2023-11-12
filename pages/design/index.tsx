@@ -59,6 +59,21 @@ import TextArea from '@/components/systems/TextArea';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
 
+const selectBoxData = [
+  {
+    id: 1,
+    name: 'Select 1',
+  },
+  {
+    id: 2,
+    name: 'Select 2',
+  },
+  {
+    id: 3,
+    name: 'Select 3',
+  },
+];
+
 const searchBoxData = [
   {
     id: 1,
@@ -292,7 +307,7 @@ export default function Example() {
     setSelectBox(e);
   }
 
-  const [selectedSearchBox, setSelectedSearchBox] = useState();
+  const [selectedSearchBox, setSelectedSearchBox] = useState(null);
   const [querySearchBox, setQuerySearchBox] = useState('');
   const filteredSearchBox =
     querySearchBox === ''
@@ -972,7 +987,7 @@ export default function Example() {
           placeholder='Select Box'
           value={selectBox}
           onChange={handleSelectBoxChange}
-          options={searchBoxData}
+          options={selectBoxData}
         />
       </Wrapper>
 
@@ -993,6 +1008,7 @@ export default function Example() {
           onChangeQuery={(e) => setQuerySearchBox(e.target.value)}
           options={filteredSearchBox}
         />
+        <Text data-testid='searchbox-value'>{selectedSearchBox?.name}</Text>
       </Wrapper>
 
       <Wrapper
