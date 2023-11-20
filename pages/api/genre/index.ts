@@ -82,6 +82,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           res.status(200).json({ message: 'Success add genre' });
+          return;
         }
       }
       break;
@@ -112,6 +113,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           res.status(201).json({ message: 'Success update genre' });
+          return;
         }
       }
       break;
@@ -136,6 +138,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           res.status(200).json({ message: 'Success delete genre' });
+          return;
         }
       }
       break;

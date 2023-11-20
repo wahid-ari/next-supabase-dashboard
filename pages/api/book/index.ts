@@ -126,6 +126,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           res.status(200).json({ message: 'Success add book' });
+          return;
         }
       }
       break;
@@ -194,6 +195,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           res.status(201).json({ message: 'Success update book' });
+          return;
         }
       }
       break;
@@ -220,6 +222,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
           res.status(200).json({ message: 'Success delete book' });
+          return;
         }
       }
       break;
