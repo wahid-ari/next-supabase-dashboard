@@ -19,7 +19,7 @@ export default function Login() {
   const [form, setForm] = useState({ username: 'develop', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { updateToast, pushToast } = useToast();
+  const { updateToast, pushToast, dismissToast } = useToast();
   const { status } = useSession();
 
   useEffect(() => {
@@ -69,8 +69,25 @@ export default function Login() {
           });
         }
       } catch (error) {
-        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
         console.error(error);
+        if (Array.isArray(error?.response?.data?.message)) {
+          const errors = [...error?.response?.data?.message].reverse();
+          // show all error
+          dismissToast();
+          errors.forEach((item: any) => {
+            pushToast({ message: item?.message, isError: true });
+          });
+          // only show one error
+          // errors.map((item: any) => {
+          //   updateToast({ toastId, message: item?.message, isError: true });
+          // })
+        } else {
+          updateToast({
+            toastId,
+            message: error?.response?.data?.message,
+            isError: true,
+          });
+        }
       }
     }
     setTimeout(() => {

@@ -40,6 +40,10 @@ export default function Register() {
   async function handleRegister(e: any) {
     e.preventDefault();
     setLoading(true);
+    const toastId = pushToast({
+      message: 'Registering...',
+      isLoading: true,
+    });
     try {
       const { valid, errors } = await validateRegister(form);
       if (!valid && errors) {
@@ -70,9 +74,25 @@ export default function Register() {
         Router.replace('/dashboard');
       }
     } catch (error) {
-      dismissToast();
-      pushToast({ message: error?.response?.data?.message, isError: true });
       console.error(error);
+      if (Array.isArray(error?.response?.data?.message)) {
+        const errors = [...error?.response?.data?.message].reverse();
+        // show all error
+        dismissToast();
+        errors.forEach((item: any) => {
+          pushToast({ message: item?.message, isError: true });
+        });
+        // only show one error
+        // errors.map((item: any) => {
+        //   updateToast({ toastId, message: item?.message, isError: true });
+        // })
+      } else {
+        updateToast({
+          toastId,
+          message: error?.response?.data?.message,
+          isError: true,
+        });
+      }
     }
     setLoading(false);
   }

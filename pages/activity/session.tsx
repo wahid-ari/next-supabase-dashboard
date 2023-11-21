@@ -50,7 +50,12 @@ export default function Session() {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+      const { detail } = error?.response?.data;
+      if (detail) {
+        updateToast({ toastId, message: detail, isError: true });
+      } else {
+        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
+      }
     }
   }
 
