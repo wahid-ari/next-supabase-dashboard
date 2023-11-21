@@ -98,7 +98,7 @@ export default function Register() {
       <>
         <HeadSeo title='Register - MyBook' description='Register - MyBook' />
 
-        <div className='min-h-screen w-screen text-sm font-medium dark:bg-white sm:grid sm:grid-cols-2 '>
+        <div className='min-h-screen w-screen text-sm font-medium dark:bg-white sm:grid sm:grid-cols-2'>
           <div className='banner flex flex-col justify-between gap-2 p-8 sm:hidden'>
             <div>
               <h1 className='text-4xl font-bold text-white'>MyBook</h1>
@@ -129,11 +129,11 @@ export default function Register() {
                 src='/icon.png'
                 width={100}
                 height={100}
-                className='mx-auto mb-16 hidden sm:block'
+                className='mx-auto mb-4 hidden sm:block'
                 unoptimized
               />
 
-              <Heading h1 className='mb-6 font-semibold !text-neutral-800'>
+              <Heading h1 className='mb-4 font-semibold !text-neutral-800'>
                 Register
               </Heading>
 
