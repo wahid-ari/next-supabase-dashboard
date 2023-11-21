@@ -17,6 +17,7 @@ export default function Login() {
   const router = useRouter();
   const callbackUrl = router.query.callbackUrl as string;
   const [form, setForm] = useState({ username: 'develop', password: '' });
+  const formFilled = form.username !== '' && form.password !== '';
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { updateToast, pushToast, dismissToast } = useToast();
@@ -33,66 +34,51 @@ export default function Login() {
   async function handleSubmit(e: any) {
     e.preventDefault();
     setLoading(true);
-    let isError = false;
-    if (!form.username) {
-      isError = true;
-      pushToast({ message: "Username can't be empty", isError: true });
-    }
-    if (!form.password) {
-      isError = true;
-      pushToast({ message: "Password can't be empty", isError: true });
-    }
-
-    // jika tidak ada error save data
-    if (!isError) {
-      const toastId = pushToast({
-        message: 'Login...',
-        isLoading: true,
-      });
-      try {
-        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/login`, form);
-        if (res.status == 200) {
-          // NextAuth
-          const { id, username, name, type, token } = res.data;
-          signIn('credentials', {
-            id,
-            username,
-            name,
-            type,
-            token,
-            callbackUrl: callbackUrl || '/dashboard',
-          });
-          updateToast({
-            toastId,
-            message: 'Success Login',
-            isError: false,
-          });
-        }
-      } catch (error) {
-        console.error(error);
-        if (Array.isArray(error?.response?.data?.message)) {
-          const errors = [...error?.response?.data?.message].reverse();
-          // show all error
-          dismissToast();
-          errors.forEach((item: any) => {
-            pushToast({ message: item?.message, isError: true });
-          });
-          // only show one error
-          // errors.map((item: any) => {
-          //   updateToast({ toastId, message: item?.message, isError: true });
-          // })
-        } else {
-          updateToast({
-            toastId,
-            message: error?.response?.data?.message,
-            isError: true,
-          });
-        }
+    const toastId = pushToast({
+      message: 'Login...',
+      isLoading: true,
+    });
+    try {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/login`, form);
+      if (res.status == 200) {
+        // NextAuth
+        const { id, username, name, type, token } = res.data;
+        signIn('credentials', {
+          id,
+          username,
+          name,
+          type,
+          token,
+          callbackUrl: callbackUrl || '/dashboard',
+        });
+        updateToast({
+          toastId,
+          message: 'Success Login',
+          isError: false,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      if (Array.isArray(error?.response?.data?.message)) {
+        const errors = [...error?.response?.data?.message].reverse();
+        // show all error
+        dismissToast();
+        errors.forEach((item: any) => {
+          pushToast({ message: item?.message, isError: true });
+        });
+        // only show one error
+        // errors.map((item: any) => {
+        //   updateToast({ toastId, message: item?.message, isError: true });
+        // })
+      } else {
+        updateToast({
+          toastId,
+          message: error?.response?.data?.message,
+          isError: true,
+        });
       }
     }
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    setLoading(false);
   }
 
   if (status === 'loading') {
@@ -198,7 +184,7 @@ export default function Login() {
                   </div>
                 </div>
 
-                <Button type='submit' className='w-full !text-base'>
+                <Button type='submit' className='w-full !text-base' disabled={!formFilled || loading}>
                   {loading ? 'Logging in...' : 'Login'}
                 </Button>
               </form>
