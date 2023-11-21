@@ -29,6 +29,8 @@ import {
   YAxis,
 } from 'recharts';
 
+import { options, optionsBarChart, optionsHorizontalBarChart, populateData } from '@/libs/chart-setup';
+import { CustomTooltip, CustomXAxisTick, RECHARTS_COLORS, renderColorfulLegendText } from '@/libs/recharts-setup';
 import {
   useBookByAuthorData,
   useBookByGenreData,
@@ -37,8 +39,6 @@ import {
   useTotalBooksData,
   useTotalGenresData,
 } from '@/libs/swr';
-import { options, optionsBarChart, optionsHorizontalBarChart, populateData } from '@/utils/chart-setup';
-import { CustomTooltip, CustomXAxisTick, RECHARTS_COLORS, renderColorfulLegendText } from '@/utils/recharts-setup';
 import useWindowSize from '@/hooks/use-window-size';
 
 import Card from '@/components/dashboard/Card';
