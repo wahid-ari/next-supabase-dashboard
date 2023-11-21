@@ -71,7 +71,7 @@ export default function Register() {
       }
     } catch (error) {
       dismissToast();
-      pushToast({ message: error?.response?.data?.error, isError: true });
+      pushToast({ message: error?.response?.data?.message, isError: true });
       console.error(error);
     }
     setLoading(false);

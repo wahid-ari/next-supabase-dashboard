@@ -69,7 +69,7 @@ export default function Login() {
           });
         }
       } catch (error) {
-        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
         console.error(error);
       }
     }
