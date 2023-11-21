@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const sessionPost = await getSessionToken(res, header, token);
       if (sessionPost) {
         if (!body.name) {
-          res.status(422).json({ error: 'Name required' });
+          res.status(422).json({ message: 'Name required' });
           return;
         } else {
           let nameSlug = slug(body.name);
@@ -75,13 +75,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             },
           ]);
           if (error) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ message: error.message });
             return;
           }
           // Write logs
           const errorLogs = await writeLogs(sessionPost.user_id, 'create', 'author');
           if (errorLogs) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ message: error.message });
             return;
           }
           res.status(200).json({ message: 'Success add author' });
@@ -95,7 +95,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const sessionPut = await getSessionToken(res, header, token);
       if (sessionPut) {
         if (!body.name) {
-          res.status(422).json({ error: 'Name required' });
+          res.status(422).json({ message: 'Name required' });
           return;
         } else {
           const { error } = await supabase
@@ -110,13 +110,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             })
             .eq('id', body.id);
           if (error) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ message: error.message });
             return;
           }
           // Write logs
           const errorLogs = await writeLogs(sessionPut.user_id, 'update', 'author', body.id);
           if (errorLogs) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ message: error.message });
             return;
           }
           res.status(201).json({ message: 'Success update author' });
@@ -130,18 +130,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const sessionDelete = await getSessionToken(res, header, token);
       if (sessionDelete) {
         if (!query.id) {
-          res.status(422).json({ error: 'Id required' });
+          res.status(422).json({ message: 'Id required' });
           return;
         } else {
           const { error } = await supabase.from('book_authors').delete().eq('id', query.id);
           if (error) {
-            res.status(422).json({ error: error.message, detail: error.details });
+            res.status(422).json({ message: error.message, detail: error.details });
             return;
           }
           // Write logs
           const errorLogs = await writeLogs(sessionDelete.user_id, 'delete', 'author', query.id);
           if (errorLogs) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ message: error.message });
             return;
           }
           res.status(200).json({ message: 'Success delete author' });
