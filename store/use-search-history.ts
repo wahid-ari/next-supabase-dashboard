@@ -9,24 +9,24 @@ const searchHistoryAtom = atomWithStorage('search-history', {
 export function useSearchHistory() {
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
   function addBooksHistory(book: any) {
-    setSearchHistory({ ...searchHistory, books: searchHistory.books.concat(book) });
+    setSearchHistory((prev) => ({ ...prev, books: searchHistory.books.concat(book) }));
   }
   function addAuthorsHistory(author: any) {
-    setSearchHistory({ ...searchHistory, authors: searchHistory.authors.concat(author) });
+    setSearchHistory((prev) => ({ ...prev, authors: searchHistory.authors.concat(author) }));
   }
   function removeBooksHistory(id: any) {
     let booksFilter = searchHistory.books.filter((book) => book.id !== id);
-    setSearchHistory({ ...searchHistory, books: booksFilter });
+    setSearchHistory((prev) => ({ ...prev, books: booksFilter }));
   }
   function removeAuthorsHistory(id: any) {
     let authorsFilter = searchHistory.authors.filter((author) => author.id !== id);
-    setSearchHistory({ ...searchHistory, authors: authorsFilter });
+    setSearchHistory((prev) => ({ ...prev, authors: authorsFilter }));
   }
   function resetBooksHistory() {
-    setSearchHistory({ ...searchHistory, books: [] });
+    setSearchHistory((prev) => ({ ...prev, books: [] }));
   }
   function resetAuthorsHistory() {
-    setSearchHistory({ ...searchHistory, authors: [] });
+    setSearchHistory((prev) => ({ ...prev, authors: [] }));
   }
   function resetAllSearchHistory() {
     setSearchHistory({
