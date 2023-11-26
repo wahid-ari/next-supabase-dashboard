@@ -47,7 +47,7 @@ export default function Book() {
                 width={250}
                 height={250}
                 className={`mx-auto w-52 rounded ${isLoading ? 'blur-sm' : 'blur-0'}`}
-                onLoadingComplete={() => setLoading(false)}
+                onLoad={() => setLoading(false)}
                 unoptimized
               />
             </div>
@@ -138,7 +138,7 @@ export default function Book() {
                       className={`h-20 w-20 rounded-full object-cover brightness-90 transition-all duration-300 hover:brightness-100 ${
                         isLoading ? 'blur-sm' : 'blur-0'
                       }`}
-                      onLoadingComplete={() => setLoading(false)}
+                      onLoad={() => setLoading(false)}
                       unoptimized
                     />
                   </Link>
