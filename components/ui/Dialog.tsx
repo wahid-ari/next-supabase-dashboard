@@ -4,7 +4,13 @@ import * as React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
 
+
+
 import { cn } from '@/libs/utils';
+
+
+
+
 
 const Dialog = DialogPrimitive.Root;
 
@@ -32,8 +38,10 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ children, className, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+    closeClassName?: string;
+  }
+>(({ children, className, closeClassName, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
     <DialogPrimitive.Content
@@ -51,6 +59,7 @@ const DialogContent = React.forwardRef<
         className={cn(
           'absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 disabled:pointer-events-none',
           'ring-offset-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:ring-offset-neutral-900',
+          closeClassName,
         )}
       >
         <X className='h-4 w-4' />
