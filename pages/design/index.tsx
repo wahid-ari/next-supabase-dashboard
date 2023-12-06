@@ -307,7 +307,7 @@ export default function Example() {
       setSlicedTableData(tabledata.slice((currentPage + 1) * rowPerPage - rowPerPage, (currentPage + 1) * rowPerPage));
     }
   }
-  
+
   function onPrev() {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
