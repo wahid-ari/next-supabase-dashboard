@@ -120,7 +120,7 @@ export default function Author() {
             height={6}
           />
 
-          <Button.success type='submit' className='w-full mt-1.5 py-2'>
+          <Button.success type='submit' className='mt-1.5 w-full py-2'>
             Save
           </Button.success>
         </div>

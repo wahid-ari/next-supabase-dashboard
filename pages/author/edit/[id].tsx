@@ -148,7 +148,7 @@ export default function Author() {
               height={6}
             />
 
-            <Button type='submit' className='w-full mt-1.5 py-2'>
+            <Button type='submit' className='mt-1.5 w-full py-2'>
               Update
             </Button>
           </div>
@@ -158,18 +158,18 @@ export default function Author() {
           <div>
             {[...Array(4).keys()].map((e, i) => (
               <Shimmer key={i} className='mb-4 p-2'>
-                <div className='h-4 w-16 mb-2 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
                 <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               </Shimmer>
             ))}
           </div>
           <div>
             <Shimmer className='mb-4 p-2'>
-              <div className='h-4 w-16 mb-2 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </Shimmer>
             <Shimmer className='mb-4 p-2'>
-              <div className='h-4 w-16 mb-2 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </Shimmer>
             <Shimmer className='mb-4 p-2'>

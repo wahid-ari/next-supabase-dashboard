@@ -59,7 +59,7 @@ export default function Genre() {
                   className={twMerge(
                     'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
                     'bg-white p-2.5 !text-[15px] font-medium leading-5 text-neutral-700',
-                    'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',
+                    'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',
                   )}
                 >
                   {values.title}
@@ -138,18 +138,18 @@ export default function Genre() {
           <TableSimple
             head={
               <>
-                <TableSimple.th className='flex gap-1 items-center'>
-                  No <ChevronUpIcon className='w-4 h-4 opacity-50' />
+                <TableSimple.th className='flex items-center gap-1'>
+                  No <ChevronUpIcon className='h-4 w-4 opacity-50' />
                 </TableSimple.th>
                 <TableSimple.th className='text-left'>
-                  <div className='flex gap-1 items-center'>
-                    Title <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                  <div className='flex items-center gap-1'>
+                    Title <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                   </div>
                 </TableSimple.th>
                 <TableSimple.th className='sm:w-48 md:w-64 lg:w-80'>
-                  <div className='flex gap-1 items-center'>
+                  <div className='flex items-center gap-1'>
                     Author
-                    <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                    <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                   </div>
                 </TableSimple.th>
               </>

@@ -92,7 +92,7 @@ export default function Book() {
                   className={twMerge(
                     'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
                     'bg-white p-2.5 !text-[15px] font-medium leading-5 text-neutral-700',
-                    'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',
+                    'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',
                   )}
                 >
                   {values.title}
@@ -207,22 +207,22 @@ export default function Book() {
         <TableSimple
           head={
             <>
-              <TableSimple.th className='flex gap-1 items-center'>
-                No <ChevronUpIcon className='w-4 h-4 opacity-50' />
+              <TableSimple.th className='flex items-center gap-1'>
+                No <ChevronUpIcon className='h-4 w-4 opacity-50' />
               </TableSimple.th>
               <TableSimple.th className='w-64 md:w-auto'>
-                <div className='flex gap-1 items-center'>
-                  Title <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center gap-1'>
+                  Title <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='w-64'>
-                <div className='flex gap-1 items-center'>
-                  Author <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center gap-1'>
+                  Author <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='w-32'>
-                <div className='flex gap-1 items-center'>
-                  Year <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center gap-1'>
+                  Year <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='w-32'>Action</TableSimple.th>

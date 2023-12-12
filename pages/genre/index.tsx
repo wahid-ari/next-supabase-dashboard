@@ -270,8 +270,8 @@ export default function Genre() {
                 <Shimmer className='p-3' />
               </TableSimple.td>
               <TableSimple.td className='flex gap-2'>
-                <Shimmer className='p-3 w-full' />
-                <Shimmer className='p-3 w-full' />
+                <Shimmer className='w-full p-3' />
+                <Shimmer className='w-full p-3' />
               </TableSimple.td>
             </TableSimple.tr>
           ))}

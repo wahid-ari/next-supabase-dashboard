@@ -192,12 +192,12 @@ export default function Author() {
         <TableSimple
           head={
             <>
-              <TableSimple.th className='flex gap-1 items-center'>
-                No <ChevronUpIcon className='w-4 h-4 opacity-50' />
+              <TableSimple.th className='flex items-center gap-1'>
+                No <ChevronUpIcon className='h-4 w-4 opacity-50' />
               </TableSimple.th>
               <TableSimple.th className='w-64 md:w-80'>
-                <div className='flex gap-1 items-center'>
-                  Name <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <div className='flex items-center gap-1'>
+                  Name <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
                 </div>
               </TableSimple.th>
               <TableSimple.th className='w-80 text-left'>Born</TableSimple.th>

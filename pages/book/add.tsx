@@ -160,7 +160,7 @@ export default function Book() {
           ) : (
             <>
               <Text>Genre</Text>
-              <Shimmer className='h-10 mb-4 mt-2' />
+              <Shimmer className='mb-4 mt-2 h-10' />
             </>
           )}
 
@@ -177,7 +177,7 @@ export default function Book() {
           ) : (
             <>
               <Text>Author</Text>
-              <Shimmer className='h-10 mb-4 mt-2' />
+              <Shimmer className='mb-4 mt-2 h-10' />
             </>
           )}
 
@@ -250,7 +250,7 @@ export default function Book() {
             placeholder='https://www.goodreads.com/book/show/2767052-the-hunger-games'
           />
 
-          <Button.success type='submit' className='mt-2 py-2 w-full'>
+          <Button.success type='submit' className='mt-2 w-full py-2'>
             Save
           </Button.success>
         </div>
