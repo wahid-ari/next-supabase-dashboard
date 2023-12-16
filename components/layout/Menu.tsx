@@ -16,7 +16,7 @@ type Props = {
 };
 
 export default function Akun({ className, ...props }: Props) {
-  const { data: session }: { data: any; status: any } = useSession();
+  const { data: session }: { data: any } = useSession();
   const router = useRouter();
   const [openModal, setOpenModal] = useState(false);
   const mounted = useMounted();
