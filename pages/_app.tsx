@@ -15,6 +15,7 @@ import { GlobalProvider } from '@/context/GlobalContext';
 import '@/styles/globals.css';
 import '@/styles/prism.css';
 
+import { Toaster as SonnerToaster } from '@/components/ui/Sonner';
 import { Toaster as UiToaster } from '@/components/ui/Toaster';
 
 import LoadingDots from '@/components/systems/LoadingDots';
@@ -80,6 +81,7 @@ function MyApp({ Component, pageProps }: CustomAppProps) {
     <GlobalProvider session={pageProps.session}>
       <div className={inter.className}>
         <UiToaster />
+        <SonnerToaster closeButton={false} visibleToasts={5} offset={'16px'} gap={10} richColors position='top-right' />
         <Toaster
           gutter={4}
           toastOptions={{
