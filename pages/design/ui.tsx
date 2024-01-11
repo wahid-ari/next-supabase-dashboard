@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { format } from 'date-fns';
+import Autoplay from 'embla-carousel-autoplay';
 import {
   AlertCircle,
   AlignCenterIcon,
@@ -38,6 +39,7 @@ import { useTheme } from 'next-themes';
 import { toast as toastsonner } from 'sonner';
 
 import { cn } from '@/libs/utils';
+import { useMediaQuery } from '@/hooks/use-media-query';
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/Accordion';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert';
@@ -59,6 +61,7 @@ import { Blockquote } from '@/components/ui/Blockquote';
 import { Button } from '@/components/ui/Button';
 import { Calendar } from '@/components/ui/Calendar';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/Carousel';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/Collapsible';
 import {
@@ -98,6 +101,16 @@ import {
   DialogTrigger,
 } from '@/components/ui/Dialog';
 import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/Drawer';
+import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
@@ -135,9 +148,19 @@ import {
   MenubarTrigger,
 } from '@/components/ui/Menubar';
 import { NavigationMenuDemo } from '@/components/ui/NavigationMenuDemo';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/Pagination';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
 import { Progress } from '@/components/ui/Progress';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/RadioGroup';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/Resizable';
 import { ScrollArea } from '@/components/ui/ScrollArea';
 import {
   Select,
@@ -298,6 +321,9 @@ export default function Ui() {
 
   const [date, setDate] = useState<Date | undefined>(new Date());
 
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const isDesktop = useMediaQuery('(min-width: 768px)');
+
   return (
     <Layout title='UI - MyBook' description='Example UI - MyBook'>
       <div className='relative'>
@@ -356,6 +382,11 @@ export default function Ui() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#carousel'>
+              Carousel
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#checkbox'>
               Checkbox
             </Link>
@@ -396,6 +427,11 @@ export default function Ui() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#drawer'>
+              Drawer
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#dropdownmenu'>
               DropdownMenu
             </Link>
@@ -431,6 +467,11 @@ export default function Ui() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#pagination'>
+              Pagination
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#popover'>
               Popover
             </Link>
@@ -443,6 +484,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#radiogroup'>
               RadioGroup
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#resizable'>
+              Resizable
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -734,6 +780,83 @@ export default function Ui() {
             <Button>Deploy</Button>
           </CardFooter>
         </Card>
+      </Wrapper>
+
+      <Wrapper id='carousel' name='Carousel' docs='https://ui.shadcn.com/docs/components/carousel'>
+        <div className='flex justify-center'>
+          <Carousel className='w-full max-w-[15rem]'>
+            <CarouselContent>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <CarouselItem key={index}>
+                  <div className='p-1'>
+                    <Card>
+                      <CardContent className='flex aspect-square items-center justify-center p-6'>
+                        <span className='text-4xl font-semibold'>{index + 1}</span>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+        <div className='flex justify-center'>
+          <Carousel
+            plugins={[
+              Autoplay({
+                delay: 2000,
+              }),
+            ]}
+            opts={{
+              align: 'start',
+              loop: true,
+            }}
+            className='w-full max-w-sm'
+          >
+            <CarouselContent>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <CarouselItem key={index} className='basis-1/2 md:basis-1/3'>
+                  <div className='p-1'>
+                    <Card>
+                      <CardContent className='flex aspect-square items-center justify-center p-6'>
+                        <span className='text-3xl font-semibold'>{index + 1}</span>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+        <div className='my-16 flex justify-center'>
+          <Carousel
+            opts={{
+              align: 'start',
+            }}
+            orientation='vertical'
+            className='w-full max-w-xs'
+          >
+            <CarouselContent className='-mt-1 h-[200px]'>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <CarouselItem key={index} className='basis-1/2 pt-1'>
+                  <div className='p-1'>
+                    <Card>
+                      <CardContent className='flex items-center justify-center p-6'>
+                        <span className='text-3xl font-semibold'>{index + 1}</span>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
       </Wrapper>
 
       <Wrapper
@@ -1078,6 +1201,73 @@ export default function Ui() {
         </Dialog>
       </Wrapper>
 
+      <Wrapper id='drawer' name='Drawer' docs='https://ui.shadcn.com/docs/components/drawer'>
+        <div className='relative'>
+          <Drawer>
+            <DrawerTrigger asChild>
+              <Button variant='outline'>Open Drawer</Button>
+            </DrawerTrigger>
+            <DrawerContent>
+              <div className='mx-auto w-full max-w-sm'>
+                <DrawerHeader>
+                  <DrawerTitle>Move Goal</DrawerTitle>
+                  <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+                </DrawerHeader>
+                <div className='p-4'>
+                  <p>
+                    Tempor officia deserunt nostrud sit Lorem mollit consequat in. Sunt eu eiusmod eiusmod deserunt sit
+                    nostrud voluptate. Qui irure ut id adipisicing velit.
+                  </p>
+                </div>
+                <DrawerFooter>
+                  <Button>Submit</Button>
+                  <DrawerClose asChild>
+                    <Button variant='outline'>Cancel</Button>
+                  </DrawerClose>
+                </DrawerFooter>
+              </div>
+            </DrawerContent>
+          </Drawer>
+        </div>
+
+        <Text className='mb-4'>
+          You can combine the <b>Dialog</b> and <b>Drawer</b> components to create a <b>responsive dialog.</b> This
+          renders a <b>Dialog</b> component on desktop and a <b>Drawer</b> on mobile.
+        </Text>
+
+        {isDesktop && (
+          <Dialog open={openDrawer} onOpenChange={setOpenDrawer}>
+            <DialogTrigger asChild>
+              <Button variant='outline'>Edit Profile</Button>
+            </DialogTrigger>
+            <DialogContent className='sm:max-w-[425px]'>
+              <DialogHeader>
+                <DialogTitle>Edit profile</DialogTitle>
+                <DialogDescription>Make changes to your profile here. Click save when you are done.</DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+        )}
+        {!isDesktop && (
+          <Drawer open={openDrawer} onOpenChange={setOpenDrawer}>
+            <DrawerTrigger asChild>
+              <Button variant='outline'>Edit Profile</Button>
+            </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader className='text-left'>
+                <DrawerTitle>Edit profile</DrawerTitle>
+                <DrawerDescription>Make changes to your profile here. Click save when youre done.</DrawerDescription>
+              </DrawerHeader>
+              <DrawerFooter className='pt-2'>
+                <DrawerClose asChild>
+                  <Button variant='outline'>Cancel</Button>
+                </DrawerClose>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        )}
+      </Wrapper>
+
       <Wrapper
         id='dropdownmenu'
         name='DropdownMenu'
@@ -1326,6 +1516,38 @@ export default function Ui() {
       </Wrapper>
 
       <Wrapper
+        id='pagination'
+        name='Pagination'
+        props={['href', 'isActive']}
+        docs='https://ui.shadcn.com/docs/components/pagination'
+      >
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href='#pagination' />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href='#pagination'>1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href='#pagination' isActive>
+                2
+              </PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href='#pagination'>3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href='#pagination' />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </Wrapper>
+
+      <Wrapper
         id='popover'
         name='Popover'
         props={['open', 'onOpenChange']}
@@ -1370,6 +1592,37 @@ export default function Ui() {
         <Progress value={0} className='h-3' aria-label='progresss' />
         <br />
         <Progress value={0} showValue aria-label='progressss' />
+      </Wrapper>
+
+      <Wrapper
+        id='resizable'
+        name='Resizable'
+        props={['direction', 'withHandle', 'defaultSize', 'minSize']}
+        docs='https://ui.shadcn.com/docs/components/resizable'
+      >
+        <ResizablePanelGroup direction='horizontal' className='max-w-md rounded-lg border dark:border-neutral-700'>
+          <ResizablePanel minSize={20} defaultSize={50}>
+            <div className='flex min-h-[200px] items-center justify-center p-6'>
+              <span className='font-semibold'>One</span>
+            </div>
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel minSize={20} defaultSize={50}>
+            <ResizablePanelGroup direction='vertical'>
+              <ResizablePanel minSize={20} defaultSize={50}>
+                <div className='flex h-full items-center justify-center p-6'>
+                  <span className='font-semibold'>Two</span>
+                </div>
+              </ResizablePanel>
+              <ResizableHandle withHandle />
+              <ResizablePanel minSize={20} defaultSize={50}>
+                <div className='flex h-full items-center justify-center p-6'>
+                  <span className='font-semibold'>Three</span>
+                </div>
+              </ResizablePanel>
+            </ResizablePanelGroup>
+          </ResizablePanel>
+        </ResizablePanelGroup>
       </Wrapper>
 
       <Wrapper
