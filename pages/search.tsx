@@ -182,7 +182,7 @@ export default function Search() {
             </>
           ) : null}
         </>
-      ) : searchHistory.books.length > 0 || searchHistory.authors.length > 0 ? (
+      ) : searchHistory.books?.length > 0 || searchHistory.authors?.length > 0 ? (
         // ) : booksHistory?.length > 0 || authorsHistory?.length > 0 ? (
         <>
           <div className='mt-6 flex items-center justify-between'>
