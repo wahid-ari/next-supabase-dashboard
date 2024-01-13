@@ -3,9 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ArrowUpRightIcon, ImageIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
 
 import { useAuthorData } from '@/libs/swr';
+import { cn } from '@/libs/utils';
 
 import Layout from '@/components/layout/Layout';
 import Heading from '@/components/systems/Heading';
@@ -155,7 +155,7 @@ export default function Author() {
                   return (
                     <div
                       key={item.id}
-                      className={twMerge(
+                      className={cn(
                         'mb-4 pb-4',
                         index < data?.quotes.length - 1 && 'border-b dark:border-b-neutral-800',
                       )}

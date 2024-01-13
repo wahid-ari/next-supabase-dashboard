@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 export default function Card({
   title,
@@ -19,7 +20,7 @@ export default function Card({
     <Link
       href={link}
       {...props}
-      className={twMerge(
+      className={cn(
         'group flex items-center justify-between gap-2 rounded-md border p-4 shadow',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800',
       )}

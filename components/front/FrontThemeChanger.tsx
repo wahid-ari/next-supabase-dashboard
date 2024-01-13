@@ -1,7 +1,7 @@
 import { MoonIcon, SunIcon, SunMoonIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { twMerge } from 'tailwind-merge';
 
+import { cn } from '@/libs/utils';
 import { useMounted } from '@/hooks/use-mounted';
 
 export default function FrontThemeChanger({ variant = 'icon', ...props }: { variant?: string; [props: string]: any }) {
@@ -11,7 +11,7 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
   if (!mounted) {
     return (
       <button
-        className={twMerge(
+        className={cn(
           'rounded-md border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
           'focus:outline-none focus:ring-2 focus:ring-sky-500',
           'inline-flex items-center justify-center overflow-hidden transition-all duration-200',
@@ -30,7 +30,7 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
       title='Change Theme'
       aria-label='Change Theme'
       onClick={() => setTheme(theme == 'dark' ? 'light' : 'dark')}
-      className={twMerge(
+      className={cn(
         'rounded-md border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
         'hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:hover:bg-neutral-800',
         'inline-flex items-center justify-center overflow-hidden transition-all duration-200',
@@ -53,7 +53,7 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
           <SunIcon className='h-[19px] w-[19px]' />
         </span>
       </div>
-      <span className={twMerge('ml-1 text-sm text-neutral-700 dark:text-neutral-200', variant === 'icon' && 'sr-only')}>
+      <span className={cn('ml-1 text-sm text-neutral-700 dark:text-neutral-200', variant === 'icon' && 'sr-only')}>
         {theme == 'dark' ? 'Light' : 'Dark'}
       </span>
     </button>

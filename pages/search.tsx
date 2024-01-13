@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { twMerge } from 'tailwind-merge';
 
 import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
 // import { useSearchHistoryStore } from '@/store/use-store';
 import { useSearchData } from '@/libs/swr';
+import { cn } from '@/libs/utils';
 
 import AuthorListItem from '@/components/dashboard/AuthorListItem';
 import BookListItem from '@/components/dashboard/BookListItem';
@@ -224,7 +224,7 @@ export default function Search() {
                     <button
                       title='Delete'
                       onClick={() => removeBooksHistory(item.id)}
-                      className={twMerge(
+                      className={cn(
                         'absolute -left-1 -top-1 rounded px-1.5 py-0.5 text-xs font-medium',
                         'bg-red-500 text-white transition-all hover:bg-red-600',
                       )}
@@ -264,7 +264,7 @@ export default function Search() {
                     <button
                       title='Delete'
                       onClick={() => removeAuthorsHistory(item.id)}
-                      className={twMerge(
+                      className={cn(
                         'absolute -left-1 -top-1 rounded-full px-1.5 py-0.5 text-xs font-medium',
                         'bg-red-500 text-white transition-all hover:bg-red-600',
                       )}
