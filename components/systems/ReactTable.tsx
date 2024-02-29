@@ -22,6 +22,8 @@ type Props = {
   keyword?: string;
   showInfo?: boolean;
   filteredLength?: number;
+  sortById?: string;
+  sortByDesc?: boolean;
   [props: string]: any;
 };
 
@@ -38,6 +40,8 @@ export const ReactTable = forwardRef(
       keyword,
       showInfo,
       filteredLength,
+      sortById,
+      sortByDesc,
       ...props
     }: Props,
     ref,
@@ -60,12 +64,8 @@ export const ReactTable = forwardRef(
           pageIndex: 0,
           sortBy: [
             {
-              id: 'id',
-              desc: false,
-            },
-            {
-              id: 'songs.id',
-              desc: false,
+              id: sortById || 'id',
+              desc: sortByDesc || false,
             },
           ],
         },
