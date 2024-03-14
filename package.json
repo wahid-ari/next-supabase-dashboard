@@ -66,6 +66,7 @@
     "embla-carousel-autoplay": "8.0.0-rc19",
     "embla-carousel-react": "8.0.0-rc19",
     "framer-motion": "^10.16.4",
+    "input-otp": "^1.1.0",
     "jotai": "^2.5.1",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "0.292.0",

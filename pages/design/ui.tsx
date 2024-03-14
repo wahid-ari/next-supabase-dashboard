@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { format } from 'date-fns';
 import Autoplay from 'embla-carousel-autoplay';
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'input-otp';
 import {
   AlertCircle,
   AlignCenterIcon,
@@ -27,6 +28,7 @@ import {
   MoonIcon,
   PlusCircle,
   Settings,
+  SlashIcon,
   Smile,
   Sun,
   SunIcon,
@@ -58,6 +60,15 @@ import { AspectRatio } from '@/components/ui/AspectRatio';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar';
 import { Badge, badgeVariants } from '@/components/ui/Badge';
 import { Blockquote } from '@/components/ui/Blockquote';
+import {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import { Calendar } from '@/components/ui/Calendar';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
@@ -131,6 +142,7 @@ import { Heading } from '@/components/ui/Heading';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
 import { Input } from '@/components/ui/Input';
 import { InputDebounce } from '@/components/ui/InputDebounce';
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/InputOtp';
 import { Label } from '@/components/ui/Label';
 import {
   Menubar,
@@ -204,6 +216,8 @@ export default function Ui() {
   const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
   const [inputDebounceValue, setInputDebounceValue] = useState();
+  const [inputOtp, setInputOtp] = useState('');
+  const [inputOtpChar, setInputOtpChar] = useState('');
   const [checkboxValue, setCheckboxValue] = useState(true);
   function handleCheckboxChange() {
     checkboxValue == true ? setCheckboxValue(false) : setCheckboxValue(true);
@@ -367,6 +381,11 @@ export default function Ui() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#breadcrumb'>
+              Breadcrumb
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#button'>
               Button
             </Link>
@@ -449,6 +468,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#input-debounce'>
               InputDebounce
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#input-otp'>
+              InputOtp
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -694,6 +718,97 @@ export default function Ui() {
             Link as Badge
           </Link>
         </div>
+      </Wrapper>
+
+      <Wrapper
+        id='breadcrumb'
+        name='Breadcrumb'
+        props={['href']}
+        docs='https://ui.shadcn.com/docs/components/breadcrumb'
+      >
+        <Breadcrumb className='mb-4'>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href='/design/ui#'>Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <Breadcrumb className='mb-4'>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href='/design/ui#'>NextJS Link</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <Breadcrumb className='mb-4'>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href='/design/ui#'>Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator>
+              <SlashIcon className='h-3 w-3 -rotate-[25deg]' />
+            </BreadcrumbSeparator>
+            <BreadcrumbItem>
+              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <Breadcrumb className='mb-4'>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href='/design/ui#'>Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbEllipsis />
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href='/design/ui#'>Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <DropdownMenu>
+                <DropdownMenuTrigger className='flex items-center gap-1 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'>
+                  <BreadcrumbEllipsis className='h-4 w-4' />
+                  <span className='sr-only'>Toggle menu</span>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align='start'>
+                  <DropdownMenuItem>Documentation</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href='/design/ui#breadcrumb'>Components</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
       </Wrapper>
 
       <Wrapper
@@ -1420,6 +1535,45 @@ export default function Ui() {
           onChange={(value) => setInputDebounceValue(value)}
         />
         {inputDebounceValue && <Text size='sm'>{inputDebounceValue}</Text>}
+      </Wrapper>
+
+      <Wrapper id='input-otp' name='InputOtp' props={['href']} docs='https://ui.shadcn.com/docs/components/input-otp'>
+        <Text>REGEXP_ONLY_DIGITS_AND_CHARS</Text>
+        <InputOTP
+          maxLength={3}
+          pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
+          value={inputOtpChar}
+          onChange={(value) => setInputOtpChar(value)}
+          render={({ slots }) => (
+            <InputOTPGroup>
+              {slots.slice(0, 3).map((slot, index) => (
+                <InputOTPSlot key={index} {...slot} />
+              ))}{' '}
+            </InputOTPGroup>
+          )}
+        />
+        <Text className='mb-4'>{inputOtpChar}</Text>
+        <InputOTP
+          maxLength={6}
+          value={inputOtp}
+          onChange={(value) => setInputOtp(value)}
+          render={({ slots }) => (
+            <>
+              <InputOTPGroup>
+                {slots.slice(0, 3).map((slot, index) => (
+                  <InputOTPSlot key={index} {...slot} />
+                ))}{' '}
+              </InputOTPGroup>
+              <InputOTPSeparator />
+              <InputOTPGroup>
+                {slots.slice(3).map((slot, index) => (
+                  <InputOTPSlot key={index} {...slot} />
+                ))}
+              </InputOTPGroup>
+            </>
+          )}
+        />
+        <Text>{inputOtp}</Text>
       </Wrapper>
 
       <Wrapper id='label' name='Label' docs='https://ui.shadcn.com/docs/components/label'>
