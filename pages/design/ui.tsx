@@ -1538,7 +1538,16 @@ export default function Ui() {
       </Wrapper>
 
       <Wrapper id='input-otp' name='InputOtp' props={['href']} docs='https://ui.shadcn.com/docs/components/input-otp'>
-        <Text>REGEXP_ONLY_DIGITS_AND_CHARS</Text>
+        <Text weight='semibold'>PATTERN</Text>
+        <Text size='xs' className='!mt-1'>
+          REGEXP_ONLY_DIGITS
+        </Text>
+        <Text size='xs' className='!mt-1'>
+          REGEXP_ONLY_CHARS
+        </Text>
+        <Text size='xs' className='!mt-1 mb-4'>
+          REGEXP_ONLY_DIGITS_AND_CHARS
+        </Text>
         <InputOTP
           maxLength={3}
           pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
