@@ -856,7 +856,6 @@ export default function Ui() {
             className='rounded-md border dark:border-neutral-700'
           />
         </div>
-        <br />
         <Text>{date ? format(date, 'PPP') : 'Select Date'}</Text>
       </Wrapper>
 
@@ -1016,7 +1015,6 @@ export default function Ui() {
             <p className='text-sm text-neutral-400'>You agree to our Terms of Service and Privacy Policy.</p>
           </div>
         </div>
-        <br />
         <Text>{checkboxValue ? 'true' : 'false'}</Text>
       </Wrapper>
 
@@ -1808,7 +1806,6 @@ export default function Ui() {
             <Label htmlFor='r3'>Compact</Label>
           </div>
         </RadioGroup>
-        <br />
         <Text>{radiogroupValue}</Text>
       </Wrapper>
 
@@ -1855,7 +1852,6 @@ export default function Ui() {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <br />
         <Text>{selectValue}</Text>
       </Wrapper>
 
@@ -1959,7 +1955,6 @@ export default function Ui() {
           step={1}
           className='w-[60%]'
         />
-        <br />
         <Text>{sliderValue}</Text>
       </Wrapper>
 
@@ -2089,7 +2084,6 @@ export default function Ui() {
           />
           <Label htmlFor='airplane-mode'>Airplane Mode</Label>
         </div>
-        <br />
         <Text>{switchValue == true ? 'true' : 'false'}</Text>
       </Wrapper>
 
@@ -2259,7 +2253,6 @@ export default function Ui() {
           <Italic className='h-4 w-4' />
         </Toggle>
         <br />
-        <br />
         <Text>{toggleValue == true ? 'true' : 'false'}</Text>
       </Wrapper>
 
@@ -2267,7 +2260,7 @@ export default function Ui() {
         id='togglegroup'
         name='ToggleGroup'
         props={['type', 'value', 'defaultValue', 'onValueChange']}
-        docs='https://www.radix-ui.com/docs/primitives/components/toggle-group'
+        docs='https://ui.shadcn.com/docs/components/toggle-group'
       >
         <ToggleGroup
           type='single'
@@ -2286,7 +2279,6 @@ export default function Ui() {
             <AlignRightIcon className='h-4 w-4' />
           </ToggleGroupItem>
         </ToggleGroup>
-        <br />
         <br />
         <Text>{toggleGroupValue}</Text>
       </Wrapper>
