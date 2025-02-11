@@ -94,7 +94,7 @@ export default function Footer({ className, ...props }: { className?: string; [p
         <hr className='mb-6 mt-8 border-t dark:border-neutral-800 sm:mx-auto md:mt-6' />
         <div className='sm:flex sm:items-center sm:justify-between'>
           <span className='text-sm text-neutral-700 dark:text-neutral-300 sm:text-center'>
-            © 2023{' '}
+            © {new Date().getFullYear()}{' '}
             <Link
               href='/'
               className={cn(

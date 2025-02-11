@@ -5,6 +5,7 @@ import { Menu, Transition } from '@headlessui/react';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { ArrowRightIcon, ChevronDownIcon, MoreHorizontal } from 'lucide-react';
 import ReactSelect from 'react-select';
+import { useDebounce as useDebouncePackage } from 'use-debounce';
 import * as yup from 'yup';
 import { z } from 'zod';
 
@@ -92,8 +93,10 @@ const searchBoxData = [
 export default function Example() {
   const mounted = useMounted();
   const [inputDebounce, setInputDebounce] = useState('');
-  const debouncedValue = useDebounce(inputDebounce, 500);
-  const [inputDebounceValue, setInputDebounceValue] = useState();
+  const debouncedValue = useDebounce(inputDebounce, 300);
+  const [inputDebouncePackage, setInputDebouncePackage] = useState('');
+  const [debouncedPackageValue] = useDebouncePackage(inputDebouncePackage, 300);
+  const [inputDebounceValue, setInputDebounceValue] = useState('');
   const [openDialog, setOpenDialog] = useState(false);
   const [openDangerDialog, setOpenDangerDialog] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -472,10 +475,6 @@ export default function Example() {
   const tableInstance = useRef(null);
   const [inputDebounceValues, setInputDebounceValues] = useState('');
   const tableInstances = useRef(null);
-  const [filteredLength, setFilteredLength] = useState(0);
-  useEffect(() => {
-    setFilteredLength(tableInstances?.current?.rows?.length);
-  }, [inputDebounceValues]);
 
   const [file, setFile] = useState({ name: '' });
   function handleFileChange(e: any) {
@@ -623,6 +622,11 @@ export default function Example() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#input-debounce-hook'>
               Input (Debounce Hook)
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#input-debounce-package'>
+              Input (use-debounce Package)
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -1075,17 +1079,7 @@ export default function Example() {
       <Wrapper
         id='reacttable'
         name='React Table'
-        props={[
-          'columns',
-          'data',
-          'page_size',
-          'bordered',
-          'noHover',
-          'itemPerPage',
-          'keyword',
-          'showInfo',
-          'filteredLength',
-        ]}
+        props={['columns', 'data', 'page_size', 'bordered', 'noHover', 'itemPerPage', 'keyword', 'showInfo']}
         noProps
         noWrap
       >
@@ -1120,7 +1114,6 @@ export default function Example() {
             itemPerPage={[10, 20, 50, 100]}
             keyword={inputDebounceValues}
             showInfo
-            filteredLength={filteredLength}
           />
         ) : null}
       </Wrapper>
@@ -1493,6 +1486,21 @@ function dissmissAllToast() {
       </Wrapper>
 
       <Wrapper
+        id='input-debounce-package'
+        name='Input (use-debounce Package)'
+        props={['type', 'name', 'placeholder', 'value', 'onChange']}
+      >
+        <Input
+          name='input-debounce-package'
+          placeholder='Input debounce package'
+          data-testid='input-debounce-package'
+          onChange={(e) => setInputDebouncePackage(e.target.value)}
+        />
+        <Text data-testid='input-debounce-package-text'>{debouncedPackageValue}</Text>
+        <Text>Slower</Text>
+      </Wrapper>
+
+      <Wrapper
         id='input-debounce'
         name='InputDebounce'
         props={[
@@ -1664,7 +1672,7 @@ function dissmissAllToast() {
           {slicedTableData.map((item, index) => {
             return (
               <Table.tr key={index}>
-                <Table.td small>{item.id}</Table.td>
+                <Table.td>{item.id}</Table.td>
                 <Table.td>{item.email}</Table.td>
                 <Table.td>{item.name}</Table.td>
                 <Table.td>{item.age}</Table.td>

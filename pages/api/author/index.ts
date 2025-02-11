@@ -53,14 +53,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Check session
       const sessionPost = await getSessionToken(res, header, token);
       if (sessionPost) {
-        // if (!body.name) {
-        //   res.status(422).json({ message: 'Name required' });
-        //   return;
-        // }
         const isValid = schema.safeParse(body);
-        // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
-        if (isValid.success == false) {
-          res.status(422).json({ message: isValid.error.issues });
+        if (!isValid.success) {
+          res.status(422).json({ message: isValid?.error?.issues });
           return;
         } else {
           let nameSlug = slug(body.name);
@@ -105,14 +100,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Check session
       const sessionPut = await getSessionToken(res, header, token);
       if (sessionPut) {
-        // if (!body.name) {
-        //   res.status(422).json({ message: 'Name required' });
-        //   return;
-        // }
         const isValid = schema.safeParse(body);
-        // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
-        if (isValid.success == false) {
-          res.status(422).json({ message: isValid.error.issues });
+        if (!isValid.success) {
+          res.status(422).json({ message: isValid?.error?.issues });
           return;
         } else {
           const { error } = await supabase

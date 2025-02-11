@@ -21,7 +21,6 @@ type Props = {
   itemPerPage?: number[];
   keyword?: string;
   showInfo?: boolean;
-  filteredLength?: number;
   sortById?: string;
   sortByDesc?: boolean;
   [props: string]: any;
@@ -39,7 +38,6 @@ export const ReactTable = forwardRef(
       itemPerPage = [5, 10, 20],
       keyword,
       showInfo,
-      filteredLength,
       sortById,
       sortByDesc,
       ...props
@@ -93,7 +91,8 @@ export const ReactTable = forwardRef(
       state: { pageIndex, pageSize },
     } = instance;
     useImperativeHandle(ref, () => instance);
-
+    // get filteredLength from table instance ref
+    let filteredLength: any = ref;
     // this is for showing total data in table
     let show = pageSize * (pageIndex + 1);
     if (keyword == '') {
@@ -104,11 +103,11 @@ export const ReactTable = forwardRef(
     } else {
       // if searching and in the last page
       if (pageIndex == pageOptions.length - 1) {
-        show = filteredLength;
+        show = filteredLength?.current?.rows?.length;
       }
     }
     // if searching, show total data from filteredLength
-    let dataLength = keyword == '' ? data.length : filteredLength;
+    let dataLength = keyword == '' ? data.length : filteredLength?.current?.rows?.length;
     let showText = `Showing ${pageIndex * pageSize + 1} to ${show} from ${dataLength} ${
       keyword == '' ? 'total' : 'filtered'
     } data`;

@@ -7,12 +7,30 @@ import { supabase } from '@/libs/supabase';
 
 const schema = z
   .object({
-    name: z.string().min(5, { message: 'Name length minimal is 5' }),
+    name: z.string().min(5, { message: 'Name length minimal is 3' }),
     username: z
       .string()
-      .min(5, { message: 'Username length minimal is 5' })
-      .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' }),
-    password: z.string().min(8, { message: 'Password length minimal is 8' }),
+      .min(5, { message: 'Username length minimal is 3' })
+      .regex(/^[A-Za-z0-9]+$/, { message: 'Username must be alphabet and numeric without space' }),
+    password: z
+      .string()
+      .min(8, { message: 'Password length minimal is 8' })
+      // .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*()\-_+=.{}\[\]|\\;:'",<.>/?]).{8,}$/, {
+      //   message: 'Should contain small, capital, number and special character',
+      // }),
+      .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*()\-_+=]).{8,}$/, {
+        message: 'Should contain small, capital, number and special character',
+      })
+      .refine((s) => !s.includes(' '), {
+        message: 'Password can not contain space',
+      }),
+    // REGEX example https://stackoverflow.com/a/59117568
+    // ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$
+    // Should contain at least a capital letter
+    // Should contain at least a small letter
+    // Should contain at least a number
+    // Should contain at least a special character
+    // And minimum length
     confirm_password: z.string().min(8, { message: 'Confirm Password length minimal is 8' }),
   })
   .refine((data) => data.password === data.confirm_password, {
@@ -45,63 +63,61 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (method) {
     case 'POST':
       const isValid = schema.safeParse(body);
-      // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
-      if (isValid.success == false) {
-        res.status(422).json({ message: isValid.error.issues });
+      if (!isValid.success) {
+        res.status(422).json({ message: isValid?.error?.issues });
         return;
-      }
-      // if (!body.name) {
-      //   res.status(422).json({ message: 'Name required' });
-      //   return;
-      // } else if (!body.username) {
-      //   res.status(422).json({ message: 'Username required' });
-      //   return;
-      // } else if (!body.password) {
-      //   res.status(422).json({ message: 'Password required' });
-      //   return;
-      // }
-      else {
+      } else {
         const { data: userNameExist } = await supabase
-          .from('admin')
+          .from('book_users')
           .select(`*`)
           .eq('username', body.username)
           .limit(1)
           .single();
+        // if username not exist,
         if (userNameExist === null) {
-          // this register logic
           // if username not exist, hash password and inset to db
-          // const passwordHashed = await hash(body.password, 8);
-          // const { data: insertUser } = await supabase.from('admin').insert([
-          //   {
-          //     username: body.username,
-          //     name: body.name,
-          //     type: 'user',
-          //     password: passwordHashed,
-          //   },
-          // ]);
-          // // if no error after inserting user
+          const passwordHashed = await hash(body.password, 8);
+          const { data: insertUser } = await supabase.from('book_users').insert([
+            {
+              username: body.username,
+              name: body.name,
+              type: 'user',
+              password: passwordHashed,
+            },
+          ]);
+          // if no error after inserting user
+          // get user detail to create token
           // if (insertUser == null) {
           //   const { data: user } = await supabase
-          //     .from('admin')
+          //     .from('book_users')
           //     .select(`*`)
           //     .eq('username', body.username)
           //     .limit(1)
           //     .single();
+          //   const { id, type } = user;
           //   const token = jwt.sign(
           //     {
+          //       id: id,
           //       username: body.username,
-          //       password: body.name,
+          //       name: body.name,
+          //       type: type,
           //     },
           //     process.env.NEXTAUTH_SECRET,
           //   );
-          //   const { id, type } = user;
           //   const { username, name } = body;
+          //   const { error: errorSession } = await supabase.from('book_sessions').insert({ user_id: id, token: token });
+          //   if (errorSession) console.error('error inserting session', errorSession);
           //   res.status(200).json({ id, type, username, name, token });
-          res.status(200).json({ message: 'Success register' });
-          return;
           // }
+          // if no error after inserting user
+          if (insertUser == null) {
+            res.status(200).json({ message: 'Success register' });
+            return;
+          }
+          res.status(422).json({ message: 'Failed to register' });
         } else {
           res.status(422).json({ message: 'Username already exist' });
+          return;
         }
       }
       break;
@@ -109,42 +125,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     default:
       res.setHeader('Allow', ['POST']);
       res.status(405).end(`Method ${method} Not Allowed`);
+      break;
   }
 }
-
-// switch (method) {
-//   case "GET":
-//     try {
-//       if (!req.headers.authorization) {
-//         return res.json({ message: "Please provide headers" });
-//       }
-//       const token = req.headers.authorization.split("Bearer ")[1];
-//       if (!token) {
-//         return res.json({ message: "Token not found" });
-//       }
-//       const user = jwt.verify(token, process.env.NEXTAUTH_SECRET);
-//       if (!user) {
-//         return res.json({ message: "Token not valid" });
-//       }
-//       const user_data = await User.aggregate([
-//         {
-//           $match: {
-//             username: user.username,
-//           },
-//         },
-//       ]);
-//       if (!user_data[0]) {
-//         return res.json({ message: "User not found" });
-//       }
-//       const isMatch = await compare(user.password, user_data[0].password);
-//       if (!isMatch) {
-//         return res.json({ message: "Token not valid" });
-//       }
-//       delete user_data[0].password;
-//       return res.json(user_data[0]);
-//     } catch (err) {
-//       return res.json({ message: "Error on calling API" });
-//     }
-//   default:
-//     return res.json({ message: "Only accepting GET method" });
-// }

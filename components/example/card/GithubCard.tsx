@@ -89,7 +89,7 @@ export function DemoGithub() {
             )}{' '}
             20K
           </div>
-          <div>Updated April 2023</div>
+          <div>Updated April {new Date().getFullYear()}</div>
         </div>
       </CardContent>
     </Card>

@@ -16,7 +16,7 @@ import LoadingDots from '@/components/systems/LoadingDots';
 export default function Login() {
   const router = useRouter();
   const callbackUrl = router.query.callbackUrl as string;
-  const [form, setForm] = useState({ username: 'develop', password: '' });
+  const [form, setForm] = useState({ username: '', password: '' });
   const formFilled = form.username !== '' && form.password !== '';
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -107,7 +107,7 @@ export default function Login() {
               Find books you&apos;ll love, and keep track of the books you want to read. Be part of the largest
               community of book lovers on MyBook
             </p>
-            <p className='font-semibold text-white'>© MyBook - 2023</p>
+            <p className='font-semibold text-white'>© MyBook - {new Date().getFullYear()}</p>
           </div>
 
           <div className='banner hidden flex-col justify-between gap-2 px-8 py-12 sm:flex'>
@@ -119,7 +119,7 @@ export default function Login() {
                 community of book lovers on MyBook
               </p>
             </div>
-            <p className='font-semibold text-white'>© MyBook - 2023</p>
+            <p className='font-semibold text-white'>© MyBook - {new Date().getFullYear()}</p>
           </div>
 
           <div className='flex w-full items-center justify-center px-8 py-16 md:px-16 md:py-0'>
@@ -195,7 +195,7 @@ export default function Login() {
                   href='/register'
                   className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
                 >
-                  Register Now
+                  Register
                 </Link>
               </p>
 

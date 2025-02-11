@@ -18,7 +18,7 @@ function generateSiteMap(books: any) {
       <url>${BASE_URL}/icon.svg</url>
       <link>${BASE_URL}/books</link>
       </image>
-      <copyright>Copyright © 2023 Next.js App Router</copyright>
+      <copyright>Copyright © 2025 Next.js App Router</copyright>
       ${books
         .map((book: any) => {
           return `

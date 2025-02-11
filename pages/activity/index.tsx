@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronsUpDownIcon, ChevronUpIcon } from 'lucide-react';
+import { useDebounce } from 'use-debounce';
 
 import { useLogsData } from '@/libs/swr';
 
 import Layout from '@/components/layout/Layout';
 import Badge from '@/components/systems/Badge';
-import InputDebounce from '@/components/systems/InputDebounce';
+import Input from '@/components/systems/Input';
+import Label from '@/components/systems/Label';
 import ReactTable from '@/components/systems/ReactTable';
 import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
@@ -15,7 +17,8 @@ import Title from '@/components/systems/Title';
 
 export default function Log() {
   const { data, error } = useLogsData();
-  const [inputDebounceValue, setInputDebounceValue] = useState('');
+  const [search, setSearch] = useState('');
+  const [searchDebounce] = useDebounce(search, 300);
 
   const column = useMemo(
     () => [
@@ -90,10 +93,9 @@ export default function Log() {
   );
 
   const tableInstance = useRef(null);
-  const [filteredLength, setFilteredLength] = useState(0);
   useEffect(() => {
-    setFilteredLength(tableInstance?.current?.rows?.length);
-  }, [inputDebounceValue]);
+    tableInstance?.current?.setGlobalFilter(searchDebounce);
+  }, [searchDebounce]);
 
   if (error) {
     return (
@@ -109,17 +111,8 @@ export default function Log() {
         <Title>Logs</Title>
       </div>
 
-      <InputDebounce
-        label='Search'
-        id='inputdebounce'
-        name='inputdebounce'
-        placeholder='Search'
-        value={inputDebounceValue}
-        onChange={(value) => {
-          setInputDebounceValue(value);
-          tableInstance?.current?.setGlobalFilter(value);
-        }}
-      />
+      <Label>Search</Label>
+      <Input name='search' placeholder='Search' onChange={(e) => setSearch(e.target.value)} />
 
       {data ? (
         <ReactTable
@@ -128,9 +121,8 @@ export default function Log() {
           ref={tableInstance}
           page_size={20}
           itemPerPage={[10, 20, 50, 100]}
-          keyword={inputDebounceValue}
+          keyword={searchDebounce}
           showInfo
-          filteredLength={filteredLength}
         />
       ) : (
         <TableSimple

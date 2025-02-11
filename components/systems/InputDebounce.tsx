@@ -53,7 +53,7 @@ export default function InputDebounce({
         type={type}
         name={name}
         placeholder={placeholder}
-        value={debounceValue}
+        value={debounceValue || ''}
         defaultValue={defaultValue}
         onChange={(e) => setDebounceValue(e.target.value)}
         className={cn(

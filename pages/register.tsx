@@ -5,9 +5,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useSession } from 'next-auth/react';
-import nookies from 'nookies';
 
-import { validateRegister } from '@/validations/register';
 import useToast from '@/hooks/use-hot-toast';
 
 import HeadSeo from '@/components/layout/HeadSeo';
@@ -15,32 +13,14 @@ import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
 import LoadingDots from '@/components/systems/LoadingDots';
 
-export async function getServerSideProps(context: any) {
-  const cookies = nookies.get(context);
-  if (cookies.token) {
-    return {
-      redirect: {
-        destination: '/dashboard',
-      },
-    };
-  }
-  return {
-    props: {},
-  };
-}
-
 export default function Register() {
   const router = useRouter();
   const [form, setForm] = useState({ name: '', username: '', password: '', confirm_password: '' });
-  const formFilled = form.name !== '' && form.username !== '' && form.password !== '' && form.confirm_password !== '';
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { updateToast, pushToast, dismissToast } = useToast();
   const { status } = useSession();
-
-  const handleChange = (e: any) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
 
   async function handleRegister(e: any) {
     e.preventDefault();
@@ -108,7 +88,7 @@ export default function Register() {
               Find books you&apos;ll love, and keep track of the books you want to read. Be part of the largest
               community of book lovers on MyBook
             </p>
-            <p className='font-semibold text-white'>© MyBook - 2023</p>
+            <p className='font-semibold text-white'>© MyBook - {new Date().getFullYear()}</p>
           </div>
 
           <div className='banner hidden flex-col justify-between gap-2 px-8 py-12 sm:flex'>
@@ -120,7 +100,7 @@ export default function Register() {
                 community of book lovers on MyBook
               </p>
             </div>
-            <p className='font-semibold text-white'>© MyBook - 2023</p>
+            <p className='font-semibold text-white'>© MyBook - {new Date().getFullYear()}</p>
           </div>
 
           <div className='flex w-full items-center justify-center px-8 py-16 md:px-16 md:py-0'>
@@ -148,7 +128,7 @@ export default function Register() {
                     name='name'
                     placeholder='Username'
                     value={form.name}
-                    onChange={handleChange}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
                     className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                     autoComplete='off'
                     required
@@ -164,7 +144,7 @@ export default function Register() {
                     name='username'
                     placeholder='Username'
                     value={form.username}
-                    onChange={handleChange}
+                    onChange={(e) => setForm({ ...form, username: e.target.value })}
                     className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                     autoComplete='off'
                     required
@@ -181,7 +161,7 @@ export default function Register() {
                       name='password'
                       placeholder='Password'
                       value={form.password}
-                      onChange={handleChange}
+                      onChange={(e) => setForm({ ...form, password: e.target.value })}
                       className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                       autoComplete='off'
                       required
@@ -201,26 +181,26 @@ export default function Register() {
                 </div>
 
                 <div className='mb-5'>
-                  <label className='block text-sm text-neutral-800' htmlFor='confirm_password'>
+                  <label className='block text-sm text-neutral-800' htmlFor='confirm-password'>
                     Confirm Password
                   </label>
                   <div className='relative mb-4 flex items-center'>
                     <input
-                      type={showPassword ? 'text' : 'password'}
-                      name='confirm_password'
+                      type={showConfirmPassword ? 'text' : 'password'}
+                      name='confirm-password'
                       placeholder='Confirm Password'
                       value={form.confirm_password}
-                      onChange={handleChange}
+                      onChange={(e) => setForm({ ...form, confirm_password: e.target.value })}
                       className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                       autoComplete='off'
                       required
                     />
                     <button
                       type='button'
-                      onClick={() => setShowPassword(!showPassword)}
+                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                       className='absolute right-0 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-500'
                     >
-                      {showPassword ? (
+                      {showConfirmPassword ? (
                         <EyeIcon className='h-5 w-5 text-neutral-600' />
                       ) : (
                         <EyeOffIcon className='h-5 w-5 text-neutral-600' />
@@ -229,18 +209,18 @@ export default function Register() {
                   </div>
                 </div>
 
-                <Button type='submit' className='w-full !text-base' disabled={!formFilled || loading}>
+                <Button type='submit' className='w-full !text-base' disabled={loading}>
                   {loading ? 'Registering...' : 'Register'}
                 </Button>
               </form>
 
               <p className='mt-4 text-center font-normal dark:text-neutral-800'>
-                Already have an account?{' '}
+                Have an account?{' '}
                 <Link
                   href='/login'
                   className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
                 >
-                  Login Now
+                  Login
                 </Link>
               </p>
 

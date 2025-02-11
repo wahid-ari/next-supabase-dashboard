@@ -4,7 +4,7 @@ import { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
 import { useRouter } from 'next/router';
 import NProgress from 'nprogress';
-import { Toaster } from 'react-hot-toast';
+import { Toaster as ReactHotToast } from 'react-hot-toast';
 
 import 'nprogress/nprogress.css';
 
@@ -16,7 +16,7 @@ import '@/styles/globals.css';
 import '@/styles/prism.css';
 
 import { Toaster as SonnerToaster } from '@/components/ui/Sonner';
-import { Toaster as UiToaster } from '@/components/ui/Toaster';
+import { Toaster } from '@/components/ui/Toaster';
 
 import LoadingDots from '@/components/systems/LoadingDots';
 
@@ -79,9 +79,9 @@ function MyApp({ Component, pageProps }: CustomAppProps) {
   return (
     <GlobalProvider session={pageProps.session}>
       <div className={inter.className}>
-        <UiToaster />
+        <Toaster />
         <SonnerToaster closeButton={false} visibleToasts={5} offset={'16px'} gap={10} richColors position='top-right' />
-        <Toaster
+        <ReactHotToast
           gutter={4}
           toastOptions={{
             style: {

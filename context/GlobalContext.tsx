@@ -9,21 +9,23 @@ export function GlobalProvider({ children, session }: { children: ReactNode; ses
   const [showNav, setShowNav] = useState(false);
   const [token, setToken] = useState(null);
   async function getSessionToken() {
-    const session: any = await getSession();
-    if (session) setToken(session?.token);
+    const mySession: any = await getSession();
+    if (mySession) setToken(mySession?.token);
   }
 
   useEffect(() => {
-    getSessionToken();
+    if (!token) {
+      getSessionToken();
+    }
   }, []);
 
   // can be set up here, or in page file like in pages/data.js
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    // console.log("Axios Header Auth SET: ", token.token)
+    // console.log("Axios Header Auth SET: ", token)
   } else {
     axios.defaults.headers.common['Authorization'] = '';
-    // console.log("Axios Header Auth UNSET: ", token.token)
+    // console.log("Axios Header Auth UNSET: ", token)
   }
 
   return (

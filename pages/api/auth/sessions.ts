@@ -9,10 +9,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     case 'GET':
       const session = await getServerSession(req, res, authOptions);
       if (!session) {
-        res.status(401).json({ authenticated: !!session, message: 'You are not logged in' });
+        res.status(401).json({ authenticated: session == null ? false : true, message: 'You are not logged in' });
         return;
       }
-      res.status(200).json({ authenticated: !!session, session });
+      res.status(200).json({ authenticated: session == null ? false : true, session });
       break;
 
     default:

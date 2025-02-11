@@ -1,9 +1,10 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import axios from 'axios';
 import { ChevronsUpDownIcon, ChevronUpIcon, PlusIcon } from 'lucide-react';
 import { mutate } from 'swr';
+import { useDebounce } from 'use-debounce';
 
 import { useBooksData } from '@/libs/swr';
 import { cn } from '@/libs/utils';
@@ -12,7 +13,8 @@ import useToast from '@/hooks/use-hot-toast';
 import Layout from '@/components/layout/Layout';
 import Button from '@/components/systems/Button';
 import Dialog from '@/components/systems/Dialog';
-import InputDebounce from '@/components/systems/InputDebounce';
+import Input from '@/components/systems/Input';
+import Label from '@/components/systems/Label';
 import LinkButton from '@/components/systems/LinkButton';
 import ReactTable from '@/components/systems/ReactTable';
 import Shimmer from '@/components/systems/Shimmer';
@@ -26,7 +28,8 @@ export default function Book() {
   const { updateToast, pushToast } = useToast();
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [deleteItem, setDeleteItem] = useState({ id: null, name: '' });
-  const [inputDebounceValue, setInputDebounceValue] = useState('');
+  const [search, setSearch] = useState('');
+  const [searchDebounce] = useDebounce(search, 300);
 
   async function handleDelete() {
     const toastId = pushToast({
@@ -170,6 +173,9 @@ export default function Book() {
   );
 
   const tableInstance = useRef(null);
+  useEffect(() => {
+    tableInstance?.current?.setGlobalFilter(searchDebounce);
+  }, [searchDebounce]);
 
   if (error) {
     return (
@@ -189,17 +195,8 @@ export default function Book() {
         </LinkButton>
       </div>
 
-      <InputDebounce
-        label='Search'
-        name='search'
-        id='search'
-        placeholder='Search'
-        value={inputDebounceValue}
-        onChange={(value) => {
-          setInputDebounceValue(value);
-          tableInstance?.current?.setGlobalFilter(value);
-        }}
-      />
+      <Label>Search</Label>
+      <Input name='search' placeholder='Search' onChange={(e) => setSearch(e.target.value)} />
 
       {data ? (
         <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} itemPerPage={[10, 20, 50, 100]} />

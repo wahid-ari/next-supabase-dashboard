@@ -6,10 +6,7 @@ import { z } from 'zod';
 import { supabase } from '@/libs/supabase';
 
 const schema = z.object({
-  username: z
-    .string()
-    .min(1, { message: 'Username is required' })
-    .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' }),
+  username: z.string().min(1, { message: 'Username is required' }),
   password: z.string().min(1, { message: 'Password is required' }),
 });
 
@@ -38,23 +35,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (method) {
     case 'POST':
       const isValid = schema.safeParse(body);
-      // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
-      if (isValid.success == false) {
-        res.status(422).json({ message: isValid.error.issues });
+      if (!isValid.success) {
+        res.status(422).json({ message: isValid?.error?.issues });
         return;
-      }
-      // if (!body.username) {
-      //   res.status(422).json({ message: 'Username required' });
-      //   return;
-      // } else if (!body.password) {
-      //   res.status(422).json({ message: 'Password required' });
-      //   return;
-      // }
-      else {
+      } else {
         const { data, error } = await supabase
           .from('book_users')
           .select(`*`)
-          .eq('username', body.username.toLowerCase())
+          .eq('username', body.username)
           .limit(1)
           .single();
         if (error) {
@@ -87,6 +75,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     default:
       res.setHeader('Allow', ['POST']);
       res.status(405).end(`Method ${method} Not Allowed`);
+      break;
   }
 }
 

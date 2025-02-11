@@ -59,6 +59,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({ token, user }: { token: any; user: any }) {
+      // Persist the token and or the user id to the token right after signin
       if (user) {
         token.id = user.id;
         token.name = user.name;
@@ -69,6 +70,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }: { session: any; token: any }) {
+      // Send properties to the client, like an access_token and user id from a provider.
       if (token) {
         session.id = token.id;
         session.name = token.name;

@@ -443,6 +443,21 @@ test.describe('Testing Input (Debounce Hook) Component', () => {
   });
 });
 
+test.describe('Testing Input (use-debounce Package) Component', () => {
+  // Input (use-debounce Package) ----------------------------------------------------
+  test('renders a Input (use-debounce Package) component', async ({ page }) => {
+    const input = page.getByTestId('input-debounce-hook');
+    await expect(input).toBeVisible();
+    await expect(input).toBeEnabled();
+    await expect(input).toBeEditable();
+    await expect(input).toHaveValue('');
+    await expect(input).toHaveClass(/mt-2 w-full rounded-md border border-neutral-300 px-4/);
+    await page.getByTestId('input-debounce-package').fill('input debounce package');
+    const text = page.getByTestId('input-debounce-package-text');
+    await expect(text).toHaveText('input debounce package');
+  });
+});
+
 test.describe('Testing InputDebounce Component', () => {
   // InputDebounce ----------------------------------------------------
   test('renders a InputDebounce component', async ({ page }) => {

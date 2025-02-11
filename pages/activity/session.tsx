@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import { TrashIcon } from 'lucide-react';
 import { mutate } from 'swr';
+import { useDebounce } from 'use-debounce';
 
 import { useSessionsData } from '@/libs/swr';
 import { cn } from '@/libs/utils';
@@ -11,7 +12,8 @@ import useToast from '@/hooks/use-hot-toast';
 import Layout from '@/components/layout/Layout';
 import Button from '@/components/systems/Button';
 import Dialog from '@/components/systems/Dialog';
-import InputDebounce from '@/components/systems/InputDebounce';
+import Input from '@/components/systems/Input';
+import Label from '@/components/systems/Label';
 import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
@@ -22,17 +24,18 @@ export default function Session() {
   const router = useRouter();
   const { data, error } = useSessionsData();
   const { updateToast, pushToast } = useToast();
-  const [inputDebounceValue, setInputDebounceValue] = useState('');
+  const [search, setSearch] = useState('');
+  const [searchDebounce] = useDebounce(search, 300);
   const [openDeleteAllDialog, setOpenDeleteAllDialog] = useState(false);
 
   const filteredData =
-    inputDebounceValue === ''
+    searchDebounce === ''
       ? data
       : data.filter((item: any) =>
           item.book_users.name
             .toLowerCase()
             .replace(/\s+/g, '')
-            .includes(inputDebounceValue.toLowerCase().replace(/\s+/g, '')),
+            .includes(searchDebounce.toLowerCase().replace(/\s+/g, '')),
         );
 
   async function handleDeleteAll() {
@@ -93,14 +96,8 @@ export default function Session() {
         <div className='mt-5 text-center sm:text-left'>Are you sure want to delete All Session ?</div>
       </Dialog>
 
-      <InputDebounce
-        label='Search'
-        id='inputdebounce'
-        name='inputdebounce'
-        placeholder='Search'
-        value={inputDebounceValue}
-        onChange={(value) => setInputDebounceValue(value)}
-      />
+      <Label>Search</Label>
+      <Input name='search' placeholder='Search' onChange={(e) => setSearch(e.target.value)} />
 
       {filteredData ? (
         <TableSimple
