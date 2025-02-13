@@ -14,7 +14,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // const { count: authors } = await supabase.from('book_authors').select(`*`, { count: 'exact', head: true });
       // const { count: books } = await supabase.from('book_books').select(`*`, { count: 'exact', head: true });
       // const { count: genres } = await supabase.from('book_genres').select(`*`, { count: 'exact', head: true });
-      // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
       res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
       // res.status(200).json({
       //   authors: authors,

@@ -18,7 +18,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // $$ language sql immutable;
       const { data: books } = await supabase.from('book_books').select(`*`).textSearch('title_isbn', `'${query.q}'`);
       const { data: authors } = await supabase.from('book_authors').select(`*`).textSearch('name', `'${query.q}'`);
-      // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
       res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
       res.status(200).json({ books, authors });
       break;

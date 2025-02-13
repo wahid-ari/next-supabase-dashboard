@@ -14,7 +14,8 @@ export function middleware(request: NextRequest) {
   return withAuth(request as any);
 }
 
-// See "Matching Paths" below to learn more
+// To include all dashboard nested routes (sub pages like /dashboard/settings, /dashboard/profile)
+// you can pass matcher: "/dashboard/:path*" to config.
 export const config = {
   matcher: ['/old/:path*', '/genre/:path*'],
 };

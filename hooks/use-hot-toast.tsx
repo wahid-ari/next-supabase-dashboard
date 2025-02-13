@@ -12,7 +12,6 @@ type UpdateProps = {
   isError?: boolean;
 };
 
-// TODO Docs https://github.com/timolins/react-hot-toast/issues/110
 export default function useToast() {
   const pushToast = ({ message, isError, isLoading }: PushProps) => {
     if (!isError && !isLoading) {

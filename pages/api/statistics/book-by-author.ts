@@ -18,7 +18,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         });
       }
       let sortedData = items.sort((a: any, b: any) => b.total - a.total).slice(0, 10);
-      // TODO Docs https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
       res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
       res.status(200).json(sortedData);
       break;

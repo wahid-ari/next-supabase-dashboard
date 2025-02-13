@@ -87,6 +87,7 @@ function MyApp({ Component, pageProps }: CustomAppProps) {
             style: {
               maxWidth: 380,
               padding: '2px 4px',
+              wordBreak: 'break-all',
             },
           }}
         />

@@ -9,7 +9,7 @@ import { defineConfig, devices } from '@playwright/test';
 // Install browser
 // npx playwright install chromium
 // Explore test-results
-// TODO Docs https://trace.playwright.dev/
+// https://trace.playwright.dev/
 
 /**
  * See https://playwright.dev/docs/test-configuration.
