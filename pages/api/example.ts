@@ -5,19 +5,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   switch (method) {
     case 'GET':
-      res.status(200).json({});
+      res.status(200).json({ message: 'GET' });
       break;
 
     case 'POST':
-      res.status(200).json({ message: 'Success add' });
+      res.status(200).json({ message: 'POST' });
       break;
 
     case 'PUT':
-      res.status(201).json({ message: 'Success update' });
+      res.status(201).json({ message: 'PUT' });
       break;
 
     case 'DELETE':
-      res.status(200).json({ message: 'Success delete' });
+      res.status(200).json({ message: 'DELETE' });
       break;
 
     default:

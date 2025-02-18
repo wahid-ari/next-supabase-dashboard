@@ -57,7 +57,7 @@ export default async function handler(req: NextApiRequest) {
                 fontWeight: 700,
               }}
             >
-              MyBook
+              Next.js
             </p>
           </div>
 
@@ -88,7 +88,7 @@ export default async function handler(req: NextApiRequest) {
               color: '#fff',
             }}
           >
-            Find books you&apos;ll love, and keep track of the books you want to read.
+            Next.js Pages Router
           </p>
         </div>
       ),
