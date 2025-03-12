@@ -38,10 +38,10 @@ export default function Akun({ className, ...props }: Props) {
                 'text-neutral-600 hover:text-neutral-900',
                 'dark:text-neutral-300 dark:hover:text-neutral-100',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                'text-nowrap',
               )}
             >
-              {(mounted && session?.name) || 'Menu'}
-
+              {mounted ? (session?.name !== undefined ? session?.name : 'Menu') : ''}
               <ChevronDownIcon
                 className={cn('ml-1 h-5 w-4 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
                 aria-hidden='true'
