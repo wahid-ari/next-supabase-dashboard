@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --scrollbar-thumb: #d4d4d4; /* neutral-300 */
+  }
+
+  .dark {
+    --scrollbar-thumb: #404040; /* neutral-700 */
+  }
+}
+
+@layer base {
+  /* Custom scrollbar styling. Thanks @pranathiperii. */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 5px;
+  }
+  * {
+    /* scrollbar-width: thin; this will make all scrollbar thin, use scrollbar-thin css class from tailwind-scrollbar instead */
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+  }
+}
+
 html {
   scroll-behavior: smooth !important;
   scroll-padding-top: 2rem;
