@@ -2,12 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
+/* TODO Docs https://ui.shadcn.com/docs/theming#neutral */
 @layer base {
   :root {
+    --radius: 0.625rem;
+    --background: #ffffff; /* white */
+    --foreground: #0a0a0a; /* neutral-950 */
+    --card: #ffffff; /* white */
+    --card-foreground: #0a0a0a; /* neutral-950 */
+    --popover: #ffffff; /* white */
+    --popover-foreground: #0a0a0a; /* neutral-950 */
+    --primary: #171717; /* neutral-900 */
+    --primary-foreground: #fafafa; /* neutral-50 */
+    --secondary: #f5f5f5; /* neutral-100 */
+    --secondary-foreground: #171717; /* neutral-900 */
+    --muted: #f5f5f5; /* neutral-100 */
+    --muted-foreground: #737373; /* neutral-500 */
+    --accent: #f5f5f5; /* neutral-100 */
+    --accent-foreground: #171717; /* neutral-900 */
+    --destructive: #dc2626; /* red-200 */
+    --border: #e5e5e5; /* neutral-200 */
+    --input: #e5e5e5; /* neutral-200 */
+    --ring: #a3a3a3; /* neutral-400 */
+    --chart-1: #ea580c; /* orange-600 */
+    --chart-2: #0d9488; /* teal-600 */
+    --chart-3: #164e63; /* cyan-900 */
+    --chart-4: #fbbf24; /* amber-400 */
+    --chart-5: #f59e0b; /* amber-500 */
+    --sidebar-background: #fafafa; /* neutral-50 */
+    --sidebar-foreground: #404040; /* neutral-700 */
+    --sidebar-primary: #e5e5e5; /* neutral-200 */
+    --sidebar-primary-foreground: #18181b; /* zinc-900 */
+    --sidebar-accent: #f4f4f5; /* zinc-100 */
+    --sidebar-accent-foreground: #171717; /* zinc-900 */
+    --sidebar-border: #d1d5db; /* gray-300 */
+    --sidebar-ring: #0ea5e9; /* sky-500 */
     --scrollbar-thumb: #d4d4d4; /* neutral-300 */
   }
 
   .dark {
+    --background: #0a0a0a; /* neutral-950 */
+    --foreground: #fafafa; /* neutral-50 */
+    --card: #171717; /* neutral-900 */
+    --card-foreground: #fafafa; /* neutral-50 */
+    --popover: #262626; /* neutral-800 */
+    --popover-foreground: #fafafa; /* neutral-50 */
+    --primary: #e5e5e5; /* neutral-200 */
+    --primary-foreground: #171717; /* neutral-900 */
+    --secondary: #262626; /* neutral-800 */
+    --secondary-foreground: #fafafa; /* neutral-50 */
+    --muted: #262626; /* neutral-800 */
+    --muted-foreground: #a3a3a3; /* neutral-400 */
+    --accent: #262626; /* neutral-800 */
+    --accent-foreground: #fafafa; /* neutral-50 */
+    --destructive: #f87171; /* red-400 */
+    --border: #262626; /* neutral-800 */
+    --input: #ffffff5a; /* white/15 */
+    --ring: #737373; /* neutral-500 */
+    --chart-1: #1d4ed8; /* blue-700 */
+    --chart-2: #10b981; /* emerald-500 */
+    --chart-3: #f59e0b; /* amber-500 */
+    --chart-4: #a855f7; /* purple-500 */
+    --chart-5: #f43f5e; /* rose-500 */
+    --sidebar-background: #171717; /* neutral-900 */
+    --sidebar-foreground: #f5f5f5; /* neutral-100 */
+    --sidebar-primary: #262626; /* neutral-800 */
+    --sidebar-primary-foreground: #fafafa; /* neutral-50 */
+    --sidebar-accent: #27272a; /* zinc-800 */
+    --sidebar-accent-foreground: #f4f4f5; /* zinc-100 */
+    --sidebar-border: #3f3f46; /* zinc-700 */
+    --sidebar-ring: #0ea5e9; /* sky-500 */
     --scrollbar-thumb: #404040; /* neutral-700 */
   }
 }

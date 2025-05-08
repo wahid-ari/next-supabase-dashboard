@@ -38,6 +38,7 @@ import {
   Users,
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
 import { toast as toastsonner } from 'sonner';
 
 import { cn } from '@/libs/utils';
@@ -73,6 +74,7 @@ import { Button } from '@/components/ui/Button';
 import { Calendar } from '@/components/ui/Calendar';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/Carousel';
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/Chart';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/Collapsible';
 import {
@@ -338,13 +340,40 @@ export default function Ui() {
   const [openDrawer, setOpenDrawer] = useState(false);
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
+  const chartData = [
+    { month: 'January', desktop: 186, mobile: 80 },
+    { month: 'February', desktop: 305, mobile: 200 },
+    { month: 'March', desktop: 237, mobile: 120 },
+    { month: 'April', desktop: 73, mobile: 190 },
+    { month: 'May', desktop: 209, mobile: 130 },
+    { month: 'June', desktop: 214, mobile: 140 },
+  ];
+  const chartConfig = {
+    // desktop: {
+    //   label: 'Desktop',
+    //   color: 'hsl(var(--chart-1))',
+    // },
+    // mobile: {
+    //   label: 'Mobile',
+    //   color: 'hsl(var(--chart-2))',
+    // },
+    desktop: {
+      label: 'Desktop',
+      color: '#2563eb',
+    },
+    mobile: {
+      label: 'Mobile',
+      color: '#60a5fa',
+    },
+  } satisfies ChartConfig;
+
   return (
     <Layout title='UI - MyBook' description='Example UI - MyBook'>
       <div className='relative'>
         <Title>UI</Title>
         <span className='absolute left-[30px] top-1 flex h-5 w-5 animate-bounce items-center justify-center'>
-          <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
-          <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
+          <span className='rounded-full absolute inline-flex h-full w-full animate-ping bg-sky-400 opacity-75' />
+          <span className='rounded-full relative inline-flex h-3 w-3 bg-sky-500' />
         </span>
       </div>
 
@@ -403,6 +432,11 @@ export default function Ui() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#carousel'>
               Carousel
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#chart'>
+              Chart
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -973,6 +1007,45 @@ export default function Ui() {
         </div>
       </Wrapper>
 
+      <Wrapper id='chart' name='Chart' docs='https://ui.shadcn.com/docs/components/chart'>
+        <ChartContainer config={chartConfig}>
+          <AreaChart
+            accessibilityLayer
+            data={chartData}
+            margin={{
+              left: 12,
+              right: 12,
+            }}
+          >
+            <CartesianGrid vertical={false} />
+            <XAxis
+              dataKey='month'
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+              tickFormatter={(value) => value.slice(0, 3)}
+            />
+            <ChartTooltip cursor={false} content={<ChartTooltipContent indicator='dot' />} />
+            <Area
+              dataKey='mobile'
+              type='natural'
+              fill='var(--color-mobile)'
+              fillOpacity={0.4}
+              stroke='var(--color-mobile)'
+              stackId='a'
+            />
+            <Area
+              dataKey='desktop'
+              type='natural'
+              fill='var(--color-desktop)'
+              fillOpacity={0.4}
+              stroke='var(--color-desktop)'
+              stackId='a'
+            />
+          </AreaChart>
+        </ChartContainer>
+      </Wrapper>
+
       <Wrapper
         id='checkbox'
         name='Checkbox'
@@ -1142,10 +1215,10 @@ export default function Ui() {
           </Button>
           <p className='text-sm text-neutral-600 dark:text-neutral-400'>
             Press{' '}
-            <kbd className='pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium text-neutral-600 opacity-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
+            <kbd className='rounded pointer-events-none inline-flex h-5 select-none items-center gap-1 border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium text-neutral-600 opacity-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
               <span className='text-xs'>⌘</span>K
             </kbd>
-            <kbd className='pointer-events-none ml-2 inline-flex h-5 select-none items-center gap-1 rounded border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium text-neutral-600 opacity-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
+            <kbd className='rounded pointer-events-none ml-2 inline-flex h-5 select-none items-center gap-1 border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium text-neutral-600 opacity-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
               <span className='text-xs'>Ctrl</span>K
             </kbd>
           </p>
@@ -1932,7 +2005,7 @@ export default function Ui() {
 
       <Wrapper id='skeleton' name='Skeleton' docs='https://ui.shadcn.com/docs/components/skeleton' noChildren>
         <div className='flex items-center space-x-4'>
-          <Skeleton className='h-12 w-12 rounded-full' />
+          <Skeleton className='rounded-full h-12 w-12' />
           <div className='space-y-2'>
             <Skeleton className='h-4 w-[250px]' />
             <Skeleton className='h-4 w-[200px]' />
