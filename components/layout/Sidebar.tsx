@@ -143,8 +143,8 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             >
               Layout
               <span className='absolute left-24 top-2.5 flex h-5 w-5 animate-bounce items-center justify-center'>
-                <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
-                <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
+                <span className='rounded-full absolute inline-flex h-full w-full animate-ping bg-sky-400 opacity-75' />
+                <span className='rounded-full relative inline-flex h-3 w-3 bg-sky-500' />
               </span>
             </NavLink>
             <NavLink href='/design/ui' icon={<ContainerIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>

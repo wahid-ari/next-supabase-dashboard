@@ -46,14 +46,14 @@ export default function Book() {
                 src={data?.image}
                 width={250}
                 height={250}
-                className={`mx-auto w-52 rounded ${isLoading ? 'blur-sm' : 'blur-0'}`}
+                className={`rounded mx-auto w-52 ${isLoading ? 'blur-sm' : 'blur-0'}`}
                 onLoad={() => setLoading(false)}
                 unoptimized
               />
             </div>
           ) : (
             <div className='mx-auto w-3/5 overflow-hidden sm:mx-0 sm:w-1/4 lg:w-1/5'>
-              <div className='flex h-64 w-full items-center justify-center rounded bg-neutral-200 dark:bg-neutral-800'>
+              <div className='rounded flex h-64 w-full items-center justify-center bg-neutral-200 dark:bg-neutral-800'>
                 <ImageIcon className='h-16 w-16 text-neutral-500' />
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function Book() {
                       {data?.link ? (
                         <a
                           href={data?.link}
-                          className='flex w-16 items-center rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                          className='rounded flex w-16 items-center text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                           target='_blank'
                           rel='noreferrer'
                         >
@@ -135,7 +135,7 @@ export default function Book() {
                       src={data?.book_authors?.image}
                       width={50}
                       height={50}
-                      className={`h-20 w-20 rounded-full object-cover brightness-90 transition-all duration-300 hover:brightness-100 ${
+                      className={`rounded-full h-20 w-20 object-cover brightness-90 transition-all duration-300 hover:brightness-100 ${
                         isLoading ? 'blur-sm' : 'blur-0'
                       }`}
                       onLoad={() => setLoading(false)}
@@ -143,7 +143,7 @@ export default function Book() {
                     />
                   </Link>
                 ) : (
-                  <div className='flex h-20 w-20 items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800'>
+                  <div className='rounded-full flex h-20 w-20 items-center justify-center bg-neutral-200 dark:bg-neutral-800'>
                     <ImageIcon className='h-8 w-8 text-neutral-500' />
                   </div>
                 )}
@@ -157,7 +157,7 @@ export default function Book() {
                   {data?.book_authors?.web ? (
                     <a
                       href={data?.book_authors?.web}
-                      className='mt-1 flex w-16 items-center rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                      className='rounded mt-1 flex w-16 items-center text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                       target='_blank'
                       rel='noreferrer'
                     >
@@ -179,24 +179,24 @@ export default function Book() {
         <div className='gap-6 sm:flex'>
           <div className='mx-auto w-3/5 sm:mx-0 sm:w-1/4 lg:w-1/5'>
             <Shimmer>
-              <div className='h-64 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded h-64 w-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </Shimmer>
           </div>
           <div className='mt-6 w-full sm:mt-0 sm:w-3/4 '>
             <Shimmer>
-              <div className='mb-2 h-4 w-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='mb-2 h-4 w-40 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='mb-2 h-4 w-52 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='mb-2 h-4 w-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='mb-2 h-4 w-40 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='mb-5 h-4 w-52 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-44 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded mb-2 h-4 w-32 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded mb-2 h-4 w-40 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded mb-2 h-4 w-52 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded mb-2 h-4 w-32 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded mb-2 h-4 w-40 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded mb-5 h-4 w-52 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded h-44 w-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </Shimmer>
             <Shimmer className='relative isolate mt-6 flex items-center gap-3'>
-              <div className='h-16 w-16 rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded-full h-16 w-16 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div>
-                <div className='mb-2 h-4 w-52 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='h-3 w-10 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                <div className='rounded mb-2 h-4 w-52 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                <div className='rounded h-3 w-10 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               </div>
             </Shimmer>
           </div>

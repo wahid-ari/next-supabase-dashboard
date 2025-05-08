@@ -67,7 +67,7 @@ export function DemoActivityGoal() {
           <Button
             variant='outline'
             size='icon'
-            className='h-8 w-8 shrink-0 rounded-full'
+            className='rounded-full h-8 w-8 shrink-0'
             onClick={() => onClick(-10)}
             disabled={goal <= 200}
           >
@@ -81,7 +81,7 @@ export function DemoActivityGoal() {
           <Button
             variant='outline'
             size='icon'
-            className='h-8 w-8 shrink-0 rounded-full'
+            className='rounded-full h-8 w-8 shrink-0'
             onClick={() => onClick(10)}
             disabled={goal >= 400}
           >

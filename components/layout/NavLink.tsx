@@ -39,7 +39,7 @@ export default function NavLink({ children, className, href, icon, isHome, ...pr
         {...props}
         href={href}
         className={cn(
-          'group flex w-full items-center justify-start gap-2 rounded px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+          'rounded group flex w-full items-center justify-start gap-2 px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
           isHome && 'bg-neutral-100 text-sky-600 dark:bg-neutral-800 dark:text-sky-500',
           !isHome &&
             'text-neutral-600 hover:bg-neutral-100 hover:text-sky-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
@@ -60,7 +60,7 @@ export default function NavLink({ children, className, href, icon, isHome, ...pr
       {...props}
       href={href}
       className={cn(
-        'group flex w-full items-center justify-start gap-2 rounded px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+        'rounded group flex w-full items-center justify-start gap-2 px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
         isDetailOrAddRoute
           ? // current route that includes href
             // if route start with 'design', all pages inside design folder will activate this
@@ -121,7 +121,7 @@ NavLink.login = ({ children, className, href, icon, ...props }: Other) => {
       href={href}
       className={cn(
         'group flex w-full items-center justify-start px-3 py-1.5 transition-all',
-        'gap-2 rounded text-sm font-medium hover:bg-emerald-100 dark:hover:bg-neutral-800',
+        'rounded gap-2 text-sm font-medium hover:bg-emerald-100 dark:hover:bg-neutral-800',
         'text-emerald-500 hover:text-emerald-600 dark:text-emerald-600 dark:hover:text-emerald-500',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500',
         className,
@@ -141,7 +141,7 @@ NavLink.logout = ({ children, className, href, icon, ...props }: Other) => {
       href={href}
       className={cn(
         'group flex w-full items-center justify-start px-3 py-1.5 transition-all',
-        'gap-2 rounded text-sm font-medium hover:bg-red-100 dark:hover:bg-neutral-800',
+        'rounded gap-2 text-sm font-medium hover:bg-red-100 dark:hover:bg-neutral-800',
         'text-red-500 hover:text-red-600 dark:text-red-600 dark:hover:text-red-500',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
         className,

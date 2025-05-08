@@ -37,7 +37,7 @@ export default function BookListItem({ href, image, title, published, ...props }
             />
           </div>
         ) : (
-          <div className='flex h-20 w-14 items-center justify-center rounded bg-neutral-200 dark:bg-neutral-800'>
+          <div className='rounded flex h-20 w-14 items-center justify-center bg-neutral-200 dark:bg-neutral-800'>
             <ImageIcon className='h-8 w-8 text-neutral-500' />
           </div>
         )}

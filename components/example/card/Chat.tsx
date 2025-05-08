@@ -71,7 +71,7 @@ export function DemoChat() {
           <TooltipProvider delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button size='icon' variant='outline' className='ml-auto rounded-full' onClick={() => setOpen(true)}>
+                <Button size='icon' variant='outline' className='rounded-full ml-auto' onClick={() => setOpen(true)}>
                   <Plus className='h-4 w-4' />
                 </Button>
               </TooltipTrigger>
@@ -146,7 +146,7 @@ export function DemoChat() {
             <DialogTitle>New message</DialogTitle>
             <DialogDescription>Invite a user to this thread. This will create a new group message.</DialogDescription>
           </DialogHeader>
-          <Command className='overflow-hidden rounded-t-none border-t dark:border-t-neutral-700'>
+          <Command className='rounded-t-none overflow-hidden border-t dark:border-t-neutral-700'>
             <CommandInput placeholder='Search user...' />
             <CommandList>
               <CommandEmpty>No users found.</CommandEmpty>

@@ -39,7 +39,7 @@ export default function Setting() {
 
       <motion.div
         className={cn(
-          'relative h-[25px] w-[45px] cursor-pointer rounded-2xl focus-visible:outline-none',
+          'rounded-2xl relative h-[25px] w-[45px] cursor-pointer focus-visible:outline-none',
           'focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-neutral-900',
         )}
         style={{
@@ -51,7 +51,7 @@ export default function Setting() {
         onTapStart={handleDarkMode}
       >
         <motion.div
-          className='h-full w-full rounded-full bg-sky-500'
+          className='rounded-full h-full w-full bg-sky-500'
           variants={{ light: { scale: 0 }, dark: { scale: 1 } }}
           transition={{ ease: 'easeInOut' }}
         />

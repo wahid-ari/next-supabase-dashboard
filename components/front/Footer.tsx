@@ -20,10 +20,10 @@ export default function Footer({ className, ...props }: { className?: string; [p
         <div className='gap-16 pb-4 md:flex md:justify-between'>
           <div className='mb-6 md:mb-0 md:w-2/5'>
             {/* web logo  */}
-            <Link href='/' passHref className='group inline-flex rounded focus-visible:outline-none'>
+            <Link href='/' passHref className='rounded group inline-flex focus-visible:outline-none'>
               <div
                 className={cn(
-                  'flex items-center rounded font-medium text-neutral-900',
+                  'rounded flex items-center font-medium text-neutral-900',
                   'group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
                 )}
               >

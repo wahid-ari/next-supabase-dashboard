@@ -113,7 +113,7 @@ export const ReactTable = forwardRef(
     } data`;
 
     return (
-      <div className={cn('w-full rounded border dark:border-neutral-800', className)}>
+      <div className={cn('rounded w-full border dark:border-neutral-800', className)}>
         <div className='scrollbar-thumb-rounded overflow-auto scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'>
           <table
             {...getTableProps()}

@@ -42,7 +42,7 @@ export default function Tabs({ children, className, items, name = 'underline', .
                   {item}
                   {selected && (
                     <motion.div
-                      className='absolute bottom-0 left-0 right-0 z-10 h-[2px] rounded-full border-b-2 border-b-sky-600'
+                      className='rounded-full absolute bottom-0 left-0 right-0 z-10 h-[2px] border-b-2 border-b-sky-600'
                       layoutId={name}
                       initial={false}
                     />

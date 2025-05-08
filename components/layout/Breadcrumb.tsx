@@ -39,7 +39,7 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
             href='/'
             passHref
             className={cn(
-              'inline-flex items-center rounded text-neutral-700 transition-all hover:text-neutral-900',
+              'rounded inline-flex items-center text-neutral-700 transition-all hover:text-neutral-900',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               'dark:text-neutral-300 dark:hover:text-neutral-100',
             )}
@@ -66,7 +66,7 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
                   <Link
                     href={(index !== 0 ? '/' : '') + paths.slice(0, index).join('/') + '/' + path}
                     className={cn(
-                      'ml-1 rounded text-neutral-600 transition-all hover:text-neutral-800',
+                      'rounded ml-1 text-neutral-600 transition-all hover:text-neutral-800',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       'dark:text-neutral-300 dark:hover:text-neutral-200',
                     )}

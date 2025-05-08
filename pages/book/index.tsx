@@ -146,7 +146,7 @@ export default function Book() {
             <div>
               <Link
                 href={`book/edit/${values.id}`}
-                className='mr-2 rounded bg-sky-600 px-[6px] py-[3px] text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400'
+                className='rounded mr-2 bg-sky-600 px-[6px] py-[3px] text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400'
               >
                 Edit
               </Link>

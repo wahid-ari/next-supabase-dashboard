@@ -158,22 +158,22 @@ export default function Author() {
           <div>
             {[...Array(4).keys()].map((e, i) => (
               <Shimmer key={i} className='mb-4 p-2'>
-                <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                <div className='rounded mb-2 h-4 w-16 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                <div className='rounded h-6 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               </Shimmer>
             ))}
           </div>
           <div>
             <Shimmer className='mb-4 p-2'>
-              <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded mb-2 h-4 w-16 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded h-6 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </Shimmer>
             <Shimmer className='mb-4 p-2'>
-              <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-32 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded mb-2 h-4 w-16 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded h-32 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </Shimmer>
             <Shimmer className='mb-4 p-2'>
-              <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='rounded h-6 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </Shimmer>
           </div>
         </div>
