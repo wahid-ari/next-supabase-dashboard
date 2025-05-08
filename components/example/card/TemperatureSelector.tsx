@@ -24,7 +24,7 @@ export function TemperatureSelector({ defaultValue }: TemperatureSelectorProps) 
           <div className='grid gap-4'>
             <div className='flex items-center justify-between'>
               <Label htmlFor='temperature'>Temperature</Label>
-              <span className='hover:border-border w-12 rounded-md border border-transparent px-2 py-0.5 text-right text-sm text-neutral-600 dark:text-neutral-400'>
+              <span className='w-12 rounded-md border border-transparent px-2 py-0.5 text-right text-sm text-neutral-600 hover:border-border dark:text-neutral-400'>
                 {value}
               </span>
             </div>

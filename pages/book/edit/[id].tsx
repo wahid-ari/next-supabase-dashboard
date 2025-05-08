@@ -184,7 +184,7 @@ export default function Book() {
                   onChange={setSelectedGenres}
                   placeholder='Search and Select Genre'
                   name='genre'
-                  className='rounded mb-4'
+                  className='mb-4 rounded'
                   classNamePrefix='react-select'
                   theme={(theme) => ({
                     ...theme,
@@ -295,26 +295,26 @@ export default function Book() {
           <div>
             {[...Array(4).keys()].map((_, i) => (
               <Shimmer key={i} className='mb-4 p-2'>
-                <div className='rounded mb-2 h-4 w-16 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='rounded h-6 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               </Shimmer>
             ))}
 
             <Shimmer className='mb-4 p-2'>
-              <div className='rounded mb-2 h-4 w-16 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='rounded h-24 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-24 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </Shimmer>
           </div>
           <div>
             {[...Array(5).keys()].map((_, i) => (
               <Shimmer key={i} className='mb-4 p-2'>
-                <div className='rounded mb-2 h-4 w-16 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-                <div className='rounded h-6 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                <div className='mb-2 h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+                <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               </Shimmer>
             ))}
 
             <Shimmer className='mt-8 p-2'>
-              <div className='rounded h-6 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </Shimmer>
           </div>
         </div>

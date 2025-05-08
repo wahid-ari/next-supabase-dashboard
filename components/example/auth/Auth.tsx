@@ -15,7 +15,7 @@ export default function AuthenticationPage() {
       >
         Login
       </Link>
-      <div className='bg-muted relative hidden h-full flex-col p-10 dark:border-r dark:border-r-neutral-700 dark:text-white lg:flex'>
+      <div className='relative hidden h-full flex-col bg-muted p-10 dark:border-r dark:border-r-neutral-700 dark:text-white lg:flex'>
         <div className='absolute inset-0 bg-gradient-to-b from-neutral-100/50 via-neutral-200/50 to-neutral-300 dark:from-neutral-900/50 dark:via-neutral-800/50 dark:to-neutral-700' />
         <div className='relative z-20 flex items-center text-lg font-medium'>
           <svg
@@ -53,11 +53,11 @@ export default function AuthenticationPage() {
           <UserAuthForm />
           <p className='px-8 text-center text-sm text-neutral-500 dark:text-neutral-400'>
             By clicking continue, you agree to our{' '}
-            <Link href='/terms' className='hover:text-primary underline underline-offset-4'>
+            <Link href='/terms' className='underline underline-offset-4 hover:text-primary'>
               Terms of Service
             </Link>{' '}
             and{' '}
-            <Link href='/privacy' className='hover:text-primary underline underline-offset-4'>
+            <Link href='/privacy' className='underline underline-offset-4 hover:text-primary'>
               Privacy Policy
             </Link>
             .

@@ -143,7 +143,7 @@ export default function Book() {
                 onChange={setSelectedGenres}
                 placeholder='Search and Select Genre'
                 name='genre'
-                className='rounded mb-4'
+                className='mb-4 rounded'
                 classNamePrefix='react-select'
                 theme={(theme) => ({
                   ...theme,

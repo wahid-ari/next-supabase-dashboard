@@ -31,7 +31,7 @@ export default function NavbarSearch({ ...props }: { [props: string]: any }) {
           type='search'
           id='search'
           className={cn(
-            'rounded block w-full border border-neutral-200 p-2.5 pl-10 text-sm text-neutral-900',
+            'block w-full rounded border border-neutral-200 p-2.5 pl-10 text-sm text-neutral-900',
             'bg-neutral-50 focus:border-sky-500 focus:ring-sky-500 dark:border-neutral-800 dark:bg-neutral-800',
             'dark:text-white dark:placeholder-neutral-400 dark:focus:border-sky-500 dark:focus:ring-sky-500',
             '!pr-20',

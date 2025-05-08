@@ -393,7 +393,7 @@ export default function Example() {
             <div>
               <Link
                 href={`#`}
-                className='rounded mr-2 bg-sky-600 px-[6px] py-[3px] text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400'
+                className='mr-2 rounded bg-sky-600 px-[6px] py-[3px] text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400'
               >
                 Edit
               </Link>
@@ -1124,7 +1124,7 @@ export default function Example() {
             <>
               <Menu.Button
                 className={cn(
-                  'rounded flex items-center font-medium text-neutral-600 transition-all hover:text-neutral-900',
+                  'flex items-center rounded font-medium text-neutral-600 transition-all hover:text-neutral-900',
                   'dark:text-neutral-300 dark:hover:text-neutral-100',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 )}
@@ -1150,7 +1150,7 @@ export default function Example() {
                         <Link
                           href='/setting'
                           className={cn(
-                            'rounded flex w-full px-2 py-1.5 text-sm',
+                            'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
                               : 'text-neutral-700 dark:text-neutral-300',
@@ -1165,7 +1165,7 @@ export default function Example() {
                         <Link
                           href='/design/ui'
                           className={cn(
-                            'rounded flex w-full px-2 py-1.5 text-sm',
+                            'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
                               : 'text-neutral-700 dark:text-neutral-300',
@@ -1179,7 +1179,7 @@ export default function Example() {
                       {({ active }) => (
                         <button
                           className={cn(
-                            'rounded flex w-full px-2 py-1.5 text-sm',
+                            'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
                               : 'text-neutral-700 dark:text-neutral-300',
@@ -1825,7 +1825,7 @@ function dissmissAllToast() {
 
       <Wrapper id='loading-skeleton' name='LoadingSkeleton' noClassName noProps noChildren>
         <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-          <Shimmer className='rounded-2xl space-y-5'>
+          <Shimmer className='space-y-5 rounded-2xl'>
             <div className='h-24 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div className='space-y-3'>
               <div className='h-3 w-3/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
@@ -1834,11 +1834,11 @@ function dissmissAllToast() {
             </div>
           </Shimmer>
 
-          <Shimmer className='rounded-2xl space-y-5'>
+          <Shimmer className='space-y-5 rounded-2xl'>
             <div className='h-44 w-full rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
           </Shimmer>
 
-          <Shimmer className='rounded-2xl space-y-5'>
+          <Shimmer className='space-y-5 rounded-2xl'>
             <div className='space-y-3'>
               <div className='h-3 w-3/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-3 w-4/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
@@ -1853,8 +1853,8 @@ function dissmissAllToast() {
             </div>
           </Shimmer>
 
-          <Shimmer className='rounded-2xl space-y-5'>
-            <div className='rounded-full h-24 w-24 bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+          <Shimmer className='space-y-5 rounded-2xl'>
+            <div className='h-24 w-24 rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div className='space-y-3'>
               <div className='h-3 w-3/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-3 w-4/5 rounded-lg bg-neutral-300/70 dark:bg-neutral-700/50'></div>
@@ -1862,13 +1862,13 @@ function dissmissAllToast() {
             </div>
           </Shimmer>
 
-          <Shimmer className='rounded-2xl h-8' />
+          <Shimmer className='h-8 rounded-2xl' />
 
-          <Shimmer className='rounded-full h-20 w-20' />
+          <Shimmer className='h-20 w-20 rounded-full' />
 
-          <Shimmer className='rounded h-20' />
+          <Shimmer className='h-20 rounded' />
 
-          <Shimmer className='rounded-3xl h-20 w-20' />
+          <Shimmer className='h-20 w-20 rounded-3xl' />
         </div>
       </Wrapper>
     </Layout>

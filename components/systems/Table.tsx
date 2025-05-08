@@ -35,7 +35,7 @@ export default function Table({
   return (
     <div
       className={cn(
-        'rounded w-full border shadow-sm dark:border-neutral-800 lg:max-w-[calc(100vw_-_17rem)]',
+        'w-full rounded border shadow-sm dark:border-neutral-800 lg:max-w-[calc(100vw_-_17rem)]',
         className,
       )}
     >

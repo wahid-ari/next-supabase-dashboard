@@ -34,7 +34,7 @@ export default function Akun({ className, ...props }: Props) {
             <Menu.Button
               {...props}
               className={cn(
-                'rounded inline-flex w-full items-center justify-center font-medium transition-all',
+                'inline-flex w-full items-center justify-center rounded font-medium transition-all',
                 'text-neutral-600 hover:text-neutral-900',
                 'dark:text-neutral-300 dark:hover:text-neutral-100',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
@@ -62,7 +62,7 @@ export default function Akun({ className, ...props }: Props) {
                       <Link
                         href='/setting'
                         className={cn(
-                          'rounded flex w-full px-2 py-1.5 text-sm',
+                          'flex w-full rounded px-2 py-1.5 text-sm',
                           active
                             ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
                             : 'text-neutral-700 dark:text-neutral-300',
@@ -78,7 +78,7 @@ export default function Akun({ className, ...props }: Props) {
                         <Link
                           href='/login'
                           className={cn(
-                            'rounded flex w-full px-2 py-1.5 text-sm',
+                            'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
                               : 'text-neutral-700 dark:text-neutral-300',
@@ -94,7 +94,7 @@ export default function Akun({ className, ...props }: Props) {
                         <button
                           onClick={() => setOpenModal(true)}
                           className={cn(
-                            'rounded flex w-full px-2 py-1.5 text-sm',
+                            'flex w-full rounded px-2 py-1.5 text-sm',
                             active
                               ? 'bg-neutral-100 text-red-600 transition-all dark:bg-neutral-800 dark:text-red-500'
                               : 'text-red-500 dark:text-red-500',

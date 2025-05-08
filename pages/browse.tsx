@@ -138,7 +138,7 @@ export default function Browse() {
           {!data && <Text>Searching &#8220;{search}&#8221;...</Text>}
 
           {data?.books?.length < 1 && data?.authors?.length < 1 ? (
-            <div className='rounded mb-12 mt-8 border border-red-500 p-3'>
+            <div className='mb-12 mt-8 rounded border border-red-500 p-3'>
               <p className='text-red-500'>{`No results for "${query || search}"`}</p>
             </div>
           ) : null}
@@ -224,7 +224,7 @@ export default function Browse() {
                         <button
                           onClick={() => removeBooksHistory(item.id)}
                           className={cn(
-                            'rounded absolute -left-1 -top-1 px-1.5 py-0.5 text-xs font-medium',
+                            'absolute -left-1 -top-1 rounded px-1.5 py-0.5 text-xs font-medium',
                             'bg-red-500 text-white transition-all hover:bg-red-600',
                             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400',
                           )}
@@ -264,7 +264,7 @@ export default function Browse() {
                         <button
                           onClick={() => removeAuthorsHistory(item.id)}
                           className={cn(
-                            'rounded-full absolute -left-1 -top-1 px-1.5 py-0.5 text-xs font-medium',
+                            'absolute -left-1 -top-1 rounded-full px-1.5 py-0.5 text-xs font-medium',
                             'bg-red-500 text-white transition-all hover:bg-red-600',
                             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400',
                           )}

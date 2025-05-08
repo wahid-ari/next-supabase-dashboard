@@ -372,8 +372,8 @@ export default function Ui() {
       <div className='relative'>
         <Title>UI</Title>
         <span className='absolute left-[30px] top-1 flex h-5 w-5 animate-bounce items-center justify-center'>
-          <span className='rounded-full absolute inline-flex h-full w-full animate-ping bg-sky-400 opacity-75' />
-          <span className='rounded-full relative inline-flex h-3 w-3 bg-sky-500' />
+          <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
+          <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
         </span>
       </div>
 
@@ -1025,7 +1025,10 @@ export default function Ui() {
               tickMargin={8}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <ChartTooltip cursor={false} content={<ChartTooltipContent indicator='dot' />} />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent indicator='dot' className='dark:border-neutral-700' />}
+            />
             <Area
               dataKey='mobile'
               type='natural'
@@ -1215,10 +1218,10 @@ export default function Ui() {
           </Button>
           <p className='text-sm text-neutral-600 dark:text-neutral-400'>
             Press{' '}
-            <kbd className='rounded pointer-events-none inline-flex h-5 select-none items-center gap-1 border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium text-neutral-600 opacity-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
+            <kbd className='pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium text-neutral-600 opacity-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
               <span className='text-xs'>⌘</span>K
             </kbd>
-            <kbd className='rounded pointer-events-none ml-2 inline-flex h-5 select-none items-center gap-1 border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium text-neutral-600 opacity-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
+            <kbd className='pointer-events-none ml-2 inline-flex h-5 select-none items-center gap-1 rounded border border-neutral-300 bg-neutral-200 px-1.5 font-mono text-[10px] font-medium text-neutral-600 opacity-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
               <span className='text-xs'>Ctrl</span>K
             </kbd>
           </p>
@@ -2005,7 +2008,7 @@ export default function Ui() {
 
       <Wrapper id='skeleton' name='Skeleton' docs='https://ui.shadcn.com/docs/components/skeleton' noChildren>
         <div className='flex items-center space-x-4'>
-          <Skeleton className='rounded-full h-12 w-12' />
+          <Skeleton className='h-12 w-12 rounded-full' />
           <div className='space-y-2'>
             <Skeleton className='h-4 w-[250px]' />
             <Skeleton className='h-4 w-[200px]' />

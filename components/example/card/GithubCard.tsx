@@ -50,7 +50,7 @@ export function DemoGithub() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant='outline' size='sm' className='px-2 shadow-none'>
-                  <ChevronDownIcon className='text-secondary-foreground h-4 w-4' />
+                  <ChevronDownIcon className='h-4 w-4 text-secondary-foreground' />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align='end' alignOffset={-5} className='w-[200px]' forceMount>

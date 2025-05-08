@@ -8,15 +8,15 @@ type Props = {
 
 export default function Progress({ className, percent, ...props }: Props) {
   return (
-    <div className={cn('rounded-full h-1.5 w-full bg-neutral-200 dark:bg-neutral-800', className)}>
-      <div {...props} className='rounded-full h-1.5 bg-sky-500' style={{ width: `${percent}%` }}></div>
+    <div className={cn('h-1.5 w-full rounded-full bg-neutral-200 dark:bg-neutral-800', className)}>
+      <div {...props} className='h-1.5 rounded-full bg-sky-500' style={{ width: `${percent}%` }}></div>
     </div>
   );
 }
 
 Progress.percentage = ({ className, percent, ...props }: Props) => {
   return (
-    <div className='rounded-full w-full bg-neutral-200 dark:bg-neutral-800'>
+    <div className='w-full rounded-full bg-neutral-200 dark:bg-neutral-800'>
       <div
         {...props}
         className={cn(

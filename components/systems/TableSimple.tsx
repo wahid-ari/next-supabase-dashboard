@@ -24,7 +24,7 @@ export default function TableSimple({
   return (
     <div
       className={cn(
-        'rounded w-full',
+        'w-full rounded',
         bordered ? 'border-t dark:border-t-neutral-800' : 'border dark:border-neutral-800',
         wrapperClassName,
       )}

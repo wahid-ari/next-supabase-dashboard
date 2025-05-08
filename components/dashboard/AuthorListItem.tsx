@@ -37,7 +37,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
             />
           </div>
         ) : (
-          <div className='rounded-full flex h-16 w-16 items-center justify-center bg-neutral-200 dark:bg-neutral-800'>
+          <div className='flex h-16 w-16 items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800'>
             <ImageIcon className='h-8 w-8 text-neutral-500' />
           </div>
         )}
@@ -56,7 +56,7 @@ export default function AuthorListItem({ href, image, name, web, ...props }: Pro
           <a
             href={web}
             className={cn(
-              'rounded mt-1 flex w-16 items-center text-sm font-medium transition-all duration-200',
+              'mt-1 flex w-16 items-center rounded text-sm font-medium transition-all duration-200',
               'text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
             target='_blank'

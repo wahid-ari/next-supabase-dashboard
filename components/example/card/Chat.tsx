@@ -71,7 +71,7 @@ export function DemoChat() {
           <TooltipProvider delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button size='icon' variant='outline' className='rounded-full ml-auto' onClick={() => setOpen(true)}>
+                <Button size='icon' variant='outline' className='ml-auto rounded-full' onClick={() => setOpen(true)}>
                   <Plus className='h-4 w-4' />
                 </Button>
               </TooltipTrigger>
@@ -146,7 +146,7 @@ export function DemoChat() {
             <DialogTitle>New message</DialogTitle>
             <DialogDescription>Invite a user to this thread. This will create a new group message.</DialogDescription>
           </DialogHeader>
-          <Command className='rounded-t-none overflow-hidden border-t dark:border-t-neutral-700'>
+          <Command className='overflow-hidden rounded-t-none border-t dark:border-t-neutral-700'>
             <CommandInput placeholder='Search user...' />
             <CommandList>
               <CommandEmpty>No users found.</CommandEmpty>
@@ -171,7 +171,7 @@ export function DemoChat() {
                       <p className='text-sm font-medium leading-none'>{user.name}</p>
                       <p className='text-sm text-neutral-400 dark:text-neutral-500'>{user.email}</p>
                     </div>
-                    {selectedUsers.includes(user) ? <Check className='text-primary ml-auto flex h-5 w-5' /> : null}
+                    {selectedUsers.includes(user) ? <Check className='ml-auto flex h-5 w-5 text-primary' /> : null}
                   </CommandItem>
                 ))}
               </CommandGroup>
@@ -181,7 +181,7 @@ export function DemoChat() {
             {selectedUsers.length > 0 ? (
               <div className='mt-2 flex -space-x-2 overflow-hidden sm:mt-0'>
                 {selectedUsers.map((user) => (
-                  <Avatar key={user.email} className='border-background inline-block border-2'>
+                  <Avatar key={user.email} className='inline-block border-2 border-background'>
                     <AvatarImage src={user.avatar} />
                     <AvatarFallback>{user.name[0]}</AvatarFallback>
                   </Avatar>

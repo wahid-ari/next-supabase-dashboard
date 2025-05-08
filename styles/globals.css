@@ -5,7 +5,6 @@
 /* TODO Docs https://ui.shadcn.com/docs/theming#neutral */
 @layer base {
   :root {
-    --radius: 0.625rem;
     --background: #ffffff; /* white */
     --foreground: #0a0a0a; /* neutral-950 */
     --card: #ffffff; /* white */

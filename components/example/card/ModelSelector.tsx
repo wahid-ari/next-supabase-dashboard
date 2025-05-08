@@ -156,7 +156,7 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
       key={model.id}
       onSelect={onSelect}
       ref={ref}
-      className='aria-selected:text-primary-foreground aria-selected:bg-neutral-200'
+      className='aria-selected:bg-neutral-200 aria-selected:text-primary-foreground'
     >
       {model.name}
       <CheckIcon className={cn('ml-auto h-4 w-4', isSelected ? 'text-emerald-600 opacity-100' : 'opacity-0')} />

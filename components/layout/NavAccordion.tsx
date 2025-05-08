@@ -33,7 +33,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
       <>
         <button
           className={cn(
-            'rounded group flex w-full items-center justify-start gap-2 py-1.5 pl-3 pr-2 font-medium text-neutral-600 outline-none transition-all',
+            'group flex w-full items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 font-medium text-neutral-600 outline-none transition-all',
             'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             'dark:text-neutral-300 dark:hover:text-sky-500',
             'hover:bg-neutral-100 dark:hover:bg-neutral-800',
@@ -61,7 +61,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
             <Disclosure.Button
               {...props}
               className={cn(
-                'rounded group flex w-full items-center justify-start gap-2 py-1.5 pl-3 pr-2 font-medium text-neutral-600 outline-none transition-all',
+                'group flex w-full items-center justify-start gap-2 rounded py-1.5 pl-3 pr-2 font-medium text-neutral-600 outline-none transition-all',
                 'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 'dark:text-neutral-300 dark:hover:text-sky-500',
                 'hover:bg-neutral-100 dark:hover:bg-neutral-800',

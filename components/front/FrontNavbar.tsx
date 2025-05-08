@@ -74,7 +74,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 >
                   <Popover.Button
                     className={cn(
-                      'rounded group flex items-center space-x-1 px-1 text-[15px] font-medium transition-all duration-200',
+                      'group flex items-center space-x-1 rounded px-1 text-[15px] font-medium transition-all duration-200',
                       ' text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                     )}
@@ -100,7 +100,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   >
                     <Popover.Panel
                       className={cn(
-                        'rounded absolute top-8 z-[11] flex w-40 flex-col space-y-2.5 px-4 py-4 shadow',
+                        'absolute top-8 z-[11] flex w-40 flex-col space-y-2.5 rounded px-4 py-4 shadow',
                         'bg-white dark:border dark:border-neutral-800 dark:bg-neutral-900',
                       )}
                     >
@@ -118,7 +118,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                         aria-label='Search'
                         title='Search'
                         className={cn(
-                          'rounded group flex items-center space-x-2 p-0.5 text-[15px] font-medium transition-all duration-200',
+                          'group flex items-center space-x-2 rounded p-0.5 text-[15px] font-medium transition-all duration-200',
                           ' text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                         )}
@@ -134,7 +134,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                         leaveFrom='opacity-100 scale-100'
                         leaveTo='opacity-0 scale-95'
                       >
-                        <Popover.Panel className='rounded absolute left-1/2 top-16 z-10 w-96 -translate-x-1/2 space-y-2.5 border border-transparent bg-white p-2 shadow dark:border-neutral-800 dark:bg-[#1a1a1a]'>
+                        <Popover.Panel className='absolute left-1/2 top-16 z-10 w-96 -translate-x-1/2 space-y-2.5 rounded border border-transparent bg-white p-2 shadow dark:border-neutral-800 dark:bg-[#1a1a1a]'>
                           <NavbarSearch />
                         </Popover.Panel>
                       </Transition>
@@ -190,7 +190,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
             <div className='flex md:hidden'>
               <Popover.Button
                 className={cn(
-                  'rounded inline-flex items-center justify-center transition-all',
+                  'inline-flex items-center justify-center rounded transition-all',
                   'text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-100',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 )}
@@ -223,7 +223,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   <Link
                     href='/'
                     passHref
-                    className='rounded flex w-full items-center focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent'
+                    className='flex w-full items-center rounded focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent'
                   >
                     <span className='text-xl font-semibold dark:text-white'>MyBook</span>
                   </Link>
@@ -255,7 +255,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 <Menu>
                   {({ open }) => (
                     <>
-                      <Menu.Button className='rounded w-full px-3 py-1.5 text-[15px] font-medium text-neutral-600 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-200 dark:hover:bg-neutral-800'>
+                      <Menu.Button className='w-full rounded px-3 py-1.5 text-[15px] font-medium text-neutral-600 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-200 dark:hover:bg-neutral-800'>
                         <div className='flex items-center justify-between'>
                           <span>More</span>
                           <ChevronRightIcon
@@ -290,7 +290,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                   <Link
                     href={`${session?.name ? '/dashboard' : '/login'}`}
                     className={cn(
-                      'rounded block px-3 py-1.5 text-[15px] font-medium text-neutral-600 hover:bg-neutral-100',
+                      'block rounded px-3 py-1.5 text-[15px] font-medium text-neutral-600 hover:bg-neutral-100',
                       'hover:text-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       'dark:text-neutral-200 dark:hover:bg-neutral-800',
                     )}
