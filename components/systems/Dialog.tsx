@@ -18,6 +18,8 @@ type Props = {
   onConfirm?: () => void;
   showIcon?: boolean;
   confirmText?: string;
+  cancelText?: string;
+  deleteText?: string;
   [props: string]: any;
 };
 
@@ -32,6 +34,8 @@ export default function Dialog({
   onConfirm,
   showIcon,
   confirmText = 'Confirm',
+  cancelText = 'Cancel',
+  deleteText = 'Delete',
   ...props
 }: Props) {
   return (
@@ -70,6 +74,7 @@ export default function Dialog({
             )}
           >
             <DialogRadix.Close
+              onClick={onClose}
               className={
                 'absolute right-3.5 top-3.5 rounded p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
               }
@@ -101,11 +106,11 @@ export default function Dialog({
 
             <div className='justify-end gap-3 px-5 pb-5 sm:flex'>
               <Button.secondary className='mb-2 w-full focus:ring-2 sm:mb-0 sm:w-auto' onClick={onClose}>
-                Cancel
+                {cancelText}
               </Button.secondary>
               {isDanger ? (
                 <Button.danger className='w-full sm:w-auto' onClick={onConfirm}>
-                  Delete
+                  {deleteText}
                 </Button.danger>
               ) : isEdit ? (
                 <Button className='w-full sm:w-auto' onClick={onConfirm}>
